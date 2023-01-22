@@ -6,7 +6,13 @@ module.exports = {
       sans: ['sans-serif', 'Poppins'],
       serif: ['sans-serif', 'Poppins'],
     },
-    extend: {},
+    extend: {
+      colors: {
+        'pw-primary': 'var(--primary)',
+        'pw-secondary': 'var(--secondary)',
+        'pw-gray': 'var(--gray)',
+      },
+    },
   },
   plugins: [],
 }

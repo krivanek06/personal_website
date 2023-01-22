@@ -1,0 +1,60 @@
+/* headings */
+
+.g-heading-1 {
+  @apply text-2xl sm:text-3xl lg:text-6xl;
+}
+
+.g-heading-2 {
+  @apply text-xl sm:text-2xl lg:text-5xl;
+}
+
+.g-heading-3 {
+  @apply text-lg sm:text-xl lg:text-2xl;
+}
+
+/* body */
+
+.g-body-1 {
+  @apply text-base sm:text-lg lg:text-xl;
+}
+
+.g-body-2 {
+  @apply text-sm sm:text-base lg:text-lg;
+}
+
+.g-body-3 {
+  @apply text-sm sm:text-base lg:text-base;
+}
+
+/* other */
+
+.g-ball-1 {
+  background: var(--ball-1-bg);
+  @apply w-5 h-5 md:w-8 md:h-8;
+}
+
+.g-ball-2 {
+  background: var(--ball-2-bg);
+  @apply w-5 h-5 md:w-8 md:h-8;
+}
+
+.g-card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  text-align: center;
+  padding: 16px;
+  transition: all 0.4s ease-out;
+
+  :hover {
+    background-color: var(--card-bg-hover);
+  }
+}
+
+.g-overlay {
+  background: var(--overlay);
+
+  :hover {
+    background: none;
+  }
+}

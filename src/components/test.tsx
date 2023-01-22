@@ -1,3 +1,3 @@
 export const TestC = () => {
-  return <div className="p-4 bg-red-300">lol</div>
+  return <div className="p-4 heading-1">lol</div>
 }

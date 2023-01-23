@@ -1,5 +1,8 @@
-/* headings */
+body {
+  @apply bg-black overflow-hidden text-g-gray;
+}
 
+/* headings */
 .g-heading-1 {
   @apply text-2xl sm:text-3xl lg:text-6xl;
 }
@@ -13,7 +16,6 @@
 }
 
 /* body */
-
 .g-body-1 {
   @apply text-base sm:text-lg lg:text-xl;
 }
@@ -26,16 +28,22 @@
   @apply text-sm sm:text-base lg:text-base;
 }
 
-/* other */
+/* layout */
+.g-layout-1 {
+  @apply w-screen 2xl:w-10/12 h-screen py-3 sm:py-6 lg:py-10 m-auto;
+}
 
+/* other */
 .g-ball-1 {
   background: var(--ball-1-bg);
-  @apply w-5 h-5 md:w-8 md:h-8;
 }
 
 .g-ball-2 {
   background: var(--ball-2-bg);
-  @apply w-5 h-5 md:w-8 md:h-8;
+}
+
+.g-ball-general {
+  @apply w-5 h-5 md:w-8 md:h-8 rounded-full;
 }
 
 .g-card {
@@ -57,4 +65,21 @@
   :hover {
     background: none;
   }
+}
+
+/* HERO PAGE */
+.g-hero-mask-image {
+  filter: brightness(0.5);
+  -webkit-mask-image: url('/vectors/hero_main.svg');
+  -webkit-mask-size: contain;
+  -webkit-mask-repeat: no-repeat;
+}
+
+.g-hero-background {
+  background: linear-gradient(
+    249.43deg,
+    rgba(0, 71, 96, 0.64) 8.35%,
+    rgba(0, 34, 46, 0) 32.93%,
+    rgba(0, 0, 0, 0) 101.77%
+  );
 }

@@ -8,9 +8,9 @@ module.exports = {
     },
     extend: {
       colors: {
-        'pw-primary': 'var(--primary)',
-        'pw-secondary': 'var(--secondary)',
-        'pw-gray': 'var(--gray)',
+        'g-primary': 'var(--primary)',
+        'g-secondary': 'var(--secondary)',
+        'g-gray': 'var(--gray)',
       },
     },
   },

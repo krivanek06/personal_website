@@ -7,6 +7,9 @@ module.exports = {
       serif: ['sans-serif', 'Poppins'],
     },
     extend: {
+      screens: {
+        '3xl': '1870px',
+      },
       colors: {
         'g-primary': 'var(--primary)',
         'g-secondary': 'var(--secondary)',

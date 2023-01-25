@@ -1,10 +1,10 @@
 export const ContentHero = () => {
   return (
-    <div className="mt-[26%]">
-      <span className="capitalize g-heading-1 mb-3">Hello, I'm</span>
-      <h1 className="uppercase g-heading-1 text-g-primary mb-10">Eduard Krivanek</h1>
+    <div className="top-2/4 left-2/4 -translate-y-1/4 -translate-x-2/4 absolute text-center">
+      <span className="capitalize g-heading-2 mb-3 g-text-shadow-white">Hello, I'm</span>
+      <h1 className="uppercase g-heading-1 g-text-shadow-primary mb-10">Eduard Krivanek</h1>
 
-      <h2 className="g-heading-2 mb-10">Providing ____ services</h2>
+      <h2 className="g-heading-2 mb-10">Providing ____ Services</h2>
 
       {/* socials */}
       <Socials />
@@ -13,9 +13,9 @@ export const ContentHero = () => {
 }
 
 const Socials = () => {
-  const classSocials = 'fill-g-gray cursor-pointer hover:fill-g-primary  duration-500 delay-100'
+  const classSocials = 'fill-g-gray cursor-pointer hover:fill-g-primary  duration-500 '
   return (
-    <div className="flex items-center gap-8">
+    <div className="flex items-center gap-8  justify-center pl-4 md:pl-0">
       {/* linked in */}
       <svg
         width="50px"
@@ -44,7 +44,7 @@ const Socials = () => {
       <svg
         width="75px"
         height="75px"
-        viewBox="0 0 32 32"
+        viewBox="-7 0 32 32"
         className={classSocials}
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"

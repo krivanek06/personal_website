@@ -1,14 +1,17 @@
+@import url('https://fonts.cdnfonts.com/css/prociono');
+
 body {
   @apply bg-black overflow-hidden text-g-gray;
+  font-family: 'Prociono', sans-serif;
 }
 
 /* headings */
 .g-heading-1 {
-  @apply text-2xl sm:text-3xl lg:text-6xl;
+  @apply text-3xl sm:text-4xl lg:text-6xl;
 }
 
 .g-heading-2 {
-  @apply text-xl sm:text-2xl lg:text-5xl;
+  @apply text-2xl sm:text-3xl lg:text-5xl;
 }
 
 .g-heading-3 {
@@ -30,21 +33,22 @@ body {
 
 /* layout */
 .g-layout-1 {
-  @apply w-screen 2xl:w-10/12 h-screen py-3 sm:py-6 lg:py-10 m-auto;
+  @apply w-screen px-5 sm:px-8 sm:w-11/12  2xl:w-10/12 h-screen py-3 sm:py-6 lg:py-10 m-auto;
+}
+
+/* text */
+
+.g-text-shadow-primary {
+  background: linear-gradient(180deg, #00719bc2 29.41%, rgb(0 133 182) 47.91%, rgba(1, 46, 63, 0.48) 84.9%);
+  @apply bg-clip-text text-transparent;
+}
+
+.g-text-shadow-white {
+  background: linear-gradient(180deg, #ffffff 14.28%, rgba(255, 255, 255, 0) 84.16%, #000000 48.16%);
+  @apply bg-clip-text text-transparent;
 }
 
 /* other */
-.g-ball-1 {
-  background: var(--ball-1-bg);
-}
-
-.g-ball-2 {
-  background: var(--ball-2-bg);
-}
-
-.g-ball-general {
-  @apply w-5 h-5 md:w-8 md:h-8 rounded-full;
-}
 
 .g-card {
   background-color: var(--card-bg);
@@ -77,9 +81,17 @@ body {
 
 .g-hero-background {
   background: linear-gradient(
-    249.43deg,
+    224deg,
     rgba(0, 71, 96, 0.64) 8.35%,
     rgba(0, 34, 46, 0) 32.93%,
     rgba(0, 0, 0, 0) 101.77%
   );
+  // background: radial-gradient(
+  //   57.4% 50.18% at 48.57% 50.98%,
+  //   rgba(0, 93, 126, 0.64) 0%,
+  //   rgba(0, 37, 50, 0.47) 39.06%,
+  //   rgba(0, 0, 0, 0) 100%
+  // );
+
+  //  background: radial-gradient(57.4% 50.18% at 48.57% 50.98%, rgb(0 93 126 / 8%) 0%, rgb(0 37 50 / 0%) 39.06%, rgba(0, 0, 0, 0) 100%)
 }

@@ -1,0 +1,61 @@
+button {
+  border: none;
+  display: inline-block;
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+  font-size: 20px;
+  padding: 16px 35px;
+
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+button:before,
+button:after {
+  content: ' ';
+  position: absolute;
+  border-radius: 12px;
+}
+
+button:before {
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -2;
+
+  background: linear-gradient(180deg, #00719bc2 29.41%, rgb(0 133 182) 47.91%, rgba(1, 46, 63, 0.48) 84.9%);
+}
+
+button:after {
+  top: 2px;
+  bottom: 2px;
+  left: 2px;
+  right: 2px;
+  background-color: black;
+  z-index: -1;
+  opacity: 1;
+  transition: all 0.6s ease-in-out;
+}
+
+button:hover:after {
+  opacity: 0;
+}
+
+button:hover:before {
+  background: linear-gradient(180deg, #030303 34.28%, rgb(0 0 0) 44.16%, #030303 68.16%);
+  border: 3px solid black;
+  border-radius: 32px;
+  scale: 1.2;
+}
+
+button > span {
+  background: linear-gradient(180deg, #00719bc2 29.41%, rgb(0 133 182) 47.91%, rgba(1, 46, 63, 0.48) 84.9%);
+  @apply bg-clip-text text-transparent;
+  transition: all 0.6s ease-in-out;
+}
+
+button:hover > span {
+  color: white;
+}

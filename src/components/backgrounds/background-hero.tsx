@@ -9,7 +9,7 @@ export const BackgroundHero = ({ children }: Props) => {
       <img
         src="/images/myself_only_body_3.png"
         alt="author image"
-        className="max-h-[1100px] min-h-[700px] object-cover absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 -z-10"
+        className="max-h-[1150px] min-h-[700px] object-cover absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 -z-10"
       />
 
       {/* abstract image */}

@@ -2,12 +2,74 @@ export const ContentHero = () => {
   return (
     <div className="top-2/4 left-2/4 -translate-y-1/4 -translate-x-2/4 absolute text-center">
       <span className="capitalize g-heading-2 mb-3 g-text-shadow-white">Hello, I'm</span>
-      <h1 className="uppercase g-heading-1 g-text-shadow-primary mb-10">Eduard Krivanek</h1>
+      <Name />
 
       <h2 className="g-heading-2 mb-10">Providing ____ Services</h2>
 
       {/* socials */}
       <Socials />
+
+      <button className="mt-8 w-[220px]">
+        <span>Connect</span>
+      </button>
+    </div>
+  )
+}
+
+const Name = () => {
+  return (
+    <div className="relative">
+      <svg
+        width="43"
+        height="53"
+        viewBox="0 0 43 53"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute top-4 -left-2"
+      >
+        <path d="M43 50L3 50L3 -5.96047e-08" stroke="url(#paint0_linear_1265_15497)" stroke-width="6" />
+        <defs>
+          <linearGradient
+            id="paint0_linear_1265_15497"
+            x1="3"
+            y1="46.5"
+            x2="10.5"
+            y2="32.5"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#006A90" />
+            <stop offset="1" />
+          </linearGradient>
+        </defs>
+      </svg>
+
+      {/* name */}
+      <h1 className="uppercase g-heading-1 g-text-shadow-primary mb-10">Eduard Krivanek</h1>
+
+      {/* end rectangle */}
+      <svg
+        width="43"
+        height="53"
+        viewBox="0 0 43 53"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="absolute -right-3 -top-1"
+      >
+        <path d="M0 3H40V53" stroke="url(#paint0_linear_1262_13488)" stroke-width="6" />
+        <defs>
+          <linearGradient
+            id="paint0_linear_1262_13488"
+            x1="40"
+            y1="6.5"
+            x2="32.5"
+            y2="20.5"
+            gradientUnits="userSpaceOnUse"
+          >
+            <stop stop-color="#006A90" />
+            <stop offset="1" />
+          </linearGradient>
+        </defs>
+      </svg>
     </div>
   )
 }
@@ -32,7 +94,7 @@ const Socials = () => {
         width="50px"
         height="50px"
         viewBox="0 0 32 32"
-        className={classSocials}
+        className={`${classSocials} ml-5`}
         version="1.1"
         xmlns="http://www.w3.org/2000/svg"
       >

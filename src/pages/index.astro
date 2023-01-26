@@ -1,13 +1,17 @@
 ---
 import { DevelopmentPage } from '../components/development'
 import { HeroPage } from '../components/hero'
+import { ProvidingServicesPage } from '../components/providing-services'
 import Layout from '../layouts/Layout.astro'
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <HeroPage />
-    <DevelopmentPage />
+    <div class="mb-[200px]">
+      <DevelopmentPage />
+    </div>
+    <ProvidingServicesPage />
 
     <div class="min-h-[200px]"></div>
   </main>

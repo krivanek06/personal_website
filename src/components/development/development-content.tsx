@@ -7,8 +7,8 @@ export const DevelopmentContent = () => {
       </h2>
 
       {/* side content */}
-      <div className="flex justify-end mt-[160px]">
-        <div className="flex gap-20">
+      <div className="flex justify-end mt-[160px] ">
+        <div className="flex gap-20 z-10">
           <div className="text-center w-9/12 md:w-full m-auto md:flex-1">
             Providing comprehensive web development and consulting services to help clients create
             high-quality, user-friendly websites and applications that meet their specific needs and goals.

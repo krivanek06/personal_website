@@ -4,19 +4,19 @@ export interface Props {
 
 export const HeroBackground = ({ children }: Props) => {
   return (
-    <div className="g-hero-background h-screen">
+    <div className="g-hero-background min-h-screen">
       {/* myself */}
       <img
         src="/images/myself_only_body_3.png"
         alt="author image"
-        className="h-[80%] sm:h-[90%] lg:h-[1150px] object-cover absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 -z-10"
+        className="h-[85%] sm:h-[90%] lg:h-[1150px] object-cover absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 -z-10"
       />
 
       {/* abstract image */}
-      <div className="absolute left-0 opacity-40 md:opacity-80 -z-20">
+      <div className="absolute left-0 hidden lg:block opacity-80 -z-20">
         <Svg1 />
       </div>
-      <div className="absolute right-0 hidden opacity-80 -z-20 lg:block">
+      <div className="absolute right-0  opacity-80 -z-20 ">
         <Svg2 />
       </div>
 

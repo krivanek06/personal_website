@@ -1,4 +1,4 @@
-export const ContentHero = () => {
+export const HeroContent = () => {
   return (
     <div className="top-2/4 left-2/4 -translate-y-1/4 -translate-x-2/4 absolute text-center">
       <span className="capitalize g-heading-2 mb-3 g-text-shadow-white">Hello, I'm</span>

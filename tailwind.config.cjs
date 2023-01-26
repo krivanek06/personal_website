@@ -7,6 +7,9 @@ module.exports = {
       serif: ['sans-serif', 'Poppins'],
     },
     extend: {
+      transitionProperty: {
+        height: 'height',
+      },
       blur: {
         xs: '2px',
       },
@@ -17,8 +20,13 @@ module.exports = {
         'g-primary': 'var(--primary)',
         'g-secondary': 'var(--secondary)',
         'g-gray': 'var(--gray)',
+        'g-overlay-dark': 'var(--overlay-dark)',
+        'g-overlay-medium': 'var(--overlay-medium)',
       },
     },
   },
   plugins: [],
+  variants: {
+    height: ['responsive', 'hover', 'focus'],
+  },
 }

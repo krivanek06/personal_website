@@ -19,10 +19,6 @@ export const DevelopmentBackground = ({ children }: Props) => {
 
       {/* content */}
       {children}
-
-      {/* <div className="absolute -z-10 scale-75 top-[67%] opacity-75 left-[-6%]">
-        <Svg1 />
-      </div> */}
     </div>
   )
 }

@@ -63,12 +63,8 @@ body {
   }
 }
 
-.g-overlay {
-  background: var(--overlay);
-
-  :hover {
-    background: none;
-  }
+.g-fade {
+  -webkit-mask-image: linear-gradient(180deg, #000 60%, transparent);
 }
 
 /* HERO PAGE */

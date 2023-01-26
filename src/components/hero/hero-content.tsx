@@ -9,7 +9,7 @@ export const HeroContent = () => {
       {/* socials */}
       <Socials />
 
-      <button className="mt-8 w-[220px]">
+      <button className="mt-8 w-[220px] animate-pulse hover:animate-none ">
         <span>Connect</span>
       </button>
     </div>

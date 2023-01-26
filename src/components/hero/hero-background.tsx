@@ -9,14 +9,14 @@ export const HeroBackground = ({ children }: Props) => {
       <img
         src="/images/myself_only_body_3.png"
         alt="author image"
-        className="max-h-[1150px] min-h-[700px] object-cover absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 -z-10"
+        className="h-[80%] sm:h-[90%] lg:h-[1150px] object-cover absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 -z-10"
       />
 
       {/* abstract image */}
-      <div className="absolute left-0 opacity-40 md:opacity-100">
+      <div className="absolute left-0 opacity-40 md:opacity-80 -z-20">
         <Svg1 />
       </div>
-      <div className="absolute right-0 hidden md:block">
+      <div className="absolute right-0 hidden opacity-80 -z-20 lg:block">
         <Svg2 />
       </div>
 

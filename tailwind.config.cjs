@@ -7,6 +7,9 @@ module.exports = {
       serif: ['sans-serif', 'Poppins'],
     },
     extend: {
+      blur: {
+        xs: '2px',
+      },
       screens: {
         '3xl': '1870px',
       },

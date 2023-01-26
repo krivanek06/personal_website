@@ -48,32 +48,6 @@ body {
   @apply bg-clip-text text-transparent;
 }
 
-/* border */
-// button {
-//   @apply text-xl border-2 rounded-lg;
-//   padding: 1rem 2.25rem;
-//   border-radius: 1000px;
-
-//   border: none;
-//   position: relative;
-//   background: transparent;
-
-//   &:hover {
-//     background-color: red;
-//   }
-//   &:before {
-//     content: '';
-//     display: block;
-//     position: absolute;
-//     top: 1px;
-//     right: 1px;
-//     bottom: 1px;
-//     left: 1px;
-//     z-index: -1;
-//     background: linear-gradient(180deg, #00719bc2 29.41%, rgb(0 133 182) 47.91%, rgba(1, 46, 63, 0.48) 84.9%);
-//   }
-// }
-
 /* other */
 
 .g-card {
@@ -120,4 +94,8 @@ body {
   // );
 
   //  background: radial-gradient(57.4% 50.18% at 48.57% 50.98%, rgb(0 93 126 / 8%) 0%, rgb(0 37 50 / 0%) 39.06%, rgba(0, 0, 0, 0) 100%)
+}
+
+.g-image-shadow {
+  @apply grayscale blur-xs hover:grayscale-0 hover:blur-0  duration-500 transition-all object-fill absolute;
 }

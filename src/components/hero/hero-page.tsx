@@ -3,7 +3,7 @@ import { HeroContent } from './hero-content'
 
 export const HeroPage = () => {
   return (
-    <div className="relative">
+    <div className="relative ">
       <HeroBackground>
         <div className="g-layout-1">
           <HeroContent></HeroContent>

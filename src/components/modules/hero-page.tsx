@@ -89,9 +89,10 @@ const Name = () => {
 }
 
 const Socials = () => {
-  const classSocials = 'fill-g-gray cursor-pointer hover:fill-g-primary  duration-500 '
+  const classSocials =
+    'fill-g-gray cursor-pointer hover:fill-g-primary  duration-1000  animate-pulse hover:animate-none'
   return (
-    <div className="flex items-center gap-8  justify-center pl-4 md:pl-0">
+    <div className="flex items-center gap-8  justify-center pl-4 md:pl-0 ">
       {/* linked in */}
       <svg
         width="50px"

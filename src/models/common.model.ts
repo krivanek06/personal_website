@@ -3,3 +3,7 @@ export interface Image {
   alt: string
   classes?: string
 }
+
+export interface ContentProjectionProps {
+  children: any
+}

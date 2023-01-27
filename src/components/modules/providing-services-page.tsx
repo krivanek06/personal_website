@@ -1,8 +1,71 @@
-export interface Props {
-  children?: any
+import type { ContentProjectionProps } from '../../models'
+import { CardPresentation } from '../shared/card-presentation'
+
+export const ProvidingServicesPage = () => {
+  return (
+    <div className="relative">
+      <ProvidingServicesBackground>
+        <div className="g-layout-1">
+          <ProvidingServicesContent></ProvidingServicesContent>
+        </div>
+      </ProvidingServicesBackground>
+    </div>
+  )
 }
 
-export const ProvidingServicesBackground = ({ children }: Props) => {
+const ProvidingServicesContent = () => {
+  return (
+    <div>
+      <h2 className="text-center g-heading-2  g-text-shadow-primary">Providing Services</h2>
+
+      <p className="my-20 w-8/12 text-center m-auto">
+        Expert in Angular and NodeJS development, creating high-performance, scalable and secure apps tailored
+        to unique business needs, modernizing legacy systems to stay on the cutting edge of technology.
+      </p>
+
+      {/* list of services */}
+      <div className="grid grid-cols-2 gap-4">
+        <CardPresentation
+          title="Angular Development"
+          img={{
+            src: 'images/bg_angular.png',
+            alt: 'Angular Service Image',
+          }}
+          description="Building high-performance, responsive, and dynamic Angular web applications using the latest technologies and industry best practices to ensure the highest quality and performance standards."
+        />
+
+        <CardPresentation
+          title="NodeJS Development"
+          img={{
+            src: 'images/bg_nestjs.webp',
+            alt: 'NestJS Service Image',
+          }}
+          description="Creating scalable GraphQL or REST API's using NestJS and NodeJS to build modular server-side applications that are easy to maintain, robust, high-performance, and secure. "
+        />
+
+        <CardPresentation
+          title="Custom Web Solutions"
+          img={{
+            src: 'images/bg_web_solution.jpeg',
+            alt: 'Web Solution Service Image',
+          }}
+          description="Each business has unique needs and a close relationship with clients is required to understand the problems and design a custom solution that fits their specific needs and to ensure that the enterprise software is modern, efficient, and able to meet the demands of your business"
+        />
+
+        <CardPresentation
+          title="Software Modernization"
+          img={{
+            src: 'images/bg_software_modern.jpeg',
+            alt: 'Software Modernization Service Image',
+          }}
+          description="Don't let legacy systems hold you back. Whether it's extending your existing system or replacing it with a more modern solution, the sole goal is to help you stay on the cutting edge of technology, upgrade your platform to unlock valuable innovation opportunities."
+        />
+      </div>
+    </div>
+  )
+}
+
+const ProvidingServicesBackground = ({ children }: ContentProjectionProps) => {
   return (
     <div className="min-h-screen">
       <div className="absolute top-0 right-[20%]">
@@ -16,7 +79,7 @@ export const ProvidingServicesBackground = ({ children }: Props) => {
 const Svg1 = () => {
   return (
     <svg width="926" height="944" viewBox="0 0 926 944" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <g clip-path="url(#clip0_1264_14770)">
+      <g clipPath="url(#clip0_1264_14770)">
         <mask id="mask0_1264_14770" maskUnits="userSpaceOnUse" x="0" y="0" width="926" height="944">
           <path d="M0 -2.95639e-05H926V944H0V-2.95639e-05Z" fill="white" />
         </mask>

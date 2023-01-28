@@ -42,7 +42,7 @@ const ContactMeContent = () => {
         </div>
         <div className="basis-2/5">
           <CardPresentation2Content classes="w-full">
-            <h3 className="text-g-primary g-heading-4 text-center">Message Me</h3>
+            <h3 className="text-g-primary g-heading-4 text-center">Let's Connect</h3>
             <p className="text-center mb-4">
               Don't wait, contact us today and let us help you bring your project to life
             </p>
@@ -61,7 +61,7 @@ const ActionList = () => {
   return (
     <div className="flex flex-col gap-12 ">
       <ActionPoints
-        classes="animate-reveal "
+        classes="animation-delay-800 "
         title="1.) Consultation"
         description="We will discuss your project requirements and goals in order to understand your unique needs and propose a solution that fits your budget and timelines."
         iconContent={

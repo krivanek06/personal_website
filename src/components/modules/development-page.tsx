@@ -89,8 +89,8 @@ const DevelopmentBackground = ({ children }: ContentProjectionProps) => {
           <div
             ref={ref}
             key={d.src}
-            className={`${d.divClasses} bg-g-overlay-dark absolute group transition-all ${
-              inView ? 'animate-reveal' : ''
+            className={`${d.divClasses}  bg-g-overlay-dark absolute group transition-all ${
+              inView ? 'animate-reveal' : 'invisible'
             }  `}
           >
             <img

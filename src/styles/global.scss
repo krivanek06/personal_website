@@ -91,6 +91,14 @@ body {
     rgba(0, 0, 0, 0) 57.81%
   );
 }
+.g-contact-me-background {
+  background: radial-gradient(
+    33.29% 73.49% at 71.19% 30.41%,
+    #022735 0%,
+    #001721 40.62%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
 
 .g-image-shadow {
   @apply grayscale blur-xs hover:grayscale-0 hover:blur-0  duration-500 transition-all object-fill absolute;
@@ -98,4 +106,16 @@ body {
 
 .g-absolute-center {
   @apply absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4;
+}
+
+.g-form-control {
+  @apply flex flex-col;
+
+  label {
+    @apply text-g-primary;
+  }
+  input,
+  textarea {
+    @apply bg-g-primary-transparent-medium p-1 rounded-lg border border-g-primary;
+  }
 }

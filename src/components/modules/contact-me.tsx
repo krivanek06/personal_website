@@ -59,8 +59,9 @@ const ContactMeContent = () => {
 const ActionList = () => {
   const classes = 'fill-g-gray h-8'
   return (
-    <div className="flex flex-col gap-12">
+    <div className="flex flex-col gap-12 ">
       <ActionPoints
+        classes="animate-reveal "
         title="1.) Consultation"
         description="We will discuss your project requirements and goals in order to understand your unique needs and propose a solution that fits your budget and timelines."
         iconContent={
@@ -351,7 +352,7 @@ const Svg1 = () => {
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <g clip-path="url(#clip0_1264_14933)">
+      <g>
         <mask id="mask0_1264_14933" maskUnits="userSpaceOnUse" x="0" y="0" width="750" height="1052">
           <path d="M750 1052L0 1052L0 0L750 0L750 1052Z" fill="white" />
         </mask>

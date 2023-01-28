@@ -1,3 +1,4 @@
+import { useInView } from 'react-intersection-observer'
 import { ContentProjectionProps, DevelopmentIcons } from '../../models'
 
 export const DevelopmentPage = () => {
@@ -81,15 +82,25 @@ const DevelopmentContent = () => {
 const DevelopmentBackground = ({ children }: ContentProjectionProps) => {
   return (
     <div className="min-h-screen">
-      {DevelopmentIcons.map((d) => (
-        <div className={`${d.divClasses} bg-g-overlay-dark absolute group transition-all`}>
-          <img
-            src={d.src}
-            alt={d.alt}
-            className={` ${d.imgHeight} opacity-30 group-hover:opacity-80 duration-700`}
-          />
-        </div>
-      ))}
+      {DevelopmentIcons.map((d) => {
+        const { ref, inView, entry } = useInView()
+
+        return (
+          <div
+            ref={ref}
+            key={d.src}
+            className={`${d.divClasses} bg-g-overlay-dark absolute group transition-all ${
+              inView ? 'animate-reveal' : ''
+            }  `}
+          >
+            <img
+              src={d.src}
+              alt={d.alt}
+              className={` ${d.imgHeight} opacity-30 group-hover:opacity-80 duration-700`}
+            />
+          </div>
+        )
+      })}
 
       {/* content */}
       {children}

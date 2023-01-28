@@ -2,11 +2,12 @@ export interface Props {
   title: string
   description: string
   iconContent: any
+  classes?: string
 }
 
-export const ActionPoints = ({ title, description, iconContent }: Props) => {
+export const ActionPoints = ({ title, description, iconContent, classes }: Props) => {
   return (
-    <div>
+    <div className={classes}>
       <div className="flex items-start gap-2 mb-2">
         {/* icon */}
         <div className="-mt-3 p-3 border border-g-gray rounded-full">{iconContent}</div>
@@ -20,7 +21,7 @@ export const ActionPoints = ({ title, description, iconContent }: Props) => {
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
         >
-          <line y1="6" x2="46.3855" y2="6" stroke-width="4" />
+          <line y1="6" x2="46.3855" y2="6" />
           <ellipse cx="49.6987" cy="6" rx="5.3012" ry="6" />
         </svg>
         <h3 className="text-g-primary g-heading-4">{title}</h3>

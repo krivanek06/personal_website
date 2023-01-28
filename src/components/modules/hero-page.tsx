@@ -23,7 +23,7 @@ const HeroContent = () => {
       {/* socials */}
       <Socials />
 
-      <button className="mt-8 w-[220px] animate-pulse hover:animate-none ">
+      <button className="mt-8 w-[220px] animate-pulse hover:animate-none hover:scale-125 ">
         <span>Connect</span>
       </button>
     </div>

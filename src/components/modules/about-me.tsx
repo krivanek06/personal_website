@@ -1,5 +1,5 @@
 import type { ContentProjectionProps } from '../../models'
-import { CardPresentation2OnlyText } from '../shared/card-presentation-2'
+import { CardPresentation2Content } from '../shared/card-presentation-2'
 
 export const AboutMePage = () => {
   return (
@@ -46,10 +46,13 @@ const AboutMeContent = () => {
             className="h-full object-cover absolute  -z-10"
           />
           {/* card */}
-          <CardPresentation2OnlyText
-            classes="w-[320px] bottom-[20%] absolute right-[-10%]"
-            description="Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."
-          />
+          <CardPresentation2Content classes="w-[320px] bottom-[20%] absolute right-[-10%] opacity-40 hover:opacity-90 ">
+            <p className="w-11/12 m-auto text-g-gray">
+              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
+              the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
+              of type and scrambled it to make a type specimen book.
+            </p>
+          </CardPresentation2Content>
         </div>
 
         {/* blog posts */}

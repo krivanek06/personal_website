@@ -4,8 +4,8 @@ button {
   border-radius: 12px;
   position: relative;
   z-index: 1;
-  font-size: 20px;
-  padding: 16px 35px;
+  font-size: 18px;
+  padding: 12px 36px;
 
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -44,10 +44,9 @@ button:hover:after {
 }
 
 button:hover:before {
-  background: linear-gradient(180deg, #030303 34.28%, rgb(0 0 0) 44.16%, #030303 68.16%);
-  border: 3px solid black;
-  border-radius: 32px;
-  scale: 1.2;
+  background: linear-gradient(180deg, #252525 34.28%, rgb(72 70 70) 44.16%, #202020 68.16%);
+  border: 1px solid white;
+  border-radius: 24px;
 }
 
 button > span {

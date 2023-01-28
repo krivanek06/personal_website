@@ -80,13 +80,13 @@ const DevelopmentContent = () => {
 
 const DevelopmentBackground = ({ children }: ContentProjectionProps) => {
   return (
-    <div className="py-4 md:py-16 min-h-screen">
+    <div className="min-h-screen">
       {DevelopmentIcons.map((d) => (
         <div className={`${d.divClasses} bg-g-overlay-dark absolute group transition-all`}>
           <img
             src={d.src}
             alt={d.alt}
-            className={` ${d.imgHeight} opacity-30 group-hover:opacity-80 duration-300`}
+            className={` ${d.imgHeight} opacity-30 group-hover:opacity-80 duration-700`}
           />
         </div>
       ))}

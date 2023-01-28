@@ -3,9 +3,9 @@ import { CardPresentation } from '../shared/card-presentation'
 
 export const ProvidingServicesPage = () => {
   return (
-    <div className="relative">
+    <div className="relative overflow-x-clip">
       <ProvidingServicesBackground>
-        <div className="g-layout-1">
+        <div className="g-layout-1 ">
           <ProvidingServicesContent></ProvidingServicesContent>
         </div>
       </ProvidingServicesBackground>
@@ -68,7 +68,7 @@ const ProvidingServicesContent = () => {
 const ProvidingServicesBackground = ({ children }: ContentProjectionProps) => {
   return (
     <div className="min-h-screen">
-      <div className="absolute top-[-20%] right-0">
+      <div className="absolute top-[-20%] right-[-15%] -z-10">
         <Svg1 />
       </div>
       {children}

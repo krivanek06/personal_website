@@ -5,7 +5,7 @@ export const AboutMePage = () => {
   return (
     <div className="relative">
       <AboutMeBackground>
-        <div className="g-layout-1">
+        <div className="g-layout-1 h-[135vh]">
           <AboutMeContent></AboutMeContent>
         </div>
       </AboutMeBackground>
@@ -16,11 +16,11 @@ export const AboutMePage = () => {
 const AboutMeBackground = ({ children }: ContentProjectionProps) => {
   return (
     <div className="">
-      <div className="absolute h-[110vh] bg-g-overlay-dark -z-10">
+      <div className="absolute bg-g-overlay-dark -z-10 h-full">
         <img
           src="/images/bg_abstract.jpeg"
           alt="Abstract Background Image"
-          className="min-h-full object-fill opacity-25"
+          className="min-h-full object-cover opacity-25"
         ></img>
       </div>
       {/* content */}

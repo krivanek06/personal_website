@@ -37,7 +37,7 @@ const DevelopmentContent = () => {
 
       {/* side content */}
       <div className="flex justify-start mt-[220px]">
-        <div className="mt-12 w-8/12 flex flex-col gap-10">
+        <div className="mt-12 w-8/12 flex flex-col gap-10 z-10">
           <h2 className="g-heading-2">
             What Can I <span className="text-g-primary">Expect?</span>
           </h2>

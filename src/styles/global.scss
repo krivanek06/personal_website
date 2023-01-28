@@ -18,6 +18,10 @@ body {
   @apply text-lg sm:text-2xl lg:text-3xl;
 }
 
+.g-heading-4 {
+  @apply text-lg sm:text-xl lg:text-2xl;
+}
+
 /* body */
 .g-body-1 {
   @apply text-base sm:text-lg lg:text-xl;
@@ -90,4 +94,8 @@ body {
 
 .g-image-shadow {
   @apply grayscale blur-xs hover:grayscale-0 hover:blur-0  duration-500 transition-all object-fill absolute;
+}
+
+.g-absolute-center {
+  @apply absolute top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4;
 }

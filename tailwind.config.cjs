@@ -1,3 +1,5 @@
+const plugin = require('tailwindcss/plugin')
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}'],
@@ -8,20 +10,46 @@ module.exports = {
     },
     extend: {
       animation: {
-        fadeIn1: 'fadeIn 1s ease-in forwards',
-        fadeIn2: 'fadeIn 2s ease-in forwards',
-        fadeIn4: 'fadeIn 4s ease-in forwards',
-        moveInRight: 'moveInRight 1.5s ease-in ',
-        moveInLeft: 'moveInLeft 1.5s ease-in ',
+        moveInRight: 'moveInRight 3.5s ease-in ',
+        moveInLeft: 'moveInLeft 3.5s ease-in ',
+        moveInBottom: 'moveInBottom 3.5s ease-in ',
         reveal: 'reveal 1.5s ease-in-out ',
+        reveal2: 'reveal2 2.5s ease-in-out',
+        reveal3: 'reveal3 3.5s ease-in',
+        moveFromTopToBottom: 'moveFromTopToBottom 3s',
       },
       keyframes: {
-        fadeIn: {
-          '0%': { opacity: 0 },
-          '100%': { opacity: 1 },
+        moveFromTopToBottom: {
+          '0%': {
+            opacity: 0.2,
+            filter: 'blur(5px)',
+            transform: 'translateY(-200px) scale(1.8)',
+          },
+          '100%': {
+            opacity: 1,
+            filter: 'blur(0)',
+            transform: 'translateY(0) scale(1)',
+          },
+        },
+        moveInBottom: {
+          '0%': {
+            opacity: 0,
+            filter: 'blur(5px)',
+            transform: 'translateY(-100%)',
+          },
+          '100%': {
+            opacity: 1,
+            filter: 'blur(0)',
+            transform: 'translateY(0)',
+          },
         },
         moveInRight: {
           '0%': {
+            opacity: 0,
+            filter: 'blur(5px)',
+            transform: 'translateX(-100%)',
+          },
+          '60%': {
             opacity: 0,
             filter: 'blur(5px)',
             transform: 'translateX(-100%)',
@@ -38,6 +66,11 @@ module.exports = {
             filter: 'blur(5px)',
             transform: 'translateX(100%)',
           },
+          '60%': {
+            opacity: 0,
+            filter: 'blur(5px)',
+            transform: 'translateX(100%)',
+          },
           '100%': {
             opacity: 1,
             filter: 'blur(0)',
@@ -46,6 +79,34 @@ module.exports = {
         },
         reveal: {
           '0%': {
+            opacity: 0,
+            filter: 'blur(5px)',
+          },
+          '100%': {
+            opacity: 1,
+            filter: 'blur(0)',
+          },
+        },
+        reveal2: {
+          '0%': {
+            opacity: 0,
+            filter: 'blur(5px)',
+          },
+          '40%': {
+            opacity: 0,
+            filter: 'blur(5px)',
+          },
+          '100%': {
+            opacity: 1,
+            filter: 'blur(0)',
+          },
+        },
+        reveal3: {
+          '0%': {
+            opacity: 0,
+            filter: 'blur(5px)',
+          },
+          '60%': {
             opacity: 0,
             filter: 'blur(5px)',
           },
@@ -76,7 +137,23 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // custom animation delay
+    plugin(({ matchUtilities, theme }) => {
+      matchUtilities(
+        {
+          'animation-delay': (value) => {
+            return {
+              'animation-delay': value,
+            }
+          },
+        },
+        {
+          values: theme('transitionDelay'),
+        },
+      )
+    }),
+  ],
   variants: {
     height: ['responsive', 'hover', 'focus'],
     animation: ['motion-safe'],

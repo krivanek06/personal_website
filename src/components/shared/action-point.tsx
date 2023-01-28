@@ -1,3 +1,5 @@
+import { useInView } from 'react-intersection-observer'
+
 export interface Props {
   title: string
   description: string
@@ -6,8 +8,10 @@ export interface Props {
 }
 
 export const ActionPoints = ({ title, description, iconContent, classes }: Props) => {
+  const { ref, inView, entry } = useInView()
+
   return (
-    <div className={classes}>
+    <div ref={ref} className={`${classes} ${inView ? 'animate-reveal' : 'opacity-0'}`}>
       <div className="flex items-start gap-2 mb-2">
         {/* icon */}
         <div className="-mt-3 p-3 border border-g-gray rounded-full">{iconContent}</div>

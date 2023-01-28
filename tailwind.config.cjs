@@ -7,6 +7,54 @@ module.exports = {
       serif: ['sans-serif', 'Poppins'],
     },
     extend: {
+      animation: {
+        fadeIn1: 'fadeIn 1s ease-in forwards',
+        fadeIn2: 'fadeIn 2s ease-in forwards',
+        fadeIn4: 'fadeIn 4s ease-in forwards',
+        moveInRight: 'moveInRight 1.5s ease-in ',
+        moveInLeft: 'moveInLeft 1.5s ease-in ',
+        reveal: 'reveal 1.5s ease-in-out ',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: 0 },
+          '100%': { opacity: 1 },
+        },
+        moveInRight: {
+          '0%': {
+            opacity: 0,
+            filter: 'blur(5px)',
+            transform: 'translateX(-100%)',
+          },
+          '100%': {
+            opacity: 1,
+            filter: 'blur(0)',
+            transform: 'translateX(0)',
+          },
+        },
+        moveInLeft: {
+          '0%': {
+            opacity: 0,
+            filter: 'blur(5px)',
+            transform: 'translateX(100%)',
+          },
+          '100%': {
+            opacity: 1,
+            filter: 'blur(0)',
+            transform: 'translateX(0)',
+          },
+        },
+        reveal: {
+          '0%': {
+            opacity: 0,
+            filter: 'blur(5px)',
+          },
+          '100%': {
+            opacity: 1,
+            filter: 'blur(0)',
+          },
+        },
+      },
       transitionProperty: {
         height: 'height',
       },
@@ -31,5 +79,6 @@ module.exports = {
   plugins: [],
   variants: {
     height: ['responsive', 'hover', 'focus'],
+    animation: ['motion-safe'],
   },
 }

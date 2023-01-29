@@ -10,13 +10,13 @@ module.exports = {
     },
     extend: {
       animation: {
-        moveInRight: 'moveInRight 3.5s ease-in ',
-        moveInLeft: 'moveInLeft 3.5s ease-in ',
-        moveInTop: 'moveInTop 3.5s ease-in ',
+        moveInRight: 'moveInRight 5s ease-in ',
+        moveInLeft: 'moveInLeft 5s ease-in ',
+        moveInTop: 'moveInTop 4.5s ease-in ',
         reveal: 'reveal 1.5s ease-in-out ',
         reveal2: 'reveal2 2.5s ease-in-out',
-        reveal3: 'reveal3 3.5s ease-in',
-        moveFromTopToBottom: 'moveFromTopToBottom 3s',
+        reveal3: 'reveal3 5s ease-in',
+        moveFromTopToBottom: 'moveFromTopToBottom 3.5s',
       },
       keyframes: {
         moveFromTopToBottom: {
@@ -49,7 +49,7 @@ module.exports = {
             filter: 'blur(5px)',
             transform: 'translateX(-100%)',
           },
-          '60%': {
+          '20%': {
             opacity: 0,
             filter: 'blur(5px)',
             transform: 'translateX(-100%)',
@@ -66,7 +66,7 @@ module.exports = {
             filter: 'blur(5px)',
             transform: 'translateX(100%)',
           },
-          '60%': {
+          '20%': {
             opacity: 0,
             filter: 'blur(5px)',
             transform: 'translateX(100%)',
@@ -106,7 +106,7 @@ module.exports = {
             opacity: 0,
             filter: 'blur(5px)',
           },
-          '60%': {
+          '20%': {
             opacity: 0,
             filter: 'blur(5px)',
           },

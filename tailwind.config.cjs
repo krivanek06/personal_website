@@ -12,7 +12,7 @@ module.exports = {
       animation: {
         moveInRight: 'moveInRight 3.5s ease-in ',
         moveInLeft: 'moveInLeft 3.5s ease-in ',
-        moveInBottom: 'moveInBottom 3.5s ease-in ',
+        moveInTop: 'moveInTop 3.5s ease-in ',
         reveal: 'reveal 1.5s ease-in-out ',
         reveal2: 'reveal2 2.5s ease-in-out',
         reveal3: 'reveal3 3.5s ease-in',
@@ -31,7 +31,7 @@ module.exports = {
             transform: 'translateY(0) scale(1)',
           },
         },
-        moveInBottom: {
+        moveInTop: {
           '0%': {
             opacity: 0,
             filter: 'blur(5px)',

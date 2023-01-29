@@ -4,14 +4,14 @@ export interface Props {
   title: string
   description: string
   iconContent: any
-  classes?: string
+  animationClasses?: string
 }
 
-export const ActionPoints = ({ title, description, iconContent, classes }: Props) => {
+export const ActionPoints = ({ title, description, iconContent, animationClasses }: Props) => {
   const { ref, inView, entry } = useInView()
 
   return (
-    <div ref={ref} className={`${classes} ${inView ? 'animate-reveal' : 'opacity-0'}`}>
+    <div ref={ref} className={` ${inView ? animationClasses : ''}`}>
       <div className="flex items-start gap-2 mb-2">
         {/* icon */}
         <div className="-mt-3 p-3 border border-g-gray rounded-full">{iconContent}</div>

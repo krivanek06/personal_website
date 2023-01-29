@@ -73,9 +73,9 @@ const Name = () => {
         viewBox="0 0 43 53"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        className="absolute -right-3 -top-1 motion-safe:animate-reveal3"
+        className="absolute -right-3 -top-1  motion-safe:animate-reveal3"
       >
-        <path d="M0 3H40V53" stroke="url(#paint0_linear_1262_13488)" stroke-width="6" />
+        <path d="M0 3H40V53" stroke="url(#paint0_linear_1262_13488)" strokeWidth="6" />
         <defs>
           <linearGradient
             id="paint0_linear_1262_13488"

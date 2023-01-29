@@ -15,12 +15,12 @@ export const HeroPage = () => {
 const HeroContent = () => {
   return (
     <div className="top-2/4 left-2/4 -translate-y-1/4 -translate-x-2/4 absolute text-center">
-      <span className="capitalize g-heading-2 mb-3 g-text-shadow-white motion-safe:animate-reveal ">
+      <span className="capitalize g-heading-1 mb-3 g-text-shadow-white motion-safe:animate-reveal ">
         Hello, I'm
       </span>
       <Name />
 
-      <h2 className="g-heading-2 mb-10 space-x-4 animate-reveal3">
+      <h2 className="g-heading-2 mb-10 space-x-4 animate-reveal3 text-g-gray-medium">
         <span>Providing</span>
         <span>____</span>
         <span>Services</span>
@@ -95,7 +95,7 @@ const Name = () => {
 }
 
 const Socials = () => {
-  const classSocials = 'fill-g-gray cursor-pointer hover:fill-g-primary   duration-500 '
+  const classSocials = 'fill-g-gray-dark cursor-pointer hover:fill-g-primary   duration-500 '
   return (
     <div className="flex items-center gap-8  justify-center pl-4 md:pl-0 ">
       {/* linked in */}

@@ -25,12 +25,14 @@ export const CardPresentation2 = ({ title, description, children, classes }: Pro
 export interface Card2Props {
   children: any
   classes?: string
+  bgClasses?: string
 }
 
-export const CardPresentation2Content = ({ children, classes }: Card2Props) => {
+export const CardPresentation2Content = ({ children, classes, bgClasses }: Card2Props) => {
+  const bgClassesUsed = bgClasses ?? 'bg-g-primary-transparent-low hover:bg-g-primary-transparent-medium'
   return (
     <div
-      className={`px-4 py-6 border border-g-border hover:border-g-primary rounded-lg transition-all  bg-g-primary-transparent-low hover:bg-g-primary-transparent-medium duration-500 ${classes}`}
+      className={`px-4 py-6 border border-g-border hover:border-g-primary rounded-lg transition-all  ${bgClassesUsed} duration-500 ${classes}`}
     >
       {children}
     </div>

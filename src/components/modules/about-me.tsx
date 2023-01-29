@@ -16,7 +16,7 @@ export const AboutMePage = () => {
 const AboutMeBackground = ({ children }: ContentProjectionProps) => {
   return (
     <div className="">
-      <div className="absolute bg-g-overlay-dark -z-10 h-full">
+      <div className="absolute bg-g-overlay-dark -z-10 h-full g-about-me-background">
         <img
           src="/images/bg_abstract.jpeg"
           alt="Abstract Background Image"
@@ -37,7 +37,7 @@ const AboutMeContent = () => {
         <span className=" g-text-shadow-primary">Me</span>
       </h2>
 
-      <div className="grid lg:grid-cols-2 min-h-[90vh]">
+      <div className="grid lg:grid-cols-2 min-h-[90vh] ">
         <div className="relative hidden lg:block">
           {/* picture */}
           <img
@@ -46,11 +46,26 @@ const AboutMeContent = () => {
             className="h-full object-cover absolute  -z-10"
           />
           {/* card */}
-          <CardPresentation2Content classes="w-[320px] bottom-[20%] absolute right-[-10%] opacity-40 hover:opacity-90 ">
-            <p className="w-11/12 m-auto text-g-gray">
-              Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been
-              the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley
-              of type and scrambled it to make a type specimen book.
+          <CardPresentation2Content
+            bgClasses="bg-g-primary-transparent-medium hover:bg-g-primary-transparent-dark"
+            classes="w-[420px] bottom-0 absolute right-[-20%] opacity-70 hover:opacity-90 "
+          >
+            <p className="w-11/12 m-auto text-g-gray flex flex-col gap-4">
+              <span>
+                As a professional web developer, I have a passion for creating high-quality, visually
+                stunning, and easy-to-use web applications.
+              </span>
+              <span>
+                With several years of experience in both front-end and back-end development, I am well-versed
+                in a variety of technologies, including Angular, NestJS, GraphQL, and REST API's. I specialize
+                in delivering custom web solutions to clients with unique needs, and work closely with them to
+                understand their requirements and design a solution that fits their specific needs.
+              </span>
+              <span>
+                My goal is to help businesses stay on the cutting edge of technology by creating modern,
+                efficient, and high-performing web applications, whether it's a new project or software
+                modernization.
+              </span>
             </p>
           </CardPresentation2Content>
         </div>

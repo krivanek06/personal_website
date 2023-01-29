@@ -16,12 +16,10 @@ export const ProvidingServicesPage = () => {
 const ProvidingServicesContent = () => {
   return (
     <div>
-      <h2 className="text-center g-heading-1  g-text-shadow-primary">Providing Services</h2>
-
-      <p className="my-20 w-8/12 text-center m-auto">
-        Expert in Angular and NodeJS development, creating high-performance, scalable and secure apps tailored
-        to unique business needs, modernizing legacy systems to stay on the cutting edge of technology.
-      </p>
+      <h2 className="text-center g-heading-1 space-x-4 mb-32">
+        <span className="g-text-shadow-white">Providing</span>
+        <span className="g-text-shadow-primary">Services</span>
+      </h2>
 
       {/* list of services */}
       <div className="grid grid-cols-2 gap-4">

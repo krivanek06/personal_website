@@ -115,7 +115,7 @@ const ActionList = () => {
       />
 
       <ActionPoints
-        animationClasses="animate-[moveInTop_1.2s_ease-in]"
+        animationClasses="animate-[moveInTop_1.1s_ease-in]"
         title="2.) Design and Planning"
         description="We will work with you to create a detailed design and plan for your website or application, taking into account user experience, visual appeal and functionality."
         iconContent={
@@ -160,7 +160,7 @@ const ActionList = () => {
       />
 
       <ActionPoints
-        animationClasses="animate-[moveInTop_1.5s_ease-in]"
+        animationClasses="animate-[moveInTop_1.3s_ease-in]"
         title="3.) Development"
         description="Putting our expertise and skillset to work, to create a high-quality product that meets your expectations with the latest technologies and industry best practices to bring your website or application to life"
         iconContent={
@@ -262,7 +262,7 @@ const ActionList = () => {
       />
 
       <ActionPoints
-        animationClasses="animate-[moveInTop_1.8s_ease-in]"
+        animationClasses="animate-[moveInTop_1.5s_ease-in]"
         title="4.) Testing and Deployment"
         description="We will thoroughly test your website or application to ensure that it is fully functional and user-friendly before deploying it to your chosen platform."
         iconContent={
@@ -299,7 +299,7 @@ const ActionList = () => {
       />
 
       <ActionPoints
-        animationClasses="animate-[moveInTop_2.1s_ease-in]"
+        animationClasses="animate-[moveInTop_1.7s_ease-in]"
         title="5.) Maintenance and Support"
         description="We will provide ongoing support and maintenance to ensure that your website or application remains up-to-date and fully functional."
         iconContent={

@@ -100,6 +100,15 @@ body {
   );
 }
 
+.g-about-me-background {
+  background: radial-gradient(
+    62.15% 149.12% at 35.59% 55.31%,
+    rgb(7 132 178 / 72%) 1.21%,
+    rgb(7 132 178 / 34%) 19.19%,
+    rgba(0, 0, 0, 0) 29.96%
+  );
+}
+
 .g-image-shadow {
   @apply grayscale blur-xs hover:grayscale-0 hover:blur-0  duration-500 transition-all object-fill absolute;
 }

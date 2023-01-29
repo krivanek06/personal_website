@@ -27,8 +27,9 @@ const DevelopmentContent = () => {
       {/* side content */}
       <div className="flex justify-start mt-[220px]">
         <div className="mt-12 w-8/12 flex flex-col gap-10 z-10">
-          <h2 className="g-heading-2">
-            What Can I <span className="text-g-primary">Expect?</span>
+          <h2 className="g-heading-2 space-x-3">
+            <span className="">What Can I</span>
+            <span className="text-g-primary">Expect?</span>
           </h2>
 
           <SideSection isStart={true}>
@@ -64,11 +65,9 @@ interface SideSectionProps {
 const SideSection = ({ isStart, children }: SideSectionProps) => {
   const wrapperClass = isStart ? 'justify-start' : 'justify-end'
   const childClass = isStart ? 'text-start' : 'text-end'
-  const animation = isStart ? 'animate-[moveInRight_1.5s_ease-in]' : 'animate-[moveInLeft_1.5s_ease-in]'
-  const { ref, inView, entry } = useInView()
 
   return (
-    <div ref={ref} className={`flex ${wrapperClass} ${inView ? animation : 'opacity-0'}`}>
+    <div className={`flex text-g-gray-medium ${wrapperClass}`}>
       <div className={`w-8/12 ${childClass} `}>{children}</div>
     </div>
   )
@@ -78,10 +77,10 @@ const DevelopmentMainParagraphs = () => {
   const { ref, inView, entry } = useInView()
 
   return (
-    <div className="flex justify-end mt-[160px] ">
+    <div className="flex justify-end mt-[160px]">
       <div ref={ref} className="flex gap-20 z-10">
         <div
-          className={`text-center w-9/12 md:w-full m-auto md:flex-1 ${
+          className={`text-center w-9/12 md:w-full m-auto md:flex-1 text-g-gray-medium ${
             inView ? 'animate-reveal' : 'opacity-0'
           }`}
         >
@@ -89,7 +88,11 @@ const DevelopmentMainParagraphs = () => {
           user-friendly websites and applications that meet their specific needs and goals
         </div>
 
-        <div className={`text-center hidden md:block flex-1 ${inView ? 'animate-reveal' : 'opacity-0'}`}>
+        <div
+          className={`text-center hidden md:block text-g-gray-medium flex-1 ${
+            inView ? 'animate-reveal' : 'opacity-0'
+          }`}
+        >
           Whether it's building a custom web application, creating an e-commerce platform, or revamping an
           existing website, I have the skills and expertise to bring your vision to life
         </div>
@@ -100,7 +103,7 @@ const DevelopmentMainParagraphs = () => {
 
 const DevelopmentBackground = ({ children }: ContentProjectionProps) => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen ">
       {DevelopmentIcons.map((d) => {
         const { ref, inView, entry } = useInView()
 

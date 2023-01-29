@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
+import { Typewriter } from 'react-simple-typewriter'
 import type { ContentProjectionProps } from '../../models'
-import { URL_GITHUB, URL_INSTAGRAM, URL_LINKED_IN } from '../../models/constants.model'
+import { PROVIDING_SERVICES, URL_GITHUB, URL_INSTAGRAM, URL_LINKED_IN } from '../../models/constants.model'
 import { textModification } from '../functions'
 
 export const HeroPage = () => {
@@ -16,16 +17,42 @@ export const HeroPage = () => {
 }
 
 const HeroContent = () => {
+  const handleType = (count: number) => {
+    // access word count number
+    console.log(count)
+  }
+
+  const handleDone = () => {
+    console.log(`Done after 5 loops!`)
+  }
+
   return (
-    <div className="top-2/4 left-2/4 -translate-y-1/4 -translate-x-2/4 absolute text-center">
+    <div className="top-2/4 left-2/4 -translate-y-1/4 -translate-x-2/4 absolute text-center w-max">
       <span className="capitalize g-heading-1 mb-3 g-text-shadow-white motion-safe:animate-reveal ">
         Hello, I'm
       </span>
-      <Name />
 
-      <h2 className="g-heading-2 mb-10 space-x-4 animate-reveal3 text-g-gray-medium">
+      <div className="flex justify-center">
+        <Name />
+      </div>
+
+      <h2 className="g-heading-2 mb-10 space-x-4 animate-reveal3">
         <span>Providing</span>
-        <span>____</span>
+        {/* <span>____</span> */}
+        <span style={{ color: '#0784b2', fontWeight: 'bold' }}>
+          {/* Style will be inherited from the parent element */}
+          <Typewriter
+            words={PROVIDING_SERVICES}
+            loop={0}
+            cursor
+            cursorStyle="|"
+            typeSpeed={90}
+            deleteSpeed={60}
+            delaySpeed={3500}
+            onLoopDone={handleDone}
+            onType={handleType}
+          />
+        </span>
         <span>Services</span>
       </h2>
 

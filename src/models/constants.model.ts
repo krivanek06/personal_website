@@ -4,3 +4,13 @@ export const URL_INSTAGRAM = 'https://www.instagram.com/eduard_krivanek/'
 export const EMAIL_MYSELF = 'krivaneda@gmail.com'
 
 export const LETTERS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+
+export const PROVIDING_SERVICES = [
+  'Web Development',
+  'Angular',
+  'NestJS',
+  'TypeScript',
+  'GraphQL API',
+  'REST API',
+  'Web Design',
+]

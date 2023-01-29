@@ -30,26 +30,26 @@ const ClientWorkContent = () => {
       <div className="grid lg:grid-cols-5 gap-6">
         <CardPresentation2
           classes="h-[350px] col-span-3"
-          title="Stock Tracket"
+          title="Stock Tracker"
           description="Cloud based financial application to research publicly listed companies, visualize its financial statements with real time price updates, paper trading and portfolio management. "
         >
           <img
-            src="/client-work/st_1.png"
+            src="/client-work/stock-tracker/st_1.png"
             alt="Stock Tracker Image"
             className="w-[420px] rounded-lg absolute -top-3 -left-4 shadow-2xl"
           />
           <img
-            src="/client-work/st_3.png"
+            src="/client-work/stock-tracker/st_3.png"
             alt="Stock Tracker Image"
             className="h-[220px] rounded-lg absolute left-[20%] top-32 shadow-2xl"
           />
           <img
-            src="/client-work/st_4.png"
+            src="/client-work/stock-tracker/st_4.png"
             alt="Stock Tracker Image"
             className="h-[250px] rounded-lg absolute right-[15%] top-2 shadow-2xl"
           />
           <img
-            src="/client-work/st_2.png"
+            src="/client-work/stock-tracker/st_2.png"
             alt="Stock Tracker Image"
             className="h-[270px] rounded-lg absolute right-0 top-[70px] shadow-2xl"
           />
@@ -57,18 +57,36 @@ const ClientWorkContent = () => {
 
         <CardPresentation2
           classes="h-[724px] row-span-2 col-span-2"
-          title="Stock Tracket"
-          description="Cloud based financial application to research publicly listed companies, visualize its financial statements with real time price updates, paper trading and portfolio management. "
+          title="Wealth Tracker"
+          description="Money management system to keep track of your personal wealth, that includes personal finances marked with tags and monitoring investment portfolios, project is in development"
         >
-          <div className="relative"></div>
+          <img
+            src="/client-work/wealth-tracker/wt_desktop_1.png"
+            alt="Stock Tracker Image"
+            className="min-h-[220px] w-full object-cover rounded-lg absolute -left-4 top-0 shadow-2xl"
+          />
+          <img
+            src="/client-work/wealth-tracker/wt_desktop_2.png"
+            alt="Stock Tracker Image"
+            className="min-h-[240px] w-full object-cover rounded-lg absolute -right-4 top-[220px] shadow-2xl"
+          />
+          <img
+            src="/client-work/wealth-tracker/wt_mobile.png"
+            alt="Stock Tracker Image"
+            className="min-h-[220px] max-h-[360px] object-cover rounded-lg absolute -left-4 top-[320px] shadow-2xl"
+          />
         </CardPresentation2>
 
         <CardPresentation2
           classes="h-[350px] col-span-3"
-          title="Stock Tracket"
-          description="Cloud based financial application to research publicly listed companies, visualize its financial statements with real time price updates, paper trading and portfolio management. "
+          title="Simple Desk"
+          description="An internal issue-tracking system, similar to Jira where users can create customized tickets for a specific department. Project Included assignment prioritization, live communication, permission modification, and user monitoring."
         >
-          <div className="relative"></div>
+          <img
+            src="/client-work/simple-desk/sd_1.png"
+            alt="Simple Desk Image"
+            className="h-[270px] rounded-lg absolute right-0 top-0 shadow-2xl"
+          />
         </CardPresentation2>
       </div>
     </div>

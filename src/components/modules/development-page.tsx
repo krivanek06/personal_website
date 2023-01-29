@@ -68,7 +68,7 @@ const SideSection = ({ isStart, children }: SideSectionProps) => {
   const { ref, inView, entry } = useInView()
 
   return (
-    <div ref={ref} className={`flex  ${wrapperClass} ${inView ? animation : 'opacity-0'}`}>
+    <div ref={ref} className={`flex ${wrapperClass} ${inView ? animation : 'opacity-0'}`}>
       <div className={`w-8/12 ${childClass} `}>{children}</div>
     </div>
   )

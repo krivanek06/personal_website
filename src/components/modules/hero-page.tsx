@@ -1,4 +1,6 @@
+import { useEffect, useState } from 'react'
 import type { ContentProjectionProps } from '../../models'
+import { textModification } from '../functions'
 
 export const HeroPage = () => {
   return (
@@ -37,6 +39,18 @@ const HeroContent = () => {
 }
 
 const Name = () => {
+  const myNameVal = 'Eduard Krivanek'
+  const [myName, setMyName] = useState(myNameVal)
+
+  useEffect(() => {
+    setTimeout(() => {
+      console.log('lol')
+      textModification(myNameVal, setMyName, true)
+    }, 1200)
+  }, [])
+
+  const callTextModification = () => textModification(myNameVal, setMyName)
+
   return (
     <div className="relative">
       <svg
@@ -64,7 +78,12 @@ const Name = () => {
       </svg>
 
       {/* name */}
-      <h1 className="uppercase g-heading-1 g-text-shadow-primary mb-10 animate-reveal2">Eduard Krivanek</h1>
+      <h1
+        onMouseEnter={callTextModification}
+        className="uppercase g-heading-1 min-w-[620px] g-text-shadow-primary mb-10 animate-reveal2"
+      >
+        {myName}
+      </h1>
 
       {/* end rectangle */}
       <svg

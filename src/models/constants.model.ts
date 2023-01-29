@@ -9,8 +9,11 @@ export const PROVIDING_SERVICES = [
   'Web Development',
   'Angular',
   'NestJS',
+  'NodeJS',
   'TypeScript',
   'GraphQL API',
   'REST API',
   'Web Design',
 ]
+
+export const EMAIL_PATTERN = /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/

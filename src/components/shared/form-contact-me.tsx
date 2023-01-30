@@ -14,7 +14,7 @@ export const FormContactMe = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6">
+    <form onSubmit={handleSubmit(onSubmit)} className="flex flex-col gap-6" id="contactMeForm">
       {/* full name */}
       <div className="g-form-control">
         <label>Full name*</label>

@@ -26,6 +26,8 @@ export class TextModificator {
   }
 
   startRandomTextGenerationLoop() {
+    this.stopRandomTextGenerationLoop()
+
     this.interval = setInterval(() => {
       this.maskText = this.originalText
         .split('')

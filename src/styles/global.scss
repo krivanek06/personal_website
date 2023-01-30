@@ -132,3 +132,16 @@ body {
 .g-form-error-message {
   @apply text-base text-g-error;
 }
+
+// .g-reveal-svg {
+//   stroke-dasharray: 894;
+//   stroke-dashoffset: 894;
+//   animation: revealSvg 4s ease;
+//   animation-fill-mode: forwards;
+// }
+
+// @keyframes revealSvg {
+//   to {
+//     stroke-dashoffset: 0;
+//   }
+// }

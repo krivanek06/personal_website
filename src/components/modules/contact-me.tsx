@@ -351,7 +351,7 @@ const Svg1 = () => {
     <svg
       className="fill-g-primary opacity-30"
       width="750"
-      height="1252"
+      height="1152"
       viewBox="0 0 750 1052"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"

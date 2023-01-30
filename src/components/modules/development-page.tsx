@@ -80,7 +80,7 @@ const DevelopmentMainParagraphs = () => {
     <div className="flex justify-end mt-[160px]">
       <div ref={ref} className="flex gap-20 z-10">
         <div
-          className={`text-center w-9/12 md:w-full m-auto md:flex-1 text-g-gray-medium ${
+          className={`text-center text-xl w-9/12 md:w-full m-auto md:flex-1 text-g-gray-medium ${
             inView ? 'animate-reveal' : 'opacity-0'
           }`}
         >
@@ -89,7 +89,7 @@ const DevelopmentMainParagraphs = () => {
         </div>
 
         <div
-          className={`text-center hidden md:block text-g-gray-medium flex-1 ${
+          className={`text-center text-xl hidden md:block text-g-gray-medium flex-1 ${
             inView ? 'animate-reveal' : 'opacity-0'
           }`}
         >

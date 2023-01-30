@@ -13,7 +13,7 @@ module.exports = {
         moveInRight: 'moveInRight 4.5s ease-in ',
         moveInLeft: 'moveInLeft 4.5s ease-in ',
         moveInTop: 'moveInTop 4.5s ease-in ',
-        reveal: 'reveal 1.5s ease-in-out ',
+        reveal: 'reveal 1.2s ease-in-out ',
         reveal2: 'reveal2 2.5s ease-in-out',
         reveal3: 'reveal3 4.5s ease-in',
         reveal4: 'reveal4 4.5s ease-in',

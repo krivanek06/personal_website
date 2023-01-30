@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { Typewriter } from 'react-simple-typewriter'
 import type { ContentProjectionProps } from '../../models'
 import { PROVIDING_SERVICES, URL_GITHUB, URL_INSTAGRAM, URL_LINKED_IN } from '../../models/constants.model'
-import { textModification } from '../functions'
+import { TextModificator } from '../functions'
 
 export const HeroPage = () => {
   return (
@@ -55,21 +55,57 @@ const HeroContent = () => {
   )
 }
 
-const Name = () => {
+interface NameTitleProps {
+  modificator: TextModificator
+}
+
+const NameTitle = ({ modificator }: NameTitleProps) => {
   const myNameVal = 'Eduard Krivanek'
+
   const [myName, setMyName] = useState(myNameVal)
 
   useEffect(() => {
+    modificator.init(myName, setMyName)
+
+    modificator.startRandomTextGenerationLoop()
     setTimeout(() => {
       console.log('lol')
-      textModification(myNameVal, setMyName, true)
-    }, 1200)
+      modificator.stopRandomTextGenerationLoop()
+      modificator.generateBackToOriginal()
+    }, 3500)
   }, [])
 
-  const callTextModification = () => textModification(myNameVal, setMyName)
+  return (
+    <h1
+      onMouseEnter={() => {
+        modificator.startRandomTextGenerationLoop()
+      }}
+      onMouseLeave={() => {
+        modificator.stopRandomTextGenerationLoop()
+        modificator.generateBackToOriginal()
+      }}
+      className="uppercase g-heading-1 min-w-[620px] g-text-shadow-primary animate-reveal2 hover:text-black"
+    >
+      {myName}
+    </h1>
+  )
+}
+
+const Name = () => {
+  const modificator = new TextModificator()
+
+  useEffect(() => {
+    // modificator.init()
+    // setTimeout(() => {
+    //   console.log('lol')
+    //   textModification(myNameVal, setMyName, true)
+    // }, 1200)
+  }, [])
+
+  // const callTextModification = () => textModification(myNameVal, setMyName)
 
   return (
-    <div className="relative">
+    <div className="relative mb-10 rounded-lg hover:bg-slate-400">
       <svg
         width="43"
         height="53"
@@ -95,12 +131,8 @@ const Name = () => {
       </svg>
 
       {/* name */}
-      <h1
-        onMouseEnter={callTextModification}
-        className="uppercase g-heading-1 min-w-[620px] g-text-shadow-primary mb-10 animate-reveal2"
-      >
-        {myName}
-      </h1>
+      <NameTitle modificator={modificator} />
+      {/* {myName} */}
 
       {/* end rectangle */}
       <svg
@@ -149,7 +181,7 @@ const Socials = () => {
       <a href={URL_GITHUB} target="_blank" rel="noopener noreferrer">
         <svg
           viewBox="0 0 32 32"
-          className={`${classSocials} ml-5 animate-reveal3 h-8 md:h-14 w-8 md:w-14`}
+          className={`${classSocials} ml-5 animate-reveal4 h-8 md:h-14 w-8 md:w-14`}
           version="1.1"
           xmlns="http://www.w3.org/2000/svg"
         >

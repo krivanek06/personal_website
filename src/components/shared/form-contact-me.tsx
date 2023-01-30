@@ -1,4 +1,11 @@
+import { send } from '@emailjs/browser'
 import { useForm } from 'react-hook-form'
+import {
+  EMAILJS_PUBLIC_KEY,
+  EMAILJS_SERVICE_ID_EMAIL,
+  EMAILJS_TEMPLATE_SELF,
+} from '../../environments/environment'
+import type { ContactMeForm } from '../../models'
 import { EMAIL_PATTERN } from '../../models/constants.model'
 
 export const FormContactMe = () => {
@@ -6,11 +13,24 @@ export const FormContactMe = () => {
     register,
     handleSubmit,
     formState: { errors },
+    reset,
   } = useForm()
 
   const onSubmit = (data: any) => {
-    console.log(data)
-    // TODO: send email
+    const emailData = data as ContactMeForm
+
+    // send email
+    send(EMAILJS_SERVICE_ID_EMAIL, EMAILJS_TEMPLATE_SELF, emailData, EMAILJS_PUBLIC_KEY).then(
+      (result) => {
+        console.log(result.text)
+      },
+      (error) => {
+        console.log(error.text)
+      },
+    )
+
+    // reset form
+    reset()
   }
 
   return (
@@ -66,17 +86,31 @@ export const FormContactMe = () => {
             maxLength: 100,
           })}
         />
+        {errors.company && errors.company.type === 'required' && (
+          <p className="g-form-error-message">Company is required</p>
+        )}
+        {errors.company && errors.company.type === 'maxLength' && (
+          <p className="g-form-error-message">Max length is 100 characters</p>
+        )}
       </div>
 
       {/* additional info */}
       <div className="g-form-control">
-        <label>Additional Information</label>
+        <label>Additional Information*</label>
         <textarea
           className="min-h-[200px]"
-          {...register('additionalInformation', {
+          {...register('message', {
+            required: true,
             maxLength: 1000,
           })}
         />
+
+        {errors.message && errors.message.type === 'required' && (
+          <p className="g-form-error-message">Additional information is required</p>
+        )}
+        {errors.message && errors.message.type === 'maxLength' && (
+          <p className="g-form-error-message">Additional max length is 1000 characters</p>
+        )}
       </div>
 
       <div className="flex justify-center">

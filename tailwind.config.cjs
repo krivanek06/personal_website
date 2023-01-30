@@ -10,12 +10,13 @@ module.exports = {
     },
     extend: {
       animation: {
-        moveInRight: 'moveInRight 5s ease-in ',
-        moveInLeft: 'moveInLeft 5s ease-in ',
+        moveInRight: 'moveInRight 4.5s ease-in ',
+        moveInLeft: 'moveInLeft 4.5s ease-in ',
         moveInTop: 'moveInTop 4.5s ease-in ',
         reveal: 'reveal 1.5s ease-in-out ',
         reveal2: 'reveal2 2.5s ease-in-out',
-        reveal3: 'reveal3 5s ease-in',
+        reveal3: 'reveal3 4.5s ease-in',
+        reveal4: 'reveal4 4.5s ease-in',
         moveFromTopToBottom: 'moveFromTopToBottom 3.5s',
       },
       keyframes: {
@@ -49,7 +50,7 @@ module.exports = {
             filter: 'blur(5px)',
             transform: 'translateX(-100%)',
           },
-          '20%': {
+          '50%': {
             opacity: 0,
             filter: 'blur(5px)',
             transform: 'translateX(-100%)',
@@ -66,7 +67,7 @@ module.exports = {
             filter: 'blur(5px)',
             transform: 'translateX(100%)',
           },
-          '20%': {
+          '50%': {
             opacity: 0,
             filter: 'blur(5px)',
             transform: 'translateX(100%)',
@@ -106,7 +107,21 @@ module.exports = {
             opacity: 0,
             filter: 'blur(5px)',
           },
-          '20%': {
+          '30%': {
+            opacity: 0,
+            filter: 'blur(5px)',
+          },
+          '100%': {
+            opacity: 1,
+            filter: 'blur(0)',
+          },
+        },
+        reveal4: {
+          '0%': {
+            opacity: 0,
+            filter: 'blur(5px)',
+          },
+          '50%': {
             opacity: 0,
             filter: 'blur(5px)',
           },

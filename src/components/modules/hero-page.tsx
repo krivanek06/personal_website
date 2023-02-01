@@ -25,16 +25,17 @@ const HeroContent = () => {
   }
 
   return (
-    <div className="top-2/4 left-2/4 -translate-y-1/4 -translate-x-2/4 absolute text-center w-max">
-      <span className="capitalize g-heading-1 mb-3 g-text-shadow-white motion-safe:animate-reveal ">
+    <div
+      id="text-wrapper"
+      className="top-2/4 left-2/4 -translate-y-1/4 -translate-x-2/4 absolute text-center w-max"
+    >
+      <span className="capitalize g-word g-heading-1 mb-3 g-text-shadow-white motion-safe:animate-reveal duration-700 transition-all ">
         Hello, I'm
       </span>
 
-      <div className="flex justify-center">
-        <Name />
-      </div>
+      <Name />
 
-      <h2 className="g-heading-2 mb-10 space-x-4 animate-reveal3">
+      <h2 className="g-word g-heading-2 mb-10 space-x-4 animate-reveal3 duration-700 transition-all">
         <span>Providing</span>
 
         <span style={{ color: '#0784b2', fontWeight: 'bold' }}>
@@ -57,7 +58,7 @@ const HeroContent = () => {
 
       <button
         onClick={onConnectClick}
-        className="mt-8 w-[220px] animate-moveFromTopToBottom duration-500 hover:scale-125"
+        className="mt-8 w-[220px] animate-moveFromTopToBottom duration-500 hover:scale-125 height-[60px] text-2xl"
       >
         <span>Connect</span>
       </button>
@@ -94,7 +95,7 @@ const NameTitle = ({ modificator }: NameTitleProps) => {
         modificator.stopRandomTextGenerationLoop()
         modificator.generateBackToOriginal()
       }}
-      className="uppercase g-heading-1 min-w-[620px] g-text-shadow-primary animate-reveal2 hover:text-black"
+      className="uppercase  g-heading-1 min-w-[620px] g-text-shadow-primary hover:text-gray-700  animate-reveal2  hover:tracking-[9px]"
     >
       {myName}
     </h1>
@@ -105,7 +106,7 @@ const Name = () => {
   const modificator = new TextModificator()
 
   return (
-    <div className="relative mb-10 rounded-lg hover:bg-slate-300">
+    <div className="relative mb-10 rounded-lg hover:bg-slate-300  g-fancy-highlight">
       <svg
         width="43"
         height="53"
@@ -132,7 +133,6 @@ const Name = () => {
 
       {/* name */}
       <NameTitle modificator={modificator} />
-      {/* {myName} */}
 
       {/* end rectangle */}
       <svg
@@ -163,7 +163,8 @@ const Name = () => {
 }
 
 const Socials = () => {
-  const classSocials = 'fill-g-gray-dark cursor-pointer hover:fill-g-primary   duration-500 '
+  const classSocials =
+    'fill-g-gray-dark cursor-pointer hover:fill-g-primary  duration-700 transition-all g-word'
   return (
     <div className="flex items-center gap-8  justify-center pl-4 md:pl-0 ">
       {/* linked in */}

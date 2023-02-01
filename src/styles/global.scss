@@ -133,15 +133,6 @@ body {
   @apply text-base text-g-error;
 }
 
-// .g-reveal-svg {
-//   stroke-dasharray: 894;
-//   stroke-dashoffset: 894;
-//   animation: revealSvg 4s ease;
-//   animation-fill-mode: forwards;
-// }
-
-// @keyframes revealSvg {
-//   to {
-//     stroke-dashoffset: 0;
-//   }
-// }
+#text-wrapper:has(.g-fancy-highlight:hover) .g-word:not(.g-fancy-highlight:hover) {
+  opacity: 0.2;
+}

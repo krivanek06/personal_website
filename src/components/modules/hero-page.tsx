@@ -83,7 +83,7 @@ const NameTitle = ({ modificator }: NameTitleProps) => {
     setTimeout(() => {
       modificator.stopRandomTextGenerationLoop()
       modificator.generateBackToOriginal()
-    }, 4000)
+    }, 4500)
   }, [])
 
   return (

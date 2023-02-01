@@ -17,7 +17,7 @@ export interface DevToOrganization {
   profile_image_90: string
 }
 
-export interface DevToRoot {
+export interface DevToBlog {
   type_of: string
   id: number
   title: string

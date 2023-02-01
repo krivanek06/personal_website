@@ -40,6 +40,10 @@ body {
   @apply w-screen sm:w-11/12 md:w-10/12 xl:w-9/12 2xl:w-8/12 min-h-screen py-3 sm:py-6 lg:py-10 m-auto;
 }
 
+.g-layout-wide {
+  @apply w-screen sm:w-11/12 xl:w-11/12 2xl:w-10/12 min-h-screen py-3 sm:py-6 lg:py-10 m-auto;
+}
+
 /* text */
 
 .g-text-shadow-primary {
@@ -134,5 +138,18 @@ body {
 }
 
 #text-wrapper:has(.g-fancy-highlight:hover) .g-word:not(.g-fancy-highlight:hover) {
+  opacity: 0.2;
+}
+
+.g-fading-component-wrapper {
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.g-fading-component-wrapper-parent:has(.g-fading-component-wrapper:hover)
+  > :not(.g-fading-component-wrapper:hover) {
   opacity: 0.2;
 }

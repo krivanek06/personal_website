@@ -18,7 +18,7 @@ export const ContactMePage = () => {
 const ContactMeBackground = ({ children }: ContentProjectionProps) => {
   return (
     <div className="min-h-screen  g-contact-me-background">
-      <div className="absolute -z-10  opacity-50 top-[-100px]">
+      <div className="absolute -z-10  opacity-50 top-[-50px]">
         <Svg1 />
       </div>
       {children}

@@ -67,7 +67,7 @@ const SideSection = ({ isStart, children }: SideSectionProps) => {
   const childClass = isStart ? 'text-start' : 'text-end'
 
   return (
-    <div className={`flex text-g-gray-medium ${wrapperClass}`}>
+    <div className={`flex text-g-gray ${wrapperClass}`}>
       <div className={`w-8/12 ${childClass} `}>{children}</div>
     </div>
   )

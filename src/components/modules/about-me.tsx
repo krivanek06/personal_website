@@ -58,7 +58,7 @@ const AboutMeContent = () => {
         </div>
 
         {/* blog posts */}
-        <div className="grid place-content-center xl:col-span-2">
+        <div className="g-fading-component-wrapper-parent grid place-content-center xl:col-span-2">
           <AboutMeBlogPosts />
         </div>
       </div>
@@ -68,16 +68,14 @@ const AboutMeContent = () => {
 
 const AboutMeText = () => {
   return (
-    <p className="w-11/12 m-auto text-g-gray flex flex-col gap-4">
+    <p className="w-11/12 m-auto text-g-gray-medium hover:text-white flex flex-col gap-4 duration-500">
       <span>
-        As a professional web developer, I have a passion for creating high-quality, visually stunning, and
-        easy-to-use web applications.
+        I specialize in delivering custom web solutions to clients with unique needs, and work closely with
+        them to understand their requirements and design a solution that fits their specific needs.
       </span>
       <span>
         With several years of experience in both front-end and back-end development, I am well-versed in a
-        variety of technologies, including Angular, NestJS, GraphQL, and REST API's. I specialize in
-        delivering custom web solutions to clients with unique needs, and work closely with them to understand
-        their requirements and design a solution that fits their specific needs.
+        variety of technologies, including Angular, NestJS, GraphQL, and REST API's.
       </span>
       <span>
         My goal is to help businesses stay on the cutting edge of technology by creating modern, efficient,
@@ -110,7 +108,7 @@ const AboutMeBlogPosts = () => {
       {data.map((d, index) => (
         <div
           key={d.title}
-          className={`max-h-[230px] -mb-10 bg-black rou rounded-lg hover:z-10 ${
+          className={`g-fading-component-wrapper duration-500 h-[230px] -mb-10 bg-black rou rounded-lg hover:z-10 ${
             index % 2 === 0 ? moveLeft : moveRight
           }`}
         >

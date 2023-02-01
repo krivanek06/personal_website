@@ -140,3 +140,16 @@ body {
 #text-wrapper:has(.g-fancy-highlight:hover) .g-word:not(.g-fancy-highlight:hover) {
   opacity: 0.2;
 }
+
+.g-fading-component-wrapper {
+  opacity: 0.7;
+
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.g-fading-component-wrapper-parent:has(.g-fading-component-wrapper:hover)
+  > :not(.g-fading-component-wrapper:hover) {
+  opacity: 0.2;
+}

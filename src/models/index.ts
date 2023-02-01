@@ -1,3 +1,4 @@
+export * from './blog-post.model'
 export * from './common.model'
 export * from './constants.model'
 export * from './dev-to'

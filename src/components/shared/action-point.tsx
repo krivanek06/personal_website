@@ -31,7 +31,7 @@ export const ActionPoints = ({ title, description, iconContent, animationClasses
         <h3 className="text-g-primary g-heading-4">{title}</h3>
       </div>
 
-      <p className="pl-4 text-g-gray g-body-3">{description}</p>
+      <p className="pl-4 text-g-gray g-body-2">{description}</p>
     </div>
   )
 }

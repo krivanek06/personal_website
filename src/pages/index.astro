@@ -6,8 +6,6 @@ import { DevelopmentPage } from '../components/modules/development-page'
 import { HeroPage } from '../components/modules/hero-page'
 import { ProvidingServicesPage } from '../components/modules/providing-services-page'
 import Layout from '../layouts/Layout.astro'
-
-const aricleAPI = 'https://dev.to/api/articles?username=krivanek06'
 ---
 
 <Layout title="Welcome to Astro.">
@@ -23,7 +21,7 @@ const aricleAPI = 'https://dev.to/api/articles?username=krivanek06'
       <ClientWorkPage />
     </div>
     <div class="mt-[40px]">
-      <AboutMePage />
+      <AboutMePage client:load />
     </div>
     <ContactMePage client:load />
   </main>

@@ -16,13 +16,13 @@ export const ProvidingServicesPage = () => {
 const ProvidingServicesContent = () => {
   return (
     <div>
-      <h2 className="text-center g-heading-1 space-x-4 mb-32">
+      <h2 className="text-center g-heading-1 space-x-4">
         <span className="g-text-shadow-white">Providing</span>
         <span className="g-text-shadow-primary">Services</span>
       </h2>
 
       {/* list of services */}
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid md:grid-cols-2 gap-4 lg:gap-10">
         <CardPresentation
           title="Angular Development"
           img={{

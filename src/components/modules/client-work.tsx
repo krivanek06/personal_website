@@ -14,22 +14,17 @@ export const ClientWorkPage = () => {
 }
 
 const ClientWorkBackground = ({ children }: ContentProjectionProps) => {
-  return (
-    <div className="g-client-work-background">
-      {/* content */}
-      {children}
-    </div>
-  )
+  return <div className="g-client-work-background">{children}</div>
 }
 
 const ClientWorkContent = () => {
   return (
     <div>
-      <h2 className="g-heading-1  g-text-shadow-primary text-center mb-12">Recent Client Work</h2>
+      <h2 className="g-heading-1  g-text-shadow-primary text-center ">Recent Client Work</h2>
 
       <div className="grid lg:grid-cols-5 gap-6">
         <CardPresentation2
-          classes="h-[350px] col-span-3"
+          classes="h-[350px] lg:col-span-3"
           title="Stock Tracker"
           description="Cloud based financial application to research publicly listed companies, visualize its financial statements with real time price updates, paper trading and portfolio management. "
         >
@@ -56,7 +51,7 @@ const ClientWorkContent = () => {
         </CardPresentation2>
 
         <CardPresentation2
-          classes="h-[724px] row-span-2 col-span-2"
+          classes="h-[350px] lg:h-[724px] lg:row-span-2 lg:col-span-2"
           title="Wealth Tracker"
           description="Money management system to keep track of your personal wealth, that includes personal finances marked with tags and monitoring investment portfolios, project is in development"
         >
@@ -78,7 +73,7 @@ const ClientWorkContent = () => {
         </CardPresentation2>
 
         <CardPresentation2
-          classes="h-[350px] col-span-3"
+          classes="h-[350px] lg:col-span-3"
           title="Simple Desk"
           description="An internal issue-tracking system, similar to Jira where users can create customized tickets for a specific department. Project Included assignment prioritization, live communication, permission modification, and user monitoring."
         >

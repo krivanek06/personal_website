@@ -16,9 +16,9 @@ export const DevelopmentPage = () => {
 const DevelopmentContent = () => {
   return (
     <div>
-      <h2 className="text-center flex flex-col">
-        <span className="g-heading-1  g-text-shadow-primary">Full Stack Development</span>
-        <span className="g-heading-2">Custom Websites and Applications</span>
+      <h2 className="text-center flex flex-col g-heading-1 space-x-4">
+        <span className="g-text-shadow-primary">Full Stack Development</span>
+        <span className="hidden sm:block">Custom Websites and Applications</span>
       </h2>
 
       {/* main content */}
@@ -67,7 +67,7 @@ const SideSection = ({ isStart, children }: SideSectionProps) => {
   const childClass = isStart ? 'text-start' : 'text-end'
 
   return (
-    <div className={`flex text-g-gray ${wrapperClass}`}>
+    <div className={`flex text-g-gray-medium ${wrapperClass}`}>
       <div className={`w-8/12 ${childClass} `}>{children}</div>
     </div>
   )
@@ -80,21 +80,23 @@ const DevelopmentMainParagraphs = () => {
     <div className="flex justify-end mt-[160px]">
       <div ref={ref} className="flex gap-20 z-10">
         <div
-          className={`text-center text-xl w-9/12 md:w-full m-auto md:flex-1 text-g-gray-medium ${
+          className={`text-center g-body-1 w-9/12 md:w-full m-auto md:flex-1 text-g-gray ${
             inView ? 'animate-reveal' : 'opacity-0'
           }`}
         >
-          Providing comprehensive web development and consulting services to help clients create high-quality,
-          user-friendly websites and applications that meet their specific needs and goals
+          Providing comprehensive{' '}
+          <span className="text-g-primary">web development and consulting services</span> to help clients
+          create high-quality applications that meet their specific needs and goals
         </div>
 
         <div
-          className={`text-center text-xl hidden md:block text-g-gray-medium flex-1 ${
+          className={`text-center g-body-1 hidden md:block text-g-gray-light flex-1 ${
             inView ? 'animate-reveal' : 'opacity-0'
           }`}
         >
           Whether it's building a custom web application, creating an e-commerce platform, or revamping an
-          existing website, I have the skills and expertise to bring your vision to life
+          existing website, I have the skills and expertise to{' '}
+          <span className="text-g-primary">bring your vision to life</span>
         </div>
       </div>
     </div>
@@ -111,15 +113,19 @@ const DevelopmentBackground = ({ children }: ContentProjectionProps) => {
           <div
             ref={ref}
             key={d.src}
-            className={`${d.divClasses}  bg-g-overlay-dark absolute group transition-all ${
+            className={`${d.divClasses}  absolute group transition-all hover:z-50 ${
               inView ? 'animate-reveal' : 'invisible'
             }  `}
           >
             <img
               src={d.src}
               alt={d.alt}
-              className={` ${d.imgHeight} opacity-30 group-hover:opacity-80 duration-700`}
+              className={` ${d.imgHeight} opacity-30 group-hover:opacity-80 duration-700 m-auto `}
             />
+
+            <div className="w-44 p-2 bg-black border border-g-primary scale-0 group-hover:scale-100 transition-all duration-500 rounded-lg text-center mt-4 z-10 text-g-primary">
+              {d.alt}
+            </div>
           </div>
         )
       })}

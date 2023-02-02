@@ -7,7 +7,7 @@ body {
 
 /* headings */
 .g-heading-1 {
-  @apply text-4xl lg:text-6xl;
+  @apply text-4xl md:text-6xl mb-12 md:mb-24;
 }
 
 .g-heading-2 {
@@ -24,7 +24,7 @@ body {
 
 /* body */
 .g-body-1 {
-  @apply text-base sm:text-lg lg:text-xl;
+  @apply text-xl lg:text-2xl;
 }
 
 .g-body-2 {
@@ -37,7 +37,7 @@ body {
 
 /* layout */
 .g-layout-1 {
-  @apply w-screen sm:w-11/12 md:w-10/12 xl:w-9/12 2xl:w-8/12 min-h-screen py-3 sm:py-6 lg:py-10 m-auto;
+  @apply w-screen px-4 sm:w-11/12 md:w-10/12 xl:w-9/12 2xl:w-8/12 min-h-screen py-3 sm:py-6 lg:py-10 m-auto;
 }
 
 .g-layout-wide {

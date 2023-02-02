@@ -8,7 +8,7 @@ export const AboutMePage = () => {
   return (
     <div className="relative">
       <AboutMeBackground>
-        <div className="g-layout-wide h-[135vh]">
+        <div className="g-layout-wide ">
           <AboutMeContent></AboutMeContent>
         </div>
       </AboutMeBackground>
@@ -40,25 +40,25 @@ const AboutMeContent = () => {
         <span className=" g-text-shadow-primary">Me</span>
       </h2>
 
-      <div className="grid lg:grid-cols-2 xl:grid-cols-3 min-h-[90vh] ">
-        <div className="relative hidden lg:block">
+      <div className="grid lg:grid-cols-2 xl:grid-cols-3 md:min-h-[90vh] ">
+        <div className="relative min-h-[630px] sm:max-lg:hidden lg:block">
           {/* picture */}
           <img
             src="/images/myself_only_body_3.png"
             alt="author image"
-            className="h-full object-cover absolute -z-10 top-[-5%]"
+            className="h-full min-h-[700px] object-cover absolute -z-10 top-[-15%] sm:top-[-5%] "
           />
           {/* card */}
           <CardPresentation2Content
             bgClasses="bg-g-primary-transparent-medium hover:bg-g-primary-transparent-dark"
-            classes="w-[420px] bottom-0 absolute right-[-20%] opacity-70 hover:opacity-90 "
+            classes="w-[420px] bottom-0 absolute sm:right-[-20%] opacity-70 hover:opacity-90 w-11/12 right-[5%]"
           >
             <AboutMeText />
           </CardPresentation2Content>
         </div>
 
         {/* blog posts */}
-        <div className="g-fading-component-wrapper-parent grid place-content-center xl:col-span-2">
+        <div className="g-fading-component-wrapper-parent max-sm:flex max-sm:overflow-x-scroll sm:grid sm:place-content-center xl:col-span-2 max-md:gap-3 max-sm:p-4">
           <AboutMeBlogPosts />
         </div>
       </div>
@@ -68,7 +68,7 @@ const AboutMeContent = () => {
 
 const AboutMeText = () => {
   return (
-    <p className="w-11/12 m-auto text-g-gray-medium hover:text-white flex flex-col gap-4 duration-500">
+    <p className="w-11/12 m-auto text-g-gray-medium hover:text-white flex flex-col gap-4 duration-500 animate-pulse hover:animate-none hover:z-20">
       <span>
         I specialize in delivering custom web solutions to clients with unique needs, and work closely with
         them to understand their requirements and design a solution that fits their specific needs.
@@ -100,15 +100,15 @@ const AboutMeBlogPosts = () => {
     dataFetch()
   }, [])
 
-  const moveLeft = 'ml-[-100px] mr-[100px]'
-  const moveRight = 'ml-[100px] mr-[-100px]'
+  const moveLeft = 'md:ml-[-100px] md:mr-[100px]'
+  const moveRight = 'md:ml-[100px] md:mr-[-100px]'
 
   return (
     <>
       {data.map((d, index) => (
         <div
           key={d.title}
-          className={`g-fading-component-wrapper duration-500 h-[230px] -mb-10 bg-black rou rounded-lg hover:z-10 ${
+          className={`g-fading-component-wrapper duration-500 h-[230px] min-w-[360px] md:-mb-10 bg-black rounded-lg hover:z-10 ${
             index % 2 === 0 ? moveLeft : moveRight
           }`}
         >

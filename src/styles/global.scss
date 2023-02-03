@@ -6,38 +6,38 @@ body {
 }
 
 /* headings */
+h1 {
+  @apply text-4xl md:text-6xl uppercase mb-10;
+}
+
 .g-heading-1 {
-  @apply text-4xl lg:text-6xl;
+  @apply text-5xl md:text-6xl mb-14 md:mb-28;
 }
 
 .g-heading-2 {
-  @apply text-2xl sm:text-3xl lg:text-5xl;
+  @apply text-3xl sm:text-3xl lg:text-5xl;
 }
 
 .g-heading-3 {
-  @apply text-lg sm:text-2xl lg:text-3xl;
-}
-
-.g-heading-4 {
-  @apply text-lg sm:text-xl lg:text-2xl;
+  @apply text-xl sm:text-2xl lg:text-3xl;
 }
 
 /* body */
 .g-body-1 {
-  @apply text-base sm:text-lg lg:text-xl;
+  @apply text-xl lg:text-2xl;
 }
 
 .g-body-2 {
-  @apply text-sm sm:text-base lg:text-lg;
+  @apply text-lg lg:text-xl;
 }
 
 .g-body-3 {
-  @apply text-sm sm:text-base lg:text-base;
+  @apply text-base lg:text-lg;
 }
 
 /* layout */
 .g-layout-1 {
-  @apply w-screen sm:w-11/12 md:w-10/12 xl:w-9/12 2xl:w-8/12 min-h-screen py-3 sm:py-6 lg:py-10 m-auto;
+  @apply w-screen px-6 sm:w-11/12 md:w-10/12 xl:w-9/12 2xl:w-8/12 min-h-screen py-3 sm:py-6 lg:py-10 m-auto;
 }
 
 .g-layout-wide {
@@ -47,12 +47,21 @@ body {
 /* text */
 
 .g-text-shadow-primary {
-  background: linear-gradient(180deg, #00719bc2 29.41%, rgb(0 133 182) 47.91%, rgba(1, 46, 63, 0.48) 84.9%);
+  background: linear-gradient(
+    180deg,
+    rgb(4 142 193 / 76%) 29.41%,
+    rgb(5 150 203) 47.91%,
+    rgb(8 133 180 / 48%) 84.9%
+  );
   @apply bg-clip-text text-transparent;
+  @screen md {
+    background: linear-gradient(180deg, #00719bc2 29.41%, rgb(0 133 182) 47.91%, rgba(1, 46, 63, 0.48) 84.9%);
+    @apply bg-clip-text text-transparent;
+  }
 }
 
 .g-text-shadow-white {
-  background: linear-gradient(180deg, #ffffff 14.28%, rgba(255, 255, 255, 0) 84.16%, #000000 48.16%);
+  background: linear-gradient(180deg, #dddddd 14.28%, rgb(78 78 78 / 61%) 84.16%, #000000 48.16%);
   @apply bg-clip-text text-transparent;
 }
 
@@ -77,14 +86,6 @@ body {
     rgba(0, 34, 46, 0) 32.93%,
     rgba(0, 0, 0, 0) 101.77%
   );
-  // background: radial-gradient(
-  //   57.4% 50.18% at 48.57% 50.98%,
-  //   rgba(0, 93, 126, 0.64) 0%,
-  //   rgba(0, 37, 50, 0.47) 39.06%,
-  //   rgba(0, 0, 0, 0) 100%
-  // );
-
-  //  background: radial-gradient(57.4% 50.18% at 48.57% 50.98%, rgb(0 93 126 / 8%) 0%, rgb(0 37 50 / 0%) 39.06%, rgba(0, 0, 0, 0) 100%)
 }
 
 .g-client-work-background {
@@ -138,7 +139,11 @@ body {
 }
 
 #text-wrapper:has(.g-fancy-highlight:hover) .g-word:not(.g-fancy-highlight:hover) {
-  opacity: 0.2;
+  opacity: 0.4;
+
+  @screen md {
+    opacity: 0.2;
+  }
 }
 
 .g-fading-component-wrapper {
@@ -151,5 +156,5 @@ body {
 
 .g-fading-component-wrapper-parent:has(.g-fading-component-wrapper:hover)
   > :not(.g-fading-component-wrapper:hover) {
-  opacity: 0.2;
+  opacity: 0.25;
 }

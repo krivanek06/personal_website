@@ -11,18 +11,19 @@ import Layout from '../layouts/Layout.astro'
 <Layout title="Welcome to Astro.">
   <main class="overflow-hidden">
     <HeroPage client:load />
-    <div class="mt-[100px]">
+    <div class="mt-[60px] md:mt-[100px]">
       <DevelopmentPage client:load />
     </div>
-    <div class="mt-[160px]">
+    <div class="md:mt-[160px]">
       <ProvidingServicesPage />
     </div>
-    <div class="mt-[100px]">
+    <div class="mt-[80px] md:mt-0">
       <ClientWorkPage />
     </div>
     <div class="mt-[40px]">
       <AboutMePage client:load />
     </div>
+
     <ContactMePage client:load />
   </main>
 </Layout>

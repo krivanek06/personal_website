@@ -12,7 +12,7 @@ export const CardPresentation2 = ({ title, description, children, classes }: Pro
     >
       <div className="g-absolute-center z-10 group-hover:opacity-10 duration-500 w-full">
         <h3 className="g-heading-3 text-g-primary">{title}</h3>
-        <p className="w-11/12 m-auto text-g-gray">{description}</p>
+        <p className="w-11/12 m-auto text-g-gray g-body-2">{description}</p>
       </div>
 
       <div className={`m-4 md:col-span-4 relative opacity-20 group-hover:opacity-100 duration-500`}>

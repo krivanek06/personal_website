@@ -193,6 +193,7 @@ module.exports = {
         'g-primary-transparent-medium': 'var(--primary-transparent-medium)',
         'g-primary-transparent-dark': 'var(--primary-transparent-dark)',
         'g-gray': 'var(--gray)',
+        'g-gray-light': 'var(--gray-light)',
         'g-gray-medium': 'var(--gray-medium)',
         'g-gray-dark': 'var(--gray-dark)',
         'g-overlay-dark': 'var(--overlay-dark)',

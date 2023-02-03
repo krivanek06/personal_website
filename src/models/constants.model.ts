@@ -17,3 +17,20 @@ export const PROVIDING_SERVICES = [
 ]
 
 export const EMAIL_PATTERN = /^[^@ ]+@[^@ ]+\.[^@ .]{2,}$/
+
+interface Env {
+  MY_EMAIL: string
+  EMAILJS_PUBLIC_KEY: string
+  EMAILJS_SERVICE_ID_EMAIL: string
+  EMAILJS_TEMPLATE_SELF: string
+
+  DEV_TO_BLOGS: string
+}
+
+export const Environments: Env = {
+  MY_EMAIL: import.meta.env.PUBLIC_MY_EMAIL,
+  EMAILJS_PUBLIC_KEY: import.meta.env.PUBLIC_EMAILJS_PUBLIC_KEY,
+  EMAILJS_SERVICE_ID_EMAIL: import.meta.env.PUBLIC_EMAILJS_SERVICE_ID_EMAIL,
+  EMAILJS_TEMPLATE_SELF: import.meta.env.PUBLIC_EMAILJS_TEMPLATE_SELF,
+  DEV_TO_BLOGS: import.meta.env.PUBLIC_DEV_TO_BLOGS,
+}

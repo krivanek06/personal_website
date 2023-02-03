@@ -1,12 +1,7 @@
 import { send } from '@emailjs/browser'
 import { useForm } from 'react-hook-form'
-import {
-  EMAILJS_PUBLIC_KEY,
-  EMAILJS_SERVICE_ID_EMAIL,
-  EMAILJS_TEMPLATE_SELF,
-} from '../../environments/environment'
 import type { ContactMeForm } from '../../models'
-import { EMAIL_PATTERN } from '../../models/constants.model'
+import { EMAIL_PATTERN, Environments } from '../../models/constants.model'
 import { showErrorMessage, showInfoMessage, showSuccessMessage } from './notification/snackbar'
 
 export const FormContactMe = () => {
@@ -22,7 +17,12 @@ export const FormContactMe = () => {
     showInfoMessage('Submitting form', 'You are about to send an email')
 
     // send email
-    send(EMAILJS_SERVICE_ID_EMAIL, EMAILJS_TEMPLATE_SELF, emailData, EMAILJS_PUBLIC_KEY).then(
+    send(
+      Environments.EMAILJS_SERVICE_ID_EMAIL,
+      Environments.EMAILJS_TEMPLATE_SELF,
+      emailData,
+      Environments.EMAILJS_PUBLIC_KEY,
+    ).then(
       (result) => {
         console.log(result.text)
         showSuccessMessage(

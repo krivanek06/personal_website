@@ -1,5 +1,5 @@
-import { DEV_TO_BLOGS } from '../../environments/environment'
 import type { BlogPost, BlogPostLocalHost, DevToBlog } from '../../models'
+import { Environments } from './../../models/constants.model'
 import { isDateToday } from './date.util'
 
 const LOCAL_STORAGE_KEY = 'dev_to_blogs'
@@ -24,7 +24,7 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
 }
 
 const fetchBlogPosts = async (): Promise<DevToBlog[]> => {
-  const data = (await (await fetch(DEV_TO_BLOGS)).json()) as DevToBlog[]
+  const data = (await (await fetch(Environments.DEV_TO_BLOGS)).json()) as DevToBlog[]
   return data
 }
 

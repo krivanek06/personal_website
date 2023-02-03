@@ -1,0 +1,114 @@
+.snackbar-centered {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.snackbar-container {
+  min-width: 300px;
+  box-shadow: 0 2px 8px 0 #1a273d40;
+  background-color: #000000f1;
+  padding: 8px 26px;
+  margin: 0 0.5rem;
+  border-radius: 8px;
+
+  @screen md {
+    min-width: 500px;
+  }
+}
+
+.error-container {
+  border: solid 1px red;
+  border-left: 4px solid red;
+}
+
+.info-container {
+  border: solid 1px var(--primary);
+  border-left: 6px solid var(--primary);
+}
+
+.success-container {
+  border: solid 1px green;
+  border-left: 6px solid green;
+}
+
+.snackbar-container > div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.snackbar-info-container {
+  display: flex;
+  align-items: center;
+}
+
+.snackbar-info-container > div > h5:nth-child(2) {
+  margin-bottom: 0;
+}
+
+.snackbar-container > div > div:nth-child(1) {
+  margin-right: 1rem;
+}
+
+.snackbar-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  margin-right: 1rem;
+}
+
+.error-snackbar-icon {
+  background-color: red;
+}
+
+.info-snackbar-icon {
+  background-color: var(--primary);
+}
+
+.success-snackbar-icon {
+  background-color: green;
+}
+
+#close-snackbar-icon {
+  height: 1.5rem;
+  width: 1.5rem;
+}
+
+#snackbar-fixed-container {
+  position: fixed;
+  // bottom: 4rem;
+  top: 16px;
+  right: 0;
+}
+
+.success-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: green;
+}
+
+.info-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.error-title {
+  font-size: 20px;
+  font-weight: 500;
+  color: red;
+}
+
+.notification-text {
+  font-size: 16px;
+  color: var(--gray);
+}
+
+@media (max-width: 728px) {
+  .snackbar-container {
+    width: auto;
+  }
+}

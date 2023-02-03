@@ -95,7 +95,7 @@ const NameTitle = ({ modificator }: NameTitleProps) => {
         modificator.stopRandomTextGenerationLoop()
         modificator.generateBackToOriginal()
       }}
-      className="uppercase g-heading-1 md:min-w-[620px] g-text-shadow-primary hover:text-gray-700  animate-reveal2  hover:tracking-[9px]"
+      className=" md:min-w-[620px] g-text-shadow-primary hover:text-gray-700  animate-reveal2  hover:tracking-[9px]"
     >
       {myName}
     </h1>
@@ -106,7 +106,7 @@ const Name = () => {
   const modificator = new TextModificator()
 
   return (
-    <div className="relative mb-10 rounded-lg hover:bg-slate-300  g-fancy-highlight">
+    <div className="relative  rounded-lg hover:bg-slate-300  g-fancy-highlight">
       <svg
         width="43"
         height="53"

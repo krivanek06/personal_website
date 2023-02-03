@@ -28,9 +28,9 @@ const ContactMeBackground = ({ children }: ContentProjectionProps) => {
 
 const ContactMeContent = () => {
   return (
-    <div>
+    <div className="mt-10">
       <h2 className="text-center g-heading-1 space-x-3">
-        <span>Let's</span>
+        <span className="hidden sm:inline">Let's</span>
         <span className="g-text-shadow-primary">Work</span>
         <span>Together</span>
       </h2>
@@ -42,7 +42,7 @@ const ContactMeContent = () => {
         </div>
         <div className="w-full lg:basis-2/5">
           <CardPresentation2Content classes="w-full">
-            <h3 className="text-g-primary g-heading-4 text-center">Let's Connect</h3>
+            <h3 className="text-g-primary g-heading-3 text-center">Let's Connect</h3>
             <p className="text-center mb-4">
               Don't wait, contact us today and let us help you bring your project to life
             </p>
@@ -61,7 +61,7 @@ const ActionList = () => {
   return (
     <div className="flex flex-col gap-12  ">
       <ActionPoints
-        animationClasses="animate-[moveInTop_0.9s_ease-in]"
+        animationClasses="md:animate-[moveInTop_0.9s_ease-in]"
         title="1.) Consultation"
         description="Discussing your project requirements and goals in order to understand your unique needs and propose a solution that fits your budget and timelines."
         iconContent={
@@ -115,7 +115,7 @@ const ActionList = () => {
       />
 
       <ActionPoints
-        animationClasses="animate-[moveInTop_1.1s_ease-in]"
+        animationClasses="md:animate-[moveInTop_1.1s_ease-in]"
         title="2.) Design and Planning"
         description="Closely working with you to create a detailed design and plan for your website or application, taking into account user experience, visual appeal and functionality."
         iconContent={
@@ -160,7 +160,7 @@ const ActionList = () => {
       />
 
       <ActionPoints
-        animationClasses="animate-[moveInTop_1.3s_ease-in]"
+        animationClasses="md:animate-[moveInTop_1.3s_ease-in]"
         title="3.) Development"
         description="Putting our expertise and skillset to work, to create a high-quality product that meets your expectations with the latest technologies and industry best practices to bring your website or application to life"
         iconContent={
@@ -262,7 +262,7 @@ const ActionList = () => {
       />
 
       <ActionPoints
-        animationClasses="animate-[moveInTop_1.5s_ease-in]"
+        animationClasses="md:animate-[moveInTop_1.5s_ease-in]"
         title="4.) Testing and Deployment"
         description="Testing your website or application to ensure that it is fully functional and user-friendly before deploying it to your chosen platform."
         iconContent={
@@ -299,7 +299,7 @@ const ActionList = () => {
       />
 
       <ActionPoints
-        animationClasses="animate-[moveInTop_1.7s_ease-in]"
+        animationClasses="md:animate-[moveInTop_1.7s_ease-in]"
         title="5.) Maintenance and Support"
         description="Provide ongoing support and maintenance to ensure that your website or application remains up-to-date and fully functional."
         iconContent={

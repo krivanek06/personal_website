@@ -14,6 +14,7 @@ export const ProvidingServicesPage = () => {
 }
 
 const ProvidingServicesContent = () => {
+  const additionalClasses = 'g-fading-component-wrapper duration-500'
   return (
     <div>
       <h2 className="text-center g-heading-1 space-x-4">
@@ -22,8 +23,9 @@ const ProvidingServicesContent = () => {
       </h2>
 
       {/* list of services */}
-      <div className="grid md:grid-cols-2 gap-4 lg:gap-10">
+      <div className="grid md:grid-cols-2 gap-4 lg:gap-10 g-fading-component-wrapper-parent">
         <CardPresentation
+          additionalClasses={additionalClasses}
           title="Angular Development"
           img={{
             src: 'images/bg_angular.png',
@@ -33,6 +35,7 @@ const ProvidingServicesContent = () => {
         />
 
         <CardPresentation
+          additionalClasses={additionalClasses}
           title="NodeJS Development"
           img={{
             src: 'images/bg_nestjs.webp',
@@ -42,6 +45,7 @@ const ProvidingServicesContent = () => {
         />
 
         <CardPresentation
+          additionalClasses={additionalClasses}
           title="Custom Web Solutions"
           img={{
             src: 'images/bg_web_solution.jpeg',
@@ -51,6 +55,7 @@ const ProvidingServicesContent = () => {
         />
 
         <CardPresentation
+          additionalClasses={additionalClasses}
           title="Software Modernization"
           img={{
             src: 'images/bg_software_modern.jpeg',

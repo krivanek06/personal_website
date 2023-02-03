@@ -7,6 +7,7 @@ import {
 } from '../../environments/environment'
 import type { ContactMeForm } from '../../models'
 import { EMAIL_PATTERN } from '../../models/constants.model'
+import { showErrorMessage, showInfoMessage, showSuccessMessage } from './notification/snackbar'
 
 export const FormContactMe = () => {
   const {
@@ -18,14 +19,23 @@ export const FormContactMe = () => {
 
   const onSubmit = (data: any) => {
     const emailData = data as ContactMeForm
+    showInfoMessage('Submitting form', 'You are about to send an email')
 
     // send email
     send(EMAILJS_SERVICE_ID_EMAIL, EMAILJS_TEMPLATE_SELF, emailData, EMAILJS_PUBLIC_KEY).then(
       (result) => {
         console.log(result.text)
+        showSuccessMessage(
+          'Successful submission',
+          'You have successfully sent an email, we will concat you back in short notice',
+        )
       },
       (error) => {
         console.log(error.text)
+        showErrorMessage(
+          'Error submitting the form',
+          'He have experienced and error, please send and email to krivaneda@gmail.com',
+        )
       },
     )
 

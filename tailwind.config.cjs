@@ -14,6 +14,7 @@ module.exports = {
         moveInLeft: 'moveInLeft 4.5s ease-in ',
         moveInTop: 'moveInTop 4.5s ease-in ',
         reveal: 'reveal 1.2s ease-in-out ',
+        revealJiggle: 'revealJiggle 2s ease-in-out ',
         reveal2: 'reveal2 2.5s ease-in-out',
         reveal3: 'reveal3 4.5s ease-in',
         reveal4: 'reveal4 4.5s ease-in',
@@ -88,6 +89,52 @@ module.exports = {
             filter: 'blur(0)',
           },
         },
+        revealJiggle: {
+          '0%': {
+            opacity: 0,
+            filter: 'blur(5px)',
+          },
+          '10%': {
+            opacity: 0.1,
+            transform: 'rotate(3deg)',
+            filter: 'blur(5px)',
+          },
+          '20%': {
+            opacity: 0.2,
+            transform: 'rotate(-3deg)',
+            filter: 'blur(5px)',
+          },
+          '30%': {
+            opacity: 0.3,
+            transform: 'rotate(6deg)',
+            filter: 'blur(5px)',
+          },
+          '40%': {
+            opacity: 0.4,
+            transform: 'rotate(-6deg)',
+            filter: 'blur(3px)',
+          },
+          '50%': {
+            opacity: 0.5,
+            transform: 'rotate(-10deg)',
+            filter: 'blur(2px)',
+          },
+          '60%': {
+            opacity: 0.6,
+            transform: 'rotate(12deg)',
+            filter: 'blur(2px)',
+          },
+          '70%': {
+            opacity: 0.7,
+            transform: 'rotate(-12deg)',
+            filter: 'blur(1px)',
+          },
+          '100%': {
+            opacity: 1,
+            transform: 'rotate(360deg)',
+            filter: 'blur(0)',
+          },
+        },
         reveal2: {
           '0%': {
             opacity: 0,
@@ -146,6 +193,7 @@ module.exports = {
         'g-primary-transparent-medium': 'var(--primary-transparent-medium)',
         'g-primary-transparent-dark': 'var(--primary-transparent-dark)',
         'g-gray': 'var(--gray)',
+        'g-gray-light': 'var(--gray-light)',
         'g-gray-medium': 'var(--gray-medium)',
         'g-gray-dark': 'var(--gray-dark)',
         'g-overlay-dark': 'var(--overlay-dark)',

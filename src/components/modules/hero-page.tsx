@@ -5,6 +5,11 @@ import { PROVIDING_SERVICES, URL_GITHUB, URL_INSTAGRAM, URL_LINKED_IN } from '..
 import { TextModificator } from '../functions'
 
 export const HeroPage = () => {
+  // scroll to top on refesh
+  useEffect(() => {
+    window.history.scrollRestoration = 'manual'
+  }, [])
+
   return (
     <div className="relative ">
       <HeroBackground>

@@ -58,7 +58,7 @@ const HeroContent = () => {
 
       <button
         onClick={onConnectClick}
-        className="mt-8 w-[220px] animate-moveFromTopToBottom duration-500 hover:scale-125 height-[60px] text-2xl"
+        className="mt-8 w-[220px] animate-moveFromTopToBottom duration-500 hover:scale-110 height-[60px] text-2xl"
       >
         <span>Connect</span>
       </button>

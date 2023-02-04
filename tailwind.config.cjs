@@ -18,14 +18,14 @@ module.exports = {
         reveal2: 'reveal2 2.5s ease-in-out',
         reveal3: 'reveal3 4.5s ease-in',
         reveal4: 'reveal4 4.5s ease-in',
-        moveFromTopToBottom: 'moveFromTopToBottom 3.5s',
+        moveFromTopToBottom: 'moveFromTopToBottom 4s',
       },
       keyframes: {
         moveFromTopToBottom: {
           '0%': {
             opacity: 0.2,
             filter: 'blur(5px)',
-            transform: 'translateY(-200px) scale(1.8)',
+            transform: 'translateY(-250px) scale(1.8)',
           },
           '100%': {
             opacity: 1,

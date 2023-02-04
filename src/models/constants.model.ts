@@ -34,3 +34,5 @@ export const Environments: Env = {
   EMAILJS_TEMPLATE_SELF: import.meta.env.PUBLIC_EMAILJS_TEMPLATE_SELF,
   DEV_TO_BLOGS: import.meta.env.PUBLIC_DEV_TO_BLOGS,
 }
+
+console.log('Environments', Environments)

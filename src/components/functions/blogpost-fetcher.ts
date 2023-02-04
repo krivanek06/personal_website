@@ -37,6 +37,7 @@ const formatBlogPosts = (devToBlog: DevToBlog): BlogPost => {
     publishedDate: devToBlog.readable_publish_date,
     userFullName: devToBlog.user.name,
     userProfileImageUrl: devToBlog.user.profile_image,
+    tagList: devToBlog.tag_list ?? [],
   }
 }
 

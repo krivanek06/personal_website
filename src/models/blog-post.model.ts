@@ -11,4 +11,5 @@ export interface BlogPost {
   publishedDate: string
   userFullName: string
   userProfileImageUrl: string
+  tagList: string[]
 }

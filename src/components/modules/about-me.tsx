@@ -102,24 +102,28 @@ const AboutMeBlogPosts = () => {
 
   const moveLeft = 'md:ml-[-100px] md:mr-[100px]'
   const moveRight = 'md:ml-[100px] md:mr-[-100px]'
+  // max 6 blogposts
+  const maxBlogs = data.length > 6 ? 6 : data.length
 
   return (
     <>
-      {data.map((d, index) => (
+      {[...Array(maxBlogs)].map((_, index) => (
         <div
-          key={d.title}
-          className={`g-fading-component-wrapper duration-500 h-[230px] min-w-[360px] md:-mb-10 bg-black rounded-lg hover:z-10 ${
+          key={data[index].title}
+          className={`g-fading-component-wrapper duration-500 h-[230px] min-w-[360px] md:-mb-10 bg-black rounded-xl hover:z-10 ${
             index % 2 === 0 ? moveLeft : moveRight
           }`}
         >
           <CardBlogPost
-            title={d.title}
-            description={d.description}
-            imageUrl={d.imageUrl}
-            postUrl={d.postUrl}
-            publishedDate={d.publishedDate}
-            userFullName={d.userFullName}
-            userProfileImageUrl={d.userProfileImageUrl}
+            title={data[index].title}
+            description={data[index].description}
+            imageUrl={data[index].imageUrl}
+            postUrl={data[index].postUrl}
+            publishedDate={data[index].publishedDate}
+            userFullName={data[index].userFullName}
+            userProfileImageUrl={data[index].userProfileImageUrl}
+            tagList={data[index].tagList}
+            index={index}
           />
         </div>
       ))}

@@ -121,7 +121,7 @@ const DevelopmentBackground = ({ children }: ContentProjectionProps) => {
             <img
               src={d.src}
               alt={d.alt}
-              className={` ${d.imgHeight} opacity-30 md:group-hover:opacity-80 duration-700 m-auto `}
+              className={` ${d.imgHeight} opacity-40 md:group-hover:opacity-80 duration-700 m-auto `}
             />
 
             <div className="hidden md:block w-44 p-2 bg-black border border-g-primary scale-0 group-hover:scale-100 transition-all duration-500 rounded-lg text-center mt-4 z-10 text-g-primary">

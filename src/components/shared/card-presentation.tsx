@@ -15,7 +15,7 @@ export const CardPresentation = ({ title, description, img, additionalClasses }:
       <img
         src={img.src}
         alt={img.alt}
-        className="object-cover absolute opacity-50 group-hover:opacity-90 duration-700 h-full w-full "
+        className="object-cover absolute opacity-70 group-hover:opacity-90 duration-700 h-full w-full "
       />
 
       {/* dark explanation */}

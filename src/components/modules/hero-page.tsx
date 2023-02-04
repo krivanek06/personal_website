@@ -29,14 +29,15 @@ const HeroContent = () => {
       id="text-wrapper"
       className="top-2/4 left-2/4 -translate-y-1/4 -translate-x-2/4 absolute text-center w-max"
     >
-      <span className="capitalize g-word g-heading-1 mb-3 g-text-shadow-white motion-safe:animate-reveal duration-700 transition-all ">
+      <span className="capitalize g-word g-heading-1-2 mb-3 g-text-shadow-white motion-safe:animate-reveal duration-700 transition-all ">
         Hello, I'm
       </span>
 
       <Name />
 
-      <h2 className="g-word g-heading-2 mb-10 space-x-4 animate-reveal3 duration-700 transition-all">
-        <span>Providing</span>
+      <h2 className="g-word g-heading-2 mb-10 space-x-4 animate-reveal3 duration-700 transition-all ">
+        <span className="hidden md:inline">Providing</span>
+        <span className="inline md:hidden">Doing</span>
 
         <span style={{ color: '#0784b2', fontWeight: 'bold' }}>
           <Typewriter
@@ -50,7 +51,7 @@ const HeroContent = () => {
           />
         </span>
 
-        <span>Services</span>
+        <span className="hidden sm:inline">Services</span>
       </h2>
 
       {/* socials */}
@@ -212,16 +213,16 @@ const HeroBackground = ({ children }: ContentProjectionProps) => {
     <div className="g-hero-background min-h-screen">
       {/* myself */}
       <img
-        src="/images/myself_only_body_3.png"
+        src="/images/myself_transparent_1.png"
         alt="author image"
-        className="h-[85%] sm:h-[90%] lg:h-[1150px] object-cover g-absolute-center -z-10"
+        className="h-[85%] sm:h-[100%] lg:h-[110vh] object-cover g-absolute-center -z-10 lg:mt-10  opacity-80"
       />
 
       {/* abstract image */}
-      <div className="absolute left-0 hidden lg:block opacity-80 -z-20">
+      <div className="absolute left-0 hidden lg:block opacity-20 -z-20">
         <Svg1 />
       </div>
-      <div className="absolute right-0  opacity-80 -z-20 ">
+      <div className="absolute right-0  opacity-50 -z-20 ">
         <Svg2 />
       </div>
 
@@ -234,7 +235,7 @@ const HeroBackground = ({ children }: ContentProjectionProps) => {
 const Svg2 = () => {
   return (
     <svg
-      className="opacity-60 stroke-g-primary"
+      className="stroke-g-primary"
       width="1242"
       height="1821"
       viewBox="0 0 1242 1821"
@@ -440,7 +441,7 @@ const Svg2 = () => {
 const Svg1 = () => {
   return (
     <svg
-      className="opacity-30 fill-g-primary "
+      className="fill-g-primary "
       width="894"
       height="1213"
       viewBox="0 0 894 1213"

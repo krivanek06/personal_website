@@ -33,24 +33,28 @@ const DevelopmentContent = () => {
           </h2>
 
           <SideSection isStart={true}>
-            High-quality and user-friendly websites and applications tailored to your business needs
+            High-quality and user-friendly websites and applications{' '}
+            <span className="text-white">tailored to your business needs</span>
           </SideSection>
 
           <SideSection isStart={false}>
-            Expertise in both front-end and back-end development for seamless user experience
+            Expertise in both <span className="text-white">front-end and back-end development</span> for
+            seamless user experience
           </SideSection>
 
           <SideSection isStart={true}>
-            Dedicated, professional approach with focus on delivering on time and within budget
+            Dedicated, professional approach with focus on{' '}
+            <span className="text-white">delivering on time and within budget</span>
           </SideSection>
 
           <SideSection isStart={false}>
-            Strong communication and collaboration skills, understanding unique needs and goals
+            Strong communication and collaboration skills,{' '}
+            <span className="text-white">understanding unique needs and goals</span>
           </SideSection>
 
           <SideSection isStart={true}>
-            Up-to-date with latest technologies and industry trends, ensuring your website is at the forefront
-            of innovation
+            <span className="text-white">Up-to-date with latest technologies and industry trends</span>,
+            ensuring your application is at the forefront of innovation
           </SideSection>
         </div>
       </div>

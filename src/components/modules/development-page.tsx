@@ -29,7 +29,7 @@ const DevelopmentContent = () => {
         <div className="mt-12 md:w-8/12 flex flex-col gap-10 z-10">
           <h2 className="g-heading-2 space-x-3 text-center md:text-start">
             <span className="">What Can I</span>
-            <span className="text-g-primary">Expect?</span>
+            <span className="text-g-primary-dark sm:text-g-primary">Expect?</span>
           </h2>
 
           <SideSection isStart={true}>

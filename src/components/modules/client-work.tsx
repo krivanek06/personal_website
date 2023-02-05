@@ -34,25 +34,25 @@ const ClientWorkContent = () => {
             loading="lazy"
             src="/client-work/stock-tracker/st_1.png"
             alt="Stock Tracker Image"
-            className="w-[420px] rounded-lg absolute -top-3 -left-4 shadow-2xl"
+            className="w-[420px] rounded-lg absolute -top-3 -left-4 shadow-2xl max-sm:z-10 "
           />
           <img
             loading="lazy"
             src="/client-work/stock-tracker/st_3.png"
             alt="Stock Tracker Image"
-            className="h-[220px] rounded-lg absolute left-[20%] top-32 shadow-2xl"
+            className="h-[220px] rounded-lg absolute left-[20%] top-32 shadow-2xl hidden sm:block"
           />
           <img
             loading="lazy"
             src="/client-work/stock-tracker/st_4.png"
             alt="Stock Tracker Image"
-            className="h-[250px] rounded-lg absolute right-[15%] top-2 shadow-2xl"
+            className="h-[250px] rounded-lg absolute right-[15%] top-2 shadow-2xl hidden sm:block"
           />
           <img
             loading="lazy"
             src="/client-work/stock-tracker/st_2.png"
             alt="Stock Tracker Image"
-            className="h-[270px] rounded-lg absolute right-0 top-[70px] shadow-2xl"
+            className="h-[270px] rounded-lg absolute right-0 top-[70px] shadow-2xl max-sm:right-[-50px]"
           />
         </CardPresentation2>
 
@@ -71,13 +71,13 @@ const ClientWorkContent = () => {
             loading="lazy"
             src="/client-work/wealth-tracker/wt_desktop_2.png"
             alt="Stock Tracker Image"
-            className="min-h-[240px] w-full object-cover rounded-lg absolute -right-4 top-[220px] shadow-2xl"
+            className="min-h-[240px] w-full object-cover rounded-lg absolute -right-4 top-[220px] shadow-2xl  hidden lg:block"
           />
           <img
             loading="lazy"
             src="/client-work/wealth-tracker/wt_mobile.png"
             alt="Stock Tracker Image"
-            className="min-h-[220px] max-h-[360px] object-cover rounded-lg absolute -left-4 top-[320px] shadow-2xl"
+            className="min-h-[220px] max-h-[360px] object-cover rounded-lg absolute -left-4 top-[35px] max-lg:left-[74%] lg:top-[320px] shadow-2xl"
           />
         </CardPresentation2>
 

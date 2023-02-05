@@ -13,6 +13,7 @@ export const CardPresentation = ({ title, description, img, additionalClasses }:
       className={`rounded-lg relative overflow-hidden min-h-[320px] group transition-all bg-black ${additionalClasses}`}
     >
       <img
+        loading="lazy"
         src={img.src}
         alt={img.alt}
         className="object-cover absolute opacity-70 group-hover:opacity-90 duration-700 h-full w-full "

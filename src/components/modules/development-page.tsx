@@ -123,6 +123,7 @@ const DevelopmentBackground = ({ children }: ContentProjectionProps) => {
             }  `}
           >
             <img
+              loading="lazy"
               src={d.src}
               alt={d.alt}
               className={` ${d.imgHeight} opacity-40 md:group-hover:opacity-80 duration-700 m-auto `}

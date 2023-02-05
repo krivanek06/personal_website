@@ -51,13 +51,17 @@ h1 {
 /* text */
 
 .g-text-shadow-primary {
-  background: linear-gradient(
-    180deg,
-    rgb(4 142 193 / 76%) 29.41%,
-    rgb(5 150 203) 47.91%,
-    rgb(8 133 180 / 48%) 84.9%
-  );
-  @apply bg-clip-text text-transparent;
+  color: var(--primary);
+
+  @screen sm {
+    background: linear-gradient(
+      180deg,
+      rgb(4 142 193 / 76%) 29.41%,
+      rgb(5 150 203) 47.91%,
+      rgb(8 133 180 / 48%) 84.9%
+    );
+    @apply bg-clip-text text-transparent;
+  }
   @screen md {
     background: linear-gradient(180deg, #00719bc2 29.41%, rgb(0 133 182) 47.91%, rgba(1, 46, 63, 0.48) 84.9%);
     @apply bg-clip-text text-transparent;
@@ -65,8 +69,11 @@ h1 {
 }
 
 .g-text-shadow-white {
-  background: linear-gradient(180deg, #dddddd 14.28%, rgb(78 78 78 / 61%) 84.16%, #000000 48.16%);
-  @apply bg-clip-text text-transparent;
+  color: #e2e2e2;
+  @screen sm {
+    background: linear-gradient(180deg, #dddddd 14.28%, rgb(78 78 78 / 61%) 84.16%, #000000 48.16%);
+    @apply bg-clip-text text-transparent;
+  }
 }
 
 /* other */

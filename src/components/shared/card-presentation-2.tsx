@@ -10,7 +10,7 @@ export const CardPresentation2 = ({ title, description, children, classes }: Pro
     <div
       className={`relative p-4 overflow-hidden group  border border-g-border hover:border-g-primary rounded-lg transition-all text-center bg-g-primary-transparent-low hover:bg-g-primary-transparent-medium ${classes}`}
     >
-      <div className="g-absolute-center z-10 group-hover:opacity-10 duration-500 w-full">
+      <div className="absolute top-[48%] sm::top-2/4 left-2/4 -translate-y-2/4 -translate-x-2/4 z-10 group-hover:opacity-10 duration-500 w-full">
         <h3 className="g-heading-3 text-g-primary-dark sm:text-g-primary">{title}</h3>
         <p className="w-11/12 m-auto text-g-gray g-body-2">{description}</p>
       </div>

@@ -102,8 +102,8 @@ const AboutMeBlogPosts = () => {
     dataFetch()
   }, [])
 
-  const moveLeft = 'md:ml-[-100px] md:mr-[100px]'
-  const moveRight = 'md:ml-[100px] md:mr-[-100px]'
+  const moveLeft = 'md:ml-[-80px] md:mr-[80px]'
+  const moveRight = 'md:ml-[80px] md:mr-[-80px]'
   // max 6 blogposts
   const maxBlogs = data.length > 6 ? 6 : data.length
 

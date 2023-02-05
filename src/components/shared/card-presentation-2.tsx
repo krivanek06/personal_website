@@ -32,7 +32,7 @@ export const CardPresentation2Content = ({ children, classes, bgClasses }: Card2
   const bgClassesUsed = bgClasses ?? 'bg-g-primary-transparent-low hover:bg-g-primary-transparent-medium'
   return (
     <div
-      className={`px-4 py-6 border border-g-border hover:border-g-primary rounded-lg transition-all  ${bgClassesUsed} duration-500 ${classes}`}
+      className={`p-2 sm:px-4 sm:py-6 border border-g-border hover:border-g-primary rounded-lg transition-all  ${bgClassesUsed} duration-500 ${classes}`}
     >
       {children}
     </div>

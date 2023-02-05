@@ -85,7 +85,7 @@ const DevelopmentMainParagraphs = () => {
       <div ref={ref} className="flex gap-20 z-10">
         <div
           className={`text-center g-body-1 w-11/12 md:w-full m-auto md:flex-1 text-g-gray-light ${
-            inView ? 'animate-reveal' : 'opacity-0'
+            inView ? 'sm:animate-reveal' : 'opacity-0'
           }`}
         >
           Providing comprehensive{' '}
@@ -96,7 +96,7 @@ const DevelopmentMainParagraphs = () => {
 
         <div
           className={`text-center g-body-1 hidden md:block text-g-gray-light flex-1 ${
-            inView ? 'animate-reveal' : 'opacity-0'
+            inView ? 'sm:animate-reveal' : 'opacity-0'
           }`}
         >
           Building <span className="text-white">custom web applications</span>, creating an e-commerce

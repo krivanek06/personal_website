@@ -25,7 +25,7 @@ button:before {
   right: 0;
   z-index: -2;
 
-  background: var(--primary);
+  background: var(--primary-dark);
 
   @screen sm {
     background: linear-gradient(180deg, #00719bc2 29.41%, rgb(0 133 182) 47.91%, rgba(1, 46, 63, 0.48) 84.9%);
@@ -54,7 +54,7 @@ button:hover:before {
 }
 
 button > span {
-  color: var(--primary);
+  color: var(--primary-dark);
   transition: all 0.6s ease-in-out;
 
   @screen sm {

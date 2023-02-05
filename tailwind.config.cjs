@@ -189,6 +189,7 @@ module.exports = {
       },
       colors: {
         'g-primary': 'var(--primary)',
+        'g-primary-dark': 'var(--primary-dark)',
         'g-primary-transparent-low': 'var(--primary-transparent-low)',
         'g-primary-transparent-medium': 'var(--primary-transparent-medium)',
         'g-primary-transparent-dark': 'var(--primary-transparent-dark)',

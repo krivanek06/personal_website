@@ -28,7 +28,7 @@ export const ActionPoints = ({ title, description, iconContent, animationClasses
           <line y1="6" x2="46.3855" y2="6" />
           <ellipse cx="49.6987" cy="6" rx="5.3012" ry="6" />
         </svg>
-        <h3 className="text-g-primary g-heading-3">{title}</h3>
+        <h3 className="text-g-primary-dark sm:text-g-primary g-heading-3">{title}</h3>
       </div>
 
       <p className="pl-4 text-g-gray g-body-3">{description}</p>

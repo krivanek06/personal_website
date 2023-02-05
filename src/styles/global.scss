@@ -51,7 +51,7 @@ h1 {
 /* text */
 
 .g-text-shadow-primary {
-  color: var(--primary);
+  color: var(--primary-dark);
 
   @screen sm {
     background: linear-gradient(
@@ -137,7 +137,7 @@ h1 {
   @apply flex flex-col;
 
   label {
-    @apply text-g-primary;
+    @apply text-g-primary-dark sm:text-g-primary;
   }
   input,
   textarea {

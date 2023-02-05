@@ -42,7 +42,7 @@ const ContactMeContent = () => {
         </div>
         <div className="w-full lg:basis-2/5">
           <CardPresentation2Content classes="w-full">
-            <h3 className="text-g-primary g-heading-3 text-center">Let's Connect</h3>
+            <h3 className="text-g-primary-dark sm:text-g-primary g-heading-3 text-center">Let's Connect</h3>
             <p className="text-center mb-4">
               Don't wait, contact us today and let us help you bring your project to life
             </p>

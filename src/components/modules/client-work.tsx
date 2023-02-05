@@ -52,7 +52,7 @@ const ClientWorkContent = () => {
             loading="lazy"
             src="/client-work/stock-tracker/st_2.png"
             alt="Stock Tracker Image"
-            className="h-[270px] rounded-lg absolute right-0 top-[70px] shadow-2xl max-sm:right-[-50px]"
+            className="h-[270px] rounded-lg absolute right-0 top-[70px] shadow-2xl max-sm:right-[-50px] min-w-[270px]"
           />
         </CardPresentation2>
 
@@ -77,7 +77,7 @@ const ClientWorkContent = () => {
             loading="lazy"
             src="/client-work/wealth-tracker/wt_mobile.png"
             alt="Stock Tracker Image"
-            className="min-h-[220px] max-h-[360px] object-cover rounded-lg absolute -left-4 top-[35px] max-lg:left-[74%] lg:top-[320px] shadow-2xl"
+            className="min-h-[220px] max-h-[360px] object-cover rounded-lg absolute -left-4 top-[35px] max-lg:left-[70%] lg:top-[320px] shadow-2xl"
           />
         </CardPresentation2>
 

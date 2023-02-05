@@ -41,7 +41,7 @@ h1 {
 
 /* layout */
 .g-layout-1 {
-  @apply w-screen px-6 sm:w-11/12 md:w-10/12 xl:w-9/12 2xl:w-8/12 min-h-screen py-3 sm:py-6 lg:py-10 m-auto;
+  @apply w-screen px-5 sm:w-11/12 md:w-10/12 xl:w-9/12 2xl:w-8/12 min-h-screen py-3 sm:py-6 lg:py-10 m-auto;
 }
 
 .g-layout-wide {
@@ -167,5 +167,7 @@ h1 {
 
 .g-fading-component-wrapper-parent:has(.g-fading-component-wrapper:hover)
   > :not(.g-fading-component-wrapper:hover) {
-  opacity: 0.25;
+  @screen sm {
+    opacity: 0.25;
+  }
 }

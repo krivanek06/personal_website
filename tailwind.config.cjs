@@ -220,6 +220,8 @@ module.exports = {
         },
       )
     }),
+    require('tailwindcss'),
+    require('autoprefixer'),
   ],
   variants: {
     height: ['responsive', 'hover', 'focus'],

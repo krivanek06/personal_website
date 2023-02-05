@@ -44,7 +44,7 @@ const HeroContent = () => {
         <span className="hidden md:inline">Providing</span>
         <span className="inline md:hidden">Doing</span>
 
-        <span style={{ color: '#0784b2', fontWeight: 'bold' }}>
+        <span style={{ color: '#084d66', fontWeight: 'bold' }}>
           <Typewriter
             words={PROVIDING_SERVICES}
             loop={0}

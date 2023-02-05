@@ -18,7 +18,7 @@ const ProvidingServicesContent = () => {
   return (
     <div>
       <h2 className="text-center g-heading-1 space-x-4">
-        <span className="g-text-shadow-white">Providing</span>
+        <span className="g-text-shadow-white hidden sm:inline">Providing</span>
         <span className="g-text-shadow-primary">Services</span>
       </h2>
 

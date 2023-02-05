@@ -20,7 +20,9 @@ const ClientWorkBackground = ({ children }: ContentProjectionProps) => {
 const ClientWorkContent = () => {
   return (
     <div>
-      <h2 className="g-heading-1  g-text-shadow-primary text-center ">Recent Client Work</h2>
+      <h2 className="g-heading-1  g-text-shadow-primary text-center ">
+        <span className="hidden sm:inline">Recent</span> Client Work
+      </h2>
 
       <div className="grid lg:grid-cols-5 gap-6">
         <CardPresentation2

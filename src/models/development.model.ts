@@ -20,13 +20,13 @@ export const DevelopmentIcons = [
   {
     src: '/logos/gcp.webp',
     alt: 'GCP',
-    imgHeight: 'h-[180px] md:h-[220px]',
+    imgHeight: 'h-[140px] md:h-[220px]',
     divClasses: 'top-[400px] md:top-[480px] left-[36%]',
   },
   {
     src: '/logos/apollo.png',
     alt: 'Apollo Server',
-    imgHeight: 'h-[110px] md:h-[130px]',
+    imgHeight: 'h-[80px] md:h-[130px]',
     divClasses: 'top-[480px] left-[70%] md:left-[53%]',
   },
   {

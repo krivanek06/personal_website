@@ -25,7 +25,7 @@ button:before {
   right: 0;
   z-index: -2;
 
-  background-color: var(--primary);
+  background: var(--primary);
 
   @screen sm {
     background: linear-gradient(180deg, #00719bc2 29.41%, rgb(0 133 182) 47.91%, rgba(1, 46, 63, 0.48) 84.9%);

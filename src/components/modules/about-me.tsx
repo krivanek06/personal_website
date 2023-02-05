@@ -55,15 +55,15 @@ const AboutMeContent = () => {
 
           {/* card */}
           <CardPresentation2Content
-            bgClasses="bg-g-primary-transparent-medium hover:bg-g-primary-transparent-dark"
-            classes="w-[290px] sm:w-[420px] bottom-0 md:bottom-[10%] absolute sm:right-[-20%] opacity-70 hover:opacity-90  right-[2%]"
+            bgClasses="bg-g-primary-transparent-dark hover:bg-g-primary-transparent-dark2"
+            classes="w-[290px] sm:w-[420px] bottom-0 md:bottom-[10%] absolute sm:right-[-20%] md:opacity-70 hover:opacity-90  right-[2%]"
           >
             <AboutMeText />
           </CardPresentation2Content>
         </div>
 
         {/* blog posts */}
-        <div className="g-fading-component-wrapper-parent max-sm:flex max-sm:overflow-x-scroll sm:grid sm:place-content-center 2xl:col-span-2 max-md:gap-3 max-sm:p-4 max-sm:pr-8">
+        <div className="g-fading-component-wrapper-parent max-sm:flex max-sm:overflow-x-scroll sm:grid sm:place-content-center 2xl:col-span-2 max-md:gap-3 max-sm:p-4 max-sm:pr-8 max-sm:mt-6">
           <AboutMeBlogPosts />
         </div>
       </div>
@@ -73,7 +73,7 @@ const AboutMeContent = () => {
 
 const AboutMeText = () => {
   return (
-    <p className="w-11/12 m-auto text-g-gray-medium hover:text-white flex flex-col gap-4 duration-500 md:animate-pulse hover:animate-none hover:z-20">
+    <p className="w-11/12 m-auto text-white  flex flex-col gap-4 duration-500  hover:z-20">
       <span>
         I specialize in delivering custom web solutions to clients with unique needs, and work closely with
         them to understand their requirements and design a solution that fits their specific needs. I am
@@ -112,7 +112,7 @@ const AboutMeBlogPosts = () => {
       {[...Array(maxBlogs)].map((_, index) => (
         <div
           key={data[index].title}
-          className={`g-fading-component-wrapper duration-500 h-[230px] min-w-[360px] md:-mb-10 bg-black rounded-xl hover:z-10 ${
+          className={`g-fading-component-wrapper duration-500 h-[230px] min-w-[360px] max-w-[550px] md:-mb-10 bg-black rounded-xl hover:z-10 ${
             index % 2 === 0 ? moveLeft : moveRight
           }`}
         >

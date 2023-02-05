@@ -21,6 +21,7 @@ const AboutMeBackground = ({ children }: ContentProjectionProps) => {
     <div className="">
       <div className="absolute bg-g-overlay-dark -z-10 h-full g-about-me-background">
         <img
+          loading="lazy"
           src="/images/bg_abstract.jpeg"
           alt="Abstract Background Image"
           className="min-h-full object-cover opacity-25"
@@ -43,11 +44,15 @@ const AboutMeContent = () => {
       <div className="grid lg:grid-cols-2 2xl:grid-cols-3 md:min-h-[90vh] ">
         <div className="relative min-h-[630px] sm:max-lg:hidden lg:block">
           {/* picture */}
-          <img
-            src="/images/myself_transparent_2.png"
-            alt="author image"
-            className="h-full min-h-[850px] object-cover absolute -z-10 top-[-18%] sm:top-[-10%] lg:h-[1250px] max-sm:left-[-40px]"
-          />
+          <picture>
+            <source type="image/webp" srcSet="/images/myself_transparent_2.webp" />
+            <img
+              src="/images/myself_transparent_2.png"
+              alt="author image"
+              className="h-full min-h-[850px] object-cover absolute -z-10 top-[-18%] sm:top-[-10%] lg:h-[1250px] max-sm:left-[-40px]"
+            />
+          </picture>
+
           {/* card */}
           <CardPresentation2Content
             bgClasses="bg-g-primary-transparent-medium hover:bg-g-primary-transparent-dark"
@@ -58,7 +63,7 @@ const AboutMeContent = () => {
         </div>
 
         {/* blog posts */}
-        <div className="g-fading-component-wrapper-parent max-sm:flex max-sm:overflow-x-scroll sm:grid sm:place-content-center 2xl:col-span-2 max-md:gap-3 max-sm:p-4">
+        <div className="g-fading-component-wrapper-parent max-sm:flex max-sm:overflow-x-scroll sm:grid sm:place-content-center 2xl:col-span-2 max-md:gap-3 max-sm:p-4 max-sm:pr-8">
           <AboutMeBlogPosts />
         </div>
       </div>

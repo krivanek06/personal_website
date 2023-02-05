@@ -14,8 +14,8 @@ export const ImageWrapper = ({ src, alt, fallbackPath, classes }: ImageWrapper) 
   }
 
   return error ? (
-    <img src={fallbackPath} alt={alt} onError={onError} className={classes} />
+    <img loading="lazy" src={fallbackPath} alt={alt} onError={onError} className={classes} />
   ) : (
-    <img src={src} alt={alt} onError={onError} className={classes} />
+    <img loading="lazy" src={src} alt={alt} onError={onError} className={classes} />
   )
 }

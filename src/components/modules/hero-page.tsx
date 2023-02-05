@@ -222,7 +222,7 @@ const HeroBackground = ({ children }: ContentProjectionProps) => {
         <img
           src="/images/myself_transparent_1_2.png"
           alt="author image"
-          className="h-[85%] sm:h-[100%] lg:h-[110vh] object-cover g-absolute-center -z-10 lg:mt-10  opacity-80"
+          className="h-[85%] sm:h-[100%] lg:h-[110vh] object-cover g-absolute-center -z-10 lg:mt-10  opacity-100 sm:opacity-80"
         />
       </picture>
 

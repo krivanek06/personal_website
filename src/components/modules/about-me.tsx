@@ -49,7 +49,7 @@ const AboutMeContent = () => {
             <img
               src="/images/myself_transparent_2.png"
               alt="author image"
-              className="h-full min-h-[850px] object-cover absolute -z-10 top-[-18%] sm:top-[-10%] lg:h-[1250px] max-sm:left-[-40px]"
+              className="h-full min-h-[850px] object-cover absolute -z-10 top-[-18%] sm:top-[-10%] lg:h-[1290px] max-sm:left-[-40px]"
             />
           </picture>
 

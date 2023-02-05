@@ -40,7 +40,7 @@ const HeroContent = () => {
 
       <Name />
 
-      <h2 className="g-word g-heading-2 mb-10 space-x-4 animate-reveal3 duration-700 transition-all ">
+      <h2 className="g-word g-heading-2 mb-5 sm:mb-10 space-x-4 animate-reveal3 duration-700 transition-all ">
         <span className="hidden md:inline">Providing</span>
         <span className="inline md:hidden">Doing</span>
 

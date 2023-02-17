@@ -3,7 +3,7 @@ import { ContentProjectionProps, DevelopmentIcons } from '../../models'
 
 export const DevelopmentPage = () => {
   return (
-    <div className="relative">
+    <div className="relative z-20">
       <DevelopmentBackground>
         <div className="g-layout-1">
           <DevelopmentContent></DevelopmentContent>

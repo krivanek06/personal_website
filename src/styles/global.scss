@@ -1,7 +1,7 @@
 @import url('https://fonts.cdnfonts.com/css/prociono');
 
 body {
-  @apply bg-black text-g-gray text-base md:text-xl;
+  @apply bg-black text-g-gray text-base md:text-xl overflow-x-clip;
   font-family: 'Prociono', sans-serif;
 }
 

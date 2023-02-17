@@ -21,7 +21,6 @@ export class TextModificator {
       .map((d) => (d === ' ' ? ' ' : 'X'))
       .join('')
 
-    console.log('TextModificator init')
     this.defaultMaskText = this.maskText
   }
 
@@ -43,7 +42,6 @@ export class TextModificator {
 
   stopRandomTextGenerationLoop() {
     if (this.interval) {
-      console.log('cleared')
       clearInterval(this.interval)
     }
   }

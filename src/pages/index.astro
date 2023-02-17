@@ -5,11 +5,13 @@ import { ContactMePage } from '../components/modules/contact-me'
 import { DevelopmentPage } from '../components/modules/development-page'
 import { HeroPage } from '../components/modules/hero-page'
 import { ProvidingServicesPage } from '../components/modules/providing-services-page'
+import { Blob } from '../components/shared/blob/blob'
 import Layout from '../layouts/Layout.astro'
 ---
 
-<Layout title="Welcome to Astro.">
+<Layout title="Welcome Eduard Krivanek">
   <main class="overflow-hidden">
+    <Blob client:load />
     <HeroPage client:load />
     <div class="mt-[60px] md:mt-[100px]">
       <DevelopmentPage client:load />

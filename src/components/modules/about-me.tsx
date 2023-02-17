@@ -95,7 +95,6 @@ const AboutMeBlogPosts = () => {
     const dataFetch = async () => {
       const data = await getBlogPosts()
 
-      console.log(data)
       setData(data)
     }
 

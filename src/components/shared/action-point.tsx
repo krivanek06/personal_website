@@ -8,7 +8,7 @@ export interface Props {
 }
 
 export const ActionPoints = ({ title, description, iconContent, animationClasses }: Props) => {
-  const { ref, inView, entry } = useInView()
+  const { ref, inView, entry } = useInView({ triggerOnce: true })
 
   return (
     <div ref={ref} className={` ${inView ? animationClasses : ''}`}>

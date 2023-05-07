@@ -78,7 +78,7 @@ const SideSection = ({ isStart, children }: SideSectionProps) => {
 }
 
 const DevelopmentMainParagraphs = () => {
-  const { ref, inView, entry } = useInView()
+  const { ref, inView, entry } = useInView({ triggerOnce: true })
 
   return (
     <div className="flex justify-end ">

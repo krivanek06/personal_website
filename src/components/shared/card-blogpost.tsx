@@ -15,7 +15,7 @@ export const CardBlogPost = (post: CardBlogPost) => {
       target="_blank"
       rel="noopener noreferrer"
       href={post.postUrl}
-      className="rounded-xl relative duration-500 transition-all w-full h-full overflow-hidden group"
+      className="flex rounded-xl relative duration-500 transition-all w-full h-full overflow-hidden group"
     >
       {/* background image */}
       <img

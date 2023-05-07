@@ -10,7 +10,7 @@ export interface Props {
 export const CardPresentation = ({ title, description, img, additionalClasses }: Props) => {
   return (
     <div
-      className={`rounded-lg relative overflow-hidden min-h-[320px] group transition-all bg-black ${additionalClasses}`}
+      className={`rounded-lg relative overflow-hidden min-h-[250px] sm:min-h-[320px] group transition-all bg-black ${additionalClasses}`}
     >
       <img
         loading="lazy"

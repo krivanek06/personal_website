@@ -1,6 +1,6 @@
+import { injectContentFiles } from '@analogjs/content';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { injectContentFiles } from '@analogjs/content';
 
 import PostAttributes from '../../post-attributes';
 
@@ -17,6 +17,10 @@ import PostAttributes from '../../post-attributes';
       <p class="post__desc">{{ post.attributes.description }}</p>
     </a>
     }
+
+    <div class="p-4 bg-red-200">
+    asasd
+    </div>
   `,
   styles: `
     a {

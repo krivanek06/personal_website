@@ -34,8 +34,7 @@
     "marked-shiki": "^1.1.0",
     "rxjs": "~7.8.0",
     "shiki": "^1.6.1",
-    "tslib": "^2.3.0",
-    "zone.js": "~0.15.0"
+    "tslib": "^2.3.0"
   },
   "devDependencies": {
     "@analogjs/platform": "^1.13.0",

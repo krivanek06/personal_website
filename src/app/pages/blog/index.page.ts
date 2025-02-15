@@ -18,7 +18,7 @@ import PostAttributes from '../../post-attributes';
     </a>
     }
 
-    <div class="p-4 bg-red-200">
+    <div class="p-4 bg-amber-300">
     asasd
     </div>
   `,

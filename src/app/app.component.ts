@@ -6,7 +6,7 @@ import { RouterLink, RouterOutlet } from '@angular/router';
   standalone: true,
   imports: [RouterLink, RouterOutlet],
   template: `
-    <nav>
+    <nav class="bg-red-300 text-3xl text-gray-100">
       <a routerLink="/">Home</a>
     </nav>
 

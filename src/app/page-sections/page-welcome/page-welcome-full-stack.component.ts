@@ -22,7 +22,20 @@ import { CardGeneralComponent } from './../../shared/components';
 
       <div>
         <app-card-general>
-          <div>lolol</div>
+          <div class="grid grid-cols-3 gap-4">
+            <div class="text-center">
+              <h3 class="mb-2 text-xl font-bold">Frontend</h3>
+              <p>Angular, React, TypeScript</p>
+            </div>
+            <div class="text-center">
+              <h3 class="mb-2 text-xl font-bold">Backend</h3>
+              <p>Node.js, Express, MongoDB</p>
+            </div>
+            <div class="text-center">
+              <h3 class="mb-2 text-xl font-bold">DevOps</h3>
+              <p>Docker, AWS, CI/CD</p>
+            </div>
+          </div>
         </app-card-general>
       </div>
     </section>

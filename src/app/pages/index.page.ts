@@ -28,6 +28,7 @@ import { PageWelcomeTechnologiesComponent } from '../page-sections/page-welcome/
       <app-page-welcome-about-me />
       <app-page-welcome-published-blogs />
       <app-page-welcome-connect />
+      <footer class="h-20 bg-black"></footer>
     </div>
   `,
   standalone: true,

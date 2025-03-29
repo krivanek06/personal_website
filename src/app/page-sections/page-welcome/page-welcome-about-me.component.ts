@@ -1,4 +1,11 @@
-import { afterNextRender, ChangeDetectionStrategy, Component, ElementRef, viewChild } from '@angular/core';
+import {
+  afterNextRender,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  viewChild,
+  viewChildren,
+} from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
@@ -10,8 +17,8 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-2">
         <!-- Left side - Image -->
         <div class="relative">
-          <div #imageContainer class="relative h-[600px] overflow-hidden rounded-2xl">
-            <img #profileImage src="" alt="Eduard Krivanek" class="h-full w-full object-cover" />
+          <div #imageContainer class="relative h-[700px] overflow-hidden rounded-2xl">
+            <img #profileImage src="me/me-black-white.png" alt="Eduard Krivanek" class="h-full w-full object-cover" />
             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
           </div>
         </div>
@@ -19,18 +26,18 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
         <!-- Right side - Content -->
         <div class="flex flex-col justify-center">
           <div #titleContainer class="mb-8">
-            <h2 class="mb-4 text-5xl">About Me</h2>
-            <div class="h-1 w-20 bg-green-500"></div>
+            <h2 class="text-primary-green mb-4 text-5xl">About Me</h2>
+            <div class="h-1 w-20 bg-white"></div>
           </div>
 
-          <div #contentContainer class="space-y-6">
-            <p class="text-xl text-gray-300">
-              Hello! I'm Eduard Krivanek, a passionate Full Stack Developer with a keen eye for creating elegant
-              solutions to complex problems. With a strong foundation in both frontend and backend development, I
-              specialize in building scalable, maintainable, and user-friendly applications.
-            </p>
+          <div #contentContainer class="mb-8 text-xl text-gray-300">
+            Hello! I'm Eduard Krivanek, a passionate Full Stack Developer with a keen eye for creating elegant solutions
+            to complex problems. With a strong foundation in both frontend and backend development, I specialize in
+            building scalable, maintainable, and user-friendly applications.
+          </div>
 
-            <div class="space-y-4">
+          <div class="space-y-6">
+            <div #contentItems class="space-y-4">
               <div class="flex items-start gap-4">
                 <div class="mt-1 rounded-full bg-green-500/10 p-2">
                   <svg
@@ -52,7 +59,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
                 </div>
               </div>
 
-              <div class="flex items-start gap-4">
+              <div #contentItems class="flex items-start gap-4">
                 <div class="mt-1 rounded-full bg-green-500/10 p-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -73,7 +80,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
                 </div>
               </div>
 
-              <div class="flex items-start gap-4">
+              <div #contentItems class="flex items-start gap-4">
                 <div class="mt-1 rounded-full bg-green-500/10 p-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -113,6 +120,7 @@ export class PageWelcomeAboutMeComponent {
   private readonly profileImage = viewChild<ElementRef>('profileImage');
   private readonly titleContainer = viewChild<ElementRef>('titleContainer');
   private readonly contentContainer = viewChild<ElementRef>('contentContainer');
+  private readonly contentItems = viewChildren<ElementRef>('contentItems');
 
   constructor() {
     afterNextRender(() => {
@@ -120,16 +128,19 @@ export class PageWelcomeAboutMeComponent {
       gsap.registerPlugin(ScrollTrigger);
 
       // Set initial states
-      gsap.set(this.imageContainer()?.nativeElement, { opacity: 0, y: 100 });
-      gsap.set(this.profileImage()?.nativeElement, { scale: 1.2 });
+      gsap.set(this.imageContainer()?.nativeElement, { opacity: 0, y: 0 });
+      gsap.set(this.profileImage()?.nativeElement, { scale: 1 });
       gsap.set(this.titleContainer()?.nativeElement, { opacity: 0, y: 50 });
-      gsap.set(this.contentContainer()?.nativeElement.children, { opacity: 0, y: 30 });
+      gsap.set(this.contentContainer()?.nativeElement, { opacity: 0, y: 30 });
+      this.contentItems().forEach(item => {
+        gsap.set(item.nativeElement, { opacity: 0, x: 100 });
+      });
 
       // Create a timeline for the image section
       const imageTl = gsap.timeline({
         scrollTrigger: {
           trigger: this.imageContainer()?.nativeElement,
-          start: 'top 80%',
+          start: 'top 60%',
           end: 'bottom 20%',
           toggleActions: 'play none none none',
           once: true,
@@ -157,8 +168,8 @@ export class PageWelcomeAboutMeComponent {
       // Create a timeline for the content section
       const contentTl = gsap.timeline({
         scrollTrigger: {
-          trigger: this.contentContainer()?.nativeElement,
-          start: 'top 80%',
+          trigger: this.titleContainer()?.nativeElement,
+          start: 'top 85%',
           end: 'bottom 20%',
           toggleActions: 'play none none none',
           once: true,
@@ -175,7 +186,7 @@ export class PageWelcomeAboutMeComponent {
 
       // Animate the content items with stagger
       contentTl.to(
-        this.contentContainer()?.nativeElement.children,
+        this.contentContainer()?.nativeElement,
         {
           opacity: 1,
           y: 0,
@@ -185,6 +196,17 @@ export class PageWelcomeAboutMeComponent {
         },
         '-=0.3'
       );
+
+      // animate container items
+      this.contentItems().forEach((item, index) => {
+        contentTl.to(item.nativeElement, {
+          opacity: 1,
+          x: 0,
+          duration: 0.3,
+          stagger: 0.2,
+          ease: 'power2.out',
+        });
+      });
     });
   }
 }

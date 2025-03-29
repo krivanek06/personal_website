@@ -152,7 +152,7 @@ export class PageWelcomeConnectComponent {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: this.titleContainer()?.nativeElement,
-          start: 'top 80%',
+          start: 'top 90%',
           end: 'bottom 20%',
           toggleActions: 'play none none none',
           once: true,

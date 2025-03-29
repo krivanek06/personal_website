@@ -6,7 +6,7 @@ import { CardGeneralComponent } from './../../shared/components';
   imports: [CardGeneralComponent],
   template: `
     <section class="relative z-10 mx-auto w-full p-10 xl:w-[1480px]">
-      <h2 class="mb-20 text-center text-5xl">Full Stack Developer</h2>
+      <h2 class="text-primary-green mb-20 text-center text-5xl">Full Stack Developer</h2>
 
       <div class="grid grid-cols-2 gap-x-10">
         <p class="mx-auto w-9/12 text-center text-xl">

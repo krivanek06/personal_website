@@ -57,8 +57,6 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
           height="1000"
           class="h-full w-full object-cover"
           alt="Eduard Krivanek" />
-        <!-- Image Overlay -->
-        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
       </div>
 
       <!-- Scroll Indicator -->

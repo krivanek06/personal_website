@@ -9,7 +9,7 @@ import { generateRandomNumber } from '../../shared/utils/general';
   template: `
     <section class="relative z-10 mx-auto w-full p-10 xl:w-[1480px]">
       <div class="mb-20 text-center">
-        <h2 class="mb-4 text-5xl">Technologies</h2>
+        <h2 class="text-primary-green mb-4 text-5xl">Technologies</h2>
         <p class="mx-auto max-w-2xl text-xl text-gray-400">
           A comprehensive stack of technologies I work with to create modern web applications
         </p>
@@ -102,14 +102,18 @@ export class PageWelcomeTechnologiesComponent {
         });
 
         // Animate to final state
-        tl.to(item, {
-          x: 0,
-          y: 0,
-          scale: 1,
-          rotation: 0,
-          opacity: 1,
-          duration: 0.2,
-        });
+        tl.to(
+          item,
+          {
+            x: 0,
+            y: 0,
+            scale: 1,
+            rotation: 0,
+            opacity: 1,
+            duration: 0.3,
+          },
+          '-=0.15' // Overlap with previous animation
+        );
       });
     });
   }

@@ -18,7 +18,7 @@ interface BlogPost {
   template: `
     <section class="relative z-10 mx-auto w-full p-10 xl:w-[1480px]">
       <div class="mb-20 text-center">
-        <h2 class="mb-4 text-5xl">Latest Blog Posts</h2>
+        <h2 class="text-primary-green mb-4 text-5xl">Latest Blog Posts</h2>
         <p class="mx-auto max-w-2xl text-xl text-gray-400">
           Insights, tutorials, and thoughts about web development, technology, and software engineering
         </p>

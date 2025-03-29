@@ -1,6 +1,7 @@
 import { afterNextRender, ChangeDetectionStrategy, Component, ElementRef, viewChild } from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { generateRandomNumber } from '../../shared/utils/general';
 
 @Component({
   selector: 'app-page-welcome-technologies',
@@ -70,17 +71,14 @@ export class PageWelcomeTechnologiesComponent {
       // Register ScrollTrigger plugin
       gsap.registerPlugin(ScrollTrigger);
 
-      // Set initial state
-      gsap.set(this.techGrid()?.nativeElement.children, {
-        opacity: 0,
-        y: 30,
-      });
+      const techItems = Array.from(this.techGrid()?.nativeElement.children || []) as HTMLElement[];
+      if (!techItems.length) return;
 
       // Create a timeline for the technology grid
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: this.techGrid()?.nativeElement,
-          start: 'top 80%',
+          start: 'top 90%',
           end: 'bottom 20%',
           toggleActions: 'play none none none',
           once: true,
@@ -88,17 +86,30 @@ export class PageWelcomeTechnologiesComponent {
         },
       });
 
-      // Animate each technology item with stagger
-      tl.to(this.techGrid()?.nativeElement.children, {
-        opacity: 1,
-        y: 0,
-        duration: 0.8,
-        stagger: {
-          amount: 1,
-          grid: 'auto',
-          from: 'start',
-        },
-        ease: 'power2.out',
+      // Animate each technology item individually
+      techItems.forEach((item: HTMLElement, index: number) => {
+        const randomX = generateRandomNumber(-200, 200);
+        const randomY = generateRandomNumber(-200, 200);
+        const randomRotation = generateRandomNumber(-360, 360);
+
+        // Set initial state
+        gsap.set(item, {
+          opacity: 0,
+          x: randomX,
+          y: randomY,
+          scale: 0.1,
+          rotation: randomRotation,
+        });
+
+        // Animate to final state
+        tl.to(item, {
+          x: 0,
+          y: 0,
+          scale: 1,
+          rotation: 0,
+          opacity: 1,
+          duration: 0.2,
+        });
       });
     });
   }

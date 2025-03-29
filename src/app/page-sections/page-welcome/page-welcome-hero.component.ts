@@ -14,11 +14,9 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
           class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-green-500/20 via-transparent to-transparent"></div>
       </div>
 
-      <!-- Content Container -->
-      <div
-        class="relative z-10 mx-auto flex min-h-screen max-w-[1480px] flex-col items-center justify-center gap-12 px-4 md:flex-row md:gap-16">
-        <!-- Left side - Text Content -->
-        <div class="flex flex-col items-center text-center md:items-start md:text-left">
+      <!-- name and title -->
+      <div class="relative z-10 mx-auto flex min-h-screen max-w-[1480px] items-center justify-center px-4">
+        <div class="flex flex-col items-center text-center md:items-start md:text-left lg:ml-[-30%]">
           <div #greeting class="text-xl font-medium text-green-500 opacity-0">Hello, I'm</div>
           <div #name class="text-6xl leading-tight font-bold text-white md:text-7xl lg:text-8xl">
             <span class="inline-block opacity-0">E</span>
@@ -38,34 +36,29 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
           </div>
           <div #title class="text-2xl text-gray-400 opacity-0">Full Stack Web Developer</div>
           <div #description class="max-w-xl text-lg text-gray-300 opacity-0">
-            Passionate about creating elegant solutions to complex problems. Specializing in modern web technologies and
-            delivering high-quality, scalable applications.
+            Specializing in modern web technologies, delivering high-quality, scalable applications and creating elegant
+            solutions to complex problems.
           </div>
           <div #socials class="mt-8 opacity-0">
             <app-page-welcome-hero-socials />
           </div>
         </div>
+      </div>
 
-        <!-- Right side - Image -->
-        <div class="relative flex items-center justify-center">
-          <div
-            #imageContainer
-            class="relative aspect-square w-full max-w-[400px] overflow-hidden rounded-2xl opacity-0">
-            <img
-              #heroImage
-              priority
-              ngSrc="me/me-hero_2.webp"
-              width="1000"
-              height="1000"
-              class="h-full w-full object-cover"
-              alt="Eduard Krivanek" />
-            <!-- Image Overlay -->
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          </div>
-          <!-- Decorative Elements -->
-          <div class="absolute -top-4 -right-4 h-32 w-32 rounded-full bg-green-500/10 blur-3xl"></div>
-          <div class="absolute -bottom-4 -left-4 h-32 w-32 rounded-full bg-blue-500/10 blur-3xl"></div>
-        </div>
+      <!-- Image -->
+      <div
+        #imageContainer
+        class="absolute top-[10px] right-[10px] aspect-square w-full max-w-[750px] overflow-hidden rounded-2xl opacity-0">
+        <img
+          #heroImage
+          priority
+          ngSrc="me/me-hero_2.webp"
+          width="1000"
+          height="1000"
+          class="h-full w-full object-cover"
+          alt="Eduard Krivanek" />
+        <!-- Image Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
       </div>
 
       <!-- Scroll Indicator -->

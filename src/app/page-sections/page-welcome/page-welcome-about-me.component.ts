@@ -140,7 +140,7 @@ export class PageWelcomeAboutMeComponent {
       const imageTl = gsap.timeline({
         scrollTrigger: {
           trigger: this.imageContainer()?.nativeElement,
-          start: 'top 60%',
+          start: 'top 70%',
           end: 'bottom 20%',
           toggleActions: 'play none none none',
           once: true,
@@ -169,7 +169,7 @@ export class PageWelcomeAboutMeComponent {
       const contentTl = gsap.timeline({
         scrollTrigger: {
           trigger: this.titleContainer()?.nativeElement,
-          start: 'top 85%',
+          start: 'top 80%',
           end: 'bottom 20%',
           toggleActions: 'play none none none',
           once: true,

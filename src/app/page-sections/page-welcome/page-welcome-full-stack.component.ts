@@ -23,7 +23,8 @@ import { CardGeneralComponent } from './../../shared/components';
       <div class="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
         <!-- Frontend Card -->
         <app-card-general>
-          <div class="flex h-full flex-col items-center justify-center p-6 text-center">
+          <div
+            class="flex h-full flex-col items-center justify-center p-6 text-center transition-transform duration-300">
             <div class="mb-4 rounded-full bg-green-500/10 p-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -38,8 +39,8 @@ import { CardGeneralComponent } from './../../shared/components';
                   d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
-            <h3 class="mb-4 text-2xl font-bold text-white">Frontend</h3>
-            <p class="text-gray-300">Angular, React, TypeScript</p>
+            <h3 class="mb-2 text-2xl font-bold text-white">Frontend</h3>
+            <p class="mb-4 text-lg text-gray-300">Angular, React, TypeScript</p>
             <ul class="mt-4 text-left text-gray-400">
               <li class="mb-2">• Responsive Design</li>
               <li class="mb-2">• Modern UI/UX</li>
@@ -50,7 +51,8 @@ import { CardGeneralComponent } from './../../shared/components';
 
         <!-- Backend Card -->
         <app-card-general>
-          <div class="flex h-full flex-col items-center justify-center p-6 text-center">
+          <div
+            class="flex h-full flex-col items-center justify-center p-6 text-center transition-transform duration-300">
             <div class="mb-4 rounded-full bg-green-500/10 p-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -65,8 +67,8 @@ import { CardGeneralComponent } from './../../shared/components';
                   d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2m-2-4h.01M17 16h.01" />
               </svg>
             </div>
-            <h3 class="mb-4 text-2xl font-bold text-white">Backend</h3>
-            <p class="text-gray-300">Node.js, Express, MongoDB</p>
+            <h3 class="mb-2 text-2xl font-bold text-white">Backend</h3>
+            <p class="mb-4 text-lg text-gray-300">Node.js, Express, MongoDB</p>
             <ul class="mt-4 text-left text-gray-400">
               <li class="mb-2">• RESTful APIs</li>
               <li class="mb-2">• Database Design</li>
@@ -77,7 +79,8 @@ import { CardGeneralComponent } from './../../shared/components';
 
         <!-- DevOps Card -->
         <app-card-general>
-          <div class="flex h-full flex-col items-center justify-center p-6 text-center">
+          <div
+            class="flex h-full flex-col items-center justify-center p-6 text-center transition-transform duration-300">
             <div class="mb-4 rounded-full bg-green-500/10 p-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -88,8 +91,8 @@ import { CardGeneralComponent } from './../../shared/components';
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
               </svg>
             </div>
-            <h3 class="mb-4 text-2xl font-bold text-white">DevOps</h3>
-            <p class="text-gray-300">Docker, AWS, CI/CD</p>
+            <h3 class="mb-2 text-2xl font-bold text-white">DevOps</h3>
+            <p class="mb-4 text-lg text-gray-300">Docker, AWS, CI/CD</p>
             <ul class="mt-4 text-left text-gray-400">
               <li class="mb-2">• Container Orchestration</li>
               <li class="mb-2">• Cloud Infrastructure</li>

@@ -5,6 +5,7 @@ import { PageWelcomeConnectComponent } from '../page-sections/page-welcome/page-
 import { PageWelcomeFullStackComponent } from '../page-sections/page-welcome/page-welcome-full-stack.component';
 import { PageWelcomePublishedBlogsComponent } from '../page-sections/page-welcome/page-welcome-published-blogs.component';
 import { PageWelcomeTechnologiesComponent } from '../page-sections/page-welcome/page-welcome-technologies.component';
+import { BlobComponent } from '../shared/components';
 
 // export const routeMeta: RouteMeta = {
 //   title: 'Welcome',
@@ -19,9 +20,11 @@ import { PageWelcomeTechnologiesComponent } from '../page-sections/page-welcome/
     PageWelcomeAboutMeComponent,
     PageWelcomeTechnologiesComponent,
     PageWelcomeConnectComponent,
+    BlobComponent,
   ],
   template: `
     <div class="grid gap-10 bg-black">
+      <app-blob />
       <app-page-welcome-hero />
       <app-page-welcome-full-stack />
       <app-page-welcome-technologies />

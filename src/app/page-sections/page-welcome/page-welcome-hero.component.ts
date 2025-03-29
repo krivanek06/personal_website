@@ -8,12 +8,6 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
   imports: [NgOptimizedImage, PageWelcomeHeroSocialsComponent],
   template: `
     <section class="relative min-h-screen overflow-hidden bg-black">
-      <!-- Background Pattern -->
-      <div class="absolute inset-0 opacity-10">
-        <div
-          class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-green-500/20 via-transparent to-transparent"></div>
-      </div>
-
       <!-- name and title -->
       <div class="relative z-10 mx-auto flex min-h-screen max-w-[1480px] items-center justify-center px-4">
         <div class="flex flex-col items-center text-center md:items-start md:text-left lg:ml-[-30%]">
@@ -48,11 +42,11 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
       <!-- Image -->
       <div
         #imageContainer
-        class="absolute top-[10px] right-[10px] aspect-square w-full max-w-[750px] overflow-hidden rounded-2xl opacity-0">
+        class="absolute top-[60px] right-[140px] aspect-square w-full max-w-[750px] overflow-hidden rounded-2xl opacity-0">
         <img
           #heroImage
           priority
-          ngSrc="me/me-hero_2.webp"
+          ngSrc="me/me-hero_3.webp"
           width="1000"
           height="1000"
           class="h-full w-full object-cover"
@@ -60,7 +54,7 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
       </div>
 
       <!-- Scroll Indicator -->
-      <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <div class="absolute bottom-20 left-1/2 -translate-x-1/2 animate-bounce">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           class="h-6 w-6 text-gray-400"
@@ -151,20 +145,24 @@ export class PageWelcomeHeroComponent {
           '-=0.3'
         );
 
-        // Bounce effect for last name
+        // last name
         nameTl.to(
-          [
-            nameChars[6],
-            nameChars[7],
-            nameChars[8],
-            nameChars[9],
-            nameChars[10],
-            nameChars[11],
-            nameChars[12],
-            nameChars[13],
-          ],
+          [nameChars[6]],
           {
-            scale: 1.2,
+            scale: 1.1,
+            rotate: 7,
+            duration: 0.3,
+            stagger: 0.1,
+            ease: 'elastic.out(1, 0.3)',
+          },
+          '-=0.2'
+        );
+
+        nameTl.to(
+          [nameChars[0]],
+          {
+            scale: 1.1,
+            rotate: -7,
             duration: 0.3,
             stagger: 0.1,
             ease: 'elastic.out(1, 0.3)',

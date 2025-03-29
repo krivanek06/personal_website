@@ -46,34 +46,23 @@ export class PageWelcomeTechnologiesComponent {
   protected readonly technologies = [
     // Frontend
     { name: 'Angular', icon: 'tech/angular.png', category: 'frontend' },
-    { name: 'TypeScript', icon: 'tech/typescript.png', category: 'frontend' },
-    { name: 'Tailwind', icon: 'tech/tailwind.png', category: 'frontend' },
     { name: 'RxJs', icon: 'tech/rxjs.png', category: 'frontend' },
+    { name: 'Tailwind', icon: 'tech/tailwind.png', category: 'frontend' },
+    { name: 'Typescript', icon: 'tech/typescript.png', category: 'backend' },
 
     // Backend
     { name: 'NodeJS', icon: 'tech/nodejs.png', category: 'backend' },
     { name: 'NestJS', icon: 'tech/nestjs.png', category: 'backend' },
-    { name: 'Typescript', icon: 'tech/typescript.png', category: 'backend' },
+    { name: 'Cloudflare', icon: 'tech/cloudflare.png', category: 'frontend' },
     { name: 'GraphQL', icon: 'tech/graphql.png', category: 'backend' },
 
-    // // Database
-    // { name: 'MongoDB', icon: 'tech/mongodb.svg', category: 'database' },
-    // { name: 'PostgreSQL', icon: 'tech/postgresql.svg', category: 'database' },
-    // { name: 'Redis', icon: 'tech/redis.svg', category: 'database' },
-    // { name: 'MySQL', icon: 'tech/mysql.svg', category: 'database' },
+    //  Database
+    { name: 'MongoDB', icon: 'tech/mongodb.webp', category: 'database' },
+    { name: 'Firebase', icon: 'tech/firebase.png', category: 'database' },
 
-    // // DevOps
-    // { name: 'Docker', icon: 'tech/docker.svg', category: 'devops' },
-    // { name: 'Kubernetes', icon: 'tech/kubernetes.svg', category: 'devops' },
-    // { name: 'AWS', icon: 'tech/aws.svg', category: 'devops' },
-    // { name: 'Git', icon: 'tech/git.svg', category: 'devops' },
-    // { name: 'CI/CD', icon: 'tech/cicd.svg', category: 'devops' },
-
-    // // Other
-    // { name: 'GraphQL', icon: 'tech/graphql.svg', category: 'other' },
-    // { name: 'REST API', icon: 'tech/rest.svg', category: 'other' },
-    // { name: 'Jest', icon: 'tech/jest.svg', category: 'other' },
-    // { name: 'Webpack', icon: 'tech/webpack.svg', category: 'other' },
+    //  Other
+    { name: 'Jest', icon: 'tech/jest.png', category: 'other' },
+    { name: 'NX', icon: 'tech/nx.png', category: 'other' },
   ] as const;
 
   constructor() {

@@ -30,10 +30,17 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
             <div class="h-1 w-20 bg-white"></div>
           </div>
 
-          <div #contentContainer class="mb-8 text-xl text-gray-300">
-            Hello! I'm Eduard Krivanek, a passionate Full Stack Developer with a keen eye for creating elegant solutions
-            to complex problems. With a strong foundation in both frontend and backend development, I specialize in
-            building scalable, maintainable, and user-friendly applications.
+          <div #contentContainer class="mb-8 space-y-4 text-xl text-gray-300">
+            <p>
+              I'm Eduard Krivanek, a passionate Full Stack Developer specializing in building web application, with a
+              strong focus on Angular, Firebase, NestJs
+            </p>
+
+            <p>
+              Over the past few years, I've developed applications ranging from financial dashboards that generate
+              trading statistics to finance tracking tools and ticketing systems for banks. Beyond coding, I share my
+              insights and expertise through technical blogs, where I've been writing for over two years
+            </p>
           </div>
 
           <div class="space-y-6">
@@ -54,8 +61,10 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-xl font-semibold text-white">5+ Years Experience</h3>
-                  <p class="text-gray-400">Working with various technologies and frameworks</p>
+                  <h3 class="text-xl font-semibold text-white">5+ Years Angular Experience</h3>
+                  <p class="text-gray-400">
+                    Started in version 8 and since then always kept up with the latest version
+                  </p>
                 </div>
               </div>
 
@@ -98,6 +107,28 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
                 <div>
                   <h3 class="text-xl font-semibold text-white">Team Player</h3>
                   <p class="text-gray-400">Excellent communication and collaboration skills</p>
+                </div>
+              </div>
+
+              <!-- New Content Item -->
+              <div #contentItems class="flex items-start gap-4">
+                <div class="mt-1 rounded-full bg-green-500/10 p-2">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="h-6 w-6 text-green-500"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor">
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M12 8c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 10c-4.41 0-8-1.79-8-4V8c0-2.21 3.59-4 8-4s8 1.79 8 4v6c0 2.21-3.59 4-8 4z" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="text-xl font-semibold text-white">Technical Blogger & Speaker</h3>
+                  <p class="text-gray-400">Sharing insights through blogs and tech talks</p>
                 </div>
               </div>
             </div>

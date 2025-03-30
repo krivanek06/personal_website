@@ -137,7 +137,7 @@ export class PageWelcomeFullStackComponent {
         card.nativeElement,
         {
           opacity: 1,
-          duration: 0.5,
+          duration: 1,
         },
         0
       ); // Start both animations at the same time

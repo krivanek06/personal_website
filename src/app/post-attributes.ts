@@ -1,6 +1,11 @@
 export default interface PostAttributes {
-  title: string;
+  datePublished: string;
+  order: number;
+  seoDescription: string;
+  seoTitle: string;
   slug: string;
-  description: string;
+  tags: string;
+  title: string;
+  readTime: number;
   coverImage: string;
 }

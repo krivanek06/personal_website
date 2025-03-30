@@ -1,16 +1,10 @@
+import { injectContentFiles } from '@analogjs/content';
 import { afterNextRender, ChangeDetectionStrategy, Component, ElementRef, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import PostAttributes from '../../post-attributes';
 import { CardGeneralComponent } from '../../shared/components';
-interface BlogPost {
-  title: string;
-  description: string;
-  date: string;
-  readTime: string;
-  image: string;
-  slug: string;
-}
 
 @Component({
   selector: 'app-page-welcome-published-blogs',
@@ -27,25 +21,25 @@ interface BlogPost {
 
       <div #blogPostContainer class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         @for (post of blogPosts; track post.slug) {
-          <app-card-general>
+          <app-card-general additionalClasses="h-full">
             <a [routerLink]="['/blog', post.slug]" class="group block">
-              <div class="relative h-48 overflow-hidden rounded-t-lg">
+              <div class="relative h-48 overflow-hidden rounded-lg">
                 <img
-                  [src]="post.image"
-                  [alt]="post.title"
+                  [src]="'article-cover/' + post.attributes.coverImage"
+                  [alt]="post.attributes.title"
                   class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                 <div class="absolute bottom-4 left-4 flex items-center gap-4 text-sm text-white">
-                  <span>{{ post.date }}</span>
+                  <span>{{ post.attributes.datePublished }}</span>
                   <span>•</span>
-                  <span>{{ post.readTime }} min read</span>
+                  <span>{{ post.attributes.readTime }} min read</span>
                 </div>
               </div>
               <div class="p-6">
                 <h3 class="mb-3 text-2xl font-bold text-white transition-colors group-hover:text-green-500">
-                  {{ post.title }}
+                  {{ post.attributes.title }}
                 </h3>
-                <p class="text-gray-400">{{ post.description }}</p>
+                <p class="text-gray-400">{{ post.attributes.seoDescription }}</p>
               </div>
             </a>
           </app-card-general>
@@ -79,12 +73,18 @@ interface BlogPost {
 export class PageWelcomePublishedBlogsComponent {
   private readonly blogPostContainer = viewChild<ElementRef>('blogPostContainer');
 
+  readonly blogPosts = injectContentFiles<PostAttributes>(contentFiles =>
+    contentFiles.filename.includes('/src/content/posts')
+  )
+    .sort((a, b) => b.attributes.order - a.attributes.order)
+    .slice(0, 3);
+
   constructor() {
+    console.log('posts', this.blogPosts);
     afterNextRender(() => {
       gsap.registerPlugin(ScrollTrigger);
 
       const blogPostElements = Array.from(this.blogPostContainer()?.nativeElement.children || []) as HTMLElement[];
-      console.log(blogPostElements.length);
       if (!blogPostElements.length) return;
 
       // Create a timeline for the technology grid
@@ -120,31 +120,4 @@ export class PageWelcomePublishedBlogsComponent {
       });
     });
   }
-
-  protected readonly blogPosts: BlogPost[] = [
-    {
-      title: 'Building Modern Web Applications with Angular',
-      description: 'Learn about the latest features in Angular and how to build scalable, maintainable applications.',
-      date: 'March 15, 2024',
-      readTime: '8',
-      image: 'blog/angular.webp',
-      slug: 'building-modern-web-applications-with-angular',
-    },
-    {
-      title: 'The Future of Web Development',
-      description: 'Exploring emerging trends and technologies that are shaping the future of web development.',
-      date: 'March 10, 2024',
-      readTime: '6',
-      image: 'blog/future.webp',
-      slug: 'future-of-web-development',
-    },
-    {
-      title: 'Best Practices for TypeScript Development',
-      description: 'Essential tips and tricks for writing clean, type-safe TypeScript code that scales.',
-      date: 'March 5, 2024',
-      readTime: '7',
-      image: 'blog/typescript.webp',
-      slug: 'typescript-best-practices',
-    },
-  ];
 }

@@ -12,15 +12,13 @@ import PostAttributes from '../../post-attributes';
     <h1>Blog Archive</h1>
 
     @for (post of posts; track post.attributes.slug) {
-    <a [routerLink]="['/blog/', post.attributes.slug]">
-      <h2 class="post__title">{{ post.attributes.title }}</h2>
-      <p class="post__desc">{{ post.attributes.description }}</p>
-    </a>
+      <a [routerLink]="['/blog/', post.attributes.slug]">
+        <h2 class="post__title">{{ post.attributes.title }}</h2>
+        <p class="post__desc">{{ post.attributes.seoDescription }}</p>
+      </a>
     }
 
-    <div class="p-4 bg-green-400">
-    asasd
-    </div>
+    <div class="bg-green-400 p-4">asasd</div>
   `,
   styles: `
     a {

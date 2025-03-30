@@ -77,7 +77,7 @@ export class PageWelcomePublishedBlogsComponent {
     contentFiles.filename.includes('/src/content/posts')
   )
     .sort((a, b) => b.attributes.order - a.attributes.order)
-    .slice(0, 3);
+    .slice(0, 6);
 
   constructor() {
     console.log('posts', this.blogPosts);
@@ -91,7 +91,7 @@ export class PageWelcomePublishedBlogsComponent {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: this.blogPostContainer()?.nativeElement,
-          start: 'top 80%',
+          start: 'top 75%',
           end: 'bottom 20%',
           toggleActions: 'play none none none',
           once: true,
@@ -105,15 +105,15 @@ export class PageWelcomePublishedBlogsComponent {
           y: 50,
         });
 
-        const overlay = index === 0 ? 0 : index * 0.15;
+        const overlay = index === 0 ? 0 : -0.1;
 
         tl.to(
           element,
           {
             opacity: 1,
             y: 0,
-            duration: 0.3,
-            delay: index * 0.2,
+            duration: 0.8,
+            delay: index * 0.3,
           },
           overlay
         );

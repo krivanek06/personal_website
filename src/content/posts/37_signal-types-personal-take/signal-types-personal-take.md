@@ -1,7 +1,7 @@
 ---
 title: 'My Personal Take On Signal Types In Angular'
 seoTitle: 'My Personal Take On Signal Types In Angular'
-seoDescription: 'Giving personal opinion in which use-cases signals are great, how I use them and what would be the RxJS equivalent of new signal APIs'
+seoDescription: 'Personal opinion on signal use-cases, how I use them and what would be the RxJS equivalents'
 slug: my-personal-take-on-signal-types-in-angular
 tags: javascript, angular, rxjs, opinion
 order: 37

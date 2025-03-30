@@ -28,10 +28,10 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
             <span class="inline-block opacity-0">e</span>
             <span class="inline-block opacity-0">k</span>
           </div>
-          <div #title class="text-2xl text-gray-400 opacity-0">Full Stack Web Developer</div>
-          <div #description class="max-w-xl text-lg text-gray-300 opacity-0">
-            Specializing in modern web technologies, delivering high-quality, scalable applications and creating elegant
-            solutions to complex problems.
+          <div #title class="text-3xl text-gray-400 opacity-0">Full Stack Web Developer</div>
+          <div #description class="max-w-xl text-xl text-gray-300 opacity-0">
+            Specializing in modern web technologies, high-quality, scalable applications and creating elegant solutions
+            to complex problems.
           </div>
           <div #socials class="mt-8 opacity-0">
             <app-page-welcome-hero-socials />
@@ -46,7 +46,7 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
         <img
           #heroImage
           priority
-          ngSrc="me/me-hero_3.webp"
+          ngSrc="me/me-hero-2.webp"
           width="1000"
           height="1000"
           class="h-full w-full object-cover"
@@ -90,6 +90,11 @@ export class PageWelcomeHeroComponent {
       // Create main timeline
       const mainTl = gsap.timeline({
         defaults: { duration: 0.8, ease: 'power3.out' },
+      });
+
+      // hide image
+      gsap.set(this.heroImage()?.nativeElement, {
+        opacity: 0,
       });
 
       // Animate the greeting
@@ -207,8 +212,8 @@ export class PageWelcomeHeroComponent {
         .to(
           this.heroImage()?.nativeElement,
           {
-            scale: 1.1,
             duration: 1.5,
+            opacity: 1,
             ease: 'power2.out',
           },
           '-=0.5'

@@ -1,11 +1,13 @@
 import { afterNextRender, ChangeDetectionStrategy, Component, ElementRef, viewChild } from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { CardGeneralComponent } from '../../shared/components';
 import { generateRandomNumber } from '../../shared/utils/general';
 
 @Component({
   selector: 'app-page-welcome-technologies',
   standalone: true,
+  imports: [CardGeneralComponent],
   template: `
     <section class="relative z-10 mx-auto w-full p-10 xl:w-[1480px]">
       <div class="mb-20 text-center">
@@ -18,16 +20,16 @@ import { generateRandomNumber } from '../../shared/utils/general';
       <!-- Technology Grid -->
       <div #techGrid class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         @for (tech of technologies; track tech.name) {
-          <div
-            #techItem
-            class="group flex flex-col items-center justify-center rounded-xl bg-white/5 p-6 transition-all duration-300 hover:bg-white/10">
-            <div class="mb-4 h-16 w-16">
-              <img [src]="tech.icon" [alt]="tech.name" class="h-full w-full object-contain" width="64" height="64" />
+          <app-card-general>
+            <div #techItem class="group flex flex-col items-center justify-center rounded-xl">
+              <div class="mb-4 h-16 w-16">
+                <img [src]="tech.icon" [alt]="tech.name" class="h-full w-full object-contain" width="64" height="64" />
+              </div>
+              <span class="text-center text-sm text-gray-400 transition-colors group-hover:text-white">
+                {{ tech.name }}
+              </span>
             </div>
-            <span class="text-center text-sm text-gray-400 transition-colors group-hover:text-white">
-              {{ tech.name }}
-            </span>
-          </div>
+          </app-card-general>
         }
       </div>
     </section>

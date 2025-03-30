@@ -10,13 +10,8 @@ import { URL_LINKED_IN } from './model';
   imports: [CardGeneralComponent],
   template: `
     <section class="relative z-10 mx-auto w-full p-10 xl:w-[1480px]">
-      <div class="relative overflow-hidden rounded-3xl bg-gradient-to-br from-green-500/10 to-blue-500/10 p-8 md:p-12">
-        <!-- Background Pattern -->
-        <div class="absolute inset-0 opacity-10">
-          <div
-            class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-green-500/20 via-transparent to-transparent"></div>
-        </div>
-
+      <div
+        class="glass-effect relative overflow-hidden rounded-3xl border border-green-700 bg-gradient-to-br from-green-500/10 to-blue-500/10 p-8 md:p-12">
         <div class="relative grid gap-8 md:grid-cols-2">
           <!-- Left side - Content -->
           <div class="flex flex-col justify-center">
@@ -129,6 +124,11 @@ import { URL_LINKED_IN } from './model';
       :host {
         display: block;
       }
+
+      .glass-effect {
+        backdrop-filter: blur(10px);
+        border-radius: 15px;
+      }
     `,
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -154,7 +154,7 @@ export class PageWelcomeConnectComponent {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: this.titleContainer()?.nativeElement,
-          start: 'top 90%',
+          start: 'top 85%',
           end: 'bottom 20%',
           toggleActions: 'play none none none',
           once: true,

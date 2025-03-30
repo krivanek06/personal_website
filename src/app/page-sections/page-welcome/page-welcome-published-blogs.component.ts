@@ -1,7 +1,8 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { afterNextRender, ChangeDetectionStrategy, Component, ElementRef, viewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { CardGeneralComponent } from '../../shared/components';
-
 interface BlogPost {
   title: string;
   description: string;
@@ -24,7 +25,7 @@ interface BlogPost {
         </p>
       </div>
 
-      <div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+      <div #blogPostContainer class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         @for (post of blogPosts; track post.slug) {
           <app-card-general>
             <a [routerLink]="['/blog', post.slug]" class="group block">
@@ -76,6 +77,50 @@ interface BlogPost {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageWelcomePublishedBlogsComponent {
+  private readonly blogPostContainer = viewChild<ElementRef>('blogPostContainer');
+
+  constructor() {
+    afterNextRender(() => {
+      gsap.registerPlugin(ScrollTrigger);
+
+      const blogPostElements = Array.from(this.blogPostContainer()?.nativeElement.children || []) as HTMLElement[];
+      console.log(blogPostElements.length);
+      if (!blogPostElements.length) return;
+
+      // Create a timeline for the technology grid
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: this.blogPostContainer()?.nativeElement,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none none',
+          once: true,
+          markers: false,
+        },
+      });
+
+      blogPostElements.forEach((element, index) => {
+        gsap.set(element, {
+          opacity: 0,
+          y: 50,
+        });
+
+        const overlay = index === 0 ? 0 : index * 0.15;
+
+        tl.to(
+          element,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.3,
+            delay: index * 0.2,
+          },
+          overlay
+        );
+      });
+    });
+  }
+
   protected readonly blogPosts: BlogPost[] = [
     {
       title: 'Building Modern Web Applications with Angular',

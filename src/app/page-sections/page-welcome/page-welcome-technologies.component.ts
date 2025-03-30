@@ -80,7 +80,7 @@ export class PageWelcomeTechnologiesComponent {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: this.techGrid()?.nativeElement,
-          start: 'top 90%',
+          start: 'top 80%',
           end: 'bottom 20%',
           toggleActions: 'play none none none',
           once: true,
@@ -89,7 +89,7 @@ export class PageWelcomeTechnologiesComponent {
       });
 
       // Animate each technology item individually
-      techItems.forEach((item: HTMLElement, index: number) => {
+      techItems.forEach((item, index) => {
         const randomX = generateRandomNumber(-200, 200);
         const randomY = generateRandomNumber(-200, 200);
         const randomRotation = generateRandomNumber(-360, 360);
@@ -104,6 +104,7 @@ export class PageWelcomeTechnologiesComponent {
         });
 
         // Animate to final state
+        const overlay = index === 0 ? 0 : index * 0.15;
         tl.to(
           item,
           {
@@ -114,7 +115,7 @@ export class PageWelcomeTechnologiesComponent {
             opacity: 1,
             duration: 0.3,
           },
-          '-=0.15' // Overlap with previous animation
+          overlay
         );
       });
     });

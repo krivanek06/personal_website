@@ -1,6 +1,6 @@
 ---
-title: 'Angular SSR Cannot read properties of undefined (reading 'Core/Chart/Chart.js')'
-seoTitle: 'Angular SSR Cannot read properties of undefined (reading 'Core/Chart/Chart.js')'
+title: 'Angular SSR Cannot read properties of undefined (reading `Core/Chart/Chart.js`)'
+seoTitle: 'Angular SSR Cannot read properties of undefined (reading `Core/Chart/Chart.js`)'
 seoDescription: 'Are you still building your web application as an SPA? What is this, 2020? Nowadays, everybody is...'
 slug: 20_angular-ssr-cannot-read-properties-of-undefined-reading-corechartchartjs
 tags: javascript, angular, tutorial

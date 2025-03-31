@@ -16,7 +16,7 @@ Recently, I came across the following [dynamic service instantiation in Angular]
 
 Let’s have an example of a money-sending application (Wise, Paysend, etc.). You want to send some amount to your friend. You are required to put the amount, the address, and select what kind of payment option you want to use. Here is the ugly version of the UI and the HTML and TS part of the form.
 
-![Application UI Overview](./application-overview.png)
+![Application UI Overview](./34_application-overview.png)
 
 ```html
 <form [formGroup]="form" (ngSubmit)="onSubmit()">

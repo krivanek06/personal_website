@@ -1,13 +1,13 @@
 ---
-title: ''
-seoTitle: ''
-seoDescription: ''
-slug:
-tags: javascript, angular, rxjs, opinion
-order:
-datePublished:
-readTime:
-coverImage: ''
+title: 'Angular Clickable Component'
+seoTitle: 'Angular Clickable Component'
+seoDescription: 'Working on one of my side projects I had an interesting problem. I wanted to implement accessibility...'
+slug: 26_angular-clickable-component
+tags: angular, tutorial
+order: 26
+datePublished: 19.04.2024
+readTime: 3
+coverImage: 26_angular-clickable-component.webp
 ---
 
 Working on one of my side projects I had an interesting problem. I wanted to implement accessibility 👀 . I know, not the topic we usually talk about, but dark days sometimes come and we have to brace ourselves.

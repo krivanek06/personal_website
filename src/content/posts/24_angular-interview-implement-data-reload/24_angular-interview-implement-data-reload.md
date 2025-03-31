@@ -1,13 +1,13 @@
 ---
-title: ''
-seoTitle: ''
-seoDescription: ''
-slug:
-tags: javascript, angular, rxjs, opinion
-order:
-datePublished:
-readTime:
-coverImage: ''
+title: 'Angular Interview - Implement Data Reload'
+seoTitle: 'Angular Interview - Implement Data Reload'
+seoDescription: 'When interviewing into Angular related jobs, one question I used to get asked, is “Demonstrate a...'
+slug: 24_angular-interview-implement-data-reload
+tags: angular, rxjs, interview, tutorial
+order: 24
+datePublished: 31.01.2024
+readTime: 4
+coverImage: 24_angular-interview-implement-data-reload.webp
 ---
 
 When interviewing into Angular related jobs, one question I used to get asked, is “Demonstrate a simple data reloading when user clicks on a button” (demonstrated on the gif).

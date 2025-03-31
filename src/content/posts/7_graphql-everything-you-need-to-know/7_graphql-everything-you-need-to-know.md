@@ -1,13 +1,13 @@
 ---
-title: ''
-seoTitle: ''
-seoDescription: ''
-slug:
-tags: javascript, angular, rxjs, opinion
-order:
-datePublished:
-readTime:
-coverImage: ''
+title: 'GraphQL: Everything You Need to Know'
+seoTitle: 'GraphQL: Everything You Need to Know'
+seoDescription: 'Are you thinking about designing a backend API? You probably already know about REST architecture....'
+slug: 7_graphql-everything-you-need-to-know
+tags: graphql, tutorial
+order: 7
+datePublished: 13.03.2023
+readTime: 13
+coverImage: 7_graphql-everything-you-need-to-know.png
 ---
 
 7_graphql-everything-you-need-to-knowAre you thinking about designing a backend API? You probably already know about REST architecture. You might even know that the REST architecture doesn’t handle complex applications very well.

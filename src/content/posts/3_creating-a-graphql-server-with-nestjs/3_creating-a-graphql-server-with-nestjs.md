@@ -1,13 +1,13 @@
 ---
-title: ''
-seoTitle: ''
-seoDescription: ''
-slug:
-tags: javascript, angular, rxjs, opinion
-order:
-datePublished:
-readTime:
-coverImage: ''
+title: 'Creating a GraphQL server with NestJS'
+seoTitle: 'Creating a GraphQL server with NestJS'
+seoDescription: 'When considering building a server-side application, you might be overwhelmed by the vast majority of...'
+slug: 3_creating-a-graphql-server-with-nestjs
+tags: javascript, nestjs, graphql
+order: 3
+datePublished: 24.10.2022
+readTime: 11
+coverImage: 3_creating-a-graphql-server-with-nestjs.jpg
 ---
 
 When considering building a server-side application, you might be overwhelmed by the vast majority of technologies you can choose from.

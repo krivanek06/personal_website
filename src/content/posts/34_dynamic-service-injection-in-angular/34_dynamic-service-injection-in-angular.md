@@ -2,7 +2,7 @@
 title: 'Dynamic Service Injection In Angular'
 seoTitle: 'Dynamic Service Injection In Angular'
 seoDescription: 'How to dynamically inject services in Angular'
-slug: dynamic-service-injection-in-angular
+slug: 34_dynamic-service-injection-in-angular
 tags: javascript, angular, rxjs, tutorial
 order: 34
 datePublished: 10.01.2025

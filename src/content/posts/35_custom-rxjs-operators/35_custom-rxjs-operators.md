@@ -2,7 +2,7 @@
 title: 'Custom RxJs Operators'
 seoTitle: 'Custom RxJs Operators'
 seoDescription: 'A practical guide of creating custom rxjs operators'
-slug: custom-rxjs-operators
+slug: 35_custom-rxjs-operators
 tags: javascript, angular, rxjs, tutorial
 order: 35
 datePublished: 27.01.2025

@@ -1,13 +1,13 @@
 ---
-title: ''
-seoTitle: ''
-seoDescription: ''
-slug:
-tags: javascript, angular, rxjs, opinion
-order:
-datePublished:
-readTime:
-coverImage: ''
+title: 'Setup Angular, Firebase Functions and Shared TS types in NX Monorepo'
+seoTitle: 'Setup Angular, Firebase Functions and Shared TS types in NX Monorepo'
+seoDescription: 'Recently I started to work on a new project and after a considerable amount of time spent choosing...'
+slug: 14_sharing-types-between-angular-and-firebase-functions-in-nx-monorepo
+tags: nx, angular, firebase, monorepo
+order: 14
+datePublished: 14.06.2023
+readTime: 5
+coverImage: 14_sharing-types-between-angular-and-firebase-functions-in-nx-monorepo.png
 ---
 
 Recently I started to work on a new project and after a considerable amount of time spent choosing the tech stack, I decided to go with Angular, Firebase Cloud Functions, and NX Monorepo.

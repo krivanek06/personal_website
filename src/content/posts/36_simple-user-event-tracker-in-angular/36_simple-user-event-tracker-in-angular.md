@@ -2,7 +2,7 @@
 title: 'Simple User Event Tracker In Angular'
 seoTitle: 'Simple User Event Tracker In Angular'
 seoDescription: "A practical example of a real life problem how to track user's interaction in a web app"
-slug: simple-user-event-tracker-in-angular
+slug: 36_simple-user-event-tracker-in-angular
 tags: javascript, angular, rxjs, tutorial, tracking, event
 order: 36
 datePublished: 17.02.2025

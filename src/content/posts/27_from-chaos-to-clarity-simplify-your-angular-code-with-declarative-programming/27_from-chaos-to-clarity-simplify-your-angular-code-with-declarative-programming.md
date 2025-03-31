@@ -1,13 +1,13 @@
 ---
-title: ''
-seoTitle: ''
-seoDescription: ''
-slug:
-tags: javascript, angular, rxjs, opinion
-order:
-datePublished:
-readTime:
-coverImage: ''
+title: 'From Chaos to Clarity: Simplify Your Angular Code with Declarative Programming'
+seoTitle: 'From Chaos to Clarity: Simplify Your Angular Code with Declarative Programming'
+seoDescription: 'Not that long ago I bumped into an interesting problem. I wanted to implement a “search user”...'
+slug: 27_from-chaos-to-clarity-simplify-your-angular-code-with-declarative-programming
+tags: angular, rxjs, tutorial, beginner
+order: 27
+datePublished: 02.06.2024
+readTime: 6
+coverImage: 27_from-chaos-to-clarity-simplify-your-angular-code-with-declarative-programming.png
 ---
 
 Not that long ago I bumped into an interesting problem. I wanted to implement a “search user” dropdown. When you select a user's name, you make an API call to load more data, meanwhile the loading happens, you display a “loading…” message and once the user details are back from the server, you display those.

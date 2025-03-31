@@ -1,13 +1,13 @@
 ---
-title: ''
-seoTitle: ''
-seoDescription: ''
-slug:
-tags: javascript, angular, rxjs, opinion
-order:
-datePublished:
-readTime:
-coverImage: ''
+title: 'How shareReplay Saved My Angular Project'
+seoTitle: 'How shareReplay Saved My Angular Project'
+seoDescription: 'When I first started in Angular and saw the RxJS library, I was like: whut is this? After some crying...'
+slug: 11_how_shareReplay_saved_my_angular_project
+tags: javascript, angular, rxjs
+order: 11
+datePublished: 26.05.2023
+readTime: 4
+coverImage: 11_how_shareReplay_saved_my_angular_project.jpg
 ---
 
 When I first started in Angular and saw the RxJS library, I was like: _whut is this_? After some crying days, reading RxJs docs, and youtube tutorials, I started to get my hands on it, understand it, and appreciate it…. or as I thought.

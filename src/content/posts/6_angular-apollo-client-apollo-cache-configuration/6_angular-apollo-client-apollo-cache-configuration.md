@@ -1,13 +1,13 @@
 ---
-title: ''
-seoTitle: ''
-seoDescription: ''
-slug:
-tags: javascript, angular, rxjs, opinion
-order:
-datePublished:
-readTime:
-coverImage: ''
+title: 'Angular & Apollo Client: Apollo Cache Configuration'
+seoTitle: 'Angular & Apollo Client: Apollo Cache Configuration'
+seoDescription: 'Apollo-client might be a go-to library for connecting a frontend application to a GraphQL server;...'
+slug: 6_angular-apollo-client-apollo-cache-configuration
+tags: angular, graphql
+order: 6
+datePublished: 02.01.2023
+readTime: 8
+coverImage: 6_angular-apollo-client-apollo-cache-configuration.png
 ---
 
 [Apollo-client](https://www.apollographql.com/docs/react/) might be a go-to library for connecting a frontend application to a GraphQL server; however, it was initially built as a comprehensive state management library. The Apollo client’s cache allows persisting local data both with reactive variables and client cache queries and can extend server-side objects with local properties.

@@ -2,7 +2,7 @@
 title: 'Dive Into Angular Pipes Implementation'
 seoTitle: 'Dive Into Angular Pipes Implementation'
 seoDescription: 'Dive Into Angular Pipes Implementation'
-slug: deep_dive_into_angular_pipes_implementation
+slug: 31_deep_dive_into_angular_pipes_implementation
 tags: javascript, angular, rxjs, tutorial
 order: 31
 datePublished: 11.10.2024

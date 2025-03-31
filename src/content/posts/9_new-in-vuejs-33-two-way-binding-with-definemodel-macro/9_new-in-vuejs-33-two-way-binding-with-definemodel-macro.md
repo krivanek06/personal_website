@@ -1,13 +1,13 @@
 ---
-title: ''
-seoTitle: ''
-seoDescription: ''
-slug:
-tags: javascript, angular, rxjs, opinion
-order:
-datePublished:
-readTime:
-coverImage: ''
+title: 'New in Vue.js 3.3: Two-Way Binding With defineModel Macro'
+seoTitle: 'New in Vue.js 3.3: Two-Way Binding With defineModel Macro'
+seoDescription: 'With the upcoming VueJS version 3.3 the community once again doesn’t disappoint and releases many...'
+slug: 9_new-in-vuejs-33-two-way-binding-with-definemodel-macro
+tags: vuejs, tutorial
+order: 9
+datePublished: 13.05.2023
+readTime: 4
+coverImage: 9_new-in-vuejs-33-two-way-binding-with-definemodel-macro.jpg
 ---
 
 With the upcoming [VueJS version 3.3](https://github.com/vuejs/core/blob/main/CHANGELOG.md#330-2023-05-08) the community once again doesn’t disappoint and releases many useful features for developers to be more productive, and ship features faster.

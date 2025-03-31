@@ -1,13 +1,13 @@
 ---
-title: ''
-seoTitle: ''
-seoDescription: ''
-slug:
-tags: javascript, angular, rxjs, opinion
-order:
-datePublished:
-readTime:
-coverImage: ''
+title: 'Angular SSR Cannot read properties of undefined (reading 'Core/Chart/Chart.js')'
+seoTitle: 'Angular SSR Cannot read properties of undefined (reading 'Core/Chart/Chart.js')'
+seoDescription: 'Are you still building your web application as an SPA? What is this, 2020? Nowadays, everybody is...'
+slug: 20_angular-ssr-cannot-read-properties-of-undefined-reading-corechartchartjs
+tags: javascript, angular, tutorial
+order: 20
+datePublished: 09.08.2023
+readTime: 2
+coverImage: 20_angular-ssr-cannot-read-properties-of-undefined-reading-corechartchartjs.webp
 ---
 
 Are you still building your web application as an SPA? What is this, 2020? Nowadays, everybody is doing SSR.

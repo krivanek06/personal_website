@@ -1,13 +1,13 @@
 ---
-title: ''
-seoTitle: ''
-seoDescription: ''
-slug:
-tags: javascript, angular, rxjs, opinion
-order:
-datePublished:
-readTime:
-coverImage: ''
+title: 'Angular: Default Image Placeholder'
+seoTitle: 'Angular: Default Image Placeholder'
+seoDescription: 'Working on the frontend, most of the time you want to display images loaded from a CDN. The request...'
+slug: 22_angular-default-image-placeholder
+tags: angular, tutorial
+order: 22
+datePublished: 12.11.2023
+readTime: 3
+coverImage: 22_angular-default-image-placeholder.webp
 ---
 
 Working on the frontend, most of the time you want to display images loaded from a CDN. The request takes some time and while it is not yet completed a nasty placeholder is displayed until the image is loaded (or when it fails).

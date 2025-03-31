@@ -1,13 +1,13 @@
 ---
-title: ''
-seoTitle: ''
-seoDescription: ''
-slug:
-tags: javascript, angular, rxjs, opinion
-order:
-datePublished:
-readTime:
-coverImage: ''
+title: 'Angular InjectionToken in NX'
+seoTitle: 'Angular InjectionToken in NX'
+seoDescription: 'Recently I migrated one of my applications from a pure Angular project into NX monorepo and...'
+slug: 15_angular-injectiontoken-in-nx
+tags: nx, angular, rxjs, beginner
+order: 15
+datePublished: 19.06.2023
+readTime: 3
+coverImage: 15_angular-injectiontoken-in-nx.png
 ---
 
 Recently I migrated one of my applications from a pure Angular project into NX monorepo and encountered an interesting example of passing environments variable into libraries where I had to use [InjectionToken](https://angular.io/api/core/InjectionToken) to solve my problem.

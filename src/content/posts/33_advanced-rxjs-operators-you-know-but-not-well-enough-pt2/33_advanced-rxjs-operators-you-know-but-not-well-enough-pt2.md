@@ -2,7 +2,7 @@
 title: 'Advanced RxJs Operators You Know But Not Well Enough pt2'
 seoTitle: 'Advanced RxJs Operators You Know But Not Well Enough pt2'
 seoDescription: 'Advanced RxJs Operators You Know But Not Well Enough pt2'
-slug: advanced-rxjs-operators-you-know-but-not-well-enough-pt2
+slug: 33_advanced-rxjs-operators-you-know-but-not-well-enough-pt2
 tags: javascript, angular, rxjs, tutorial
 order: 33
 datePublished: 12.01.2024

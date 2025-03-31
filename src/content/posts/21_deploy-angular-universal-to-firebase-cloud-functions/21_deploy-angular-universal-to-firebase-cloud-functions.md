@@ -1,13 +1,13 @@
 ---
-title: ''
-seoTitle: ''
-seoDescription: ''
-slug:
-tags: javascript, angular, rxjs, opinion
-order:
-datePublished:
-readTime:
-coverImage: ''
+title: 'Deploy Angular Universal To Firebase Cloud Functions'
+seoTitle: 'Deploy Angular Universal To Firebase Cloud Functions'
+seoDescription: 'ou’ve finally finished your first, releasable version of your Angular Universal application and you...'
+slug: 21_deploy-angular-universal-to-firebase-cloud-functions
+tags: firebase, angular, tutorial, beginner
+order: 21
+datePublished: 29.08.2023
+readTime: 7
+coverImage: 21_deploy-angular-universal-to-firebase-cloud-functions.webp
 ---
 
 You’ve finally finished your first, releasable version of your Angular Universal application and you are ready to deploy it! So where to deploy? Honestly, there are many options. DigitalOcean, Heroku, Vercel, etc. But, in this article, we will take a look at deploying Angular Universal into Firebase Functions.

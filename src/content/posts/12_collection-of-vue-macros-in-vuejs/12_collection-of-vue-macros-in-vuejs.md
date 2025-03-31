@@ -1,13 +1,13 @@
 ---
-title: ''
-seoTitle: ''
-seoDescription: ''
-slug:
-tags: javascript, angular, rxjs, opinion
-order:
-datePublished:
-readTime:
-coverImage: ''
+title: 'Collection of Vue Macros in Vue.js 3.3'
+seoTitle: 'Collection of Vue Macros in Vue.js 3.3'
+seoDescription: 'Many developers (myself included) were excited when Vue.js version 3.3 introduced several...'
+slug: 12_collection-of-vue-macros-in-vuejs
+tags: vuejs, beginner, opensource
+order: 12
+datePublished: 28.05.2023
+readTime: 5
+coverImage: 12_collection-of-vue-macros-in-vuejs.jpg
 ---
 
 Many developers (myself included) were excited when [Vue.js version 3.3](https://blog.vuejs.org/posts/vue-3-3) introduced several functionalities from [Vue Macros](https://vue-macros.sxzz.moe/), the collection of proposed additions to Vue.js that extend its basic functionalities with syntactic sugar.

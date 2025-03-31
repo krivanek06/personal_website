@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 Working on one of my side projects I had an interesting problem. I wanted to implement accessibility 👀 . I know, not the topic we usually talk about, but dark days sometimes come and we have to brace ourselves.
 
 ## The Task

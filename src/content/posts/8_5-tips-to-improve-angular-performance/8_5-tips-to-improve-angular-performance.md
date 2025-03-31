@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 As an Angular developer, you understand the importance of building high-performing web apps. Slow loading times, sluggish UI, and poor user experience can all harm your website's reputation and deter users from returning.
 
 Fear not—there is a better way! In this blog post, you’ll learn five actionable tips that you can use immediately to boost your web application's performance. From avoiding memory leaks to running analytics outside of NgZone, let’s cover a variety of strategies to give your customers the best experience.

@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 You’ve finally finished your first, releasable version of your Angular Universal application and you are ready to deploy it! So where to deploy? Honestly, there are many options. DigitalOcean, Heroku, Vercel, etc. But, in this article, we will take a look at deploying Angular Universal into Firebase Functions.
 
 ## Disclaimer

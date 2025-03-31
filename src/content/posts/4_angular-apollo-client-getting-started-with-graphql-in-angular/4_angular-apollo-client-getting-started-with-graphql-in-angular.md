@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 GraphQL servers are becoming more and more popular. Backend developers recognize the added value of switching from traditional REST architecture to GraphQL, despite the higher application complexity.
 
 This article will teach Angular developers the basics of implementing CRUD (create, read, update, delete) operations in the Apollo client. The result will be a movie application where you can create, update, or delete movies entities.

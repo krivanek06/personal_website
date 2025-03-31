@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 Recently I migrated one of my applications from a pure Angular project into NX monorepo and encountered an interesting example of passing environments variable into libraries where I had to use [InjectionToken](https://angular.io/api/core/InjectionToken) to solve my problem.
 
 ## Original Implementation In Angular

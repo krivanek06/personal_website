@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 Rendering takes time. That is especially the case if you have to load large amounts of data from your server and display them. Sometimes the server doesn’t handle pagination and returns the whole collection of data at once.
 
 Of course, you don’t want to display 2000 elements for the user, because the more complex the components structure for the element is, the more time it will take to render. Rendering takes computer resources, and time, and the UI is blocked until everything is ready (if you don’t use web workers).

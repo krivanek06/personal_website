@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 Angular version 16 released a feature, that, I would say wasn’t really expected to come and shocked most of the developers. Yes, I am talking about [Angular Signals](https://angular.io/guide/signals). There are lots of already made great articles from developers, such as [Angular & Signals. Everything you need to know](https://dev.to/this-is-angular/angular-signals-everything-you-need-to-know-2b7g), from [Robin Goetz](https://dev.to/goetzrobin) (kudos to him), however with this article I want to give my experience working with them.
 
 ## Initial Confused Feelings

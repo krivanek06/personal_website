@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 As a frontend developer you most likely had a task to display data in a table and as an Angular frontend developer, you probably picked [Angular Material](https://material.angular.io/) to do so.
 
 In my previous article [Angular: Infinite Scrolling](https://dev.to/krivanek06/angular-infinite-scrolling-2jab) I mentioned how you can infinite table scrolling starting with a initial few elements, however despite it is a good UX solution, sometimes we have to go with the traditional pagination.

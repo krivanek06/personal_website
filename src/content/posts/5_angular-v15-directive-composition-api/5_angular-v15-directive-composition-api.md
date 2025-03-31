@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 One of the advantages of using the [Angular](https://www.bitovi.com/frontend-javascript-consulting/angular-consulting) ecosystem is that it never forgets about you. If Angular can’t solve your request right away because the current technology doesn’t allow it, they often return to it. An example of this is [issue #8785](https://github.com/angular/angular/issues/8785), which was open for 6 years but was finally solved in 2022.
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/4cec6f80b25srcj7gga8.png)

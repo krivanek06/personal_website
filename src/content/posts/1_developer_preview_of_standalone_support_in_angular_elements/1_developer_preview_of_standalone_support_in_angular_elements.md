@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 Have you seen it already? Angular version [14.2 ](https://github.com/angular/angular/releases/tag/14.2.0)is here with new features and improvements! One of the merged PRs includes [creating custom elements without NgModule](https://github.com/angular/angular/pull/46475). In this post, we will take a look at how to create Angular elements in Angular v14.2.
 
 The source code for the examples in this post is available on [GitHub here](https://github.com/krivanek06/example_projects/tree/main/angular-elements).

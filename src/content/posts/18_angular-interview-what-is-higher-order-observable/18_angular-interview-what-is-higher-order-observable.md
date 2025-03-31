@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 One of the most common questions in Angular interviews is “_what is a Higher-Order Observable_”?
 
 It is a question, that I used or was asked multiple times, which can immediately tell you a decent enough information of how skillful the person is with RxJs. Let’s first take a look at what is a Higher-Order Function in Javascript and then discuss what it means in what world of Observables.

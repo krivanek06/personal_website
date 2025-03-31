@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 When interviewing into Angular related jobs, one question I used to get asked, is “Demonstrate a simple data reloading when user clicks on a button” (demonstrated on the gif).
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/nfejshzdmijhx0l58zki.gif)

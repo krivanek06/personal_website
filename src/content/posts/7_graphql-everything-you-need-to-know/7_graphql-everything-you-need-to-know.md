@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 7_graphql-everything-you-need-to-knowAre you thinking about designing a backend API? You probably already know about REST architecture. You might even know that the REST architecture doesn’t handle complex applications very well.
 
 If so, you might be struggling to answer the following questions:

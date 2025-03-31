@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 Not that long ago I bumped into an interesting problem. I wanted to implement a “search user” dropdown. When you select a user's name, you make an API call to load more data, meanwhile the loading happens, you display a “loading…” message and once the user details are back from the server, you display those.
 
 Kinda like the following GIF on which I will be describing the two approaches (declarative and imperative) that I used.

@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 Recently I have deployed one of my application into Google Play. I had a few problems so I thought I could try to write down a step-by-step guide, especially for my future self. This article will have an example Angular application connected to firebase, which we will deploy to Google Play, however, these steps are framework independent, so I guess it will be very similar for react, svelte, etc.
 
 With this article I assume that you already have a web application with a mobile design ready. You most likely use a client side firebase SDK like `@angular/fire` and the only missing step is to deploy into Google Play for which we will use [Capacitor](https://capacitorjs.com/docs).

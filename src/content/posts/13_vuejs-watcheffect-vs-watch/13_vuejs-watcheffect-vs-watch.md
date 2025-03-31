@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 In Vue 3, there are two main ways to observe changes to reactive data: `watch` and `watchEffect`. While both accomplish the same goal of re-running code in response to changes in reactive data, they differ in important ways.
 
 In short, `watch` is a function that allows you to observe changes to specific reactive data and perform actions in response to those changes. On the other hand `watchEffect` is a reactive function that automatically tracks any reactive dependencies used inside it.

@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 Are you still building your web application as an SPA? What is this, 2020? Nowadays, everybody is doing SSR.
 We have great tutorials for Next.js & Nuxt.js; however, we lack a bit of information about SSR in the Angular ecosystem.
 

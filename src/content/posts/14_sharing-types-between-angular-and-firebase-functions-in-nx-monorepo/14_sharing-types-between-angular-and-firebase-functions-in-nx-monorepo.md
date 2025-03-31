@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 Recently I started to work on a new project and after a considerable amount of time spent choosing the tech stack, I decided to go with Angular, Firebase Cloud Functions, and NX Monorepo.
 
 I want to share how I integrated Firebase Cloud Functions into an NX Monorepo and shared TS types between them because It took me a while to figure it out, so I hope it may help somebody.

@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 Using rxjs you have many occurrences when you want to catch the errors from your streams, handle them and return an arbitrary value. Examples may be include http calls, logical operations, calculations, etc. However did you know that the position of you `catchError` operator does matter ?
 
 ## Problem Overview

@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 With the upcoming [VueJS version 3.3](https://github.com/vuejs/core/blob/main/CHANGELOG.md#330-2023-05-08) the community once again doesn’t disappoint and releases many useful features for developers to be more productive, and ship features faster.
 
 One of the newly welcomed features is [defineModel](https://github.com/vuejs/core/pull/8018) which allows us to implement much smoother 2-way binding. Let’s demonstrate its usage in the following blogpost.

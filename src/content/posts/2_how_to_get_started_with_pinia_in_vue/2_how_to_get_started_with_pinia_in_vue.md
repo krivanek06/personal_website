@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 You are starting your VueJs project and you get stuck on a question: how am I going to share data across multiple components? While there are a variety of lightweight state management libraries for Vue, [Pinia](https://pinia.vuejs.org/introduction.html) is the one [officially recommended by the Vue team](https://vuejs.org/guide/scaling-up/state-management.html#pinia), that solves sharing data across components intuitively.
 
 On one hand, the most used library in Vue is [Vuex](https://vuex.vuejs.org/); however, Pinia has almost the exact same or enhanced API as Vuex 5, described in [Vuex 5 RFC](https://github.com/vuejs/rfcs/pull/271). Pinia can be considered as a successor of Vuex with a different name and is also compatible with Vue 2.x.

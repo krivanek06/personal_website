@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 When considering building a server-side application, you might be overwhelmed by the vast majority of technologies you can choose from.
 
 The following guide will give you a tech stack, and a basic understanding of how to set up a GraphQL backend server using [NestJS](https://docs.nestjs.com/) connected to a [Postgres](https://www.postgresql.org/docs/) database via [Prisma](https://www.prisma.io/docs/), and run the whole server on [Docker](https://www.docker.com/). The source code that covers this example and additional features can be found in the following [GitHub repository](https://github.com/krivanek06/graphql_example).

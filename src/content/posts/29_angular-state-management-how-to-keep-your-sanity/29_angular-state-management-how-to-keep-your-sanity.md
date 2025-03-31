@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 Building anything meaningful requires having a state management in your app. The question is, how should you design your state services ? Should you use a custom implementation - subjects or signals ? Or should you check out NgRx or something else? What are even the differences?
 
 In this article I want to answer the question of how to implement application state using different approaches so that you can choose the one which suits you the most.

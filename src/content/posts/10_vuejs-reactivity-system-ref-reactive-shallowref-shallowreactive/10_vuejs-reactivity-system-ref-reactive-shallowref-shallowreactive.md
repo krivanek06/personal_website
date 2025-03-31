@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 Vue.js is a popular JavaScript framework that provides developers with various tools to create dynamic and reactive web applications.
 
 One of the key features of Vue is its reactivity system, which enables the framework to efficiently update the view when the state changes. In this blog post, you’ll learn the different types of reactive objects, such as `ref` and `reactive`, when to use which, and ones that you maybe haven’t heard of like `shallowRef` and `shallowReactive`.

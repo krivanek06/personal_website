@@ -1,3 +1,15 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 When I first started in Angular and saw the RxJS library, I was like: _whut is this_? After some crying days, reading RxJs docs, and youtube tutorials, I started to get my hands on it, understand it, and appreciate it…. or as I thought.
 
 ## Introducing the Problem

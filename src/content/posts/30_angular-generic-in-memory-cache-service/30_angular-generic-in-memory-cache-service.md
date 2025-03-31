@@ -1,10 +1,22 @@
+---
+title: ''
+seoTitle: ''
+seoDescription: ''
+slug:
+tags: javascript, angular, rxjs, opinion
+order:
+datePublished:
+readTime:
+coverImage: ''
+---
+
 When [manage application state](https://dev.to/krivanek06/angular-state-management-how-to-keep-your-sanity-1oin) in you Angular projects, you create a service to handle a specific feature state, such as booking state, user state, groups, etc.
 
 However there are cases where you have such a little data that it’s not worth creating a separate service, but rather have one service where you keep some general application information, and maybe synchronize with local storage.
 
 You want to have a strongly typed service where you can save pieces of data under specific keys and sync it with local storage, so how to go around it? First create you types and initial late:
 
-```jsx
+```TS
 export type LocalStorageData = {
   /** user's demo account */
   demoAccount?: {
@@ -30,7 +42,7 @@ export const storageInitialData: LocalStorageData = {
 
 in this case `LocalStorageData` represents what data type we want to save into the store service and `storageInitialData` is the initial store data. Then to create a storage service, you can go as follows:
 
-```jsx
+```TS
 @Injectable({
   providedIn: 'root',
 })
@@ -124,7 +136,7 @@ Using generics we can achieve a strongly typed service with the following `<T ex
 
 Finally the exposed signal `localData` that has the current state value. Use signals rather than observables to handle state.
 
-```jsx
+```TS
 @Component({
   selector: 'app-page-menu',
   standalone: true,

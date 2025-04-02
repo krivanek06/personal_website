@@ -80,7 +80,6 @@ export class PageWelcomePublishedBlogsComponent {
     .slice(0, 6);
 
   constructor() {
-    console.log('posts', this.blogPosts); // todo: remove
     afterNextRender(() => {
       gsap.registerPlugin(ScrollTrigger);
 

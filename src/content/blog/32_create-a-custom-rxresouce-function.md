@@ -5,7 +5,7 @@ seoDescription: 'Creating Custom Rxresource API in Angular'
 slug: 32_create-a-custom-rxresouce-function
 tags: javascript, angular, rxjs, tutorial
 order: 32
-datePublished: 14.11.2025
+datePublished: 14.11.2024
 readTime: 8
 coverImage: 32_custom-rxresouce-api.png
 ---

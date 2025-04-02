@@ -8,6 +8,7 @@ import { RouterOutlet } from '@angular/router';
   template: `
     <main>
       <router-outlet />
+      <footer class="h-14 bg-black"></footer>
     </main>
   `,
   styles: ``,

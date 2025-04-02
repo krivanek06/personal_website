@@ -5,6 +5,7 @@ export default interface PostAttributes {
   seoTitle: string;
   slug: string;
   tags: string;
+  tagsArray: string[];
   title: string;
   readTime: number;
   coverImage: string;

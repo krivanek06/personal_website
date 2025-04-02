@@ -74,8 +74,6 @@ import { BlobComponent, SvgOneComponent, SvgTwoComponent } from '../shared/compo
       <section class="relative">
         <app-page-welcome-connect />
       </section>
-
-      <footer class="h-20 bg-black"></footer>
     </div>
   `,
   standalone: true,

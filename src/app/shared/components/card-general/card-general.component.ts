@@ -27,5 +27,5 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class CardGeneralComponent {
-  additionalClasses = input<string>('');
+  readonly additionalClasses = input<string>('');
 }

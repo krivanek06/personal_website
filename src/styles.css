@@ -5,6 +5,9 @@
 /* check node_modules/prismjs/themes/ for the available themes */
 @import 'prismjs/themes/prism-tomorrow';
 
+/* highlight text for markdown */
+@plugin "@tailwindcss/typography";
+
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,
   so we've added these compatibility styles to make sure everything still

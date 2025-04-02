@@ -57,6 +57,7 @@
     "@nx/workspace": "20.7.1",
     "@schematics/angular": "^19.2.6",
     "@tailwindcss/postcss": "^4.1.1",
+    "@tailwindcss/typography": "^0.5.16",
     "jsdom": "^26.0.0",
     "nx": "20.7.1",
     "postcss": "^8.5.3",

@@ -15,7 +15,7 @@ import PostAttributes from '../../post-attributes';
         <article
           class="prose prose-slate dark:prose-invert flex w-full flex-col px-4 py-16 md:max-w-4xl">
           <!-- back button -->
-          <a routerLink="/blog" class="btn mb-8 flex w-64 flex-row items-center"
+          <a routerLink="/blog" class="mb-8 flex w-64 flex-row items-center"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

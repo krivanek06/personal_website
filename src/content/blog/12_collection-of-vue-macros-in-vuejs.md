@@ -98,15 +98,15 @@ Vue.js 3.3 recently received the `defineModels` enhancement for two-way binding 
 
 You will find more information in our blog post: [New in Vue.js 3.3: Two-Way Binding With defineModel Macro](https://www.bitovi.com/blog/new-in-vue-3.3-two-way-binding-with-definemodel-macro). However, opting for the `defineModel` functionality in Vue.js 3.3, as it is still an experimental feature, you have to modify your `vite.config.ts` in the following way:
 
-```TS
-    plugins: [
-      vue({
-        script: {
-          defineModel: true
-          // ^^ enables the feature
-        }
-      })
-    ]
+```typescript
+plugins: [
+  vue({
+    script: {
+      defineModel: true,
+      // ^^ enables the feature
+    },
+  }),
+];
 ```
 
 ### Macro definePropsRefs

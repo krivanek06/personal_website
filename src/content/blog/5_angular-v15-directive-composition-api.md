@@ -136,10 +136,8 @@ export class ButtonPrimaryDirective {
 
 The `ButtonDirective` we created using Angular’s `@HostListener('click')` is console logging each click event inside the `onClick` method. It is a standard Angular Directive used in the following approach:
 
-```HTML
-<button appClickLogging type="success">
-  Logging Success button
-</button>
+```html
+<button appClickLogging type="success">Logging Success button</button>
 ```
 
 Let’s consider a scenario where a product manager asks us to track every `primary button` click.
@@ -416,10 +414,8 @@ export class TestComponent {
 
 Let’s say we are using `CdkDrag` and `matTooltip` plenty of times in our application by the following approach
 
-```HTML
-<button cdkDrag matTooltip="Info" [matTooltipHideDelay]="400">
-    Click me
-</button>
+```html
+<button cdkDrag matTooltip="Info" [matTooltipHideDelay]="400">Click me</button>
 ```
 
 To compose the behavior of these two Directives, you may be tempted to create something like

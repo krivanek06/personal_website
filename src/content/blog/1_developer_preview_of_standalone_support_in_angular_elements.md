@@ -119,19 +119,19 @@ createApplication({ providers: [] }).then(appRef => {
 
 Without bootstrapping any components, the [createApplication](https://angular.io/api/platform-browser/createApplication) method produces an instance of the application. Its strength resides in its ability to delay or decouple the rendering of components with various injector trees. Changing the `main.ts` file, generating a `custom-voting-element.js`, and including this script to whatever web application, you can use your custom `voting-new` element in the following way:
 
-```HTML
+```html
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<title>AngularElements</title>
-		<base href="/" />
-		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<script defer src="./custom-voting-element.js"></script>
-	</head>
-	<body>
-		<voting-new></voting-new>
-	</body>
+  <head>
+    <meta charset="utf-8" />
+    <title>AngularElements</title>
+    <base href="/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script defer src="./custom-voting-element.js"></script>
+  </head>
+  <body>
+    <voting-new></voting-new>
+  </body>
 </html>
 ```
 

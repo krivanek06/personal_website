@@ -221,7 +221,7 @@ mutation DeleteMovie($movieId: Int!) {
 
 To generate TypeScript types, create a file named `codegen.yml` at the root of the application. codegen.yml is a configuration file for [graphql-code-generator](https://www.graphql-code-generator.com/), which describes the endpoints for inspecting the server-side schema, the places where you want to generate TypeScript types, the plugins you intend to use, and [much more](https://www.the-guild.dev/graphql/mesh/docs). In our case, the codegen.yml looks like the following.
 
-```YAML
+```yaml
 overwrite: true
 generates:
   # where to generate file

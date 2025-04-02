@@ -151,7 +151,7 @@ export class App {
 
 Just to have all the code, here is the used CSS
 
-```CSS
+```css
 /* Add application styles & imports to this file! */
 .g-skeleton {
   border-radius: 10px;
@@ -190,7 +190,6 @@ Just to have all the code, here is the used CSS
   display: flex;
   gap: 16px;
 }
-
 ```
 
 ## Summary

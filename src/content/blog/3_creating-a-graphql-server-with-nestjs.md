@@ -53,7 +53,7 @@ Docker allows you to package up an application with all its parts, such as libra
 
 At the root of our project, you’ll create a `docker-compose.yml` with the following configuration:
 
-```YAML
+```yaml
 version: '3.9'
 services:
   postgres:

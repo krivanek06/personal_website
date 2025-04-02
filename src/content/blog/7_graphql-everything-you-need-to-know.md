@@ -263,7 +263,7 @@ queryParam: 'limit'
 
 that could result in the following Database calls
 
-```SQL
+```sql
 SELECT * FROM launches limit = {limit};
 
 -- pass the fetched launches.ids the the second query
@@ -324,7 +324,7 @@ query LaunchesPastQuery($limit: Int!) {
 
 will translate to the following pseudo-SQL:
 
-```SQL
+```sql
 SELECT * FROM launches limit = {limit};
 
 -- pass the fetched launches.ids the the second query
@@ -384,7 +384,7 @@ In conclusion, if you query a list of objects, and only one of them does not mat
 
 As a query language for APIs, GraphQL gives clients the power to execute queries to get exactly what they need. But what if a client sends a query asking for many fields and resources? With GraphQL, users can’t simply run any query they want.
 
-```JSON
+```json
 authors {
   name
   books {

@@ -122,14 +122,14 @@ const onButtonClick = () => {
 > :warning: **Warning**
 > When working with the `reactive` function, always access the object by its keys. When you try to change the `reactive` variable reference, the reactivity will break. In the following code, you can see an example of a broken reactivity
 
-```JS
+```js
 let dataModel = reactive({
-  counter: 0
+  counter: 0,
 });
 
 const onButtonClick = () => {
   dataModel = reactive({
-    counter: dataModel.counter + 1
+    counter: dataModel.counter + 1,
   });
 };
 ```
@@ -140,7 +140,7 @@ You will find in the documentation that ref is used mainly for primitives but al
 
 At first glance, the main difference is just using the .value keyword when accessing the value of the ref property. However, another thing is with the implementation. Taking a look at the ref [implementation from Github](https://github.com/vuejs/core/blob/main/packages/reactivity/src/ref.ts), you can see the following code:
 
-```JS
+```js
 class RefImpl<T> {
   private _value: T
   private _rawValue: T

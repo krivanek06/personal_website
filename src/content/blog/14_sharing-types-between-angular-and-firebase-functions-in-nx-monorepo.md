@@ -34,7 +34,7 @@ Which is a tool that can be used to test, manage, and deploy your Firebase proje
 
 To enable the interaction between our Angular application and Firebase, you want to install [@angular/fire](https://www.npmjs.com/package/@angular/fire). Using NX, you have to specify which application you want to target to communicate with Firebase, so the end command will be similar to:
 
-```JS
+```bash
 nx g @angular/fire:ng-add --project=test-app
 ```
 

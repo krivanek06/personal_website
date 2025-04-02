@@ -196,27 +196,27 @@ The second and more flexible approach is using a standard `fetch()` request, whe
 
 You can think of our application as an airline ticketing portal, a form based system spread across multiple routes, where users input details step by step, the final page is the checkout page, however the user can cancel his order on any step.
 
-```HTML
+```html
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-	<mat-form-field>
-	  <mat-label>Email</mat-label>
-	  <input matInput formControlName="email" />
-	</mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput formControlName="email" />
+  </mat-form-field>
 
-	<mat-form-field>
-	  <mat-label>Gender</mat-label>
-	  <mat-select formControlName="gender">
-	    <mat-option value="man">Man</mat-option>
-	    <mat-option value="woman">Woman</mat-option>
-	  </mat-select>
-	</mat-form-field>
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <mat-select formControlName="gender">
+      <mat-option value="man">Man</mat-option>
+      <mat-option value="woman">Woman</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-	<mat-radio-group>
-	  <mat-radio-button value="1">Option 1</mat-radio-button>
-	  <mat-radio-button value="2">Option 2</mat-radio-button>
-	</mat-radio-group>
+  <mat-radio-group>
+    <mat-radio-button value="1">Option 1</mat-radio-button>
+    <mat-radio-button value="2">Option 2</mat-radio-button>
+  </mat-radio-group>
 
-	<button mat-stroked-button type="submit">Submit</button>
+  <button mat-stroked-button type="submit">Submit</button>
 </form>
 ```
 
@@ -235,29 +235,27 @@ One solution that was proposed, though not ideal, was to apply [aria-label to na
 
 The `aria-label` enhances accessibility, however it can confuse screen readers if the naming is incorrect. Additionally, it should always be localized. I heard a saying which goes "a website without arial is still better than a website full of false ones". The goal is to have a selector that remains in English and is ignored by screen readers. Instead of using `aria-label` selector, we can introduce the [data-label attribute](https://developer.mozilla.org/en-US/docs/Learn_web_development/Howto/Solve_HTML_problems/Use_data_attributes).
 
-```HTML
+```html
 <form [formGroup]="form" (ngSubmit)="onSubmit()">
-	<mat-form-field>
-	  <mat-label>Email</mat-label>
-	  <input data-label="Email" matInput formControlName="email" />
-	</mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input data-label="Email" matInput formControlName="email" />
+  </mat-form-field>
 
-	<mat-form-field>
-	  <mat-label>Gender</mat-label>
-	  <mat-select formControlName="gender">
-	    <mat-option data-label="Gender" value="man">Man</mat-option>
-	    <mat-option data-label="Gender" value="woman">Woman</mat-option>
-	  </mat-select>
-	</mat-form-field>
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <mat-select formControlName="gender">
+      <mat-option data-label="Gender" value="man">Man</mat-option>
+      <mat-option data-label="Gender" value="woman">Woman</mat-option>
+    </mat-select>
+  </mat-form-field>
 
-	<mat-radio-group data-label="RadioLabel 1" formControlName="radioEx1">
-	  <mat-radio-button value="1">Option 1</mat-radio-button>
-	  <mat-radio-button value="2">Option 2</mat-radio-button>
-	</mat-radio-group>
+  <mat-radio-group data-label="RadioLabel 1" formControlName="radioEx1">
+    <mat-radio-button value="1">Option 1</mat-radio-button>
+    <mat-radio-button value="2">Option 2</mat-radio-button>
+  </mat-radio-group>
 
-	<button data-label="SubmitButton" mat-stroked-button type="submit">
-		Submit
-	</button>
+  <button data-label="SubmitButton" mat-stroked-button type="submit">Submit</button>
 </form>
 ```
 

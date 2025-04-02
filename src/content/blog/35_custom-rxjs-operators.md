@@ -103,7 +103,7 @@ The function name is `multiplyBy()` which is used inside a pipe chain. It return
 
 This implementation works fine, however, I didn’t like this extra layer of abstraction by creating an additional Observable wrapping around the `source` Observable, and also explicitly subscribing to the `source`. This approach is useful if we need full control over subscription management or have complex custom logic. Since none of these apply to our code, we can simplify our custom operator as follows:
 
-```typescriptx
+```typescript
 export function multiplyBy(val = 2): MonoTypeOperatorFunction<number> {
   return source => source.pipe(map(d => d * val));
 }

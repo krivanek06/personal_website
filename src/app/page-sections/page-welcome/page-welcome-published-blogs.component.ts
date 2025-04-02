@@ -74,13 +74,13 @@ export class PageWelcomePublishedBlogsComponent {
   private readonly blogPostContainer = viewChild<ElementRef>('blogPostContainer');
 
   readonly blogPosts = injectContentFiles<PostAttributes>(contentFiles =>
-    contentFiles.filename.includes('/src/content/posts')
+    contentFiles.filename.includes('/src/content/blog')
   )
     .sort((a, b) => b.attributes.order - a.attributes.order)
     .slice(0, 6);
 
   constructor() {
-    console.log('posts', this.blogPosts);
+    console.log('posts', this.blogPosts); // todo: remove
     afterNextRender(() => {
       gsap.registerPlugin(ScrollTrigger);
 

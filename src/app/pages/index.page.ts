@@ -82,4 +82,6 @@ import { BlobComponent, SvgOneComponent, SvgTwoComponent } from '../shared/compo
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class PageWelcomeComponent {}
+export default class PageWelcomeComponent {
+  // todo - add some social - og:FB:TITLE
+}

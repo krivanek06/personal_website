@@ -254,7 +254,7 @@ Additionally, `httpResource` gives us the `progress` of the HTTP request, and we
 
 Let’s look at the following example. We have a search bar that loads items based on the prefix and selected genres, and when an item is selected, the search results will be dismissed.
 
-![Overview Of A Simple Search](./37_signal-types-personal-take-search-overview.png)
+![Overview Of A Simple Search](./images/37_signal-types-personal-take-search-overview.png)
 
 To achieve this behavior with the new signal APIs, we could implement something like the code below. I’d say the code is definitely easy to read and doesn’t require RxJS.
 

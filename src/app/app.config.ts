@@ -3,12 +3,16 @@ import { withShikiHighlighter } from '@analogjs/content/shiki-highlighter';
 import { provideFileRouter, requestContextInterceptor } from '@analogjs/router';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, provideExperimentalZonelessChangeDetection } from '@angular/core';
-import { withViewTransitions } from '@angular/router';
+import { withInMemoryScrolling, withViewTransitions } from '@angular/router';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideExperimentalZonelessChangeDetection(),
     provideFileRouter(
+      // this is in place of scrollPositionRestoration: 'disabled',
+      withInMemoryScrolling({
+        scrollPositionRestoration: 'top',
+      }),
       // add transition animations
       withViewTransitions()
     ),

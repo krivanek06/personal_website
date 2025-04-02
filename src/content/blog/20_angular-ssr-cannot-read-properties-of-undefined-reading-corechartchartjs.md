@@ -27,7 +27,7 @@ Accessing `window` or `document` objects on the server side will result to an er
 
 For this example I am using standalone components and the implementation goes as follows. Install the [domino package](https://www.npmjs.com/package/domino) by `npm i --save-dev domino` or `yarn add -D domino` and then add the following code to your `main.server.ts`:
 
-```tsx
+```typescript
 import { bootstrapApplication } from '@angular/platform-browser';
 import * as fs from 'fs';
 import * as path from 'path';
@@ -47,7 +47,9 @@ const bootstrap = () => bootstrapApplication(AppComponent, config);
  */
 const domino = require('domino');
 
-const template = fs.readFileSync(path.join('dist/apps/<appName>/browser', 'index.html')).toString();
+const template = fs
+  .readFileSync(path.join('dist/apps/<appName>/browser', 'index.html'))
+  .toString();
 
 const window = domino.createWindow(template);
 (global as any).window = window;

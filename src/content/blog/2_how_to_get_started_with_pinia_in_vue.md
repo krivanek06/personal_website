@@ -24,20 +24,18 @@ Comparison, such as [Pinia against Vuex](https://npmtrends.com/pinia-vs-vuex), s
 
 Let’s take a look at how Pinia works. Installing and opting for Pinia is relatively straight forward. Follow the example below:
 
-```
+```bash
 npm install pinia
 ```
 
-```TS
+```typescript
 // main.js or main.ts
 
-import { createPinia } from "pinia";
-import { createApp } from "vue";
-import App from "./App.vue";
+import { createPinia } from 'pinia';
+import { createApp } from 'vue';
+import App from './App.vue';
 
-createApp(App)
-.use(createPinia())
-.mount('#app')
+createApp(App).use(createPinia()).mount('#app');
 ```
 
 ## How Storage Works
@@ -49,11 +47,11 @@ Pinia’s approach to handling global storage is based on modularity. We create 
 - **getters** - a place to define compute values for the state of the Store
 - **actions** - a place to define methods for mutation of the Store
 
-```TS
-import { defineStore } from "pinia";
+```typescript
+import { defineStore } from 'pinia';
 
 export const useTodoStore = defineStore({
-  id: "uniqueID",
+  id: 'uniqueID',
   state: () => ({
     // ...
   }),
@@ -80,7 +78,7 @@ Let’s create a todo application, consisting of the following steps:
 
 The whole source code can be found in the following [GitHub repository](https://github.com/krivanek06/example_projects/tree/main/vue-pinia-getting-started). By using TypeScript, first, you create an interface representing your Todo items.
 
-```TS
+```typescript
 // types/todo.ts
 
 export interface ITodo {
@@ -98,20 +96,20 @@ In the `action` section, you implement two mutation methods that will update the
 
 It is also worth highlighting the `removeTodo` method to see that asynchronous mutations are performed in the same way as synchronous ones like the `addTodo` method in your case.
 
-```TS
+```typescript
 // store/todo.ts
 
-import type { ITodo } from "@/types/todo";
-import axios from "axios";
-import { defineStore } from "pinia";
+import type { ITodo } from '@/types/todo';
+import axios from 'axios';
+import { defineStore } from 'pinia';
 
 export const useTodoStore = defineStore({
-  id: "todoState",
+  id: 'todoState',
   state: () => ({
     todos: [] as ITodo[],
   }),
   getters: {
-    totalTodos: (state) => state.todos.length,
+    totalTodos: state => state.todos.length,
   },
   actions: {
     addTodo(title: string, description?: string) {
@@ -126,12 +124,12 @@ export const useTodoStore = defineStore({
     async removeTodo(id: number) {
       // example of an async request
       const response = await axios.get(
-        "https://www.random.org/integers/?num=1&min=1&max=100&col=5&base=10&format=plain",
+        'https://www.random.org/integers/?num=1&min=1&max=100&col=5&base=10&format=plain'
       );
-      console.log("received data ", response.data);
+      console.log('received data ', response.data);
 
       // remove todos
-      this.todos = this.todos.filter((todo) => todo.id !== id);
+      this.todos = this.todos.filter(todo => todo.id !== id);
     },
   },
 });
@@ -141,7 +139,7 @@ export const useTodoStore = defineStore({
 
 Both components `TodoForm.vue` and `TodoList.vue` are basic Vue components. The main concept of both of them is the [setup()](https://vuejs.org/api/composition-api-setup.html#basic-usage) method, which serves as an entry point to the component, where we store the reference to the todo store by `const storeTodo = useTodoStore()` so that it becomes available for the whole component.
 
-```TS
+```typescript
 // components/TodoForm.vue
 
 <template>
@@ -203,7 +201,7 @@ export default defineComponent({
 </style>
 ```
 
-```TS
+```typescript
 // components/TodoList.vue
 
 <template>

@@ -40,11 +40,13 @@ Using [async pipe](https://angular.io/api/common/AsyncPipe) is the best way how 
 
 So instead of the old `async` pipe, you can use `toSignal` function as follows:
 
-```jsx
+```typescript
 @Component({
   selector: 'my-app',
   standalone: true,
-  imports: [ /* ... */ ],
+  imports: [
+    /* ... */
+  ],
   template: `
     <h4>Rxjs</h4>
     <div *ngFor="let data of displayDataSource$ | async">
@@ -63,7 +65,7 @@ export class App {
 
   // display values with rxjs
   displayDataSource$ = this.dataSourceOne$;
-	// display values with signal
+  // display values with signal
   displayDataSourceSignal = toSignal(this.dataSourceOne$);
 }
 ```
@@ -86,7 +88,7 @@ My proposition is to treat HTTP operation still as Observables, however, once yo
 
 The whole idea of removing zone.js from Angular and making it “not-reactive” reminds me how [reactivity works in VueJS](https://vuejs.org/guide/extras/reactivity-in-depth.html). VueJs is by default not reactive. You have to use `ref` or `reactive` functions to make a variable reactive to manipulate with the DOM. An example is the following.
 
-```jsx
+```html
 <template>
   <section>
     <button @click="onShowHiddenDiv">Show div</button>
@@ -96,17 +98,17 @@ The whole idea of removing zone.js from Angular and making it “not-reactive”
 </template>
 
 <script setup lang="ts">
-let showHiddenDiv = false;
+  let showHiddenDiv = false;
 
-const onShowHiddenDiv = () => {
-  showHiddenDiv = !showHiddenDiv;
-};
+  const onShowHiddenDiv = () => {
+    showHiddenDiv = !showHiddenDiv;
+  };
 </script>
 ```
 
 The above example will not work, because `showHiddenDiv` is not a reactive variable and when we click on the button, the `onShowHiddenDiv` will execute, the `showHiddenDiv` will change, however, the DOM will not react on the changed value. You will have to use `ref` to make `showHiddenDiv` reactive as follows:
 
-```jsx
+```html
 <template>
     <button @click="onShowHiddenDiv">Show div</button>
 
@@ -130,7 +132,7 @@ Since signals in Angular are in the early stage, I believe there is much to come
 
 A use-case may arise we have an Observable, we use the async pipe for subscription to show data in the HTML. The subscription however is inside an `NgIf` section which is initially `false` (doesn’t exist) and only when the user displays the section, only then we subscribe to that observable. Let me demonstrate the following problem:
 
-```tsx
+```typescript
 // imports
 
 @Component({
@@ -165,7 +167,9 @@ A use-case may arise we have an Observable, we use the async pipe for subscripti
             <ng-container *ngIf="showTwo.value"> Show Two </ng-container>
             <ng-container *ngIf="!showTwo.value"> Show One </ng-container>
           </h3>
-          <mat-checkbox color="primary" [formControl]="showTwo"> Show Number TWO </mat-checkbox>
+          <mat-checkbox color="primary" [formControl]="showTwo">
+            Show Number TWO
+          </mat-checkbox>
         </div>
 
         <div class="overlay-body-grid">
@@ -235,7 +239,7 @@ A new subscription is created to the `displayDataSource$` and it no longer remem
 
 It is an easy mistake to make and hard to spot. Fortunately it can be fixed by attaching [shareReplay](https://www.learnrxjs.io/learn-rxjs/operators/multicasting/sharereplay) to the `displayDataSource$`:
 
-```tsx
+```typescript
 displayDataSource$ = this.showTwo.valueChanges.pipe(
   startWith(this.showTwo.value),
   tap(d => console.log('rxjs', d)),

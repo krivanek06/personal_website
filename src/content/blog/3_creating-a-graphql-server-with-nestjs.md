@@ -109,7 +109,7 @@ Object-Relational Mapping (ORM) is a technique that lets you select and manipula
 
 For this example, you're going to use [Prisma](https://www.prisma.io/) as your ORM solution, which will help create a database schema and put your UML diagram into actual code. To generate the database schema, from the root folder, create a file in `server/prisma/schema.prisma` and write the above-mentioned UML diagram in [Prisma's language](https://www.prisma.io/docs/concepts/components/prisma-schema).
 
-```TS
+```typescript
 // prisma/schema.prisma
 
 generator client {
@@ -163,40 +163,33 @@ After creating `schema.prisma`, run the command `npx prisma migrate dev`, which 
 
 To use the database abstraction provided by Prisma for CRUD operations, create an [injectable service](https://docs.nestjs.com/fundamentals/custom-providers) called `PrismaService` in `server/src/prisma.service.ts` to perform database operations.
 
-```TS
+```typescript
 // server/src/prisma.service.ts
 
-import {
- INestApplication,
- Injectable,
- OnModuleInit
-} from '@nestjs/common';
+import { INestApplication, Injectable, OnModuleInit } from '@nestjs/common';
 import { PrismaClient } from '@prisma/client';
 
 @Injectable()
-export class PrismaService extends PrismaClient
-  implements OnModuleInit {
-   constructor() {
-       super();
-   }
+export class PrismaService extends PrismaClient implements OnModuleInit {
+  constructor() {
+    super();
+  }
 
-   async onModuleInit() {
-       await this.$connect();
-   }
+  async onModuleInit() {
+    await this.$connect();
+  }
 
-   async enableShutdownHooks(
-     app: INestApplication
-   ): Promise<void> {
-       this.$on('beforeExit', async () => {
-           await app.close();
-       });
-   }
+  async enableShutdownHooks(app: INestApplication): Promise<void> {
+    this.$on('beforeExit', async () => {
+      await app.close();
+    });
+  }
 }
 ```
 
 From now on you can use `PrismaService` to perform CRUD operations for the Movie entity. Include all database calls in `MovieService`.
 
-```TS
+```typescript
 // server/src/movie/movie.service.ts
 
 import { Injectable } from '@nestjs/common';
@@ -206,56 +199,52 @@ import { MovieInputCreate, MovieInputEdit } from './movie.input';
 
 @Injectable()
 export class MovieService {
-   constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) {}
 
-   async getAllMovies(): Promise<Movie[]> {
-       return this.prisma.movie.findMany();
-   }
+  async getAllMovies(): Promise<Movie[]> {
+    return this.prisma.movie.findMany();
+  }
 
-   async getMovieById(id: number): Promise<Movie> {
-       return this.prisma.movie.findFirstOrThrow({
-           where: {
-               id,
-           },
-       });
-   }
+  async getMovieById(id: number): Promise<Movie> {
+    return this.prisma.movie.findFirstOrThrow({
+      where: {
+        id,
+      },
+    });
+  }
 
-   async createMovie(
-             { title, description }: MovieInputCreate
-       ): Promise<Movie> {
-		return this.prisma.movie.create({
-			data: {
-				title,
-				description,
-			},
-		});
-	}
+  async createMovie({ title, description }: MovieInputCreate): Promise<Movie> {
+    return this.prisma.movie.create({
+      data: {
+        title,
+        description,
+      },
+    });
+  }
 
-	async editMovie(
-            { id, title, description }: MovieInputEdit
-        ): Promise<Movie> {
-		return this.prisma.movie.upsert({
-			update: {
-				title,
-				description,
-			},
-			create: {
-				title,
-				description,
-			},
-			where: {
-				id,
-			},
-		});
-	}
+  async editMovie({ id, title, description }: MovieInputEdit): Promise<Movie> {
+    return this.prisma.movie.upsert({
+      update: {
+        title,
+        description,
+      },
+      create: {
+        title,
+        description,
+      },
+      where: {
+        id,
+      },
+    });
+  }
 
-	async deleteMovie(movieId: number): Promise<Movie> {
-		return this.prisma.movie.delete({
-			where: {
-				id: movieId,
-			},
-		});
-	}
+  async deleteMovie(movieId: number): Promise<Movie> {
+    return this.prisma.movie.delete({
+      where: {
+        id: movieId,
+      },
+    });
+  }
 }
 ```
 
@@ -273,25 +262,22 @@ In comparison, using REST architecture, there are multiple endpoints, which retu
 
 To change your NestJS API into GraphQL, follow the [GraphQL quickstart with NestJS](https://docs.nestjs.com/graphql/quick-start) and import the following code to your `AppModule` in `src/app.module.ts`.
 
-```TS
+```typescript
 // server/src/app.module.ts
 
 import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
-import {
- ApolloDriver,
- ApolloDriverConfig
-} from '@nestjs/apollo';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 @Module({
- imports: [
-   GraphQLModule.forRoot<ApolloDriverConfig>({
-     driver: ApolloDriver,
+  imports: [
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
 
-     // to generate schema from @ObjectType() class
-     autoSchemaFile: true,
-   }),
- ],
+      // to generate schema from @ObjectType() class
+      autoSchemaFile: true,
+    }),
+  ],
 })
 export class AppModule {}
 ```
@@ -304,7 +290,7 @@ To expose a class via GraphQL, it has to be decorated with the [@ObjectType](htt
 
 In this example, you’re also implementing all interfaces for `@ObjectType` classes that were generated from `prisma/schema.prisma` by the command `npx prisma migrate dev`, which are importable from the path @prisma/client.
 
-```TS
+```typescript
 // server/src/movie/movie.model.ts
 
 import { Field, Int, ObjectType } from '@nestjs/graphql';
@@ -312,68 +298,68 @@ import { Movie as MovieClient } from '@prisma/client';
 
 @ObjectType()
 export class Movie implements MovieClient {
-   @Field(() => Int)
-   id: number;
+  @Field(() => Int)
+  id: number;
 
-   @Field(() => String)
-   createdAt: Date;
+  @Field(() => String)
+  createdAt: Date;
 
-   @Field(() => String)
-   updatedAt: Date;
+  @Field(() => String)
+  updatedAt: Date;
 
-   @Field(() => String, {
-       nullable: false,
-       description: "User's title to the movie",
-       defaultValue: '',
-   })
-   title: string;
+  @Field(() => String, {
+    nullable: false,
+    description: "User's title to the movie",
+    defaultValue: '',
+  })
+  title: string;
 
-   @Field(() => String, {
-       nullable: true,
-       description: "User's description to the movie",
-   })
-   description: string;
+  @Field(() => String, {
+    nullable: true,
+    description: "User's description to the movie",
+  })
+  description: string;
 }
 ```
 
 When you intend to create or edit a `Movie` or add arguments to any exposed GraphQL mutation, you have to create a class marked with `@InputType()` decorator, that tells GraphQL what fields we expect to be provided before executing the adequate operation.
 
-```TS
+```typescript
 // server/src/movie/movie.input.ts
 
 import { Field, InputType } from '@nestjs/graphql';
 
 @InputType()
 export class MovieInputCreate {
-	@Field(() => String, {
-		nullable: false,
-		description: "User's title to the movie",
-	})
-	title: string;
+  @Field(() => String, {
+    nullable: false,
+    description: "User's title to the movie",
+  })
+  title: string;
 
-	@Field(() => String, {
-		nullable: true,
-		description: "User's description to the movie",
-	})
-	description?: string;
+  @Field(() => String, {
+    nullable: true,
+    description: "User's description to the movie",
+  })
+  description?: string;
 }
 
 @InputType()
 export class MovieInputEdit {
-	@Field(() => Number)
-	id: number;
+  @Field(() => Number)
+  id: number;
 
-	@Field(() => String, {
-		nullable: false,
-		description: "User's title to the movie",
-	})
-	title: string;
+  @Field(() => String, {
+    nullable: false,
+    description: "User's title to the movie",
+  })
+  title: string;
 
-	@Field(() => String, {
-		nullable: true,
-		description: "User's description to the movie",
-	})
-	description?: string;
+  @Field(() => String, {
+    nullable: true,
+    description: "User's description to the movie",
+  })
+  description?: string;
 }
 ```
 
@@ -389,7 +375,7 @@ Using array types, like for the `movieComments: [MovieComment!]!`, the outer exc
 
 To expose this schema to a user, create a class called `MovieResolver`, marked with `@Resolver` decorator. `@Resolver` decorator tells NestJS that `MovieResolver` class is indeed a resolver for `Movie`, `ObjectType`. Methods marked with `@Query` decorator will be exposed from the server, accessible in the [GraphQL playground](https://www.apollographql.com/docs/apollo-server/v2/testing/graphql-playground/). In the end, you need to create a resolver with the following code in `server/src/movie/movie.resolver.ts`.
 
-```TS
+```typescript
 // server/src/movie/movie.resolver.ts
 import {
   Args,
@@ -407,7 +393,7 @@ import { MovieService } from './movie.service';
 @Resolver(() => Movie)
 export class MovieResolver {
   constructor(
-    private movieService: MovieService,
+    private movieService: MovieService
     // private movieCommentService: MovieCommentService,
   ) {}
 
@@ -417,15 +403,13 @@ export class MovieResolver {
   }
 
   @Query(() => Movie)
-  async getMovieById(
-    @Args('id', { type: () => Int }) id: number,
-  ): Promise<Movie> {
+  async getMovieById(@Args('id', { type: () => Int }) id: number): Promise<Movie> {
     return this.movieService.getMovieById(id);
   }
 
   @Mutation(() => Movie)
   async createMovie(
-    @Args('movieInputCreate') movieInputCreate: MovieInputCreate,
+    @Args('movieInputCreate') movieInputCreate: MovieInputCreate
   ): Promise<Movie> {
     return this.movieService.createMovie(movieInputCreate);
   }
@@ -443,7 +427,7 @@ The injected `MovieCommentService` is just an abstraction layer service to query
 
 Marking a method with `@Query` decorator tells NestJS that `getAllMovies()` method should be available in GraphQL playground. However, we can also configure `@Query` decorator with the following arguments.
 
-```TS
+```typescript
 @Query(() => [Movie], {
        description: 'we return multiple movies',
        name: 'getAllMovies',
@@ -462,7 +446,7 @@ As the final step, register `MovieResolver` and `MovieService` services into `ap
 
 Finally, add `MovieModule` into the imports section in `app.module.ts`. The `MovieModule` will look like the following.
 
-```TS
+```typescript
 // server/src/movie/movie.module.ts
 
 import { Module } from '@nestjs/common';

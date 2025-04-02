@@ -64,7 +64,7 @@ Head over to [quick-start](https://github.com/simondotm/nx-firebase/blob/main/do
 
 Then run the following command to generate a new application only for cloud functions:
 
-```JS
+```bash
 nx g @simondotm/nx-firebase:app test-app-functions
 ```
 
@@ -92,14 +92,14 @@ When you created your cloud function directory: `test-app-functions` (mine is ca
 
 I personally had trouble running those script from the cloud-function app directory so instead of that I introduced 2 scripts into the root `package.json` file. Those are:
 
-```jsx
+```bash
 "mm:cloud-function:serve": "nx build test-app-functions && firebase emulators:start --only functions --config firebase.test-app-functions.json",
 "mm:cloud-function:deploy": "nx build test-app-functions && firebase deploy --only functions --config firebase.test-app-functions.json"
 ```
 
 When serving your app by the local emulator what you also may want to do is to update the `firebase.test-app.json` file at the root directory, precisely the `emulators` part. I only wanted to emulate the functions, so I removed the rest of the options and ended up with the following configuration:
 
-```jsx
+```json
 // firebase.test-app.json
 "emulators": {
     "functions": {
@@ -117,7 +117,7 @@ The first thing you have to do when it comes to deploying cloud functions is to 
 
 If you have ever worked with firebase functions outside of nx, most of the times you connect your functions to your firebase app, is by exporting the private key (as suggested at the beginning), importing your key into the folder and the initializing the app as follows:
 
-```jsx
+```typescript
 import * as admin from 'firebase-admin';
 import { DATABASE_URL } from './environments';
 
@@ -131,7 +131,7 @@ admin.initializeApp({
 
 The config however didn’t work for me. I was having some weird path resolving errors so I ended up just by copying the `firebase_key.json` content directly into the `credential` part (which is not the ideal solution), as follows:
 
-```jsx
+```typescript
 const serviceAccount: admin.ServiceAccount = {
   projectId: 'whatever-id',
   privateKey: '-----BEGIN PRIVATE KEY-----',

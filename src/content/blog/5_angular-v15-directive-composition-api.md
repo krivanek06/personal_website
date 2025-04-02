@@ -20,39 +20,39 @@ Some developers like to work smarter, not harder. They like to define some logic
 
 When having multiple Angular elements (Components, Directives, Pipes) that share the same logic, it is common to abstract that logic into a parent class and extend the parent using Inheritance.
 
-```TS
+```typescript
 @Directive()
 export abstract class ParentCalculation {
-	calculation1(value: number = 1): number {
-		return 1 * value;
-	}
+  calculation1(value: number = 1): number {
+    return 1 * value;
+  }
 
-	// restricted only for Components
-	calculation2(value: number = 2): number {
-		return 2 * value;
-	}
+  // restricted only for Components
+  calculation2(value: number = 2): number {
+    return 2 * value;
+  }
 }
 // ---------------------------------------
 @Component({
-	selector: 'app-component1',
-	template: `
-		<button (click)="calculation1()">calculation1</button>
-		<button (click)="calculation2()">calculation2</button>
-	`,
+  selector: 'app-component1',
+  template: `
+    <button (click)="calculation1()">calculation1</button>
+    <button (click)="calculation2()">calculation2</button>
+  `,
 })
 export class Component1 extends ParentCalculation {
-	constructor() {
-		super();
-	}
+  constructor() {
+    super();
+  }
 }
 // ---------------------------------------
 @Pipe({
-	name: 'app-pipe1',
+  name: 'app-pipe1',
 })
 export class Pipe1 extends ParentCalculation implements PipeTransform {
-	transform(value: number) {
-		return this.calculation1(value);
-	}
+  transform(value: number) {
+    return this.calculation1(value);
+  }
 }
 ```
 
@@ -72,7 +72,7 @@ Composition is a design pattern to [implement a **has-a** relationship](https:
 
 An example of Composition is the following code snippet
 
-```TS
+```typescript
 interface Human {
     name!: string;
 }
@@ -105,7 +105,7 @@ Composition sounds interesting in theory, but you might wonder how we can use it
 
 Composition allows composing functionalities from multiple standalone Directives into a more complex Directive or Component. Let me demonstrate it in the following snippet.
 
-```TS
+```typescript
 @Directive({
 	selector: '[appClickLogging]',
 	standalone: true,
@@ -148,7 +148,7 @@ Instead of manually attaching the `appClickLogging` to all `primary buttons`, we
 
 Attaching the `ButtonDirective` class into a `hostDirectives`, we can get a reference to that class inside our child component constructor by using [dependency injection](https://angular.io/guide/dependency-injection) like:
 
-```TS
+```typescript
 constructor(@Host() buttonDirective: ButtonDirective)
 ```
 
@@ -160,7 +160,7 @@ Logging steps for some specific button is quite a common use case when we, for e
 
 Opening the source of the `hostDirectives` implementation, we can inspect that we can pass a class, `Type<unknown>`, into the `hostDirectives` or an object and specify `inputs` and `outputs` properties.
 
-```TS
+```typescript
 // Code snippet from Angular source
 /**
   * Standalone directives that should be applied to the
@@ -179,69 +179,70 @@ hostDirectives?: (Type<unknown> | {
 
 Let’s look at an example of how to use `inputs` and `outputs` properties for the `hostDirectives`.
 
-```TS
+```typescript
 @Directive({
-	selector: '[appClickLogging]',
-	standalone: true,
+  selector: '[appClickLogging]',
+  standalone: true,
 })
 export class ButtonDirective {
-	@Output() clickedEvent = new EventEmitter<void>();
-	@Output() mouseEnterEvent = new EventEmitter<void>();
+  @Output() clickedEvent = new EventEmitter<void>();
+  @Output() mouseEnterEvent = new EventEmitter<void>();
 
-	@Input() loggingName: string = 'Base';
+  @Input() loggingName: string = 'Base';
 
-	@HostBinding('attr.data-button-type')
-	@Input()
-	type: 'success' | 'primary' | 'default' = 'default';
+  @HostBinding('attr.data-button-type')
+  @Input()
+  type: 'success' | 'primary' | 'default' = 'default';
 
-	@HostListener('click')
-	onClick() {
-		this.clickedEvent.emit();
-	}
+  @HostListener('click')
+  onClick() {
+    this.clickedEvent.emit();
+  }
 
-	@HostListener('mouseenter')
-	onMouseenter() {
-		this.mouseEnterEvent.emit();
-	}
+  @HostListener('mouseenter')
+  onMouseenter() {
+    this.mouseEnterEvent.emit();
+  }
 }
 
 // ---------------------------------------------
 @Directive({
-	selector: '[appClickLoggingEnhanced]',
-	standalone: true,
-	hostDirectives: [
-		{
-			directive: ButtonDirective,
-			inputs: ['loggingName'], // <-- inputs
-			outputs: ['mouseEnterEvent'], // <-- outputs
-		},
-	],
+  selector: '[appClickLoggingEnhanced]',
+  standalone: true,
+  hostDirectives: [
+    {
+      directive: ButtonDirective,
+      inputs: ['loggingName'], // <-- inputs
+      outputs: ['mouseEnterEvent'], // <-- outputs
+    },
+  ],
 })
 export class ButtonDirectiveEnhancedDirective {
-	constructor(@Host() buttonDirective: ButtonDirective) {
-		buttonDirective.type = 'success';
-	}
+  constructor(@Host() buttonDirective: ButtonDirective) {
+    buttonDirective.type = 'success';
+  }
 }
 
 // ---------------------------------------------
 @Component({
-	selector: 'app-test',
-	template: `
-		<button appClickLoggingEnhanced
-				(mouseEnterEvent)="onMouseEnterEvent()"
-				[loggingName]="testName">
-			Button text
-		</button>
-	`,
-	imports: [ButtonDirectiveEnhancedDirective],
-	standalone: true,
+  selector: 'app-test',
+  template: `
+    <button
+      appClickLoggingEnhanced
+      (mouseEnterEvent)="onMouseEnterEvent()"
+      [loggingName]="testName">
+      Button text
+    </button>
+  `,
+  imports: [ButtonDirectiveEnhancedDirective],
+  standalone: true,
 })
 export class TestComponent {
-	testName = 'Test name';
+  testName = 'Test name';
 
-	onMouseEnterEvent(): void {
-		console.log('[TestComponent]: mouse enter');
-	}
+  onMouseEnterEvent(): void {
+    console.log('[TestComponent]: mouse enter');
+  }
 }
 ```
 
@@ -273,27 +274,27 @@ Using Composition in Angular instead of Inheritance may be a little bit difficul
 
 We have created a `TypingTrackingDirective` directive, that by attaching it to any input element will log out the user’s input. We are asked to add this implementation to all `textarea` inputs
 
-```TS
+```typescript
 @Directive({
-	selector: 'appTypingTracking',
-	standalone: true,
+  selector: 'appTypingTracking',
+  standalone: true,
 })
 export class TypingTrackingDirective {
-	@HostListener('focus', ['$event.target.value'])
-	onFocus(value: string) {
-		console.log(value);
-	}
+  @HostListener('focus', ['$event.target.value'])
+  onFocus(value: string) {
+    console.log(value);
+  }
 
-	@HostListener('input', ['$event.target.value'])
-	onInput(value: string) {
-		console.log(`Tracking input: ${value}`);
-	}
+  @HostListener('input', ['$event.target.value'])
+  onInput(value: string) {
+    console.log(`Tracking input: ${value}`);
+  }
 }
 
 @Directive({
-	selector: 'textarea',
-	standalone: true,
-	hostDirectives: [TypingTrackingDirective],
+  selector: 'textarea',
+  standalone: true,
+  hostDirectives: [TypingTrackingDirective],
 })
 export class InputTrackingDirective {}
 ```
@@ -302,7 +303,7 @@ export class InputTrackingDirective {}
 
 A common practice is to use [takeUntil RxJS operator](https://rxjs.dev/api/operators/takeUntil) with some Subject when subscribing to an Observable. This logic is repeated in multiple places, so let’s abstract it.
 
-```TS
+```typescript
 // Credits:
 // https://twitter.com/_crisbeto/status/1582475442715385858
 
@@ -343,55 +344,53 @@ export class CompositionNewComponent {
 
 We want to extend the behavior of the `*ngIf` directive so that we are able to reveal HTML content when an HTTP request has finished, but we can also toggle its visibility by clicking on a button.
 
-```TS
+```typescript
 @Injectable()
 export class ActiveService {
-	private active$ = new BehaviorSubject<boolean>(false);
+  private active$ = new BehaviorSubject<boolean>(false);
 
-	isActive(): Observable<boolean> {
-		return this.active$.asObservable();
-	}
+  isActive(): Observable<boolean> {
+    return this.active$.asObservable();
+  }
 
-	toggleActivation(): void {
-		console.log('Toggling state');
-		this.active$.next(!this.active$.value);
-	}
+  toggleActivation(): void {
+    console.log('Toggling state');
+    this.active$.next(!this.active$.value);
+  }
 }
 
 @Directive({
-	selector: '[ifActive]',
-	standalone: true,
-	hostDirectives: [NgIf],
+  selector: '[ifActive]',
+  standalone: true,
+  hostDirectives: [NgIf],
 })
 export class ActiveDirective implements OnInit {
-	private ngIfDirective = inject(NgIf);
-	private activeService = inject(ActiveService);
+  private ngIfDirective = inject(NgIf);
+  private activeService = inject(ActiveService);
 
-	ngOnInit(): void {
-		this.activeService.isActive().subscribe((state) => {
-			this.ngIfDirective.ngIf = state;
-		});
-	}
+  ngOnInit(): void {
+    this.activeService.isActive().subscribe(state => {
+      this.ngIfDirective.ngIf = state;
+    });
+  }
 }
 
 @Directive({
-	selector: '[toggleActive]',
-	standalone: true,
+  selector: '[toggleActive]',
+  standalone: true,
 })
 export class ToggleActiveDirective {
-	constructor(
-          @SkipSelf() private activeService: ActiveService
-        ) {}
+  constructor(@SkipSelf() private activeService: ActiveService) {}
 
-	@HostListener('click', ['$event'])
-	onClick() {
-		this.activeService.toggleActivation();
-	}
+  @HostListener('click', ['$event'])
+  onClick() {
+    this.activeService.toggleActivation();
+  }
 }
 
 Component({
-	selector: 'app-test',
-	template: `
+  selector: 'app-test',
+  template: `
     <!-- using ngIfActive directive -->
     <button toggleActive>Toggle Reveal</button>
 
@@ -399,19 +398,17 @@ Component({
     <div *ifActive>Toggling state 1111</div>
     <div *ifActive>Toggling state 2222</div>
   `,
-	imports: [ToggleActiveDirective, ActiveDirective],
-	standalone: true,
-	providers: [ActiveService],
+  imports: [ToggleActiveDirective, ActiveDirective],
+  standalone: true,
+  providers: [ActiveService],
 });
 export class TestComponent {
-	constructor(@Host() private activeService: ActiveService) {
-		// mocking HTTP request -> reveal content after 3 seconds
-		of([])
-			.pipe(delay(3000))
-			.subscribe(
-               () => this.activeService.toggleActivation()
-             );
-	}
+  constructor(@Host() private activeService: ActiveService) {
+    // mocking HTTP request -> reveal content after 3 seconds
+    of([])
+      .pipe(delay(3000))
+      .subscribe(() => this.activeService.toggleActivation());
+  }
 }
 ```
 
@@ -427,22 +424,19 @@ Let’s say we are using `CdkDrag` and `matTooltip` plenty of times in our appli
 
 To compose the behavior of these two Directives, you may be tempted to create something like
 
-```TS
+```typescript
 @Directive({
-	selector: '[appButtonTooltip]',
-	standalone: true,
-	hostDirectives: [
-		{
-			directive: MatTooltip,
-			inputs: [
-               'matTooltip: tooltip',
-               'matTooltipHideDelay: tooltipHideDelay'
-              ],
-		},
-		{
-			directive: CdkDrag,
-		},
-	],
+  selector: '[appButtonTooltip]',
+  standalone: true,
+  hostDirectives: [
+    {
+      directive: MatTooltip,
+      inputs: ['matTooltip: tooltip', 'matTooltipHideDelay: tooltipHideDelay'],
+    },
+    {
+      directive: CdkDrag,
+    },
+  ],
 })
 export class ButtonTooltipDirective {}
 ```

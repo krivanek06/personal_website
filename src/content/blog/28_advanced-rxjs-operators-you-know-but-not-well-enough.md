@@ -31,7 +31,7 @@ Both operators delivers the first emission and also cancel the subscription, so 
 
 Let’s say you have a service which makes API calls to load users, however something goes wrong, and the server returns a 500 error code. We catch the error and return [EMPTY](https://rxjs.dev/api/index/const/EMPTY), such as below.
 
-```tsx
+```typescript
 @Injectable({
   providedIn: 'root',
 })
@@ -46,7 +46,7 @@ Then inside a component you want to load these users using the `take(1)` or `fir
 
 > `first` will deliver an EmptyError to the Observer's error callback if the Observable completes before any next notification was sent. If you don't want this behavior, use `take(1)` instead.
 
-```tsx
+```typescript
 @Component({
   /* .... */
 })
@@ -67,7 +67,7 @@ I personally still use the `first()` operator and handle errors if needed, but I
 
 Something worth nothing that you may want to also consider using the [defaultIfEmpty()](https://www.learnrxjs.io/learn-rxjs/operators/conditional/defaultifempty) operator with `first()` to ensure that no errors will be thrown when using `EMPTY` constant.
 
-```tsx
+```typescript
 @Component({
   /* .... */
 })
@@ -76,7 +76,10 @@ export class UserComponent {
 
   constructor() {
     // will emit - "no users"
-    this.userService.getUsers().pipe(defaultIfEmpty('no users'), first()).subscribe(console.log);
+    this.userService
+      .getUsers()
+      .pipe(defaultIfEmpty('no users'), first())
+      .subscribe(console.log);
   }
 }
 ```
@@ -85,7 +88,7 @@ export class UserComponent {
 
 I guess you are familiar with the [find()](https://www.learnrxjs.io/learn-rxjs/operators/filtering/find) operator. As the name suggest you want to “find” an item inside an array of items. However there is a lesser known operator called [single()](https://www.learnrxjs.io/learn-rxjs/operators/filtering/single). On the first glance both work the same way
 
-```tsx
+```typescript
 // this will output number 3
 from([1, 2, 3])
   .pipe(find(val => val === 3))
@@ -104,7 +107,7 @@ The difference is when the value is not found. The docs says:
 
 Personally I haven’t seen many places where the `single()` operator would be used. It is a more “strict version” of the `find()` operator and you most likely will have to use the `catchError()` operator with it.
 
-```tsx
+```typescript
 // output will be: 333 ... single() throws and error
 from([1, 2])
   .pipe(
@@ -134,7 +137,7 @@ Not gonna waste much time here, just want to give a small example with this comb
 
 You want to have some time passed before sending the user’s input value to the server and prevent sending the same value twice, so you can you these two operators as follows:
 
-```tsx
+```typescript
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -167,7 +170,7 @@ Referring back to my article [CatchError Position Matter](https://dev.to/krivane
 
 Let’s have the same example as above. We want to load users from the server as an user types something into the autocomplete. Going with the above example, where would you put the catchError operator? Let’s say you decide to place it in the end of the chain as such:
 
-```tsx
+```typescript
 loadedUsers = toSignal(
   this.searchControl.valueChanges.pipe(
     switchMap(value => this.apiService.loadUsersByPrefix(value)),
@@ -178,10 +181,12 @@ loadedUsers = toSignal(
 
 This will have a side-effect that once you receive an error - your search will STOP working. Even if you type something into the input field again (after getting an error), it will not make additional API calls, since your chain has already errored out (and you handled it). Therefore, it is more recommended to put the `catchError()` operator closer where the error happens as such:
 
-```tsx
+```typescript
 loadedUsers = toSignal(
   this.searchControl.valueChanges.pipe(
-    switchMap(value => this.apiService.loadUsersByPrefix(value).pipe(catchError(() => EMPTY)))
+    switchMap(value =>
+      this.apiService.loadUsersByPrefix(value).pipe(catchError(() => EMPTY))
+    )
   )
 );
 ```
@@ -201,7 +206,7 @@ Both of these projects were receiving frequent data updates and it came to a poi
 
 One way how we solved the problem was using the [bufferTime](https://rxjs.dev/api/operators/bufferTime) and [bufferCount](https://www.learnrxjs.io/learn-rxjs/operators/transformation/buffercount) operators. Both of them aggregates data from an observable and then returns an array of received data by some time interval.
 
-```tsx
+```typescript
 //output [0,1,2]...[3,4,5,6]
 const subscribe = interval(500)
   .pipe(bufferTime(2000))
@@ -220,7 +225,7 @@ Both of these operators are used to multicast a value from an observable, preven
 
 For demonstration, let’s have the following example:
 
-```tsx
+```typescript
 @Injectable({ providedIn: 'root' })
 export class NotificationService {
   private notification$ = new Subject<void>();
@@ -297,7 +302,7 @@ I will give a short explanation of how I use these two operators, however for mo
 
 Let’s say you have a dropdown, and every time you select a value, you want to load some additional (more) data from the server. While loading, you want to display a loading state and then display a data when they arrive. More or less, your first intuition would suggest to go with something like
 
-```tsx
+```typescript
 export class SelectImperativeComponent {
   private dataService = inject(DataService);
 
@@ -327,7 +332,7 @@ This works as intended. The “only” problem is that this code is imperative. 
 
 Instead of having multiple writable signals which value can be changed anywhere, you can create one read-only signal which has the state - data, isLoading, isError. Here is a sample code:
 
-```tsx
+```typescript
 @Component({
   /* ... */
 })
@@ -412,7 +417,7 @@ To be honest, using `exhaustMap` is very rare, but I will give you an example ho
 
 Just to have some reference, here is a code close to the final implementation
 
-```tsx
+```typescript
 @Component({
   selector: 'app-chat-feature',
   standalone: true,
@@ -493,7 +498,7 @@ When you look at the previous example, we have the `messageApiService.getMessage
 
 What if we could call the API for messages each time twice to load double the amount of the messages? For that you can use the `expand` operator as follows:
 
-```tsx
+```typescript
 export class ChatFeatureComponent {
   displayedMessages = toSignal(
     this.scrollNewEndOffset$.pipe(
@@ -502,7 +507,9 @@ export class ChatFeatureComponent {
       exhaustMap(offset =>
         this.messageApiService.getMessages(offset).pipe(
           // <--- this is new
-          expand((_, index) => (index === 0 ? this.messageApiService.getMessages(offset + 20) : EMPTY)),
+          expand((_, index) =>
+            index === 0 ? this.messageApiService.getMessages(offset + 20) : EMPTY
+          ),
           // stop loading, set data
           map(data => ({ data, loading: false })),
           // error happened, set data

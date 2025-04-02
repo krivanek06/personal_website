@@ -16,7 +16,7 @@ Using rxjs you have many occurrences when you want to catch the errors from your
 
 The [catchError](https://rxjs.dev/api/operators/catchError) operator starts to be tricky when you also introduce a higher-order observable such as [switchMap](https://rxjs.dev/api/operators/switchMap). Let’s have an example that you expect the user’s input and based on it you want to fetch some data. Here is the code describing this use-case.
 
-```jsx
+```typescript
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -25,7 +25,8 @@ The [catchError](https://rxjs.dev/api/operators/catchError) operator starts to b
     <section>
       <h2>Write something to the input</h2>
       <input [formControl]="searchControl" placeholder="write" />
-    <section>
+      <section></section>
+    </section>
   `,
 })
 export class App implements OnInit {
@@ -33,11 +34,7 @@ export class App implements OnInit {
 
   ngOnInit() {
     this.searchControl.valueChanges
-      .pipe(
-        switchMap(() =>
-          this.mockApiRequest()
-        )
-      )
+      .pipe(switchMap(() => this.mockApiRequest()))
       .subscribe();
   }
 
@@ -47,9 +44,7 @@ export class App implements OnInit {
   private mockApiRequest(): Observable<unknown> {
     return of({}).pipe(
       delay(3000),
-      switchMap(() => throwError(
-        () => new Error('I have failed you'))
-      )
+      switchMap(() => throwError(() => new Error('I have failed you')))
     );
   }
 }
@@ -61,7 +56,7 @@ The method `mockApiRequest()` should model a HTTP call to a server, which, ask y
 
 Your initial solution may be adding `catchError` at the end of the stream as follows:
 
-```jsx
+```typescript
 ngOnInit() {
     this.searchControl.valueChanges
       .pipe(
@@ -92,7 +87,7 @@ As this may not be your desired behaviour and if you still want to keep listenin
 
 In this example, to keep still listening of the user’s input, let’s place the `catchError` operator on the `mockApiRequest()` , instead of the end.
 
-```jsx
+```typescript
 ngOnInit() {
     this.searchControl.valueChanges
       .pipe(

@@ -20,11 +20,11 @@ In JS, Higher-Order Functions (HOF) are functions that can accept other function
 
 HOF provides a way to abstract and encapsulate common patterns of behavior in your code, making it more reusable and expressive. Here is an example in TS:
 
-```tsx
+```typescript
 const fetchData = async <T>(
-		url: string,
-		onSuccess: (d: T) => T,
-		onError: (e: any) => void
+  url: string,
+  onSuccess: (d: T) => T,
+  onError: (e: any) => void
 ): Promise<T | null> => {
   try {
     const response = await fetch(url);
@@ -39,18 +39,18 @@ const fetchData = async <T>(
 const apiUrl = 'https://api.example.com/data';
 
 const data = fetchData<string>(
-	apiUrl,
-	(data) => {
-			console.log(data)
-			return data
-	},
-	(err) => console.log(err)
+  apiUrl,
+  data => {
+    console.log(data);
+    return data;
+  },
+  err => console.log(err)
 );
 ```
 
 Even tho the name higher-order may sound like a foreign word, you most likely encountered them on a daily basis by manipulating arrays such as:
 
-```tsx
+```typescript
 const numbers = [1, 2, 3, 4, 5];
 
 // Output: [2, 4, 6, 8, 10]
@@ -78,7 +78,7 @@ In RxJs there are four operators which qualify as Higher-Order Observables, thos
 
 Examples of where you may be using these operators are having an auto-complete form, listening to its value change, and loading items from the server, based on the user’s input. Here is a small code snippet highlighting the example.
 
-```tsx
+```typescript
 @Component({
   selector: 'app-search-basic',
   standalone: true,
@@ -112,7 +112,9 @@ export class SearchBasicComponent {
         tap(value => this.options.set([])),
         debounceTime(400),
         distinctUntilChanged(),
-        switchMap(value => this.userService.searchUsers(value).pipe(catchError(() => []))),
+        switchMap(value =>
+          this.userService.searchUsers(value).pipe(catchError(() => []))
+        ),
         tap(data => this.options.set(data)),
         takeUntilDestroyed()
       )
@@ -131,7 +133,7 @@ Use cases may be plenty. Most likely you use this operator without thinking when
 
 Here is an interactive example (full code available at the end) whereby clicking in the canvas we want to draw a rectangle as follows:
 
-```tsx
+```typescript
 fromEvent(this.canvas.nativeElement, 'click').pipe(
   switchMap(event =>
     of(1).pipe(
@@ -156,7 +158,7 @@ A use-case may be having a trading application, where the trades executed on the
 
 Here is our interactive example of drawing on the canvas.
 
-```tsx
+```typescript
 fromEvent(this.canvas.nativeElement, 'click').pipe(
   concatMap(event =>
     of(1).pipe(
@@ -173,7 +175,7 @@ fromEvent(this.canvas.nativeElement, 'click').pipe(
 
 The `mergeMap` operator allows for multiple inner observables to be active at the same time and not be dependent on their execution position. This operator is also referred to as a flattening operator because by concurrently emitting values from all input streams, it merges the inner observable streams obtained through the map operator. Here is an example.
 
-```tsx
+```typescript
 const source1$ = of([10, 20, 30]).pipe(delay(1000));
 const source2$ = of([100, 200, 300]).pipe(delay(2000));
 const source3$ = of([1000, 2000, 3000]).pipe(delay(3000));
@@ -215,7 +217,7 @@ Here is our interactive example of drawing on the canvas.
 
 The operator `exhaustMap` maintains a single active subscription at any given time, through which values are relayed to an observer. When a Higher-Order Observable emits a new inner observable stream, `exhaustMap` ignores the new inner observable if the current stream has not yet completed.
 
-```tsx
+```typescript
 const source$ = interval(500);
 
 /**

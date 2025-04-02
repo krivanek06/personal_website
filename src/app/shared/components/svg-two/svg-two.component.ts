@@ -293,7 +293,9 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
                 y="653"
                 width="1464"
                 height="2336">
-                <path d="M-288.986 653.496H1174.01V2988.69H-288.986V653.496Z" fill="white" />
+                <path
+                  d="M-288.986 653.496H1174.01V2988.69H-288.986V653.496Z"
+                  fill="white" />
               </mask>
               <g mask="url(#mask2_1620_1774)">
                 <path
@@ -504,7 +506,9 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
                   y="653"
                   width="1331"
                   height="2337">
-                  <path d="M-289.105 653.289H1040.63V2989.81H-289.105V653.289Z" fill="white" />
+                  <path
+                    d="M-289.105 653.289H1040.63V2989.81H-289.105V653.289Z"
+                    fill="white" />
                 </mask>
                 <g mask="url(#mask3_1620_1774)">
                   <g opacity="0.199997">
@@ -642,7 +646,11 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
       </g>
       <defs>
         <clipPath id="clip0_1620_1774">
-          <rect width="1463" height="2335.2" fill="white" transform="translate(-288.986 653.496)" />
+          <rect
+            width="1463"
+            height="2335.2"
+            fill="white"
+            transform="translate(-288.986 653.496)" />
         </clipPath>
       </defs>
     </svg>

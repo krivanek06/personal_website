@@ -24,7 +24,7 @@ All the source code can be found on a [stack blitz example](https://stackblitz.c
 
 About the API, I am using a very nice little Quote API - https://github.com/lukePeavey/quotable
 
-```jsx
+```typescript
 @Injectable({
   providedIn: 'root',
 })
@@ -35,7 +35,7 @@ export class QuotesApiService {
   getRandomQuote(): Observable<QuoteData> {
     return this.http
       .get<QuoteData[]>(`${this.url}/quotes/random`)
-      .pipe(map((response) => response[0]));
+      .pipe(map(response => response[0]));
   }
 }
 ```
@@ -44,17 +44,15 @@ export class QuotesApiService {
 
 Imperative approach is the most common one, and probably the one that you follow. The idea is that when you click on then button you trigger the `(click)` event, call an `onDataReload()` method, issue API call, subscribe on the stream and pass the received result to some internal property / signal. The example is demonstrated below.
 
-```jsx
+```typescript
 @Component({
   selector: 'app-button-click-normal',
   template: `
     <div class="wrapper">
-      <div class="wrapper-text">
-        Loaded Quote: {{ loadedQuoteSignal()?.content }}
-      </div>
+      <div class="wrapper-text">Loaded Quote: {{ loadedQuoteSignal()?.content }}</div>
 
       <div class="wrapper-action">
-        <button type="button" (click)='onQuoteLoad()'>Load Quote</button>
+        <button type="button" (click)="onQuoteLoad()">Load Quote</button>
       </div>
     </div>
   `,
@@ -71,7 +69,7 @@ export class ButtonClickNormalComponent implements OnInit {
   }
 
   onQuoteLoad() {
-    this.quotesApiService.getRandomQuote().subscribe((res) => {
+    this.quotesApiService.getRandomQuote().subscribe(res => {
       this.loadedQuoteSignal.set(res);
     });
   }
@@ -93,14 +91,12 @@ In a nutshell, declarative programming consists of ”instructing a program on 
 
 Let’s take a look how could we change the same example into a declarative approach.
 
-```jsx
+```typescript
 @Component({
   selector: 'app-button-click-reactive',
   template: `
     <div class="wrapper">
-      <div class="wrapper-text">
-        Loaded Quote: {{ (loadedQuote$ | async)?.content }}
-      </div>
+      <div class="wrapper-text">Loaded Quote: {{ (loadedQuote$ | async)?.content }}</div>
 
       <div class="wrapper-action">
         <button #loadQuoteButton type="button">Load Quote</button>

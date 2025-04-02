@@ -27,7 +27,8 @@ import { DateAgoPipe } from '../../shared/utils/date.pipe';
                   [alt]="post.attributes.title"
                   class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
                 <!-- overlay -->
-                <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div
+                  class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
               </div>
               <div class="grid gap-4 p-6">
                 <!-- title -->
@@ -51,7 +52,9 @@ import { DateAgoPipe } from '../../shared/utils/date.pipe';
                 <!-- tags -->
                 <div class="flex flex-wrap items-center gap-2">
                   @for (item of post.attributes.tagsArray | slice: 0 : 4; track item) {
-                    <div class="rounded-lg border border-green-700 bg-[#00b01a1e] p-2">{{ item }}</div>
+                    <div class="rounded-lg border border-green-700 bg-[#00b01a1e] p-2">
+                      {{ item }}
+                    </div>
                   }
                 </div>
               </div>

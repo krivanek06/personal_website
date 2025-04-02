@@ -18,7 +18,7 @@ One of the newly welcomed features is [defineModel](https://github.com/vuejs/cor
 
 Two-way binding is a feature in VueJS that allows changes in the data to update the view automatically and vice versa. This means that when the user updates the view, the underlying data is also updated, and when the data is updated programmatically, the view is automatically updated to reflect the new data. It is achieved using the `v-model` directive, which binds a form input element to a piece of data.
 
-```VUE
+```typescript
 <template>
     <input v-model="message" />
 </template>
@@ -32,7 +32,7 @@ Two-way binding is a feature in VueJS that allows changes in the data to update 
 
 Two-way binding is useful because it eliminates the need for manual event handling to keep the view and data in sync, which can be tedious and error-prone. Using v-model is the equivalent of
 
-```VUE
+```typescript
 <template>
     <input
       :value="message"
@@ -51,7 +51,7 @@ Two-way binding is useful because it eliminates the need for manual event handli
 
 An example may be having a custom search component, allowing the user to type some value into the search, which will display multiple options until he chooses one. This behavior is demonstrated in the following code:
 
-```VUE
+```typescript
 // MySearch.vue
 
 <template>
@@ -112,7 +112,7 @@ In the above example, to make the custom 2-way binding work, you use `defineProp
 
 The usage of the above child component is achieved by the following syntax in another component.
 
-```VUE
+```typescript
 <MySearch v-model="someRef" />
 <!-- same as -->
 <MySearch
@@ -131,7 +131,7 @@ This new feature is available from version-3.3.0-alpha.9, however, It is still c
 
 After completing the [installation guidelines](https://vue-macros.sxzz.moe/guide/bundler-integration.html), you can use [defineModels](https://vue-macros.sxzz.moe/macros/define-models.html) with the following syntax:
 
-```VUE
+```typescript
 // MySearch.vue
 
 <template>

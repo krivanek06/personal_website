@@ -1,4 +1,10 @@
-import { afterNextRender, ChangeDetectionStrategy, Component, ElementRef, viewChild } from '@angular/core';
+import {
+  afterNextRender,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  viewChild,
+} from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { CardGeneralComponent } from './../../shared/components';
@@ -12,13 +18,14 @@ import { CardGeneralComponent } from './../../shared/components';
 
       <div class="grid grid-cols-2 gap-x-10">
         <p class="mx-auto w-9/12 text-center text-xl">
-          Providing comprehensive web development and consulting services to help clients create high-quality
-          applications that meet their specific needs and goals.
+          Providing comprehensive web development and consulting services to help clients
+          create high-quality applications that meet their specific needs and goals.
         </p>
 
         <p class="mx-auto w-9/12 text-center text-xl">
-          Whether building custom web applications, creating e-commerce platforms, or revamping existing websites, I
-          have the skills and expertise to bring your vision to life.
+          Whether building custom web applications, creating e-commerce platforms, or
+          revamping existing websites, I have the skills and expertise to bring your
+          vision to life.
         </p>
       </div>
 
@@ -45,9 +52,17 @@ import { CardGeneralComponent } from './../../shared/components';
             <h3 class="mb-2 text-2xl font-bold text-white">Frontend</h3>
             <p class="mb-4 text-lg text-gray-300">Angular, React, TypeScript</p>
             <ul class="mt-4 text-left text-gray-400">
-              <li class="mb-2">• Responsive Design: Crafting interfaces that adapt seamlessly to any device size.</li>
-              <li class="mb-2">• Modern UI/UX: Implementing intuitive and engaging user experiences.</li>
-              <li class="mb-2">• Performance Optimization: Ensuring fast load times and smooth interactions.</li>
+              <li class="mb-2">
+                • Responsive Design: Crafting interfaces that adapt seamlessly to any
+                device size.
+              </li>
+              <li class="mb-2">
+                • Modern UI/UX: Implementing intuitive and engaging user experiences.
+              </li>
+              <li class="mb-2">
+                • Performance Optimization: Ensuring fast load times and smooth
+                interactions.
+              </li>
             </ul>
           </div>
         </app-card-general>
@@ -74,9 +89,16 @@ import { CardGeneralComponent } from './../../shared/components';
             <h3 class="mb-2 text-2xl font-bold text-white">Backend</h3>
             <p class="mb-4 text-lg text-gray-300">Node.js, Express, MongoDB</p>
             <ul class="mt-4 text-left text-gray-400">
-              <li class="mb-2">• RESTful APIs: Designing robust and scalable API endpoints.</li>
-              <li class="mb-2">• Database Design: Structuring data for efficiency and reliability.</li>
-              <li class="mb-2">• Security Implementation: Protecting applications with best security practices.</li>
+              <li class="mb-2">
+                • RESTful APIs: Designing robust and scalable API endpoints.
+              </li>
+              <li class="mb-2">
+                • Database Design: Structuring data for efficiency and reliability.
+              </li>
+              <li class="mb-2">
+                • Security Implementation: Protecting applications with best security
+                practices.
+              </li>
             </ul>
           </div>
         </app-card-general>

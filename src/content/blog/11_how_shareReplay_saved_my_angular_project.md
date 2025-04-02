@@ -26,36 +26,37 @@ Loading data from the server is an async operation, so while we perform loading,
 
 In the following snippet, you will see the initial implementation and, under it, a brief explanation.
 
-```TS
+```typescript
 // all daily data for a period
 const totalDailyDataForTimePeriod$ = this.dateSource$.pipe(
-	tap(() => {
-          // displaying the skeleton loading
-          this.filteredDailyDataLoaded$.next(false);
-	}),
-	switchMap((dateFilter) =>
-          // get data from API
-         this.service.getPersonalAccountDailyData(dateFilter)
-	),
-	tap(() => {
-          // removing the skeleton loading
-	     this.filteredDailyDataLoaded$.next(true);
-	}),
+  tap(() => {
+    // displaying the skeleton loading
+    this.filteredDailyDataLoaded$.next(false);
+  }),
+  switchMap(dateFilter =>
+    // get data from API
+    this.service.getPersonalAccountDailyData(dateFilter)
+  ),
+  tap(() => {
+    // removing the skeleton loading
+    this.filteredDailyDataLoaded$.next(true);
+  })
 );
-
 
 // creating another observable from totalDailyDataForTimePeriod$
-this.accountFilteredState$ = totalDailyDataForTimePeriod$.pipe(
-	/* modifying data */
-);
+this.accountFilteredState$ = totalDailyDataForTimePeriod$
+  .pipe
+  /* modifying data */
+  ();
 
 // creating another observable from totalDailyDataForTimePeriod$
 this.filteredDailyData$ = combineLatest([
   totalDailyDataForTimePeriod$,
-  this.selectedTagIds$
-]).pipe(
-	/* modifying data */
-);
+  this.selectedTagIds$,
+])
+  .pipe
+  /* modifying data */
+  ();
 ```
 
 To understand what is happening, here is the summary:

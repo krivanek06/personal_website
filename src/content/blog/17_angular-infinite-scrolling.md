@@ -26,7 +26,7 @@ The problem with MatPaginator is that… it is just ugly 🤮 . There are solut
 
 Let’s say we make an API call to the server and receive back 10 000 elements, as follows:
 
-```TS
+```typescript
 import { Observable, of } from 'rxjs';
 
 export interface DummyData {
@@ -36,7 +36,7 @@ export interface DummyData {
 }
 
 export const dummyDataObs$: Observable<DummyData[]> = of(
-  [...Array(10_000).keys()].map((index) => ({
+  [...Array(10_000).keys()].map(index => ({
     id: index,
     firstName: `firstName_${index}`,
     // ...
@@ -46,7 +46,7 @@ export const dummyDataObs$: Observable<DummyData[]> = of(
 
 We want to display this data in MatTable (it is not required to use material table I just find it convenient) and we end up with the following code:
 
-```tsx
+```typescript
 // imports
 
 @Component({
@@ -114,7 +114,7 @@ The best possible scenario I could come up with is to create an `appScrollNearEn
 
 > **_NOTE:_** Because we implement an infinite scroll, the solution will only work if the table is the last component in the page. This is usually the case as if you once have an infinite scroll attached to anything, it is most likely your last element, however, I just wanted to highlight this, because the computation involves accessing the page height and calculating whether we approach its end or not.
 
-```tsx
+```typescript
 // imports ...
 
 @Directive({
@@ -159,7 +159,8 @@ export class ScrollNearEndDirective implements OnInit {
     const spaceOfElementAndPage = heightOfWholePage - heightOfElement;
 
     // calculated whether we are near the end
-    const scrollToBottom = heightOfElement - innerHeight - currentScrolledY + spaceOfElementAndPage;
+    const scrollToBottom =
+      heightOfElement - innerHeight - currentScrolledY + spaceOfElementAndPage;
 
     // if the user is near end
     if (scrollToBottom < this.threshold) {
@@ -180,7 +181,7 @@ The inspiration for the above code came from the Stack Overflow thread - [How to
 
 We can import the `ScrollNearEndDirective` to our `SimpleTableComponent`, attach it to the table and display more elements, every time `nearEnd` emits:
 
-```tsx
+```typescript
 // imports
 
 @Component({

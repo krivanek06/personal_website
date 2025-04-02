@@ -31,7 +31,7 @@ Below you can see a simple app on which we can demonstrate the main functionalit
 
 With the new resource API, this example can be solved similarly as shown below
 
-```TS
+```typescript
 @Component({
   selector: 'app-resource-normal-example',
   standalone: true,
@@ -40,11 +40,9 @@ With the new resource API, this example can be solved similarly as shown below
     <div class="grid gap-y-2">
       <h1>Resource Normal Example</h1>
 
-      <button (click)="todosResource.reload()">
-        refresh
-      </button>
+      <button (click)="todosResource.reload()">refresh</button>
 
-      <input type="number" [(ngModel)]="limitControl"/>
+      <input type="number" [(ngModel)]="limitControl" />
 
       <!-- loading state -->
       @if (todosResource.isLoading()) {
@@ -76,24 +74,22 @@ export class ResourceNormalExample {
   todosResource = rxResource({
     request: this.limitControl,
     loader: ({ request: limit }) => {
-      return this.http.get<Todo[]>(
-        `https://jsonplaceholder.typicode.com/todos?_limit=${limit}`
-      ).pipe(
-        map((res) => {
-          if (limit === 8) {
-            throw new Error('Error happened on the server');
-          }
-          return res;
-        }),
-        delay(1000),
-      );
+      return this.http
+        .get<Todo[]>(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`)
+        .pipe(
+          map(res => {
+            if (limit === 8) {
+              throw new Error('Error happened on the server');
+            }
+            return res;
+          }),
+          delay(1000)
+        );
     },
   });
 
   onRemove(todo: Todo) {
-    this.todosResource.update(
-      (d) => d?.filter((item) => item.id !== todo.id)
-    );
+    this.todosResource.update(d => d?.filter(item => item.id !== todo.id));
   }
 }
 ```
@@ -110,7 +106,7 @@ This part will be divided into two section. First, we create a basic `rxResource
 
 We need to define what types we are working with, such as the data, the error and the loading state of the request, so we may go with something like the following:
 
-```TS
+```typescript
 // this is the primary type we will be working with
 type RxResourceCustomResult<T> = {
   /**
@@ -128,32 +124,35 @@ type RxResourceCustomResult<T> = {
 
 // in theory you could also go with the one below,
 // but its usage were a bit different from what Angular's rxResource has
-type RxResourceCustomResult<T> = {
-  state: 'loading'
-} | {
-  state: 'local'
-} | {
-  state: 'loaded',
-  data: T | null;
-} | {
-  state: 'error',
-  error: unknown;
-}
+type RxResourceCustomResult<T> =
+  | {
+      state: 'loading';
+    }
+  | {
+      state: 'local';
+    }
+  | {
+      state: 'loaded';
+      data: T | null;
+    }
+  | {
+      state: 'error';
+      error: unknown;
+    };
 ```
 
 ### Creating A Function Skeleton
 
 To create the skeleton for the custom function that will look the same as Angular’s rxResource, we may go with something like:
 
-```TS
+```typescript
 export const rxResourceCustomBasic = (data: {
   request: any[];
   loader: (values: any) => Observable<any>;
 }): Observable<RxResourceCustomResult<any>> => {
-	// todo ....
+  // todo ....
   return of({} as RxResourceCustomResult<any>);
-}
-
+};
 ```
 
 The `request` accepts an array of something, ideally observables. It will
@@ -165,22 +164,18 @@ access (the observable) values from the `request` parameter and it returns an ob
 
 Since initially everything is a type of `any`, TS doesn’t suggest that the `value` inside the `loader` array should a be number. Let’s fix it:
 
-```TS
+```typescript
 // extract the value from an observable
 type ObservableValue<T> = T extends Observable<infer U> ? U : never;
 
-export const rxResourceCustomBasic = <
-	T,
-	TLoader extends Observable<unknown>[]
->(data: {
+export const rxResourceCustomBasic = <T, TLoader extends Observable<unknown>[]>(data: {
   request: [...TLoader];
   loader: (values: {
     [K in keyof TLoader]: ObservableValue<TLoader[K]>;
   }) => Observable<T>;
 }): Observable<RxResourceCustomResult<T>> => {
-
-  return of({ } as RxResourceCustomResult<any>);
-}
+  return of({} as RxResourceCustomResult<any>);
+};
 ```
 
 A bit of generics are used, but what’s happening is that the first `T` in `rxResourceCustomBasic`
@@ -197,7 +192,7 @@ Now when you use the `rxResourceCustomBasic` you will see the correct types. For
 
 Types are correctly solved, now let’s create the basic version of our custom rxResource, that has the state, data and error properties.
 
-```TS
+```typescript
 export const rxResourceCustomBasic = <T, TLoader extends Observable<unknown>[]>(data: {
   request: [...TLoader];
   loader: (values: {
@@ -206,20 +201,20 @@ export const rxResourceCustomBasic = <T, TLoader extends Observable<unknown>[]>(
 }): Observable<RxResourceCustomResult<T>> => {
   // listen to all the requests observables
   return combineLatest(data.request).pipe(
-    switchMap((values) =>
+    switchMap(values =>
       // execute the loader function provided by the user
       data
         .loader(
           values as {
             [K in keyof TLoader]: ObservableValue<TLoader[K]>;
-          },
+          }
         )
         .pipe(
-          switchMap((result) =>
+          switchMap(result =>
             of({
               state: 'loaded' as const,
               data: result,
-            }),
+            })
           ),
           // setup loading state
           startWith({
@@ -227,29 +222,28 @@ export const rxResourceCustomBasic = <T, TLoader extends Observable<unknown>[]>(
             data: null,
           }),
           // handle error state
-          catchError((error) =>
+          catchError(error =>
             of({
               state: 'error' as const,
               error,
               data: null,
-            }),
+            })
           ),
 
           // map the result to the expected type
           map(
-            (result) =>
+            result =>
               ({
                 ...result,
                 isLoading: result.state === 'loading',
-              }) satisfies RxResourceCustomResult<T>,
-          ),
-        ),
+              }) satisfies RxResourceCustomResult<T>
+          )
+        )
     ),
     // share the observable
-    shareReplay(1),
+    shareReplay(1)
   );
 };
-
 ```
 
 - We use `combineLatest` to listen on any new emission from the array of observables in `data.request` and we want to rerun the logic if any of those observables emit a new value.
@@ -267,8 +261,7 @@ Although, the basic example works fine, there are some small issues with it. The
 
 Second, we are missing some methods, which the Angular’s `rxResource` provides, such as `reload()`, `update()` and `set()`. Let’s create a more advanced version that will have all the above mentioned features.
 
-```TS
-
+```typescript
 export type RxResourceCustom<T> = {
   /**
    * Trigger a reload of the resource
@@ -321,14 +314,14 @@ export const rxResourceCustom = <T, TLoader extends Observable<unknown>[]>(data:
         .loader(
           values as {
             [K in keyof TLoader]: ObservableValue<TLoader[K]>;
-          },
+          }
         )
         .pipe(
-          switchMap((result) =>
+          switchMap(result =>
             of({
               state: 'loaded' as const,
               data: result,
-            }),
+            })
           ),
 
           // setup loading state
@@ -338,26 +331,26 @@ export const rxResourceCustom = <T, TLoader extends Observable<unknown>[]>(data:
           }),
 
           // handle error state
-          catchError((error) =>
+          catchError(error =>
             of({
               state: 'error' as const,
               error,
               data: null,
-            }),
-          ),
-        ),
-    ),
+            })
+          )
+        )
+    )
   );
 
   // subscribe to the result and update the state
-  result$.pipe(takeUntilDestroyed()).subscribe((state) => resultState$.next(state));
+  result$.pipe(takeUntilDestroyed()).subscribe(state => resultState$.next(state));
 
   return {
     result$: resultState$.asObservable().pipe(
-      map((state) => ({
+      map(state => ({
         ...state,
         isLoading: state.state === 'loading',
-      })),
+      }))
     ),
     reload: () => reloadTrigger$.next(),
     value: () => resultState$.value.data,
@@ -370,7 +363,7 @@ export const rxResourceCustom = <T, TLoader extends Observable<unknown>[]>(data:
         });
       }
     },
-    set: (data) => {
+    set: data => {
       resultState$.next({
         state: 'local',
         data: data,
@@ -402,7 +395,7 @@ version 16 when using the above advanced example.
 
 Finally we can now use the custom `rxResourceCustom` that we’ve created as follows:
 
-```TS
+```typescript
 @Component({
   selector: 'app-resource-custom-example',
   standalone: true,
@@ -431,8 +424,8 @@ Finally we can now use the custom `rxResourceCustom` that we’ve created as fol
         <!-- display data -->
         @for (item of data.data; track $index) {
           <div class="g-item" (click)="onRemove(item)">
-	          {{ item.id }} - {{ item.title }}
-	      </div>
+            {{ item.id }} - {{ item.title }}
+          </div>
         }
       }
     </div>
@@ -445,37 +438,35 @@ export class ResourceCustomExampleComponent {
   limitControl = new FormControl<number>(5, { nonNullable: true });
 
   private limitValue$ = this.limitControl.valueChanges.pipe(
-		startWith(this.limitControl.value)
-	);
+    startWith(this.limitControl.value)
+  );
 
   todosResource = rxResourceCustom({
     request: [this.limitValue$],
     loader: ([limit]) => {
-      return this.http.get<Todo[]>(
-	      `https://jsonplaceholder.typicode.com/todos?_limit=${limit}`
-	     ).pipe(
-        map((res) => {
-          if (limit === 8) {
-            throw new Error('Error happened on the server');
-          }
-          return res;
-        }),
-        delay(1000),
-      );
+      return this.http
+        .get<Todo[]>(`https://jsonplaceholder.typicode.com/todos?_limit=${limit}`)
+        .pipe(
+          map(res => {
+            if (limit === 8) {
+              throw new Error('Error happened on the server');
+            }
+            return res;
+          }),
+          delay(1000)
+        );
     },
   });
 
   onRemove(todo: Todo) {
-    this.todosResource.update(
-	    (d) => d?.filter((item) => item.id !== todo.id)
-	  );
+    this.todosResource.update(d => d?.filter(item => item.id !== todo.id));
   }
 
-	constructor(){
-	// log the current value
+  constructor() {
+    // log the current value
     console.log(this.todosResource.value());
   }
- }
+}
 ```
 
 ## The Final Result

@@ -30,18 +30,19 @@ In this article, I want to explore how you can create custom RxJs operators and 
 
 To answer this question, it's best to start by looking at the [Github RxJs implementations](https://github.com/ReactiveX/rxjs/tree/master/packages/rxjs/src/internal/operators) for all available operators. Let’s choose the most common `map()` operator and see how it is being implemented. At the moment of writing this article, in RxJs version 7.8.1, the `map()` operator implementation looks as follows:
 
-```TS
-export function operate<In, Out>(
-	{ destination, ...subscriberOverrides }: OperateConfig<In, Out>
-) {
+```typescript
+export function operate<In, Out>({
+  destination,
+  ...subscriberOverrides
+}: OperateConfig<In, Out>) {
   return new Subscriber(destination, subscriberOverrides);
 }
 
 export function map<T, R>(
-	project: (value: T, index: number) => R
+  project: (value: T, index: number) => R
 ): OperatorFunction<T, R> {
-  return (source) =>
-    new Observable((destination) => {
+  return source =>
+    new Observable(destination => {
       // The index of the value from the source.
       let index = 0;
       // Subscribe to the source
@@ -71,7 +72,7 @@ Also worth pointing out that the `source` variable represents the Observable pas
 
 End of the theory, let's dive into something practical to understand the basics. To create a simple custom operator, let’s say that we have a stream of numbers and want to multiply them by a specific value. Here's the result we aim to achieve:
 
-```TS
+```typescript
 const source$ = of(1, 2, 3);
 source$.pipe(multiplyBy(6)).subscribe(console.log);
 //  6, 12, 18
@@ -79,11 +80,11 @@ source$.pipe(multiplyBy(6)).subscribe(console.log);
 
 From what we know so far, we can create something like this:
 
-```TS
+```typescript
 export function multiplyBy(val = 2): MonoTypeOperatorFunction<number> {
   return (source: Observable<number>): Observable<number> =>
-    new Observable<number>((subscriber) => {
-      return source.pipe(map((d) => d * val)).subscribe({
+    new Observable<number>(subscriber => {
+      return source.pipe(map(d => d * val)).subscribe({
         next(value) {
           subscriber.next(value);
         },
@@ -102,7 +103,7 @@ The function name is `multiplyBy()` which is used inside a pipe chain. It return
 
 This implementation works fine, however, I didn’t like this extra layer of abstraction by creating an additional Observable wrapping around the `source` Observable, and also explicitly subscribing to the `source`. This approach is useful if we need full control over subscription management or have complex custom logic. Since none of these apply to our code, we can simplify our custom operator as follows:
 
-```tsx
+```typescriptx
 export function multiplyBy(val = 2): MonoTypeOperatorFunction<number> {
   return source => source.pipe(map(d => d * val));
 }
@@ -116,11 +117,9 @@ The shorter syntax is more readable, so I will continue with it to list out some
 
 The inspiration for this operator came from the [ngxtension](https://ngxtension.netlify.app/utilities/operators/filter-nil/) library, that I used for some time and I do recommend checking it out. The idea is that we want to filter out `undefined` and `null` values from a pipe chain.
 
-```TS
+```typescript
 export function filterNil<T>(): MonoTypeOperatorFunction<T> {
-  return (source) => source.pipe(
-	  filter((d) => d !== null && d !== undefined)
-	 );
+  return source => source.pipe(filter(d => d !== null && d !== undefined));
 }
 ```
 
@@ -128,23 +127,19 @@ export function filterNil<T>(): MonoTypeOperatorFunction<T> {
 
 There are situations where you loaded data from an API, cached it, but you wanted to poll the server in some time interval, thought the lifetime of the application, to refresh the data - weather app, stock prices, message polling etc. What I found out was, that it was pretty easy to implement such an operator:
 
-```TS
+```typescript
 export function dataPolling<T>(data: {
   loader: () => Observable<T>;
   reloadSeconds: number;
 }): MonoTypeOperatorFunction<T> {
-  return (source) =>
+  return source =>
     source.pipe(
-      switchMap(() =>
-        timer(0, data.reloadSeconds * 1000).pipe(
-          switchMap(data.loader)
-        )
-      )
+      switchMap(() => timer(0, data.reloadSeconds * 1000).pipe(switchMap(data.loader)))
     );
 }
 ```
 
-```TS
+```typescript
 // Component
 private http = inject(HttpClient);
 
@@ -164,24 +159,24 @@ constructor() {
 
 I know I said I won’t do examples with logging, as you can find more than enough of it, however I think it is worth mentioning that when you are doing some more complex logic inside the `catchError()` operator, it makes sense to create a custom operator for it. Here is an example of reporting the logs into Sentry and also notifying the user when something goes wrong.
 
-```TS
+```typescript
 export function handleError<T, K>(
   returnValue: K,
-  errorMessage = "Server Error"
+  errorMessage = 'Server Error'
 ): OperatorFunction<T, K | T> {
-	const sentry = inject(SentryService);
-	const notification = inject(NotificationService);
+  const sentry = inject(SentryService);
+  const notification = inject(NotificationService);
 
-  return (source) =>
+  return source =>
     source.pipe(
-      catchError((err) => {
-	    // log error in sentry
-		sentry.log(error, 'error')
+      catchError(err => {
+        // log error in sentry
+        sentry.log(error, 'error');
 
-		// notify the user
-		notification.notifyUser(errorMessage, 'error')
+        // notify the user
+        notification.notifyUser(errorMessage, 'error');
 
-		// return something in the pipe chain
+        // return something in the pipe chain
         return of(returnValue);
       })
     );
@@ -192,11 +187,11 @@ export function handleError<T, K>(
 
 Have you ever had a situation that you wanted to create an “undo change” button? Maybe caching values that arrived via a Websocket connection, or remember last N form edits by the user? One simple version for caching data can be done as follows:
 
-```TS
+```typescript
 // defining an interface for the function
 // current and crevious values can be different, therefore T & K
 type RememberMemory<T, K = T> = {
-	// previous value that was cachced
+  // previous value that was cachced
   previous: null | K;
   // currently cached value
   current: T;
@@ -205,18 +200,18 @@ type RememberMemory<T, K = T> = {
 };
 ```
 
-```TS
+```typescript
 export function rememberHistory<T>(
-	// how many last N values to remember
+  // how many last N values to remember
   memory = 3
 ): OperatorFunction<T, RememberMemory<T>> {
-  return (source) =>
+  return source =>
     source.pipe(
       scan(
         (acc, curr) => ({
           current: curr,
           previous: acc.current,
-	        // remember last N values
+          // remember last N values
           historyChain: [...acc.historyChain.slice(-(memory - 1)), curr],
         }),
         {
@@ -231,15 +226,13 @@ export function rememberHistory<T>(
 
 To demonstrate how this pipe works, let’s say you have a stream of data and you want to cache them. When you have the following code, it will result to the below displayed picture. You can also change the logic if you want to change the order in the `historyChain` to keep the latest data on the first and not on the last position in the array.
 
-```TS
+```typescript
 from([
-  { id: 1, name: "test1" },
-  { id: 2, name: "test2" },
-  { id: 3, name: "test3" },
-  { id: 4, name: "test4" },
-]).pipe(
-    rememberHistory(4)
-  )
+  { id: 1, name: 'test1' },
+  { id: 2, name: 'test2' },
+  { id: 3, name: 'test3' },
+  { id: 4, name: 'test4' },
+]).pipe(rememberHistory(4));
 ```
 
 ![Custom Pipe Remember History Log](./article-images/35_rxjs-pipe-remember-history-log.png)
@@ -248,7 +241,7 @@ from([
 
 When working with forms, you might listen to the form's `valueChanges` and only perform specific computations when the form is actually updated. The goal is to ignore intermediate changes, like typing or deleting characters, and only respond to meaningful updates. To solve this you could reach out for `distinctUntilChanged()` with some predicate and write it as:
 
-```TS
+```typescript
 this.myForm.valueChanges.pipe(
   debounceTime(800),
   distinctUntilChanged(
@@ -262,7 +255,7 @@ Using the stringifycation predicate, you are creating a guard to proceed only wh
 
 But what if you need this logic, but you wish to avoid using `JSON.stringify` ? You’d want a way to compare the previous and current object states, emitting only when they differ. Restricting the usage of `distinctUntilChanged()` and write out a custom logic to compare object changes can be done as follows:
 
-```TS
+```typescript
 /**
  * creates a deep comparison between previous and current state
  * and emits only when object values changed (even for nested keys)
@@ -274,11 +267,8 @@ export function objectValueChanged<T extends Object>(
     debounceTime: 500,
   }
 ): MonoTypeOperatorFunction<Partial<T>> {
-  const isObjectValueChange = <K extends Object | {}>(
-    prev: K,
-    curr: K
-  ): boolean => {
-    return Object.keys(curr).some((key) => {
+  const isObjectValueChange = <K extends Object | {}>(prev: K, curr: K): boolean => {
+    return Object.keys(curr).some(key => {
       // value can be anything - string, number, object, etc.
       const previousValue = prev[key as keyof K] as any;
       const currentValue = curr[key as keyof K] as any;
@@ -292,7 +282,7 @@ export function objectValueChanged<T extends Object>(
     });
   };
 
-  return (source) =>
+  return source =>
     source.pipe(
       // start with empty object make first emit
       startWith({}),
@@ -312,8 +302,7 @@ export function objectValueChanged<T extends Object>(
 
 Speaking about forms, a more practical use case could be listening to a form and determining which fields have been changed / edited. The goal is to pass the initial state of the form (or object) into the pipe and get two outputs: an array of changed keys and an object where the keys are form field names and the values are booleans indicating if the field was edited. This pipe is indeed more complex, you don’t need to understand it in depth. Below I demonstrate how it works when attaching it on a form.
 
-```TS
-
+```typescript
 type Booleanify<T> = {
   [K in keyof T]: T[K] extends object ? Booleanify<T[K]> : boolean;
 };
@@ -331,7 +320,7 @@ export function objectChangedFields<T extends Object>(
   const getChangedFields = <K extends Object | Array<any>>(
     initial: K,
     current: Partial<K>,
-    currentKey = ""
+    currentKey = ''
   ): string[] => {
     let changedKeys: string[] = [];
     for (const key of Object.keys(current)) {
@@ -340,14 +329,12 @@ export function objectChangedFields<T extends Object>(
       const currentValue = current[key as keyof K] as any;
 
       // create key to save
-      const newKey = currentKey !== "" ? `${currentKey}.${key}` : key;
+      const newKey = currentKey !== '' ? `${currentKey}.${key}` : key;
 
       // if value is object - check child key and value changes
       if (currentValue instanceof Object) {
         // save nested path
-        changedKeys.push(
-          ...getChangedFields(previousValue, currentValue, newKey)
-        );
+        changedKeys.push(...getChangedFields(previousValue, currentValue, newKey));
         // go to next key
         continue;
       }
@@ -392,9 +379,9 @@ export function objectChangedFields<T extends Object>(
     return cachedObj as Booleanify<K>;
   };
 
-  return (source) =>
+  return source =>
     source.pipe(
-      map((data) => ({
+      map(data => ({
         viewArray: getChangedFields(initial, data),
         viewObject: getChangedFieldsObject(initial, data),
       }))
@@ -406,30 +393,30 @@ I won’t dive into the details of how it works, there are some `any` castings a
 
 What’s important is that you pass the initial state of the object (form) as `initial: T` to the function. The two functions, `getChangedFields()` returns an array of keys which were affected, and `getChangedFieldsObject()` returns an object with boolean values if the key was. changed. Now, let’s see this pipe in action with the following component:
 
-```TS
+```typescript
 export class ExampleFormComponent {
   private readonly builder = inject(FormBuilder);
 
   myForm = this.builder.nonNullable.group({
-    name: [""],
-    email: [""],
-    age: [""],
+    name: [''],
+    email: [''],
+    age: [''],
     address: this.builder.group({
-      city: [""],
+      city: [''],
     }),
     items: this.builder.array([
       this.builder.group({
-        name: [""],
+        name: [''],
         amount: [0],
       }),
     ]),
   });
 
   constructor() {
-    this.myForm.valueChanges.pipe(
-        objectChangedFields(this.myForm.value)
-      ).subscribe((fieldChange) => {
-        console.log("Changed fieldsa:", fieldChange);
+    this.myForm.valueChanges
+      .pipe(objectChangedFields(this.myForm.value))
+      .subscribe(fieldChange => {
+        console.log('Changed fieldsa:', fieldChange);
       });
   }
 }
@@ -443,50 +430,50 @@ I am passing the `this.myForm.value` initial state to the custom pipe, but this 
 
 In November 2024 I published an article titled [Creating Custom rxResource API With Observables](https://dev.to/this-is-angular/creating-custom-rxresource-api-with-observables-2abm), where I attempted to recreate a custom `rxResource()` API that works with Observables instead of signals. The main benefit of this custom API is that, even when working with Observables, you still get access to the loading state of the HTTP request. What I also realized is that I can take this logic and create a custom pipe that includes these HTTP status indicators.
 
-```TS
+```typescript
 type RxResourceResult<T> = {
-  state: "loading" | "loaded" | "error";
+  state: 'loading' | 'loaded' | 'error';
   isLoading: boolean;
   data: T | null;
   error?: unknown;
 };
 ```
 
-```TS
+```typescript
 /**
  * used mainly for API requests to include HTTP state and additional data
  * about the HTTP call. Similar to rxResource
  */
- export function loadingStatus<T>(): OperatorFunction<T, RxResourceResult<T>> {
-  return (source) =>
+export function loadingStatus<T>(): OperatorFunction<T, RxResourceResult<T>> {
+  return source =>
     source.pipe(
-      map((result) => ({
-        state: "loaded" as const,
+      map(result => ({
+        state: 'loaded' as const,
         data: result,
       })),
       // setup loading state
       startWith({
-        state: "loading" as const,
+        state: 'loading' as const,
         data: null,
       }),
       // handle error state
-      catchError((error) =>
+      catchError(error =>
         of({
-          state: "error" as const,
+          state: 'error' as const,
           error,
           data: null,
         })
       ),
       // map the result to the expected type
       map(
-        (result) =>
+        result =>
           ({
             ...result,
-            isLoading: result.state === "loading",
-          } satisfies RxResourceResult<T>)
+            isLoading: result.state === 'loading',
+          }) satisfies RxResourceResult<T>
       )
     );
- }
+}
 ```
 
 ![Custom Pipe Loading State Log](./article-images/35_rxjs-pipe-loading-state-log.png)

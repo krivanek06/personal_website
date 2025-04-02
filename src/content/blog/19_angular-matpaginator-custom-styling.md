@@ -26,17 +26,16 @@ The whole source code is available on [StackBlitz](https://stackblitz.com/edit/s
 
 We will create a directive called `appBubblePagination`, which will leverage the power of `Renderer2` to create custom UI elements replacing the default pagination layout, and the directive usage will be as follows:
 
-```tsx
+```html
 <table mat-table [dataSource]="dataSource" [trackBy]="identity">
-		<!-- table content -->
+  <!-- table content -->
 </table>
 
 <mat-paginator
   appBubblePagination
   [appCustomLength]="dataSource.data.length"
   [length]="dataSource.data.length"
-  [pageSize]="20"
->
+  [pageSize]="20">
 </mat-paginator>
 ```
 
@@ -44,7 +43,7 @@ We will create a directive called `appBubblePagination`, which will leverage the
 
 To achieve the goal of changing the visual aspect of the mat-pagination, we create a directive and import the following dependencies.
 
-```tsx
+```typescript
 @Directive({
   selector: '[appBubblePagination]',
   standalone: true,
@@ -77,7 +76,7 @@ The changes include:
 
 With the dependencies `ElementRef` and `Renderer2`, we modify the layout as follows:
 
-```tsx
+```typescript
 export class BubblePaginationDirective implements AfterViewInit {
   ngAfterViewInit(): void {
     this.styleDefaultPagination();
@@ -87,7 +86,9 @@ export class BubblePaginationDirective implements AfterViewInit {
     const nativeElement = this.elementRef.nativeElement;
 
     const itemsPerPage = nativeElement.querySelector('.mat-mdc-paginator-page-size');
-    const howManyDisplayedEl = nativeElement.querySelector('.mat-mdc-paginator-range-label');
+    const howManyDisplayedEl = nativeElement.querySelector(
+      '.mat-mdc-paginator-range-label'
+    );
 
     // remove 'items per page'
     this.ren.setStyle(itemsPerPage, 'display', 'none');
@@ -107,7 +108,7 @@ Upon inspecting the HTML element we see that there is a `mat-mdc-paginator-range
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/vavlx0b4jywktk2b293a.png)
 
-```tsx
+```typescript
 ngAfterViewInit(): void {
     this.styleDefaultPagination();
     this.createBubbleDivRef();
@@ -148,7 +149,7 @@ In the fourth step, we want to render the first and the last button and add dots
 
 ![Image description](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/qv6s4zpenvioeqr0627u.png)
 
-```tsx
+```typescript
 export class BubblePaginationDirective implements AfterViewInit {
   /**
    * how many elements are in the table
@@ -264,7 +265,7 @@ As the last step we want to implement the logic that will listen to the user cli
 
 At this moment all the buttons are hidden and their reference is kept in `buttonsRef`. We want to display only the first 2-3 buttons and as the user navigates to either direction, we want to display additional 2 buttons to right and left, and also the dots between the first and the last buttons if the user is in the middle of the navigation.
 
-```tsx
+```typescript
 export class BubblePaginationDirective implements AfterViewInit {
 
 	private buttonsRef: HTMLElement[] = [];

@@ -41,7 +41,9 @@ export class AppModule implements DoBootstrap {
   constructor(private injector: Injector) {}
 
   ngDoBootstrap(): void {
-    const votingOld = createCustomElement(VotingOldComponent, { injector: this.injector });
+    const votingOld = createCustomElement(VotingOldComponent, {
+      injector: this.injector,
+    });
     customElements.define('voting-old', votingOld);
   }
 }
@@ -163,7 +165,9 @@ export class AppComponent implements DoBootstrap {
     const applicationRef = await createApplication();
 
     // create a constructor of a custom element
-    const votingNew = createCustomElement(VotingNewComponent, { injector: applicationRef.injector });
+    const votingNew = createCustomElement(VotingNewComponent, {
+      injector: applicationRef.injector,
+    });
 
     // register in a browser
     customElements.define('voting-new', votingNew);

@@ -20,20 +20,18 @@ In the latest (currently v19.2) we have signal APIs such as `httpResource`, `rxR
 
 I use `signal()` whenever a variable is used in the DOM and its value updates over time. A common example is toggling between components using two buttons to control which component is displayed.
 
-```TS
-
+```typescript
 @Component({
   selector: 'app-test',
   template: `
-      <button (click)="onViewChange('card')" type="button">
-        Card View
-      </button>
-      <button (click)="onViewChange('grid')" type="button">
-        Grid View
-      </button>
+    <button (click)="onViewChange('card')" type="button">Card View</button>
+    <button (click)="onViewChange('grid')" type="button">Grid View</button>
 
-      @if(viewControl() === 'grid') { <app-grid-view /> }
-      @else if(viewControl() === 'card') { <app-card-view /> }
+    @if (viewControl() === 'grid') {
+      <app-grid-view />
+    } @else if (viewControl() === 'card') {
+      <app-card-view />
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -49,14 +47,17 @@ export class TestComponent {
 
 Is `signal()` the only viable option for this? Not really. An alternative approach could be to create a child component implementing `ControlValueAccessor` and manage state using reactive forms in the parent to control which view is displayed.
 
-```TS
+```typescript
 @Component({
   selector: 'app-test',
   template: `
-      <app-button-grid-card-view-change [formControl]="viewControl" />
+    <app-button-grid-card-view-change [formControl]="viewControl" />
 
-      @if(viewControl.value === 'grid') {  <app-grid-view /> }
-      @else if(viewControl.value === 'card') { <app-card-view />}
+    @if (viewControl.value === 'grid') {
+      <app-grid-view />
+    } @else if (viewControl.value === 'card') {
+      <app-card-view />
+    }
   `,
   imports: [ReactiveFormsModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -71,14 +72,17 @@ Creating a separate component for our buttons is a realistic approach, especiall
 
 Instead of using reactive forms, we can improve this scenario by leveraging the [`model()` signal](https://angular.dev/api/core/model) in the child component. This allows the child to notify the parent about which button was clicked, effectively delegating the responsibility of toggling between `card` and `grid` views to the child component. Note that `viewModel` is a `viewModel = model<'grid' | 'card'>('grid')` in the child component.
 
-```TS
+```typescript
 @Component({
   selector: 'app-test',
   template: `
-      <app-button-grid-card-view-change [(viewModel)]="viewControl" />
+    <app-button-grid-card-view-change [(viewModel)]="viewControl" />
 
-      @if(viewControl() === 'grid') {  <app-grid-view /> }
-      @else if(viewControl() === 'card') { <app-card-view />}
+    @if (viewControl() === 'grid') {
+      <app-grid-view />
+    } @else if (viewControl() === 'card') {
+      <app-card-view />
+    }
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
@@ -98,11 +102,11 @@ When `effect()` was introduced alongside Angular signals, it's safe to say we al
 
 We quickly discovered that creating infinite loops was easier than we’d like to admit. A classic example looks something like this:
 
-```TS
+```typescript
 effect(() => {
   const user = authUser();
   this.methodReadsAndUpdatedSignals(a);
-})
+});
 ```
 
 Later, we discovered that we could use `untracked()` inside `effect()`, essentially wrapping most of our code in it, to prevent infinite loops. What’s interesting is that, despite `effect()` being part of the Angular signal API, Angular actually discourages its use except in [very rare cases](https://angular.dev/guide/signals#effects).
@@ -114,7 +118,7 @@ When I built [ggfinance.io](https://ggfinance.io/) (_small promo_ 😏), a mid-s
 - DOM – Creating structural directives that modify the view based on signal (store) changes
 - LOG – Logging signal changes
 
-```TS
+```typescript
 @Component({
   selector: 'app-test',
   standalone: true,
@@ -150,7 +154,7 @@ export class TestComponent {
 
 Although `effect` is a building block as such, mainly to issue side-effect tasks, run an independent computation when one or more input values change, other alternatives are preferred when creating a new reactive data structure used in the DOM. Upon a later discovery, as I was writing this article, I realized that you solve some of the mentioned problems with `computed()`, such as rewriting the mat-table data population as such.
 
-```TS
+```typescript
 @Component({
   selector: 'app-test',
   standalone: true,
@@ -178,7 +182,7 @@ export class TestComponent {
     dataSource.paginator = this.paginator() ?? null;
     dataSource.sort = this.sort() ?? null;
 
-    return dataSource
+    return dataSource;
   });
 }
 ```
@@ -191,28 +195,28 @@ An example of this might be in an online store, ordering application, or a simpl
 
 Below are two examples of how to achieve this behavior, both before and after the introduction of `linkedSignal()`.
 
-```TS
- // EXAMPLE BEFORE linkedSignal()
- itemSelected = signal<unknown>(null);
- itemUnits = signal(1);
+```typescript
+// EXAMPLE BEFORE linkedSignal()
+itemSelected = signal<unknown>(null);
+itemUnits = signal(1);
 
- // everytime a new item is selected, reset units to 0
- itemUnitsEffect = effect(() => {
-   const selected = this.itemSelected();
+// everytime a new item is selected, reset units to 0
+itemUnitsEffect = effect(() => {
+  const selected = this.itemSelected();
 
-   untracked(() => {
-     this.itemUnits.set(1);
-   })
- })
+  untracked(() => {
+    this.itemUnits.set(1);
+  });
+});
 ```
 
-```TS
+```typescript
 // EXAMPLE USING linkedSignal()
 itemSelected = signal<unknown>(null);
 
 itemUnits = linkedSignal({
-    source: this.itemSelected,
-    computation: () => 1
+  source: this.itemSelected,
+  computation: () => 1,
 });
 ```
 
@@ -235,15 +239,18 @@ Initially, I had mixed feelings about these two functions because, since we can 
 
 > Uses HttpClient to make requests and supports interceptors, testing, and other features of the HttpClient API. Data is parsed as JSON by default.
 
-```TS
- data1 = toSignal(this.http.get<unknown>('...').pipe(map((d) => d.data)
- ), { initialValue: [] });
+```typescript
+data1 = toSignal(this.http.get<unknown>('...').pipe(map(d => d.data)), {
+  initialValue: [],
+});
 
- data2 = httpResource<unknown[]>(
-    () => ({
-      method: 'GET',
-      url: '',
-  }), { defaultValue: [], parse: (d): unknown[] => d.data });
+data2 = httpResource<unknown[]>(
+  () => ({
+    method: 'GET',
+    url: '',
+  }),
+  { defaultValue: [], parse: (d): unknown[] => d.data }
+);
 ```
 
 At first, I thought the two approaches were almost identical. However, I quickly realized I was mistaken. The `httpResource` API provides additional built-in states like `isLoading` and `error`, which are incredibly useful for tracking the request’s status.
@@ -260,7 +267,7 @@ To achieve this behavior with the new signal APIs, we could implement something 
 
 As you type into the input, the values are saved in the `searchControl` signal. When the genre is changed, it gets saved in the `selectedGenresId` signal. I haven’t included the HTML part since I believe it's not crucial for this example.
 
-```TS
+```typescript
 export class SearchComponent {
   private apiService = inject(AnimeApiService);
 
@@ -278,7 +285,7 @@ export class SearchComponent {
     }),
     loader: ({ request }) =>
       this.apiService.searchAnime(request.prefix, request.genresId),
-	    defaultValue: [],
+    defaultValue: [],
   });
 
   onGenresClick(id: number): void {
@@ -287,7 +294,7 @@ export class SearchComponent {
 
   onClick(animeData: AnimeData): void {
     // emit to parent
-    this.selectedData.emit(animeData)
+    this.selectedData.emit(animeData);
     // reset displayed data
     this.searchedDataResource.value.set([]);
   }
@@ -300,7 +307,7 @@ In the `searchedDataResource`, we have the loaded items. However, when an item i
 
 The question I want to explore is: What would be the RxJS equivalent of this code, where we want to keep track of both the loading and error states of network requests?
 
-```TS
+```typescript
 export class SearchComponent {
   private apiService = inject(AnimeApiService);
 
@@ -321,31 +328,29 @@ export class SearchComponent {
 
   searchedData = toSignal(
     this.selectedGenresIdControl.valueChanges.pipe(
-      switchMap((genderId) =>
+      switchMap(genderId =>
         this.searchControl.valueChanges.pipe(
           // search immediatelly with new genres
           startWith(this.searchControl.value),
           // load from API
-          switchMap((name) =>
+          switchMap(name =>
             this.apiService.searchAnime(name, genderId).pipe(
-              map((data) => ({ data, isLoading: false })),
+              map(data => ({ data, isLoading: false })),
               startWith({ data: [], isLoading: true }),
-              catchError((e) =>
-	              of({ data: [], error: e, isLoading: false })
-	            ),
-            ),
+              catchError(e => of({ data: [], error: e, isLoading: false }))
+            )
           ),
           // listen on select and reset the data
-          switchMap((result) =>
+          switchMap(result =>
             this.selectedData$.pipe(
               map(() => ({ data: [], isLoading: false })),
-              startWith(result),
-            ),
-          ),
-        ),
-      ),
+              startWith(result)
+            )
+          )
+        )
+      )
     ),
-    { initialValue: { data: [] as AnimeData[], isLoading: false } },
+    { initialValue: { data: [] as AnimeData[], isLoading: false } }
   );
 
   onClick(data: AnimeData): void {
@@ -360,29 +365,25 @@ To further reduce the complexity in RxJS, which typically handles the loading an
 
 If you want to minimize RxJS usage, but still need functionality like debouncing, you could either use [Lodash](https://lodash.com/docs/4.17.15) or combine RxJS with `rxResource` to achieve something like this:
 
-```TS
+```typescript
 export class AnimeSearchNewComponent {
   private readonly apiService = inject(AnimeApiService);
 
   // control signal to select a genre and item prefix
   readonly searchControl = signal('');
   readonly searchControlSignal = toSignal(
-    toObservable(this.searchControl).pipe(
-      distinctUntilChanged(),
-      debounceTime(300),
-    )
-  )
+    toObservable(this.searchControl).pipe(distinctUntilChanged(), debounceTime(300))
+  );
 
   // load options if genre or prefix changes
   readonly searchedDataResource = rxResource({
     request: () => ({
       prefix: this.searchControlUsed(),
     }),
-    loader: ({ request }) =>
-      this.apiService.searchAnime(request.prefix),
-	    defaultValue: [],
+    loader: ({ request }) => this.apiService.searchAnime(request.prefix),
+    defaultValue: [],
   });
-  }
+}
 ```
 
 One thing to consider with signals is that while they provide a simpler API for managing state, RxJS still has its place for more complex scenarios where you need to do heavy data transformation or work with [higher-order observables](https://dev.to/krivanek06/angular-interview-what-is-higher-order-observable-2k03). Signals shine in cases where you just need to track a value and its changes, whereas RxJS excels when you're dealing with multiple asynchronous streams, operators like `combineLatest` or `switchMap`, and complex transformations.

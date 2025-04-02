@@ -1,5 +1,11 @@
 import { NgOptimizedImage } from '@angular/common';
-import { afterNextRender, ChangeDetectionStrategy, Component, ElementRef, viewChild } from '@angular/core';
+import {
+  afterNextRender,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  viewChild,
+} from '@angular/core';
 import { gsap } from 'gsap';
 import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-socials.component';
 
@@ -9,10 +15,16 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
   template: `
     <section class="relative min-h-screen overflow-hidden bg-black">
       <!-- name and title -->
-      <div class="relative z-10 mx-auto flex min-h-screen max-w-[1480px] items-center justify-center px-4">
-        <div class="flex flex-col items-center text-center md:items-start md:text-left lg:ml-[-30%]">
-          <div #greeting class="text-xl font-medium text-green-500 opacity-0">Hello, I'm</div>
-          <div #name class="text-6xl leading-tight font-bold text-white md:text-7xl lg:text-8xl">
+      <div
+        class="relative z-10 mx-auto flex min-h-screen max-w-[1480px] items-center justify-center px-4">
+        <div
+          class="flex flex-col items-center text-center md:items-start md:text-left lg:ml-[-30%]">
+          <div #greeting class="text-xl font-medium text-green-500 opacity-0">
+            Hello, I'm
+          </div>
+          <div
+            #name
+            class="text-6xl leading-tight font-bold text-white md:text-7xl lg:text-8xl">
             <span class="inline-block opacity-0">E</span>
             <span class="inline-block opacity-0">d</span>
             <span class="inline-block opacity-0">u</span>
@@ -28,10 +40,12 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
             <span class="inline-block opacity-0">e</span>
             <span class="inline-block opacity-0">k</span>
           </div>
-          <div #title class="text-3xl text-gray-400 opacity-0">Full Stack Web Developer</div>
+          <div #title class="text-3xl text-gray-400 opacity-0">
+            Full Stack Web Developer
+          </div>
           <div #description class="max-w-xl text-xl text-gray-300 opacity-0">
-            Specializing in modern web technologies, high-quality, scalable applications and creating elegant solutions
-            to complex problems.
+            Specializing in modern web technologies, high-quality, scalable applications
+            and creating elegant solutions to complex problems.
           </div>
           <div #socials class="mt-8 opacity-0">
             <app-page-welcome-hero-socials />
@@ -61,7 +75,11 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 14l-7 7m0 0l-7-7m7 7V3" />
         </svg>
       </div>
     </section>

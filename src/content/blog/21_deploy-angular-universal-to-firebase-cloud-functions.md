@@ -26,7 +26,7 @@ Also in my project, I don't use any server-side DOM mocking library, such as [do
 
 This is an optional step, but in my case, in `project.json` I haven’t had a production file replacement to change `environment.ts` into `environment.prod.ts` so this can also happen to you. You want to add the following lines to the `server` and `build` sections.
 
-```tsx
+```json
 "configurations": {
    "production": {
      "fileReplacements": [
@@ -44,7 +44,7 @@ This is an optional step, but in my case, in `project.json` I haven’t had a pr
 
 We need to update the `server.ts` file (or `ssr.server.ts`), especially two parts. First, you don’t want to execute the `run()` function, so that your application will listen on a specific port. Port listening and application execution will be taken care of by cloud functions. Second, you want to update where your `distFolder` is located.
 
-```tsx
+```typescript
 // used because of firebase functions
 // url: https://fireship.io/lessons/angular-universal-firebase/
 (global as any).WebSocket = require('ws');
@@ -56,7 +56,9 @@ We need to update the `server.ts` file (or `ssr.server.ts`), especially two part
 export function app(): express.Express {
   // .....
 
-  const websiteFileLocation = environment.production ? 'browser' : 'dist/apps/<app-name>/browser';
+  const websiteFileLocation = environment.production
+    ? 'browser'
+    : 'dist/apps/<app-name>/browser';
   const distFolder = join(process.cwd(), websiteFileLocation);
   // ^^ step 2.
 
@@ -97,7 +99,7 @@ In the above snippet, when we run the production build, we change the location o
 
 You may want to consider registering a new `script` into your `package.json` to build your Angular Universal application, which is the following:
 
-```tsx
+```bash
 "mm:build:ssr": "nx build <app-name> --configuration=production && nx build <app-name>:server --configuration=production",
 ```
 
@@ -105,7 +107,7 @@ You may want to consider registering a new `script` into your `package.json` to 
 
 In the root directory, create a `cp-angular.js` file and add the following content:
 
-```tsx
+```typescript
 const fs = require('fs-extra');
 
 // Copy Angular build to functions folder
@@ -125,7 +127,7 @@ You may want to also install `fs-extra`. What you have is a script that will cop
 
 Now in the root `index.ts`, create a new HTTP firebase function, that will execute the Angular server-side code, the `main.js`, and return the page content.
 
-```tsx
+```typescript
 // function for SSR
 const universal = require(`${process.cwd()}/server/main`).app();
 export const ssr = onRequest(universal);
@@ -137,7 +139,7 @@ Then by building the cloud functions (`nx build <cloud-functions>`) and running 
 
 In `firebase.json` you want to update the `hosting` section, rewriting all HTTP requests to first target the `ssr` cloud function, which serves the SSR, and then client-side hydration will take care of the user interaction.
 
-```tsx
+```json
 "hosting": [
     {
       "public": "./dist/apps/<app-name>/browser",
@@ -158,7 +160,7 @@ The `rewrites` section means that every time you try to access a specific page (
 
 To verify if firebase functions serve the Angular Universal correctly via the `ssr` endpoint, you want to build your cloud functions and run the `cp-angular.js` file. Register a new `script` into `package.json`.
 
-```tsx
+```bash
 "mm:cloud-function:build": "nx build <cloud-functions> --prod && node cp-angular",
 ```
 
@@ -196,7 +198,7 @@ We look into how to deploy an Angular Universal application inside NX monorepo v
 
 Now if everything is set up correctly you should be able to deploy your Angular Universal application into firebase functions by running the following scripts:
 
-```YAML
+```bash
 yarn mm:build:ssr
 yarn mm:cloud-function:build
 firebase deploy --only hosting:market-monitor-prod,functions

@@ -24,7 +24,7 @@ You display a loading message until the data is not there, maybe some fancy anim
 
 We don’t need a server for this example, it’s enough to have a mock data service as follows:
 
-```tsx
+```typescript
 import { Injectable } from '@angular/core';
 import { Observable, map, of } from 'rxjs';
 import { delay } from 'rxjs/operators';
@@ -64,7 +64,7 @@ The `dataItems` are items which will be displayed inside the select dropdown and
 
 The following solution is the solution that I used initially. I will post the whole code and then go over some parts which are important in this example.
 
-```tsx
+```typescript
 import { Component, inject, signal } from '@angular/core';
 import { DataItem, DataService, dataItems } from './data-service.service';
 
@@ -158,7 +158,7 @@ Also with the growing complexity, you may want to introduce another properties l
 
 Now let’s think a bit and ask the question, could we combine the `selectedItems` , `isLoadingData` and potentially a new property `isError` into only one property which would look something like:
 
-```tsx
+```typescript
 {
  data: DataItem[];
  isError: boolean;
@@ -172,7 +172,7 @@ The result what we want to achieve with the declarative solution is that we want
 
 Here is the solution that I came up with:
 
-```tsx
+```typescript
 import { Component, inject, signal } from '@angular/core';
 import { DataItem, DataService, dataItems } from './data-service.service';
 import { Subject, map, merge, scan, startWith, switchMap } from 'rxjs';
@@ -330,7 +330,7 @@ Yes, this is longer than the previous solution, however is it more complex or si
 
 What needs to be first highlighted that instead of changing the `selectedItems` on multiple places, you now have 3 subjects, each of them representing an action that can happen.
 
-```tsx
+```typescript
 private removeItem$ = new Subject<DataItem>();
 private addItem$ = new Subject<string>();
 private reset$ = new Subject<void>();
@@ -338,7 +338,7 @@ private reset$ = new Subject<void>();
 
 Next inside the `selectedItems` you use these subjects and map them into format you want to work with. For me the following format suited the most
 
-```tsx
+```typescript
 item: DataItem;
 action: 'add' | 'remove' | 'initLoading' | 'reset';
 ```

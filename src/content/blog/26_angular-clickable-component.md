@@ -24,21 +24,22 @@ Here is the problem. I had some components where I wanted to implement the follo
 
 With all this in mind, the implementation to the components went something like this
 
-```jsx
+```typescript
 @Component({
   selector: 'app-test',
   standalone: true,
-  imports: [/* imports */],
+  imports: [
+    /* imports */
+  ],
   template: `
     <div
       (keydown.enter)="onClick()"
       (click)="onClick()"
       [ngClass]="{
-        'g-clickable': clickable()
+        'g-clickable': clickable(),
       }"
-      [tabIndex]="clickable() ? 0 : -1"
-    >
-		<!-- whetever body -->
+      [tabIndex]="clickable() ? 0 : -1">
+      <!-- whetever body -->
     </div>
   `,
   styles: ``,
@@ -47,7 +48,6 @@ export class TestComponent {
   itemClicked = output<void>();
 
   clickable = input(false);
-
 
   onClick(): void {
     if (this.clickable()) {
@@ -67,7 +67,7 @@ Well I may create a wrapper component a wrap each component, which should be cli
 
 With composition API what we can do is create a `ClickableDirective` and then use `hostDirectives` in components to export then `itemClicked` and `clickable` to parent components.
 
-```tsx
+```typescript
 import {
   Directive,
   ElementRef,
@@ -124,14 +124,22 @@ export class ClickableDirective implements OnDestroy, Clickable {
     this.renderer.setAttribute(this.elementRef.nativeElement, 'tabIndex', '0');
 
     // on click by mouse dispatch event
-    this.clickMouseRef = this.renderer.listen(this.elementRef.nativeElement, 'click', () => {
-      this.itemClicked.emit();
-    });
+    this.clickMouseRef = this.renderer.listen(
+      this.elementRef.nativeElement,
+      'click',
+      () => {
+        this.itemClicked.emit();
+      }
+    );
 
     // on click by keyboard dispatch event
-    this.clickKeyboardRef = this.renderer.listen(this.elementRef.nativeElement, 'keydown.enter', () => {
-      this.itemClicked.emit();
-    });
+    this.clickKeyboardRef = this.renderer.listen(
+      this.elementRef.nativeElement,
+      'keydown.enter',
+      () => {
+        this.itemClicked.emit();
+      }
+    );
   }
 
   private removeClickableEffect() {
@@ -153,7 +161,7 @@ export class ClickableDirective implements OnDestroy, Clickable {
 
 then going back to your component which you want to make clickable you can do the following
 
-```tsx
+```typescript
 @Component({
   selector: 'app-test',
   standalone: true,

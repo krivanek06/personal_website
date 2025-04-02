@@ -27,7 +27,7 @@ The `immediate` option allows you to execute the callback function immediately a
 
 Consider the following example:
 
-```Vue
+```typescript
 <template>
   <main>
     {{ product.price }} = {{ product.quantity }} * 10
@@ -63,7 +63,7 @@ We want to compote the `product.price` value based on the `product.quantity` cho
 
 To solve the above problem, use `deep: true`, or you can refactor the watcher to be dependent on the `quantity` field, such as:
 
-```TS
+```typescript
 watch: {
     "product.quantity": {
       handler: function (newVal, oldVal) {
@@ -75,7 +75,7 @@ watch: {
 
 Using [Composition API](https://vuejs.org/api/), we no longer need to use the `deep` option, since we can make the watcher observing the refs value-change, such as:
 
-```Vue
+```typescript
 <template>
   <main>
     {{ product.price }} = {{ product.quantity }} * 10
@@ -100,7 +100,7 @@ watch(product.value,
 
 Unlike `watch`, `watchEffect` does not require you to specify the data that you're watching. Instead, it automatically tracks any reactive dependencies used inside it and re-runs the code whenever any of those dependencies change. We can rewrite the above example with the following syntax:
 
-```Vue
+```typescript
 <template>
   <main>
     {{ product.price }} = {{ product.quantity }} * 10

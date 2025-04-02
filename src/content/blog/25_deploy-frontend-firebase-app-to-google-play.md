@@ -26,7 +26,7 @@ The application is fairly simple, you are shown with random quotes, which you ca
 
 The time writing this article there is a package called [@capacitor/angular](https://www.npmjs.com/package/@capacitor/angular) however it was updated around 2021, hard to say if it still supported, so we will go with the official capacitor libraries. Inside your project install the following libraries:
 
-```jsx
+```bash
 npm install -D @capacitor/core
 npm install -D @capacitor/andoird
 npm install -D @capacitor/ios
@@ -37,20 +37,20 @@ npm install -D @capacitor/cli
 
 After installing dependencies, you can run the following command `npx cap init` or manually create a `capacitor.config.ts` on the root level, with the following configuration
 
-```jsx
+```typescript
 // file: capacitor.config.ts
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
   // unique app id
-	appId: 'angular_capacitor_example.krivaneda.app',
+  appId: 'angular_capacitor_example.krivaneda.app',
   // name of you app
-	appName: 'Angular Capacitor Example',
+  appName: 'Angular Capacitor Example',
   // location of the build files
-	webDir: 'dist/angular-capacitor-example/browser',
-	server: {
-		androidScheme: 'https',
-	},
+  webDir: 'dist/angular-capacitor-example/browser',
+  server: {
+    androidScheme: 'https',
+  },
 };
 
 export default config;
@@ -62,7 +62,7 @@ The `appId` is a valid java [package ID to configure for Android](https://capaci
 
 Next, you want to inicialize android specific boilerplate code which will be wrapping your javascript application. The following command creates an `android` folder.
 
-```jsx
+```bash
 npx cap add android
 ```
 
@@ -70,7 +70,7 @@ npx cap add android
 
 Build you application and then sync with the native platform.
 
-```jsx
+```bash
 > ng build
 > npx cap sync
 ```
@@ -111,13 +111,13 @@ There is still an open issue [AngularFire not working on Android and IOS](https:
 
 The solution I used to fix this problem is a library [@capacitor-firebase/authentication](https://www.npmjs.com/package/@capacitor-firebase/authentication). It is useful because it “encapsulates the Firebase JS SDK and enables a consistent interface across all platforms”, so you don’t have to manually check each platform and use different firebase SDK.
 
-```jsx
+```bash
 npm install @capacitor-firebase/authentication firebase
 ```
 
 Inside `capacitor.config.json` add the following:
 
-```jsx
+```typescript
 // file: capacitor.config.json
 plugins: {
 		FirebaseAuthentication: {
@@ -129,65 +129,65 @@ plugins: {
 
 After installing `@capacitor-firebase/authentication`, you have to adjust your authentication service to make your imports from `@capacitor-firebase/authentication`, instead of `@angular/fire/auth`, since it can resolve the right firebase SDK for each platform.
 
-```jsx
+```typescript
 import { Injectable, computed, signal } from '@angular/core';
-import {FirebaseAuthentication, User} from '@capacitor-firebase/authentication';
+import { FirebaseAuthentication, User } from '@capacitor-firebase/authentication';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { LoginUserInput, RegisterUserInput } from '../models';
 
 @Injectable({
-	providedIn: 'root',
+  providedIn: 'root',
 })
 export class AuthenticationAccountService {
-	private authUserSignal = signal<User | null>(null);
+  private authUserSignal = signal<User | null>(null);
 
-	getCurrentUser = computed(() => this.authUserSignal());
+  getCurrentUser = computed(() => this.authUserSignal());
 
-	constructor() {
-		FirebaseAuthentication.addListener('authStateChange', (change) => {
-			console.log('Auth state change', change);
-			this.authUserSignal.set(change.user);
-		});
-	}
+  constructor() {
+    FirebaseAuthentication.addListener('authStateChange', change => {
+      console.log('Auth state change', change);
+      this.authUserSignal.set(change.user);
+    });
+  }
 
-	getLoadedAuthentication(): Observable<boolean> {
-		return this.loadedAuthentication$.asObservable();
-	}
+  getLoadedAuthentication(): Observable<boolean> {
+    return this.loadedAuthentication$.asObservable();
+  }
 
-	async signIn(input: LoginUserInput): Promise<void> {
-		await FirebaseAuthentication.signInWithEmailAndPassword({
-			email: input.email,
-			password: input.password,
-		});
-	}
+  async signIn(input: LoginUserInput): Promise<void> {
+    await FirebaseAuthentication.signInWithEmailAndPassword({
+      email: input.email,
+      password: input.password,
+    });
+  }
 
-	async register(input: RegisterUserInput): Promise<void> {
-		await FirebaseAuthentication.createUserWithEmailAndPassword({
-			email: input.email,
-			password: input.password,
-		});
-	}
+  async register(input: RegisterUserInput): Promise<void> {
+    await FirebaseAuthentication.createUserWithEmailAndPassword({
+      email: input.email,
+      password: input.password,
+    });
+  }
 
-	async removeAccount(): Promise<void> {
-		const user = await FirebaseAuthentication.getCurrentUser();
-		if (user) {
-			FirebaseAuthentication.deleteUser();
-		}
-	}
+  async removeAccount(): Promise<void> {
+    const user = await FirebaseAuthentication.getCurrentUser();
+    if (user) {
+      FirebaseAuthentication.deleteUser();
+    }
+  }
 
-	async signInGoogle(): Promise<void> {
-		const result = await FirebaseAuthentication.signInWithGoogle();
-	}
+  async signInGoogle(): Promise<void> {
+    const result = await FirebaseAuthentication.signInWithGoogle();
+  }
 
-	async signOut(): Promise<void> {
-		await FirebaseAuthentication.signOut();
-	}
+  async signOut(): Promise<void> {
+    await FirebaseAuthentication.signOut();
+  }
 }
 ```
 
 Now, when you build you Angular app (`ng build`), sync it (`npx cap sync`), and launch it on Android studio you may experience **Application Crashing**. The problem is described on a [github issue](https://github.com/capawesome-team/capacitor-firebase/issues/60#issuecomment-1087069893). Go to `variables.gradle` and inside the `ext` section add a new variable.
 
-```jsx
+```typescript
 // file: variables.gradle
 ext {
 		// ... other
@@ -201,7 +201,7 @@ After using the `@capacitor-firebase/authentication` library and setting up `rgc
 
 If you are using firebase rules, you may experience a very weird glitch. I have the following rules:
 
-```jsx
+```typescript
  rules_version = '2';
 
 service cloud.firestore {
@@ -229,7 +229,7 @@ What weird is that, these rules work as they should on the web, however, when I 
 
 Seems like `request.auth.uid` object does not exists? I am not sure to be honest and I wasn’t able to fix this. I had to put
 
-```jsx
+```typescript
 match /{document=**} {
   allow read, write: if true;
  }

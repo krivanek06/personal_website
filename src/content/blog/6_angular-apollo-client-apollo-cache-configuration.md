@@ -93,24 +93,24 @@ The right place to define a return value for local-only fields is to implement a
 
 In this example, the `selectType` for `read(selectType?: MovieSelectType)` at its initial state is `undefined`, since the server doesn’t resolve any data for that field, so you return a default `MovieSelectType.Unselected` value. However, if you later set the `selectType` property for a Movie object, you return the current value.
 
-```TS
+```typescript
 const cache = new InMemoryCache({
-	typePolicies: {
-		Movie: {
-			fields: {
-				title: {
-					read(title: string) {
-						return title.toUpperCase();
-					},
-				},
-				isSelected: {
-					read(selectType?: MovieSelectType) {
-						return selectType ?? MovieSelectType.Unselected;
-					},
-				},
-			},
-		},
-	},
+  typePolicies: {
+    Movie: {
+      fields: {
+        title: {
+          read(title: string) {
+            return title.toUpperCase();
+          },
+        },
+        isSelected: {
+          read(selectType?: MovieSelectType) {
+            return selectType ?? MovieSelectType.Unselected;
+          },
+        },
+      },
+    },
+  },
 });
 ```
 
@@ -178,20 +178,20 @@ To update local application data using client queries, you must implement the fo
 
 a.) query - TypeScript constant that wraps the whole client-side query we want to update. By using graphql-code-generator, you define GraphQL queries in `{{name}}.graphql` file and generate constants by the registered npm script npm run generate-types. For example:
 
-```TS
+```typescript
 export const GetAllLocalMoviesDocument = gql`
-	query GetAllLocalMovies {
-		getAllLocalMovies @client {
-			...MovieInfo
-		}
-	}
-	${MovieInfoFragmentDoc}
+  query GetAllLocalMovies {
+    getAllLocalMovies @client {
+      ...MovieInfo
+    }
+  }
+  ${MovieInfoFragmentDoc}
 `;
 ```
 
 b.) data - An object where you set the properties to what \_\_typename you want to change. In most cases, you are updating a Query type, and the second attribute is the name of the query, defined in `{{name}}.graphql`, that returns data you want to overwrite. For example:
 
-```TS
+```typescript
 data: {
 	__typename: 'Query',
 	getAllLocalMovies: movie,
@@ -204,7 +204,7 @@ c.) id - Object’s identification key when you update only one specific object,
 
 Let’s take a look at the following code snippet on how you would create and store local Movie entities in the local getAllLocalMovies query.
 
-```TS
+```typescript
 export class MovieLocalService {
 	constructor(
 		..
@@ -241,7 +241,7 @@ GetAllLocalMoviesDocument is a generated constant variable by graphql-code-gener
 
 However, by saving a new Movie into getAllLocalMovies array, it is possible to overwrite its already existing list of values with just a single object. To avoid losing the stored list of Movie values, implement merge and read functions in InMemoryCache, Query type.
 
-```TS
+```typescript
 const cache = new InMemoryCache({
 	typePolicies: {
 		Movie: {
@@ -282,13 +282,13 @@ Working with client queries can be tedious. You have to update Apollo cache by w
 
 When you don’t care about storing the application’s local state in the Apollo cache, you can adopt the [reactive variables](https://www.apollographql.com/docs/react/local-state/reactive-variables/) approach. Create a reactive variable with the `makeVar<T>()` function.
 
-```TS
+```typescript
 export const localMoviesReactiveVars = makeVar<MovieInfoFragment[]>([]);
 ```
 
 You have already generated a getAllLocalMoviesReactiveVars query from movie-local.graphql, so you also have to tell Apollo’s InMemoryCache how to perform the read() operation on this query.
 
-```TS
+```typescript
 const cache = new InMemoryCache({
 		typePolicies: {
 			Movie: {
@@ -313,7 +313,7 @@ const cache = new InMemoryCache({
 
 Use getAllLocalMoviesReactiveVars generated query in MovieLocalService, to return data from localMoviesReactiveVars() reactive variable or push data into it.
 
-```TS
+```typescript
 export class MovieLocalService {
 	constructor(
 		private getAllLocalMoviesReactiveVarsGQL: GetAllLocalMoviesReactiveVarsGQL,

@@ -25,7 +25,7 @@ Here is the working result:
 
 The whole working example can be found in the following [StackBlitz Example](https://stackblitz.com/edit/stackblitz-starters-oeeyee?file=src%2Fmain.ts) however here is the implementation:
 
-```TS
+```typescript
 import { isPlatformServer } from '@angular/common';
 import {
   Directive,
@@ -117,7 +117,7 @@ Not going too much in-depth how the directive works, the main parts are the foll
 
 The directive can be attach on `img` HTML tags and used in the following way:
 
-```TS
+```typescript
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -131,11 +131,15 @@ The directive can be attach on `img` HTML tags and used in the following way:
       <img class="g-image-height" [src]="emoji2$ | async" />
     </div>
 
-    <h2>Not Working Image Directive vs Normal <h2>
-    <div class="image-wrapper">
-      <img appDefaultImg class="g-image-height" [src]="emojiNotWorkiing$ | async" />
-      <img class="g-image-height" [src]="emojiNotWorkiing$ | async"  />
-    </div>
+    <h2>
+      Not Working Image Directive vs Normal
+      <h2>
+        <div class="image-wrapper">
+          <img appDefaultImg class="g-image-height" [src]="emojiNotWorkiing$ | async" />
+          <img class="g-image-height" [src]="emojiNotWorkiing$ | async" />
+        </div>
+      </h2>
+    </h2>
   `,
 })
 export class App {
@@ -143,7 +147,6 @@ export class App {
   emoji2$ = of(emoji1).pipe(delay(6000));
   emojiNotWorkiing$ = of('https://...').pipe(delay(3000));
 }
-
 ```
 
 Just to have all the code, here is the used CSS

@@ -44,7 +44,7 @@ Let’s have an example of a money-sending application (Wise, Paysend, etc.). Yo
 </form>
 ```
 
-```TS
+```typescript
 // TS form creation
 readonly form = new FormGroup({
   amount: new FormControl(0, {
@@ -65,7 +65,7 @@ Nothing complicated so far. What we will be curious about is choosing the right 
 
 We have 3 radio buttons - Paypal, Stripe & Venmo. Each option represents one of the following services:
 
-```TS
+```typescript
 @Injectable({ providedIn: 'root' })
 export class PaypalService extends PaymentBaseService {
   override pay() {
@@ -76,14 +76,14 @@ export class PaypalService extends PaymentBaseService {
 @Injectable({ providedIn: 'root' })
 export class StripeService extends PaymentBaseService {
   override pay() {
-	// logic for payment
+    // logic for payment
   }
 }
 
 @Injectable({ providedIn: 'root' })
 export class VenmoService extends PaymentBaseService {
   override pay() {
-	// logic for payment
+    // logic for payment
   }
 }
 ```
@@ -98,12 +98,14 @@ Also, it is worth noting that if the service is only used in a lazy-loaded compo
 
 As mentioned previously, we don’t want to eagerly create an instance of each payment service, as they may hold some large JS logic; instead, based on some conditions, we want to instantiate the correct one. For that, we can use Angular’s [Injector](https://angular.dev/api/core/Injector) and do something as follows:
 
-```TS
+```typescript
 type PaymentType = 'paypal' | 'stripe' | 'venmo';
 
 @Component({
   selector: 'app-page-payment',
-  imports: [ /* .... */ ],
+  imports: [
+    /* .... */
+  ],
   template: `<!-- template -->`,
   standalone: true,
 })
@@ -113,7 +115,7 @@ export class PagePaymentComponent {
   readonly form = new FormGroup({
     amount: new FormControl(0),
     address: new FormControl(''),
-    type: new FormControl<PaymentType>('paypal')
+    type: new FormControl<PaymentType>('paypal'),
   });
 
   onSubmit() {
@@ -125,7 +127,7 @@ export class PagePaymentComponent {
     paymentBaseService.pay();
   }
 
-	/* dynamically initialize a service by the type */
+  /* dynamically initialize a service by the type */
   private updatePaymentService(type: PaymentType) {
     switch (type) {
       case 'paypal':
@@ -154,7 +156,7 @@ Dynamic service loading is probably not the first thing you have in mind when wo
 
 All of the above mentioned examples could the below showed pattern how to dynamically instantiate a service.
 
-```TS
+```typescript
 @Injectable({ providedIn: 'root' })
 export class AuthService {
   private injector = inject(Injector);

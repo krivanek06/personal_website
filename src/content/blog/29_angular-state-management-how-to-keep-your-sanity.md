@@ -24,7 +24,7 @@ An application where you initially preload users and messages. Then you display 
 
 The API service may look as follows:
 
-```tsx
+```typescript
 @Injectable({
   providedIn: 'root',
 })
@@ -48,7 +48,7 @@ export class ApiService {
 
 Back in the old days, before signals were introduced in Angular, the common way of keeping a state in services was using `BehaviourSubjects`. This is the approach you see in older apps. To create a state management for the above requirements, you may go with something as follows:
 
-```tsx
+```typescript
 @Injectable({
   providedIn: 'root',
 })
@@ -74,7 +74,11 @@ export class StateSubjects {
 
   // filters messages if a user is selected
   readonly messagesPerSelectedUser$ = this.#selectedUser$.pipe(
-    switchMap(user => this.#messages$.pipe(map(messages => messages.filter(m => m.user.userId === user?.userId)))),
+    switchMap(user =>
+      this.#messages$.pipe(
+        map(messages => messages.filter(m => m.user.userId === user?.userId))
+      )
+    ),
     shareReplay({ bufferSize: 1, refCount: false })
   );
 
@@ -97,7 +101,9 @@ export class StateSubjects {
   }
 
   removeMessage(messageId: string) {
-    this.#messages$.next(this.#messages$.getValue().filter(m => m.messageId !== messageId));
+    this.#messages$.next(
+      this.#messages$.getValue().filter(m => m.messageId !== messageId)
+    );
   }
 
   setSelectedUser(user: User | null) {
@@ -139,7 +145,7 @@ Having a `preloadData()` method to preload some data into the state, saving the 
 
 If you have already messed around with signals, you may have realized they are much better to handle application state compared to subjects. You can replace lots of `subscriptions` by using `computed`. To replace to first example with signals, you can go with something as follows:
 
-```tsx
+```typescript
 @Injectable({
   providedIn: 'root',
 })
@@ -225,7 +231,7 @@ In short looking at the second example, the `#messages` signal value is changed 
 In my previous article [Advanced RxJs Operators](https://dev.to/krivanek06/advanced-rxjs-operators-you-know-but-not-well-enough-1ela), I mentioned a combination of
 `merge()` and `scan()` rxjs operators. To create a declarative state you can go with something as follows:
 
-```tsx
+```typescript
 @Injectable({
   providedIn: 'root',
 })
@@ -243,18 +249,28 @@ export class StateSignalsDeclarativeService {
   state = toSignal(
     merge(
       // preload users
-      this.apiService.getUsers().pipe(map(users => ({ users, action: 'preloadUser' as const }))),
+      this.apiService
+        .getUsers()
+        .pipe(map(users => ({ users, action: 'preloadUser' as const }))),
 
       // preload messages
-      this.apiService.getMessages().pipe(map(messages => ({ messages, action: 'preloadMessages' as const }))),
+      this.apiService
+        .getMessages()
+        .pipe(map(messages => ({ messages, action: 'preloadMessages' as const }))),
 
       // listen on WS random messages
-      this.apiService.listenOnRandomMessages().pipe(map(message => ({ message, action: 'addMessage' as const }))),
+      this.apiService
+        .listenOnRandomMessages()
+        .pipe(map(message => ({ message, action: 'addMessage' as const }))),
 
       // define actions
       this.addMessage$.pipe(map(message => ({ action: 'addMessage' as const, message }))),
-      this.removeMessage$.pipe(map(messageId => ({ action: 'removeMessage' as const, messageId }))),
-      this.setSelectUser$.pipe(map(selectedUser => ({ action: 'selectUser' as const, selectedUser })))
+      this.removeMessage$.pipe(
+        map(messageId => ({ action: 'removeMessage' as const, messageId }))
+      ),
+      this.setSelectUser$.pipe(
+        map(selectedUser => ({ action: 'selectUser' as const, selectedUser }))
+      )
     ).pipe(
       scan(
         (state, curr) => {
@@ -273,7 +289,9 @@ export class StateSignalsDeclarativeService {
           if (curr.action === 'removeMessage') {
             return {
               ...state,
-              messages: state.messages.filter(message => message.messageId !== curr.messageId),
+              messages: state.messages.filter(
+                message => message.messageId !== curr.messageId
+              ),
             };
           }
 
@@ -294,8 +312,11 @@ export class StateSignalsDeclarativeService {
         users: state.users,
         messages: state.messages,
         selectedUser: state.selectedUser,
-        messagesPerSelectedUser: state.messages.filter(message => message.user.userId === state.selectedUser?.userId),
-        getMessageById: (messageId: string) => state.messages.find(message => message.messageId === messageId),
+        messagesPerSelectedUser: state.messages.filter(
+          message => message.user.userId === state.selectedUser?.userId
+        ),
+        getMessageById: (messageId: string) =>
+          state.messages.find(message => message.messageId === messageId),
       }))
     ),
     {
@@ -334,71 +355,68 @@ If you want to avoid custom implementation, which let’s be honest will inevita
 
 Over the years NgRx went though multiple approaches of how to create/manage state in your app, but seems like in their latest approach they also prefer using signals. For this application example your NgRx implementation may be as follows:
 
-```TS
+```typescript
 export const StateNgrx = signalStore(
-	// initial state
+  // initial state
   withState({
     users: [] as User[],
     messages: [] as Message[],
     selectedUser: null as User | null,
   }),
   // public methods
-  withMethods((store) => ({
+  withMethods(store => ({
     addMessage(message: Message) {
       patchState(store, { messages: [message, ...store.messages()] });
     },
     removeMessage(messageId: string) {
       patchState(store, {
-	      messages: store.messages().filter((m) => m.messageId !== messageId)
-		  });
+        messages: store.messages().filter(m => m.messageId !== messageId),
+      });
     },
     setSelectedUser(user: User | null) {
       patchState(store, { selectedUser: user });
     },
     getMessageById(messageId: string) {
-      return store.messages().find((m) => m.messageId === messageId);
+      return store.messages().find(m => m.messageId === messageId);
     },
   })),
   // create selectors
-  withComputed((store) => ({
+  withComputed(store => ({
     messagesPerSelectedUser: computed(() =>
-      store.messages().filter(
-	      (m) => m.user.userId === store.selectedUser()?.userId
-	    )
+      store.messages().filter(m => m.user.userId === store.selectedUser()?.userId)
     ),
   })),
-  withHooks((store) => {
+  withHooks(store => {
     const apiService = inject(ApiService);
 
     return {
       onInit() {
-	      // preload users
-        apiService.getUsers().subscribe((users) => {
+        // preload users
+        apiService.getUsers().subscribe(users => {
           patchState(store, { users });
         });
         // preload messages
-        apiService.getMessages().subscribe((messages) => {
+        apiService.getMessages().subscribe(messages => {
           patchState(store, { messages });
         });
         // listen on WS new messages and save into the state
         apiService
           .listenOnRandomMessages()
           .pipe(takeUntilDestroyed())
-          .subscribe((message) => {
+          .subscribe(message => {
             patchState(store, { messages: [message, ...store.messages()] });
           });
       },
     };
   })
 );
-
 ```
 
 I didn’t use to be a fan of NgRx, however with the latest signal state migration I kinda like how simple it is to work with this library.
 
 You can create a state either inside a service or even outside of it, as a simple function, but then you have to include this state inside the component’s `providers` section as follows:
 
-```tsx
+```typescript
 @Component({
   selector: 'app-state-ngrx',
   standalone: true,
@@ -420,7 +438,7 @@ I wanted to mention this because, first, I like the library, and second, signalS
 
 To use signalSlice to create a state for this application feature, it may look something as follows:
 
-```tsx
+```typescript
 @Injectable({
   providedIn: 'root',
 })
@@ -441,7 +459,9 @@ export class StateSignalSlice {
       this.apiService.getMessages().pipe(map(messages => ({ messages }))),
       // listen on WS new messages
       state =>
-        this.apiService.listenOnRandomMessages().pipe(map(message => ({ messages: [message, ...state().messages] }))),
+        this.apiService
+          .listenOnRandomMessages()
+          .pipe(map(message => ({ messages: [message, ...state().messages] }))),
     ],
     // exposed methods to be called
     actionSources: {
@@ -455,14 +475,18 @@ export class StateSignalSlice {
           }))
         ),
 
-      setSelectedUser: (_, action$: Observable<User | null>) => action$.pipe(map(selectedUser => ({ selectedUser }))),
+      setSelectedUser: (_, action$: Observable<User | null>) =>
+        action$.pipe(map(selectedUser => ({ selectedUser }))),
     },
     // additional state selectors
     selectors: state => ({
-      getMessageById: () => (messageId: string) => state().messages.find(message => message.messageId === messageId),
+      getMessageById: () => (messageId: string) =>
+        state().messages.find(message => message.messageId === messageId),
 
       messagesPerSelectedUser: () =>
-        state().messages.filter(message => message.user.userId === state().selectedUser?.userId),
+        state().messages.filter(
+          message => message.user.userId === state().selectedUser?.userId
+        ),
     }),
   });
 }

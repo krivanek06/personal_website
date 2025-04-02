@@ -22,7 +22,7 @@ In the context of observables, if subscription is not unsubscribed when the comp
 
 Suppose a user uploads an image. The application stores the image data in memory until it can be saved to a database. To do this, the application uses a `Subject` to which it subscribes when an image is uploaded. However, suppose the application does not unsubscribe from the Subject when the image has been saved to the database. In that case, the `Subject` will continue to hold a reference to the image data in memory.
 
-```TS
+```typescript
 @Component({})
 export class ImageUploaderComponent implements OnInit {
   imageSubject = new Subject();
@@ -76,35 +76,33 @@ In Angular, function calls in the template are prohibited because they can cause
 
 Consider the following scenario of having two components allowing to search for entities on the server and displaying them while calculating additional data on the frontend.
 
-```TS
+```typescript
 @Component({
-	selector: 'app-example-function-call',
-	template: `
-  <!-- search anime -->
-  <app-search-anime [formControl]="animeSearchControl"></app-search-anime>
+  selector: 'app-example-function-call',
+  template: ` <!-- search anime -->
+    <app-search-anime [formControl]="animeSearchControl"></app-search-anime>
 
-  <!-- table body -->
-  <div *ngFor="let data of loadedAnime$ | async">
-    <!-- .... -->
-    <div>{{ hardMathEquasionFunctionCall(data) }}</div>
-  </div>`,
+    <!-- table body -->
+    <div *ngFor="let data of loadedAnime$ | async">
+      <!-- .... -->
+      <div>{{ hardMathEquasionFunctionCall(data) }}</div>
+    </div>`,
 })
 export class ExampleFunctionCallComponent {
+  animeSearchControl = new FormControl<AnimeData>({});
+  loadedAnime$!: Observable<AnimeData[]>;
 
-	animeSearchControl = new FormControl<AnimeData>({});
-	loadedAnime$!: Observable<AnimeData[]>;
+  ngOnInit(): void {
+    this.loadedAnime$ = this.animeSearchControl.valueChanges.pipe(
+      scan((acc, curr) => [...acc, curr], [] as AnimeData[])
+    );
+  }
 
-	ngOnInit(): void {
-		this.loadedAnime$ = this.animeSearchControl.valueChanges.pipe(
-			scan((acc, curr) => [...acc, curr], [] as AnimeData[])
-		);
-	}
-
-    // this function is re-executed every time an user event happens
-	hardMathEquasionFunctionCall(anime: AnimeData): number {
-		console.log('Function call')
-		return hardMathEquasion(anime.score);
-	}
+  // this function is re-executed every time an user event happens
+  hardMathEquasionFunctionCall(anime: AnimeData): number {
+    console.log('Function call');
+    return hardMathEquasion(anime.score);
+  }
 }
 ```
 
@@ -120,33 +118,33 @@ One quick trick to solve all your function calls in a template without rewriting
 
 By understanding the concept of memorization, you can create a custom function decorator, as it is in the following code snippet, and apply it to all function call in the template so that the will behave exactly as Angular Pipes.
 
-```TS
+```typescript
 export function customMemoize() {
- // Value cache stored in the closure
- const cacheLookup: { [key: string]: any } = {};
+  // Value cache stored in the closure
+  const cacheLookup: { [key: string]: any } = {};
 
- return (target: any, key: any, descriptor: any) => {
-   const originalMethod = descriptor.value;
+  return (target: any, key: any, descriptor: any) => {
+    const originalMethod = descriptor.value;
 
-   descriptor.value = function () {
-     // arguments can be object -> stringify it
-     const keyString = JSON.stringify(arguments);
+    descriptor.value = function () {
+      // arguments can be object -> stringify it
+      const keyString = JSON.stringify(arguments);
 
-     // cached data
-     if (keyString in cacheLookup) {
-       return cacheLookup[keyString];
-     }
+      // cached data
+      if (keyString in cacheLookup) {
+        return cacheLookup[keyString];
+      }
 
-     // call the function with arguments
-     const calculation = originalMethod.apply(this, arguments);
-     // save data to cache
-     cacheLookup[keyString] = calculation;
-     // return calculated data
-     return calculation;
-   };
+      // call the function with arguments
+      const calculation = originalMethod.apply(this, arguments);
+      // save data to cache
+      cacheLookup[keyString] = calculation;
+      // return calculated data
+      return calculation;
+    };
 
-   return descriptor;
- };
+    return descriptor;
+  };
 }
 ```
 
@@ -162,19 +160,19 @@ It’s not a secret that we must react to user input in our application and modi
 
 The `distinctUntilChanged` operator filters out consecutive duplicate values emitted by an observable. The debounceTime operator filters out values emitted by an observable that occur too frequently by ignoring values emitted too close together in time.
 
-```TS
+```typescript
 @Component({
   selector: 'app-search-box',
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule],
   template: `
-    <input type="text" [formControl]="searchInput">
+    <input type="text" [formControl]="searchInput" />
     <ul>
       <li *ngFor="let result of searchResults$ | async">
         {{ result }}
       </li>
     </ul>
-  `
+  `,
 })
 export class SearchBoxComponent implements OnInit {
   searchResults$!: Observable<string[]>;
@@ -199,13 +197,13 @@ export class SearchBoxComponent implements OnInit {
 
 When having an observable that emits a large collection of values multiple times per second and causes application slowdown because of frequent UI rendering, we can opt for the `bufferTime` operator. A real-life use case may be connected to a stock market web socket API that frequently emits data. However, we catch incoming data for `5000 milliseconds` and then update the UI.
 
-```TS
+```typescript
 @Component({
   selector: 'app-stock-updates',
   template: `
     <h2>Stock Updates</h2>
     <div *ngFor="let update of updates">{{ update }}</div>
-  `
+  `,
 })
 export class StockUpdatesComponent implements OnInit {
   updates$!: Observable<string[]>;
@@ -215,12 +213,11 @@ export class StockUpdatesComponent implements OnInit {
     const socket = webSocket('wss://example.com/updates');
 
     // Apply the bufferTime operator to the WebSocket observable
-    this.updates$ = socket
-      .pipe(
-        bufferTime(5000),
-        // Concatenate the buffered updates and add them to the updates array
-        scan((acc, curr) => [...acc, ...curr], [])
-      );
+    this.updates$ = socket.pipe(
+      bufferTime(5000),
+      // Concatenate the buffered updates and add them to the updates array
+      scan((acc, curr) => [...acc, ...curr], [])
+    );
   }
 }
 ```
@@ -238,14 +235,14 @@ By executing these computations outside the Angular zone, the application can re
 
 A real-world use case for `ngZone.runOutsideAngular` might be a large file upload or download or a complex data processing task that requires significant processing time. By running these tasks outside Angular's change detection, we can ensure that the application remains responsive and doesn't freeze up.
 
-```TS
+```typescript
 @Component({
   selector: 'app-my-component',
   template: `
-    <input type="file" (change)="onFileChange($event)">
+    <input type="file" (change)="onFileChange($event)" />
     <button (click)="uploadImage()">Upload Image</button>
     <div *ngIf="uploadResult">Result: {{ uploadResult }}</div>
-  `
+  `,
 })
 export class MyComponent {
   uploadResult: string;
@@ -289,7 +286,7 @@ For heavy computation that may run through the whole lifecycle of the applicatio
 
 However, using web workers requires more setup and coordination than using `runOutsideAngular`, as developers must manage multiple threads and handle communication between them.
 
-```TS
+```typescript
 // my-worker.ts
 
 // Define a function that will be executed in the web worker
@@ -309,11 +306,11 @@ addEventListener('message', event => {
 });
 ```
 
-```TS
+```typescript
 // my-component.component.ts
 @Component({
   selector: 'app-my-component',
-  template: `Result: {{ result }}`
+  template: `Result: {{ result }}`,
 })
 export class MyComponent {
   result: number;

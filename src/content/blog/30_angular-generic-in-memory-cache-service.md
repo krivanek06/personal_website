@@ -16,7 +16,7 @@ However there are cases where you have such a little data that it’s not worth 
 
 You want to have a strongly typed service where you can save pieces of data under specific keys and sync it with local storage, so how to go around it? First create you types and initial late:
 
-```TS
+```typescript
 export type LocalStorageData = {
   /** user's demo account */
   demoAccount?: {
@@ -29,25 +29,25 @@ export type LocalStorageData = {
     enabled: boolean;
   };
   theme?: {
-	  isDarkMode: boolean;
-  }
+    isDarkMode: boolean;
+  };
 };
 
 export const storageInitialData: LocalStorageData = {
   demoAccount: undefined,
   loderState: undefined,
-  theme: undefined
+  theme: undefined,
 };
 ```
 
 in this case `LocalStorageData` represents what data type we want to save into the store service and `storageInitialData` is the initial store data. Then to create a storage service, you can go as follows:
 
-```TS
+```typescript
 @Injectable({
   providedIn: 'root',
 })
 export class StorageLocalService {
-	/** key under which the data is saved in local storage */
+  /** key under which the data is saved in local storage */
   private readonly STORAGE_MAIN_KEY = 'APPLICATION_NAME';
 
   private readonly updateData$ = new Subject<LocalStorageData>();
@@ -56,9 +56,12 @@ export class StorageLocalService {
   private readonly currentVersion = 1;
 
   /** readonly value from local storage */
-  readonly localData = toSignal(this.updateData$.pipe(startWith(this.getDataFromLocalStorage())), {
-    initialValue: this.getDataFromLocalStorage(),
-  });
+  readonly localData = toSignal(
+    this.updateData$.pipe(startWith(this.getDataFromLocalStorage())),
+    {
+      initialValue: this.getDataFromLocalStorage(),
+    }
+  );
 
   /**
    * saves data also into local storage
@@ -66,7 +69,10 @@ export class StorageLocalService {
    * @param key - key to save data
    * @param data - data to be saved
    */
-  saveDataLocal<T extends keyof LocalStorageData>(key: T, data: LocalStorageData[T]): void {
+  saveDataLocal<T extends keyof LocalStorageData>(
+    key: T,
+    data: LocalStorageData[T]
+  ): void {
     try {
       const newData = this.saveAndReturnState(key, data);
 
@@ -86,7 +92,10 @@ export class StorageLocalService {
     this.saveAndReturnState(key, data);
   }
 
-  private saveAndReturnState<T extends keyof LocalStorageData>(key: T, data: LocalStorageData[T]): LocalStorageData {
+  private saveAndReturnState<T extends keyof LocalStorageData>(
+    key: T,
+    data: LocalStorageData[T]
+  ): LocalStorageData {
     // all local storage data saved for this app - different keys
     const savedData = this.getDataFromLocalStorage();
 
@@ -136,16 +145,18 @@ Using generics we can achieve a strongly typed service with the following `<T ex
 
 Finally the exposed signal `localData` that has the current state value. Use signals rather than observables to handle state.
 
-```TS
+```typescript
 @Component({
   selector: 'app-page-menu',
   standalone: true,
-  imports: [ /* .... */  ],
+  imports: [
+    /* .... */
+  ],
   template: `
-	  @if(loading()) {
-	    show loader
-	  }
-  `
+    @if (loading()) {
+      show loader
+    }
+  `,
 })
 export class PageMenuComponent {
   private storageLocalService = inject(StorageLocalService);

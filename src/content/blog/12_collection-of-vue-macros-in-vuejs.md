@@ -28,7 +28,7 @@ _Which Macros do I want to use_, you ask? Let’s look into Macros introduced as
 
 Prior to v3.3, when it came to component two-way  binding with `v-model`, we had to implement `props` and `emits` in the child component to receive or notify the parent component about a data change. You usually end up with the following example:
 
-```Vue
+```typescript
     // MySearch.vue
 
     <template>
@@ -69,7 +69,7 @@ Prior to v3.3, when it came to component two-way  binding with `v-model`, we ha
 
 The [defineModels](https://vue-macros.sxzz.moe/macros/define-models.html) macro is a syntactic sugar by which you can avoid implementing two-way binding for using [v-model](https://vuejs.org/guide/components/v-model.html) on the component level instead of the default Vue.js implementation. You can achieve the above logic with the following syntax:
 
-```Vue
+```typescript
     // MySearch.vue
 
     <template>
@@ -117,63 +117,63 @@ You will find more information in our blog post: [New in Vue.js 3.3: Two-Way Bin
 
 Fortunately, the [macro definePropsRefs](https://vue-macros.sxzz.moe/macros/define-props-refs.html) allows us property destructuring by writing the following code:
 
-```TS
-    const { showModal, inputValue } = definePropsRefs({
-      showModal: {
-        type: Boolean,
-        required: false
-      },
-      inputValue: {
-        type: String,
-        required: false,
-        default: ""
-      }
-    });
+```typescript
+const { showModal, inputValue } = definePropsRefs({
+  showModal: {
+    type: Boolean,
+    required: false,
+  },
+  inputValue: {
+    type: String,
+    required: false,
+    default: '',
+  },
+});
 ```
 
 Using Vue Macros are much better developer experience than destructuring properties before version 3.3:
 
-```TS
-    const { showModal, inputValue } = toRefs(
-      withDefaults(
-        defineProps({
-          showModal: {
-            type: Boolean,
-            required: false
-          },
-          inputValue: {
-            type: String,
-            required: false,
-            default: ""
-          }
-       }),
-       {
-         showModal: false,
-         inputValue: ""
-       }
-      )
-    )
+```typescript
+const { showModal, inputValue } = toRefs(
+  withDefaults(
+    defineProps({
+      showModal: {
+        type: Boolean,
+        required: false,
+      },
+      inputValue: {
+        type: String,
+        required: false,
+        default: '',
+      },
+    }),
+    {
+      showModal: false,
+      inputValue: '',
+    }
+  )
+);
 ```
 
 If you want to use `defineProps` an experimental feature in Vue version 3.3, you have to opt-in with the following configuration:
 
-```TS
-    // vite.config.js
-    plugins: [
-      vue({
-        script: {
-          propsDestructure: true
-          // ^^ enables the feature
-        }
-      })
-    ]
+```typescript
+// vite.config.js
+plugins: [
+  vue({
+    script: {
+      propsDestructure: true,
+      // ^^ enables the feature
+    },
+  }),
+];
 ```
 
 ### Macro defineEmit
 
 Using `defineEmits` wasn’t such a bad experience. You declared and used emits in the following way:
 
-```TS
+```typescript
     const emit = defineEmits<{
       (e: 'foo', id: number): void
       (e: 'bar', name: string): void
@@ -185,7 +185,7 @@ Using `defineEmits` wasn’t such a bad experience. You declared and used emits 
 
 Using [defineEmit](https://vue-macros.sxzz.moe/macros/define-emit.html) from Vue Macros, you get the advantage of declaring individual emits in the following way:
 
-```Vue
+```typescript
     <script setup>
     // Declare emit
     const foo = defineEmit<number[]>('foo')
@@ -204,11 +204,11 @@ Using [defineEmit](https://vue-macros.sxzz.moe/macros/define-emit.html) from Vue
 
 Vue 3.3 brought a little bit of syntactic sugar, [working with defineEmits](https://blog.vuejs.org/posts/vue-3-3#more-ergonomic-defineemits) in the following way:
 
-```TS
-    const emit = defineEmits<{
-      foo: [id: number]
-      bar: [name: string]
-    }>()
+```typescript
+const emit = defineEmits<{
+  foo: [id: number];
+  bar: [name: string];
+}>();
 ```
 
 Fortunately, there is no opting-in for this feature, so you can use it right away!
@@ -217,25 +217,23 @@ Fortunately, there is no opting-in for this feature, so you can use it right awa
 
 When working with [scoped slots](https://vuejs.org/guide/components/slots.html#scoped-slots) in Vue.js, one problem we faced was not knowing what properties were available on the parent component. Here is the following example before Vue version 3.3:
 
-```Vue
-    <!-- <ChildComponent> template -->
-    <div>
-      <slot :text="greetingMessage" :count="1"></slot>
-    </div>
+```html
+<!-- <ChildComponent> template -->
+<div>
+  <slot :text="greetingMessage" :count="1"></slot>
+</div>
 
-    // ------------------------------------------
+// ------------------------------------------
 
-    <!-- <ParentComponent> template -->
-    <MyComponent v-slot="slotProps">
-      {{ slotProps.text }} {{ slotProps.count }}
-    </MyComponent>
+<!-- <ParentComponent> template -->
+<MyComponent v-slot="slotProps"> {{ slotProps.text }} {{ slotProps.count }} </MyComponent>
 ```
 
 A developer may access `slotProps.anything` and receive an error only during the runtime.
 
 Vue.js 3.3 introduced `defineSlots`, which use [types slots](https://blog.vuejs.org/posts/vue-3-3#typed-slots-with-defineslots), eliminating the parent component of accessing non-existing props from the child. Here is the following example:
 
-```Vue
+```typescript
     <!-- <ChildComponent> -->
 
     <template>

@@ -41,20 +41,20 @@ Having one endpoint per resource is a very maintainable approach for backend dev
 
 Using a resource-based approach, a relatively common [N + 1](https://restfulapi.net/rest-api-n-1-problem/#:~:text=N%2B1%20Problem%20in%20REST%20APIs&text=In%20the%20case%20of%20web,collection%20resource%20%2B%20N%20child%20resources) problem can arise, where the client side is required to call the server N + 1 times to fetch one collection of resource + N child resources.
 
-```TS
+```typescript
 const getUserWithComments = async (): Promise<User[]> => {
   // fetch a list of users
   let users = await getUsers();
 
   // new HTTP request for each user
-  for(let i = 0; i < users.length; i++){
+  for (let i = 0; i < users.length; i++) {
     const user = users[i];
     // loading comments from the server
     user.comments = await getCommentsByUserId(user.id);
   }
 
   return users;
-}
+};
 ```
 
 Resource-based endpoints may lead to slow rendering because it takes time to load all the data, and you can overload the server with too many API calls.
@@ -103,41 +103,41 @@ Resolvers can be understood as an enhancement to add additional fields for an en
 
 Their usefulness lies in their execution. A function registered as a Resolver is not executed until it is called. The code snippet below represents a piece of the above-displayed database UML diagram using the NestJS framework.
 
-```JS
+```typescript
 @ObjectType()
 export class Movie {
-	@Field(() => Int)
-	id: number;
+  @Field(() => Int)
+  id: number;
 
-	@Field(() => String)
-	createdAt: Date;
+  @Field(() => String)
+  createdAt: Date;
 
-	@Field(() => String)
-	updatedAt: Date;
+  @Field(() => String)
+  updatedAt: Date;
 
-	@Field(() => String, {
-		nullable: false,
-		description: "User's title to the movie",
-		defaultValue: '',
-	})
-	title: string;
+  @Field(() => String, {
+    nullable: false,
+    description: "User's title to the movie",
+    defaultValue: '',
+  })
+  title: string;
 
-	@Field(() => String, {
-		nullable: true,
-		description: "User's description to the movie",
-	})
-	description: string;
+  @Field(() => String, {
+    nullable: true,
+    description: "User's description to the movie",
+  })
+  description: string;
 }
 
 @Resolver(() => Movie)
 export class MovieResolver {
-	constructor(private movieCommentService: MovieCommentService) {}
+  constructor(private movieCommentService: MovieCommentService) {}
 
-	@ResolveField('movieComment', () => [MovieComment])
-	async getMovieComment(@Parent() movie: Movie) {
-		const { id } = movie;
-		return this.movieCommentService.getAllMovieCommetsByMovieId(id);
-	}
+  @ResolveField('movieComment', () => [MovieComment])
+  async getMovieComment(@Parent() movie: Movie) {
+    const { id } = movie;
+    return this.movieCommentService.getAllMovieCommetsByMovieId(id);
+  }
 }
 ```
 
@@ -178,7 +178,7 @@ It serves as insurance that the server has to provide the correct data type and 
 
 Taking a look at the attached image by querying fields like `User.id`, `User.createdAt`, the server will never return a null value for these fields. If it had happened, we would receive the following error from the query operation.
 
-```JS
+```json
 {
   "errors": [
     {
@@ -224,7 +224,7 @@ The solution you may go with is to create two separate queries for the same oper
 
 Having a GraphQL API, you can execute multiple queries at once by sending one HTTP request. Taking a look at [SpaceX API](https://api.spacex.land/graphql/), you can select multiple independent queries and fetch data in one round trip.
 
-```JS
+```typescript
 {
   launchesPast(limit: 3) {
     mission_name
@@ -255,7 +255,7 @@ Once you start learning about GraphQL, the first problem you hear about is the �
 
 You want to fetch past `launches` from one table, and for each of them, you want to get the `site_name` from another table. Using REST, you may have the following endpoint.
 
-```JS
+```typescript
 route: '/launches/past',
 method: 'GET',
 queryParam: 'limit'
@@ -263,7 +263,7 @@ queryParam: 'limit'
 
 that could result in the following Database calls
 
-```JS
+```SQL
 SELECT * FROM launches limit = {limit};
 
 -- pass the fetched launches.ids the the second query
@@ -274,7 +274,7 @@ With two queries, you will have your desired result. Beware that this works beca
 
 In GraphQL, to load `launch_sites` from a different table, you would probably use resolvers attached to the `Launch` entity, like in the following snippet.
 
-```JS
+```typescript
 schema = `{
   type Query {
 launchesPast(limit: Int!): [Launch!]!
@@ -310,7 +310,7 @@ resolvers = {
 
 However, suppose you execute the below query. In that case, you will create N database calls for N `Launches` to get their `site_name` because every resolver function only knows about its parent, and GraphQL executes a separate resolver function for every field.
 
-```JS
+```typescript
 query LaunchesPastQuery($limit: Int!) {
   launchesPast(limit: $limit) {  # fetches Launch entities (1 query)
       id
@@ -324,7 +324,7 @@ query LaunchesPastQuery($limit: Int!) {
 
 will translate to the following pseudo-SQL:
 
-```JS
+```SQL
 SELECT * FROM launches limit = {limit};
 
 -- pass the fetched launches.ids the the second query
@@ -347,7 +347,7 @@ Having a predefined schema that is being exchanged between the server and the co
 
 Exclamation marks or so-called not-null values can, however, ruin the whole query. Let’s have an example that, for some Launch entity, it saved ID column in the database, or any column that must have a present value, will suddenly be null (code snippet on line 17.).
 
-```JS
+```typescript
 schema = `{
   type Query {
     launchesPast: [Launch!]!
@@ -358,23 +358,23 @@ schema = `{
     id: Int!
     mission_name: String
   }
-}`
+}`;
 
 resolvers = {
   Query: {
-    launchesPast: async ()  => {
-      const allLaunches = await ORM.getAllLaunches()
+    launchesPast: async () => {
+      const allLaunches = await ORM.getAllLaunches();
       allLaunches[3].id = null; // <-- will cause the query to fail
 
       return allLaunches;
-    }
-  }
-}
+    },
+  },
+};
 ```
 
 If the consumer requests a list of `Launch` entities by the `launchesPast` query, the whole query will fail and you will receive the following error message:
 
-```JS
+```typescript
 Cannot return null for non-nullable field Launch.id
 ```
 
@@ -384,7 +384,7 @@ In conclusion, if you query a list of objects, and only one of them does not mat
 
 As a query language for APIs, GraphQL gives clients the power to execute queries to get exactly what they need. But what if a client sends a query asking for many fields and resources? With GraphQL, users can’t simply run any query they want.
 
-```JS
+```JSON
 authors {
   name
   books {

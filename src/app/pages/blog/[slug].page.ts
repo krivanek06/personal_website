@@ -12,7 +12,8 @@ import PostAttributes from '../../post-attributes';
   template: `
     <section class="mx-auto max-w-[1240px] px-4 lg:px-6">
       @if (post$ | async; as post) {
-        <article class="prose prose-slate dark:prose-invert flex w-full flex-col px-4 py-16 md:max-w-4xl">
+        <article
+          class="prose prose-slate dark:prose-invert flex w-full flex-col px-4 py-16 md:max-w-4xl">
           <!-- back button -->
           <a routerLink="/blog" class="btn mb-8 flex w-64 flex-row items-center"
             ><svg
@@ -22,7 +23,10 @@ import PostAttributes from '../../post-attributes';
               stroke-width="1.5"
               stroke="currentColor"
               class="h-8 w-8">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
             </svg>
             <span>Back to Blog Posts</span></a
           >

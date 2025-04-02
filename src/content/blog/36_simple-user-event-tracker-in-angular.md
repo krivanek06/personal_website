@@ -43,7 +43,7 @@ While directives are great for targeting specific elements, a major drawback (fo
 
 To start with the basics, we first needed a service to collect and store all generated logs before sending them to the server when the application closed. This part of the solution was relatively simple, and we ended up with the following approach:
 
-```TS
+```typescript
 @Injectable({
   providedIn: 'root',
 })
@@ -61,17 +61,20 @@ export class UserEventTrackerService {
     merge(
       // triggered logs by the app
       this.accumulateLog$.pipe(
-        map((action) => ({
+        map(action => ({
           type: 'add' as const,
           action: { ...action, time: new Date(), page: this.router.url },
-        })),
+        }))
       ),
       // reset logs
-      this.resetLogs$.pipe(map(() => ({ type: 'reset' as const }))),
-    ).pipe(scan((acc, curr) =>
-		(curr.type === 'add' ? [...acc, curr.action] : []), [] as UserEvent[])
-	  ),
-    { initialValue: [] },
+      this.resetLogs$.pipe(map(() => ({ type: 'reset' as const })))
+    ).pipe(
+      scan(
+        (acc, curr) => (curr.type === 'add' ? [...acc, curr.action] : []),
+        [] as UserEvent[]
+      )
+    ),
+    { initialValue: [] }
   );
 
   createLog(action: LogEventAction): void {
@@ -79,26 +82,26 @@ export class UserEventTrackerService {
   }
 
   saveLogs(): void {
-    const logChunks = createChunks(this.accumulatedLogs(), 120)
+    const logChunks = createChunks(this.accumulatedLogs(), 120);
 
     // save all log chunks
     for (const logFormat of logChunks) {
       this.sendToRemoteByFetch(logFormat);
     }
 
-	// trigger reseting all previous logs
+    // trigger reseting all previous logs
     this.resetLogs$.next();
   }
 
   private sendToRemote(body: unknown): void {
-	// todo ....
+    // todo ....
   }
 }
 ```
 
 In the `UserEventTrackerService`, we expose two public interfaces. When we want to create a new log, we call the `createLog()` method. Not exposing the `accumulateLog$` subject, but rather wrapping it inside the `createLog()` method prevents unnecessary abuse such as calling `accumulateLog$.complete()` for whatever reason. The `LogEventAction` type helps categorize and distinguish different types of logs. While not the main focus of this article, for context, the `LogEventAction` looks something like this:
 
-```TS
+```typescript
 // the code is reduced for the sake of article
 export type LogEventAction =
   | {
@@ -123,11 +126,11 @@ export type LogEventAction =
       type: 'apiCall';
       url: string;
     }
-   | {
-	   type: 'custom';
-	   value: unknown;
-   }
-   // .....
+  | {
+      type: 'custom';
+      value: unknown;
+    };
+// .....
 
 export type UserEvent = {
   // time when the user event happens - HH:mm:ss
@@ -139,13 +142,13 @@ export type UserEvent = {
 
 Therefore, if we want to create a log, all we have to do in a component is:
 
-```TS
+```typescript
 export class TestComponent {
-	private trackingService = inject(UserEventTrackerService);
+  private trackingService = inject(UserEventTrackerService);
 
-	createLog(){
-		this.trackingService.createLog({ type: 'custom', value: 'AA' })
-	}
+  createLog() {
+    this.trackingService.createLog({ type: 'custom', value: 'AA' });
+  }
 }
 ```
 
@@ -153,7 +156,7 @@ The other exposed API in `UserEventTrackerService` is `saveLogs()`. This method 
 
 At first glance, `resetLogs$` might seem unnecessary since logs should be accumulate on the client until the app is closed. However, in our use case, we needed to also send logs when the user refreshed the application, clear previous ones, and start accumulating logs again.
 
-```TS
+```typescript
 export class App {
   private userEventTrackerService = inject(UserEventTrackerService);
 
@@ -172,7 +175,7 @@ There are two better alternatives. The first is the [sendBeacon() Navigator API]
 
 The second and more flexible approach is using a standard `fetch()` request, where we can set up custom headers and enable the [keepalive property](https://developer.mozilla.org/en-US/docs/Web/API/Request/keepalive) by setting it to `true`. It's important to note that the request will be sent to the server when the application is closed/refreshed, but its success depends entirely on the server. This means that the frontend resets the accumulated logs once the request is issued, and if the server fails to complete the request, the logs will be lost.
 
-```TS
+```typescript
   private sendToRemote(body: unknown): void {
     const xsrfToken = this.getCookie('XSRF-TOKEN');
 
@@ -266,7 +269,7 @@ I also want to highlight the position of `data-label` on different elements, suc
 
 The simplest approach to tracking HTML element interactions was to create a single service that listens to DOM events and logs interactions based on the element type. There were several iterations, but our first merged version has a similar structure to this:
 
-```TS
+```typescript
 @Injectable({
   providedIn: 'root',
 })
@@ -281,49 +284,55 @@ export class UserEventListenerService {
     afterNextRender(() => {
       merge(
         // open dialog log
-        this.dialog.afterOpened.pipe(map((dialogRef) => ({ type: 'openDialog' }))),
+        this.dialog.afterOpened.pipe(map(dialogRef => ({ type: 'openDialog' }))),
         // close dialog log
         this.dialog.afterAllClosed.pipe(map(() => ({ type: 'closeDialog' }))),
         // router change log
         this.router.events.pipe(
           filter((e): e is NavigationEnd => e instanceof NavigationEnd),
-          map((routerData) => ({ type: 'routerChange', text: routerData['url'] })),
-        ),
-      ).subscribe((res) => this.userEventTrackerService.createLog(res));
+          map(routerData => ({ type: 'routerChange', text: routerData['url'] }))
+        )
+      ).subscribe(res => this.userEventTrackerService.createLog(res));
 
       this.ngZone.runOutsideAngular(() => {
         // listen on click events
-        this.document.addEventListener('click', (event) => {
-        const target = event.target as HTMLElement;
+        this.document.addEventListener(
+          'click',
+          event => {
+            const target = event.target as HTMLElement;
 
-          if (target.tagName === 'A') {
-            this.userEventTrackerService.createLog({
-              type: 'clickElement',
-              elementType: 'LINK',
-              value: target.dataset['label'] ?? 'Unknown',
-            });
-          }
-          // ... other elements
-
-        }, true);
+            if (target.tagName === 'A') {
+              this.userEventTrackerService.createLog({
+                type: 'clickElement',
+                elementType: 'LINK',
+                value: target.dataset['label'] ?? 'Unknown',
+              });
+            }
+            // ... other elements
+          },
+          true
+        );
 
         // listen on input change events
-        this.document.addEventListener('change', (event) => {
-          const target = event.target as HTMLElement;
+        this.document.addEventListener(
+          'change',
+          event => {
+            const target = event.target as HTMLElement;
 
-          if (target.tagName === 'INPUT') {
-            this.userEventTrackerService.createLog({
-              type: 'inputChange',
-              elementType: 'INPUT',
-              elementLabel: target.dataset['label'] ?? 'Unknown',
-              value: (target as HTMLInputElement).value,
-            });
-          }
-          // ... other elements
-
-        }, true);
+            if (target.tagName === 'INPUT') {
+              this.userEventTrackerService.createLog({
+                type: 'inputChange',
+                elementType: 'INPUT',
+                elementLabel: target.dataset['label'] ?? 'Unknown',
+                value: (target as HTMLInputElement).value,
+              });
+            }
+            // ... other elements
+          },
+          true
+        );
       });
-    })
+    });
   }
 }
 ```
@@ -337,10 +346,10 @@ The real service is obviously larger and there are multiple conditions to distin
 
 The major benefit of this approach is that we have one globally registered service that will handle the whole application logging as the user interacts with DOM element.
 
-```TS
+```typescript
 bootstrapApplication(App, {
   providers: [
-	// ... other things ...
+    // ... other things ...
     provideAppInitializer(() => {
       inject(UserEventListenerService).start();
     }),
@@ -352,18 +361,22 @@ bootstrapApplication(App, {
 
 The slight problem, at least I couldn’t solve, was that not everything is possible to handle globally. Example is form submission. While you can still setup global listener on the `submit` event, and you can get even the validity, I couldn’t get the form structure, the form control names and the values inside the form.
 
-```TS
-this.document.addEventListener('submit', (event) => {
-  const formElement = event.target as HTMLFormElement;
+```typescript
+this.document.addEventListener(
+  'submit',
+  event => {
+    const formElement = event.target as HTMLFormElement;
 
-  const isValid = formElement.checkValidity();
-  const formStructure = "Dunno"; // please help
-}, true);
+    const isValid = formElement.checkValidity();
+    const formStructure = 'Dunno'; // please help
+  },
+  true
+);
 ```
 
 The problem is that the `event.target` is a type of `HTMLFormElement`, and ideally we want the `FormGroup` type to then get the form’s `value`. To handle a use case like this directives are the best answerers.
 
-```TS
+```typescript
 @Directive({
   selector: 'form[formGroup]',
   standalone: true,
@@ -400,7 +413,7 @@ To use the `FormSubmitDirective` directive, you have to import it into each stan
 
 The `getFormValidationState()` is a custom util that goes thought the whole form structure, keep the form keys, but replace the values with a `VALID / INVALID` string whether the field is filled properly.
 
-```TS
+```typescript
 type ValidationState =
   | 'VALID'
   | 'INVALID'
@@ -418,12 +431,12 @@ const getFormValidationState = (form: AbstractControl): ValidationState => {
         ...acc,
         [key]: getFormValidationState(form.controls[key]),
       }),
-      {},
+      {}
     );
   }
 
   if (form instanceof FormArray) {
-    return form.controls.map((control) => getFormValidationState(control));
+    return form.controls.map(control => getFormValidationState(control));
   }
 
   // default use case, shouldn't happen
@@ -439,7 +452,7 @@ When submitting an invalid form, where required fields are left empty (or they h
 
 You may be wondering why didn't we initially go with directives for HTML element changes, something like this
 
-```TS
+```typescript
 @Directive({
   selector: 'input, textarea',
   standalone: true,
@@ -470,14 +483,15 @@ This would indeed work. The only drawback we saw was that you would have to impo
 
 You're likely already familiar with interceptors, but for the sake of completeness, let’s quickly demonstrate how to capture incoming and outgoing requests. The log will capture the full URL, status codes, and the time taken, allowing you to analyze the time between when the request is sent and when the response is received.
 
-```TS
+```typescript
 export const userEventLoggingInterceptor = (
   req: HttpRequest<unknown>,
-  next: HttpHandlerFn,
+  next: HttpHandlerFn
 ): Observable<HttpEvent<unknown>> => {
   const service = inject(UserEventTrackerService);
 
-  return next(req).pipe(tap((event) => {
+  return next(req).pipe(
+    tap(event => {
       // send http event
       if (event.type === HttpEventType.Sent) {
         service.createLog({ type: 'apiCall', url: req.urlWithParams });
@@ -490,18 +504,18 @@ export const userEventLoggingInterceptor = (
           status: event.status,
         });
       }
-    }),
+    })
   );
 };
 ```
 
-```TS
+```typescript
 bootstrapApplication(App, {
   providers: [
     provideHttpClient(withInterceptors([userEventLoggingInterceptor])),
     // ... other ...
-   ]
- })
+  ],
+});
 ```
 
 ## Summary

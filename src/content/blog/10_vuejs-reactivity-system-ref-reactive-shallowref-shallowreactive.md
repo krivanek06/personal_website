@@ -20,7 +20,7 @@ The `ref` function is used to create a reactive reference to a single value. Thi
 
 To access the value of the ref function, you need to use the `.value` keyword. By using reactive references, such as `ref`, Vue under the hood will track any changes made to this instance and update the DOM if the value of the variable changes. An example can be seen in the following code.
 
-```Vue
+```typescript
 <template>
   <div>
     <button @click="onButtonClick">Toggle Div</button>
@@ -51,7 +51,7 @@ Every time you click on the button, a div will be revealed/hidden, and a counter
 
 Coming back to the above example, you may ask, _what would happen if I use a simple object instead of the ref function?_ Let’s try to execute the following code:
 
-```Vue
+```typescript
 <template>
   <div>
     <button @click="onButtonClick">Toggle Div</button>
@@ -91,7 +91,7 @@ The `reactive` function creates a reactive object that can hold any number of pr
 
 When the properties of this object are updated, the view is updated automatically. This powerful feature makes it easy to create complex reactive applications. Here’s an example of how to use `reactive`:
 
-```Vue
+```typescript
 <template>
   <div>
     <button @click="onButtonClick">Toggle Div</button>
@@ -177,24 +177,24 @@ This is a personal preference, but I use `ref` almost all the time. Despite tedi
 
 Reactivity transform is not yet part of the official Vue.js package, however, you can install [Vue Macros](https://vue-macros.sxzz.moe/), that enrich your VueJS experience with the following configuration:
 
-```TS
+```typescript
 // vite.config.ts
-import vue from "@vitejs/plugin-vue";
-import { defineConfig } from "vite";
+import vue from '@vitejs/plugin-vue';
+import { defineConfig } from 'vite';
 
 export default defineConfig({
   plugins: [
     vue({
-     // used to enable tranctivity transform
-     reactivityTransform: true
+      // used to enable tranctivity transform
+      reactivityTransform: true,
     }),
-  ]
+  ],
 });
 ```
 
 And use reactivity transformation from `Vue Macros` in the following way:
 
-```TS
+```typescript
 <template>
  ...
 </template>
@@ -224,19 +224,19 @@ Vue provides additional functions to achieve reactivity with high performance in
 
 The `shallowRef` function is similar to `ref`, but with one key difference: the changes made to its properties will trigger a change only if you change the memory reference. It is used for performance optimizations of large data structures or integration with external state management systems. Looking at the official documents, the Vue community provides us with the following example.
 
-```JS
-const state = shallowRef({ count: 1 })
+```typescript
+const state = shallowRef({ count: 1 });
 
 // does NOT trigger change
-state.value.count = 2
+state.value.count = 2;
 
 // does trigger change
-state.value = { count: 2 }
+state.value = { count: 2 };
 ```
 
 Examples of when you should prefer using `shallowRef` instead of `ref` can be working with chart data, where you want to exclude basic reactivity for application optimization but still have reactivity if you change the data reference. Another example can be working with dynamic components, such as the following example.
 
-```TS
+```typescript
 <template>
   <section>
     <!-- display buttons for dynamic component -->
@@ -266,7 +266,7 @@ The `shallowReactive` function is similar to `reactive`, without nested objects,
 
 Here is an example of using `shallowReactive`:
 
-```TS
+```typescript
 <template>
   <div>
     <button @click="onButtonClick">Toggle Div</button>

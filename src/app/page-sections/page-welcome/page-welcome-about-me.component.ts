@@ -18,8 +18,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
         <!-- Left side - Image -->
         <div class="relative">
           <div #imageContainer class="relative h-[700px] overflow-hidden rounded-2xl">
-            <img #profileImage src="me/me-black-white.png" alt="Eduard Krivanek" class="h-full w-full object-cover" />
-            <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            <img
+              #profileImage
+              src="me/me-black-white.png"
+              alt="Eduard Krivanek"
+              class="h-full w-full object-cover" />
+            <div
+              class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
           </div>
         </div>
 
@@ -32,14 +37,16 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
           <div #contentContainer class="mb-8 space-y-4 text-xl text-gray-300">
             <p>
-              I'm Eduard Krivanek, a passionate Full Stack Developer specializing in building web application, with a
-              strong focus on Angular, Firebase, NestJs
+              I'm Eduard Krivanek, a passionate Full Stack Developer specializing in
+              building web application, with a strong focus on Angular, Firebase, NestJs
             </p>
 
             <p>
-              Over the past few years, I've developed applications ranging from financial dashboards that generate
-              trading statistics to finance tracking tools and ticketing systems for banks. Beyond coding, I share my
-              insights and expertise through technical blogs, where I've been writing for over two years
+              Over the past few years, I've developed applications ranging from financial
+              dashboards that generate trading statistics to finance tracking tools and
+              ticketing systems for banks. Beyond coding, I share my insights and
+              expertise through technical blogs, where I've been writing for over two
+              years
             </p>
           </div>
 
@@ -61,9 +68,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-xl font-semibold text-white">5+ Years Angular Experience</h3>
+                  <h3 class="text-xl font-semibold text-white">
+                    5+ Years Angular Experience
+                  </h3>
                   <p class="text-gray-400">
-                    Started in version 8 and since then always kept up with the latest version
+                    Started in version 8 and since then always kept up with the latest
+                    version
                   </p>
                 </div>
               </div>
@@ -85,7 +95,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
                 </div>
                 <div>
                   <h3 class="text-xl font-semibold text-white">Fast & Efficient</h3>
-                  <p class="text-gray-400">Optimized performance and clean code practices</p>
+                  <p class="text-gray-400">
+                    Optimized performance and clean code practices
+                  </p>
                 </div>
               </div>
 
@@ -106,7 +118,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
                 </div>
                 <div>
                   <h3 class="text-xl font-semibold text-white">Team Player</h3>
-                  <p class="text-gray-400">Excellent communication and collaboration skills</p>
+                  <p class="text-gray-400">
+                    Excellent communication and collaboration skills
+                  </p>
                 </div>
               </div>
 
@@ -127,8 +141,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
                   </svg>
                 </div>
                 <div>
-                  <h3 class="text-xl font-semibold text-white">Technical Blogger & Speaker</h3>
-                  <p class="text-gray-400">Sharing insights through blogs and tech talks</p>
+                  <h3 class="text-xl font-semibold text-white">
+                    Technical Blogger & Speaker
+                  </h3>
+                  <p class="text-gray-400">
+                    Sharing insights through blogs and tech talks
+                  </p>
                 </div>
               </div>
             </div>

@@ -1,4 +1,10 @@
-import { afterNextRender, ChangeDetectionStrategy, Component, ElementRef, viewChild } from '@angular/core';
+import {
+  afterNextRender,
+  ChangeDetectionStrategy,
+  Component,
+  ElementRef,
+  viewChild,
+} from '@angular/core';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { CardGeneralComponent } from '../../shared/components';
@@ -13,19 +19,30 @@ import { generateRandomNumber } from '../../shared/utils/general';
       <div class="mb-20 text-center">
         <h2 class="text-primary-green mb-4 text-5xl">Technologies</h2>
         <p class="mx-auto max-w-2xl text-xl text-gray-400">
-          A comprehensive stack of technologies I work with to create modern web applications
+          A comprehensive stack of technologies I work with to create modern web
+          applications
         </p>
       </div>
 
       <!-- Technology Grid -->
-      <div #techGrid class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
+      <div
+        #techGrid
+        class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         @for (tech of technologies; track tech.name) {
           <app-card-general>
-            <div #techItem class="group flex flex-col items-center justify-center rounded-xl">
+            <div
+              #techItem
+              class="group flex flex-col items-center justify-center rounded-xl">
               <div class="mb-4 h-16 w-16">
-                <img [src]="tech.icon" [alt]="tech.name" class="h-full w-full object-contain" width="64" height="64" />
+                <img
+                  [src]="tech.icon"
+                  [alt]="tech.name"
+                  class="h-full w-full object-contain"
+                  width="64"
+                  height="64" />
               </div>
-              <span class="text-center text-sm text-gray-400 transition-colors group-hover:text-white">
+              <span
+                class="text-center text-sm text-gray-400 transition-colors group-hover:text-white">
                 {{ tech.name }}
               </span>
             </div>
@@ -73,7 +90,9 @@ export class PageWelcomeTechnologiesComponent {
       // Register ScrollTrigger plugin
       gsap.registerPlugin(ScrollTrigger);
 
-      const techItems = Array.from(this.techGrid()?.nativeElement.children || []) as HTMLElement[];
+      const techItems = Array.from(
+        this.techGrid()?.nativeElement.children || []
+      ) as HTMLElement[];
       if (!techItems.length) return;
 
       // Create a timeline for the technology grid

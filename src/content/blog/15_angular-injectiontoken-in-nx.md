@@ -16,20 +16,21 @@ Recently I migrated one of my applications from a pure Angular project into NX m
 
 Initially, I had a `DataApiService` service, for calling API endpoints to retrieve data.
 
-```TS
+```typescript
 @Injectable({
-	providedIn: 'root',
+  providedIn: 'root',
 })
 export class DataApiService {
-	constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {}
 
-	getRandomData(ticker: string): Observable<DataSummary[]> {
-		return this.http.get<DataSummary[]>(
-			`${environment.myEndpoint}/search?symbol=${ticker}
-		`);
-	}
+  getRandomData(ticker: string): Observable<DataSummary[]> {
+    return this.http.get<DataSummary[]>(
+      `${environment.myEndpoint}/search?symbol=${ticker}
+		`
+    );
+  }
 
-	// .... other api calls
+  // .... other api calls
 }
 ```
 
@@ -64,33 +65,34 @@ Defining an Injection Token is a straightforward process by using the `Injection
 
 To solve the outlined problem of passing environments from an `app` into a `lib` in NX, create an `InjectionToken` with the following syntax:
 
-```TS
+```typescript
 // create injection token - value can be anything
 export const ENDPOINT_URL = new InjectionToken<string>('endpoint_url');
 
 @Injectable({
-	providedIn: 'root',
+  providedIn: 'root',
 })
 export class DataApiService {
-	constructor(
-		private http: HttpClient,
-		// use injection token to resolve the endpoint
-		@Inject(ENDPOINT_URL) private readonly endpointUrl: string
-	) {}
+  constructor(
+    private http: HttpClient,
+    // use injection token to resolve the endpoint
+    @Inject(ENDPOINT_URL) private readonly endpointUrl: string
+  ) {}
 
-	getRandomData(ticker: string): Observable<DataSummary[]> {
-		return this.http.get<DataSummary[]>(
-			`${this.endpointUrl}/search?symbol=${ticker}
-		`);
-	}
+  getRandomData(ticker: string): Observable<DataSummary[]> {
+    return this.http.get<DataSummary[]>(
+      `${this.endpointUrl}/search?symbol=${ticker}
+		`
+    );
+  }
 
-	// .... other api calls
+  // .... other api calls
 }
 ```
 
 And pass the `myEndpoint` url into it in the `app` level as follows:
 
-```TS
+```typescript
 bootstrapApplication(AppComponent, {
   providers: [
     {
@@ -98,7 +100,7 @@ bootstrapApplication(AppComponent, {
       useValue: environment.myEndpoint,
     },
   ],
-}).catch((err) => console.error(err));
+}).catch(err => console.error(err));
 ```
 
 ## Summary

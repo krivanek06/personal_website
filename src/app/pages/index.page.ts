@@ -32,25 +32,36 @@ import { BlobComponent, SvgOneComponent, SvgTwoComponent } from '../shared/compo
 
       <section class="relative">
         <!-- SVGs top left -->
-        <app-svg-one addClass="absolute top-[50px] left-[200px] z-10 w-[120px] h-[120px] opacity-40" />
-        <app-svg-one addClass="absolute top-[100px] left-[420px] z-10 w-[120px] h-[120px] opacity-40" />
-        <app-svg-one addClass="absolute top-[200px] left-[250px] z-10 w-[120px] h-[120px] opacity-30" />
-        <app-svg-one addClass="absolute top-[380px] left-[200px] z-10 w-[120px] h-[120px] opacity-20" />
-        <app-svg-one addClass="absolute top-[250px] left-[380px] z-10 w-[120px] h-[120px] opacity-30" />
+        <app-svg-one
+          addClass="absolute top-[50px] left-[200px] z-10 w-[120px] h-[120px] opacity-40" />
+        <app-svg-one
+          addClass="absolute top-[100px] left-[420px] z-10 w-[120px] h-[120px] opacity-40" />
+        <app-svg-one
+          addClass="absolute top-[200px] left-[250px] z-10 w-[120px] h-[120px] opacity-30" />
+        <app-svg-one
+          addClass="absolute top-[380px] left-[200px] z-10 w-[120px] h-[120px] opacity-20" />
+        <app-svg-one
+          addClass="absolute top-[250px] left-[380px] z-10 w-[120px] h-[120px] opacity-30" />
 
         <!-- SVGs bottom right -->
-        <app-svg-one addClass="absolute bottom-[0px] right-[200px] z-10 w-[120px] h-[120px] opacity-30" />
-        <app-svg-one addClass="absolute bottom-[100px] right-[420px] z-10 w-[120px] h-[120px] opacity-30" />
-        <app-svg-one addClass="absolute bottom-[120px] right-[250px] z-10 w-[120px] h-[120px] opacity-20" />
+        <app-svg-one
+          addClass="absolute bottom-[0px] right-[200px] z-10 w-[120px] h-[120px] opacity-30" />
+        <app-svg-one
+          addClass="absolute bottom-[100px] right-[420px] z-10 w-[120px] h-[120px] opacity-30" />
+        <app-svg-one
+          addClass="absolute bottom-[120px] right-[250px] z-10 w-[120px] h-[120px] opacity-20" />
 
         <app-page-welcome-hero />
       </section>
 
       <section class="relative">
         <!-- SVGs for hero section -->
-        <app-svg-one addClass="absolute top-[20px] left-[200px] z-10 w-[120px] h-[120px] opacity-40" />
-        <app-svg-one addClass="absolute top-[120px] left-[320px] z-10 w-[120px] h-[120px] opacity-40" />
-        <app-svg-one addClass="absolute top-[300px] left-[250px] z-10 w-[120px] h-[120px] opacity-30" />
+        <app-svg-one
+          addClass="absolute top-[20px] left-[200px] z-10 w-[120px] h-[120px] opacity-40" />
+        <app-svg-one
+          addClass="absolute top-[120px] left-[320px] z-10 w-[120px] h-[120px] opacity-40" />
+        <app-svg-one
+          addClass="absolute top-[300px] left-[250px] z-10 w-[120px] h-[120px] opacity-30" />
 
         <app-page-welcome-full-stack />
       </section>
@@ -63,8 +74,10 @@ import { BlobComponent, SvgOneComponent, SvgTwoComponent } from '../shared/compo
         <app-page-welcome-about-me />
 
         <app-svg-two addClass="absolute top-0 left-0  rotate-180  " />
-        <app-svg-one addClass="absolute top-[600px] right-[200px] z-10 w-[120px] h-[120px] opacity-20" />
-        <app-svg-one addClass="absolute top-[750px] right-[380px] z-10 w-[120px] h-[120px] opacity-30" />
+        <app-svg-one
+          addClass="absolute top-[600px] right-[200px] z-10 w-[120px] h-[120px] opacity-20" />
+        <app-svg-one
+          addClass="absolute top-[750px] right-[380px] z-10 w-[120px] h-[120px] opacity-30" />
       </section>
 
       <section class="relative">

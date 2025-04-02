@@ -28,24 +28,23 @@ Both of these operators deliver the last emitted value from multiple Observables
 The [combineLatest](https://www.learnrxjs.io/learn-rxjs/operators/combination/combinelatest) operator
 emits an array of the most recent values from all Observables, only when every Observable has already emitted at leas one value. It combines the latest emitted values from multiple Observables, whenever any observable emits a new value. Keep in mind that sometimes we can subscribe to a cold observable that has <ins>already emitted</ins>, and our `combineLatest()` will never emit.
 
-```TS
+```typescript
 combineLatest([
   this.stockPrice$, // emits stock prices
-  this.exchangeRate$ // emits exchange rates
+  this.exchangeRate$, // emits exchange rates
 ]).subscribe(([stockPrice, exchangeRate]) => {
   // will be logged every time any of the above observables emits
   console.log(`Price: ${stockPrice}, Rate: ${exchangeRate}`);
 });
-
 ```
 
 The [forkJoin](https://www.learnrxjs.io/learn-rxjs/operators/combination/forkjoin) operator waits for all observables to complete, then emits a single array containing the last emitted value from each Observable. If at least one Observable errors or returns `EMPTY` (completes without a value), `forkJoin()` will also throw an error or return `EMPTY`. You may have heard that `forkJoin` is very similar how `Promise.all()` works, as both emit only once when all operations complete.
 
-```TS
+```typescript
 forkJoin({
   userProfile: this.api.getUserProfile(),
   userSettings: this.api.getUserSettings(),
-  userPreferences: this.api.getUserPreferences()
+  userPreferences: this.api.getUserPreferences(),
 }).subscribe(({ userProfile, userSettings, userPreferences }) => {
   // will be logged only once, when all of the observables emits
   console.log(userProfile, userSettings, userPreferences);
@@ -54,17 +53,16 @@ forkJoin({
 
 One mistake that occasionally happens is that a WebSocket connection is used inside a `forkJoin` operator. You want to avoid doing that because `forkJoin` waits for all its Observables to complete before emitting a value. However, WebSocket-based observables are typically designed to emit values continuously (hot Observables) and never complete unless explicitly unsubscribed.
 
-```TS
+```typescript
 forkJoin({
   // API call (completes after fetching data)
   apiData: this.http.get('/api/data'),
   // WebSocket connection (never completes)
-  websocketData: this.websocketService.getUpdates()
+  websocketData: this.websocketService.getUpdates(),
 }).subscribe(result => {
   // will NEVER be logged
   console.log('Result:', result);
 });
-
 ```
 
 ## RxJS: auditTime() vs debounceTime()
@@ -77,14 +75,14 @@ On the other hand, [auditTime](https://rxjs.dev/api/operators/auditTime) samples
 
 You are most likely already used to use `debounceTime` on input fields, however `auditTime` may be more useful when tracking resizing or scrolling behavior. Here is an example demonstrating the difference in behavior between these two operators when tracking window resizing. Notice that `auditTime` is emitting values while the user is resizing the window, but `debounceTime` only emits when the user pauses his action.
 
-```TS
+```typescript
 // this will emit periodically
 fromEvent(window, 'resize')
   .pipe(
     auditTime(500),
     map(() => [window.innerWidth, window.innerHeight])
   )
-  .subscribe((dimensions) => {
+  .subscribe(dimensions => {
     console.log(`AUDIT TIME:`, dimensions);
   });
 
@@ -94,7 +92,7 @@ fromEvent(window, 'resize')
     debounceTime(500),
     map(() => [window.innerWidth, window.innerHeight])
   )
-  .subscribe((dimensions) => {
+  .subscribe(dimensions => {
     console.log(`DEBOUNCE TIME:`, dimensions);
   });
 ```
@@ -103,7 +101,7 @@ fromEvent(window, 'resize')
 
 > **_NOTE:_** A helpful utility you can create using closures (Injection token) is a function that returns a signal to listen for window resizing events:
 
-```TS
+```typescript
 export const WINDOW_RESIZE_LISTENER = new InjectionToken('Window resize listener', {
   factory: () => {
     const windowRef = inject(WINDOW);
@@ -113,9 +111,9 @@ export const WINDOW_RESIZE_LISTENER = new InjectionToken('Window resize listener
         auditTime(300),
         map(() => windowRef.innerWidth),
         startWith(windowRef.innerWidth),
-        takeUntilDestroyed(),
+        takeUntilDestroyed()
       ),
-      { initialValue: windowRef.innerWidth },
+      { initialValue: windowRef.innerWidth }
     );
   },
 });
@@ -132,24 +130,26 @@ The [pairwise](https://rxjs.dev/api/operators/pairwise) rxjs operator is a trans
 
 A useful example might be tracking router changes for navigation improvements.
 
-```TS
+```typescript
 import { Router, NavigationEnd } from '@angular/router';
 import { filter, pairwise } from 'rxjs/operators';
 
-this.router.events.pipe(
-	// filter for NavigationEnd events
-  filter(event => event instanceof NavigationEnd),
-  // pair consecutive route navigation events
-  pairwise()
-).subscribe(([previous, current]: [NavigationEnd, NavigationEnd]) => {
-  console.log('Previous URL:', previous.url);
-  console.log('Current URL:', current.url);
-});
+this.router.events
+  .pipe(
+    // filter for NavigationEnd events
+    filter(event => event instanceof NavigationEnd),
+    // pair consecutive route navigation events
+    pairwise()
+  )
+  .subscribe(([previous, current]: [NavigationEnd, NavigationEnd]) => {
+    console.log('Previous URL:', previous.url);
+    console.log('Current URL:', current.url);
+  });
 ```
 
 Another common example is tracking which fields have changed in a form structure.
 
-```TS
+```typescript
 @Component({
   selector: 'app-form-tracker',
   standalone: true,
@@ -176,7 +176,7 @@ export class FormTrackerComponent {
         // filter only distinct field keys
         scan((acc, curr) => [...new Set([...acc, ...curr])], [] as string[])
       )
-      .subscribe((fieldChange) => {
+      .subscribe(fieldChange => {
         console.log('Changed fields:', fieldChange);
       });
   }
@@ -186,9 +186,7 @@ export class FormTrackerComponent {
    * @returns - name of the field (name, email, age)
    */
   private getChangedFields(previous: any, current: any): string[] {
-    return Object.keys(current).filter(
-		    (key) => previous[key] !== current[key]
-		 );
+    return Object.keys(current).filter(key => previous[key] !== current[key]);
   }
 }
 ```
@@ -201,7 +199,7 @@ The `race()` operator subscribes to multiple observables and emits values from t
 
 I personally haven’t used the [race()](https://rxjs.dev/api/index/function/race) operator so often, but lately I bumped into a scenario, where it could be considered to be used. Let’s say you are making an API request to an endpoint that is problematic, meaning the request might be stuck in the `pending` state and never resolve (with error or success response). Ideally, you want to wait for a certain period, and if the request is still `pending`, cancel it and show an error message. There are many different solutions for this, but the `race()` operator usage is one that I thought of, here is an example:
 
-```TS
+```typescript
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -213,7 +211,7 @@ export class App {
   displayItems = toSignal(
     race(
       this.#userAPIService.getUsers().pipe(
-        map((data) => ({
+        map(data => ({
           status: 'loaded' as const,
           data,
         }))
@@ -222,9 +220,7 @@ export class App {
         status: 'failed' as const,
       }).pipe(delay(2000))
       // ^^ emit failed status if no response after 2s
-    ).pipe(
-      startWith({ status: 'loading' as const,})
-    ),
+    ).pipe(startWith({ status: 'loading' as const })),
     { initialValue: { status: 'loading' } }
   );
 
@@ -238,10 +234,10 @@ the `displayItem` signal has the immediate value of `{status: 'loading'}` , so y
 
 Maybe `race()` is a more complex operator for this use case and you want to consider using [timeout()](https://rxjs.dev/api/operators/timeout) operator for the same example. You would end up with:
 
-```TS
+```typescript
 displayItemsSignal = toSignal(
   this.userAPIService.getUsers().pipe(
-    map((data) => ({
+    map(data => ({
       status: 'loaded' as const,
       data,
     })),
@@ -263,13 +259,13 @@ The [defer()](https://rxjs.dev/api/index/function/defer) operator allows you to 
 
 An example may be that let’s say you have a service that makes API calls, however instead of using the [httpClient](https://angular.dev/api/common/http/HttpClient) and returning an Observable, it returns a Promise.
 
-```TS
+```typescript
 @Injectable({ providedIn: 'root' })
 export class UserAPIService {
-  #data = [{ name: 'user1' }, { name: 'user2' }, /*...*/];
+  #data = [{ name: 'user1' }, { name: 'user2' } /*...*/];
 
   getUsersPromise(): Promise<DataItem[]> {
-    return new Promise((res) =>
+    return new Promise(res =>
       setTimeout(() => {
         res(this.#data);
       }, 200)
@@ -280,8 +276,7 @@ export class UserAPIService {
 
 Now, you want to display a checkbox, and once the checkbox is clicked, you want to load the users (make an API call). You googled how to [convert Promises into Observables](https://stackoverflow.com/questions/39319279/convert-promise-to-observable), and you know you have to use the `from` operator for that, so you end up with a code like the following:
 
-```TS
-
+```typescript
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -290,8 +285,8 @@ Now, you want to display a checkbox, and once the checkbox is clicked, you want 
     <label for="checkBox">check me</label>
     <input type="checkbox" name="checkBox" [formControl]="checkboxControl" />
 
-    @if(checkboxControl.value){
-      @for(item of displayItems$ | async; track item.name){
+    @if (checkboxControl.value) {
+      @for (item of displayItems$ | async; track item.name) {
         {{ item.name }}
       }
     }
@@ -308,8 +303,8 @@ I haven’t found this information in the [rxjs from() docs](https://rxjs.dev/ap
 
 This behavior may not be a huge drawback, since you want to load the user data regardless. It just depends on the use case whether eager loading is a desired behavior. If you want to wait until the subscription is hit (when the checkbox is clicked) you can use `defer` such as
 
-```TS
-displayItems$ = defer(() => from(this.userAPIService.getUsersPromise()))
+```typescript
+displayItems$ = defer(() => from(this.userAPIService.getUsersPromise()));
 ```
 
 Using [defer()](https://stackoverflow.com/a/38771306), it delays the `getUsersPromise()` execution (making the API call) only when subscription happens.
@@ -318,42 +313,43 @@ Using [defer()](https://stackoverflow.com/a/38771306), it delays the `getUsersPr
 
 There are many use cases when we listen to the emitted values of an Observable and use `switchMap` (or another [higher order observable](https://dev.to/krivanek06/angular-interview-what-is-higher-order-observable-2k03)) with a condition to determine what to return. Here is one example:
 
-```TS
-
+```typescript
 displayItemsSignal = toSignal(
   this.checkboxControl.valueChanges.pipe(
-    switchMap((isChecked) =>
-      isChecked
-        ? this.userAPIService.getUsers()
-        : this.groupAPIService.getGroups()
+    switchMap(isChecked =>
+      isChecked ? this.userAPIService.getUsers() : this.groupAPIService.getGroups()
     )
-  ), { initialValue: [] });
+  ),
+  { initialValue: [] }
+);
 ```
 
 Although this example works fine, you can use the `iif()` operator for syntax sugar if both the `getUsers()` and `getGroups()` return an Observable.
 
-```TS
+```typescript
 displayItemsSignal = toSignal(
   this.checkboxControl.valueChanges.pipe(
-    switchMap((isChecked) =>
+    switchMap(isChecked =>
       iif(
         () => isChecked,
         this.userAPIService.getUsers(),
         this.groupAPIService.getGroups()
       )
     )
-  ), { initialValue: [] });
+  ),
+  { initialValue: [] }
+);
 ```
 
 There is one catch however. Let’s say, that instead of Observables, the service is using Promises for the data retrieval:
 
-```TS
+```typescript
 @Injectable({ providedIn: 'root' })
 export class UserAPIService {
-  #data = [{ name: 'user1' }, { name: 'user2' }, /*...*/];
+  #data = [{ name: 'user1' }, { name: 'user2' } /*...*/];
 
   getUsersPromise(): Promise<DataItem[]> {
-    return new Promise((res) =>
+    return new Promise(res =>
       setTimeout(() => {
         console.log('UserAPIService resolved');
         res(this.data);
@@ -364,10 +360,10 @@ export class UserAPIService {
 
 @Injectable({ providedIn: 'root' })
 export class GroupAPIService {
-  #data = [{ name: 'group1' }, { name: 'group2' }, /*...*/];
+  #data = [{ name: 'group1' }, { name: 'group2' } /*...*/];
 
   getGroupPromise(): Promise<DataItem[]> {
-    return new Promise((res) =>
+    return new Promise(res =>
       setTimeout(() => {
         console.log('GroupAPIService resolved');
         res(this.data);
@@ -379,17 +375,19 @@ export class GroupAPIService {
 
 and if you are using the `iif()` operator with Promises, such as below
 
-```TS
+```typescript
 displayItemsSignal = toSignal(
   this.checkboxControl.valueChanges.pipe(
-    switchMap((isChecked) =>
+    switchMap(isChecked =>
       iif(
         () => isChecked,
         this.userAPIService.getUsersPromise(),
         this.groupAPIService.getGroupPromise()
       )
     )
-  ), { initialValue: [] });
+  ),
+  { initialValue: [] }
+);
 ```
 
 What will happen is that whether the checkbox is checked, or not, both methods, the `getUsersPromise()` and the `getGroupPromise()` are executed. Definitely not what we desired.
@@ -398,30 +396,34 @@ What will happen is that whether the checkbox is checked, or not, both methods, 
 
 You can fix this problem with 2 solutions. First is going back to the ternary operator such as
 
-```TS
-  displayItemsSignal = toSignal(
-    this.checkboxControl.valueChanges.pipe(
-      switchMap((isChecked) =>
-        isChecked
-          ? this.userAPIService.getUsersPromise()
-          : this.groupAPIService.getGroupPromise()
-      )
-    ), { initialValue: [] });
+```typescript
+displayItemsSignal = toSignal(
+  this.checkboxControl.valueChanges.pipe(
+    switchMap(isChecked =>
+      isChecked
+        ? this.userAPIService.getUsersPromise()
+        : this.groupAPIService.getGroupPromise()
+    )
+  ),
+  { initialValue: [] }
+);
 ```
 
 this fixes the problem when you are working with Promises, however, if you want to use the `iif()` operator, then you should also use the `defer()` operator, to avoid eager execution, like:
 
-```TS
-  displayItemsSignal = toSignal(
-    this.checkboxControl.valueChanges.pipe(
-      switchMap((isChecked) =>
-        iif(
-          () => isChecked,
-          defer(() => this.userAPIService.getUsersPromise()),
-          defer(() => this.groupAPIService.getGroupPromise())
-        )
+```typescript
+displayItemsSignal = toSignal(
+  this.checkboxControl.valueChanges.pipe(
+    switchMap(isChecked =>
+      iif(
+        () => isChecked,
+        defer(() => this.userAPIService.getUsersPromise()),
+        defer(() => this.groupAPIService.getGroupPromise())
       )
-    ), { initialValue: [] });
+    )
+  ),
+  { initialValue: [] }
+);
 ```
 
 ![RxJS iif() operator with Promises using defer](./article-images/33_iif-with-defer.gif)

@@ -32,7 +32,7 @@ Consider a scenario where using a pipe might be beneficial. We have a search inp
 
 Here is the code for the above GIF
 
-```jsx
+```typescript
 // ... imports ...
 
 @Component({
@@ -58,30 +58,30 @@ Here is the code for the above GIF
   styles: [],
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [ /* ... imports ... */  ],
+  imports: [
+    /* ... imports ... */
+  ],
 })
 export class ExamplePipeComponent {
   private apiService = inject(ApiService);
 
-  animeSearchControl = new FormControl<AnimeData>(
-	  {} as AnimeData, { nonNullable: true }
-	);
+  animeSearchControl = new FormControl<AnimeData>({} as AnimeData, { nonNullable: true });
 
   loadedAnime$ = this.animeSearchControl.valueChanges.pipe(
-	  scan((acc, curr) => [...acc, curr], [] as AnimeData[])
-	);
+    scan((acc, curr) => [...acc, curr], [] as AnimeData[])
+  );
 }
 ```
 
 We are using the `hardMathEquasionPipe` pipe to send an API request to calculate some additional data for each item.
 
-```jsx
+```typescript
 @Pipe({
   name: 'hardMathEquasionPipe',
   standalone: true,
 })
 export class HardMathEquasionPipe implements PipeTransform {
-	private apiService = inject(ApiService);
+  private apiService = inject(ApiService);
 
   transform(anime: AnimeData): Observable<number> {
     console.log(`Pipe running for ${anime.title}`);
@@ -89,7 +89,6 @@ export class HardMathEquasionPipe implements PipeTransform {
     // ^^ API request to the server
   }
 }
-
 ```
 
 All in all this is something you know how to do. Now, we are going to examine why pipes behave as they do and why they don’t recompute on every change detection. We will look at what actually happens when you build the app.
@@ -148,7 +147,7 @@ On the other hand if the input value or its arguments have changed, the pipe’s
 
 Here is a code example of the `textInterpolate()` function:
 
-```jsx
+```typescript
 function textInterpolate1(prefix, v0, suffix) {
   const lView = getLView();
   const interpolated = interpolation1(lView, prefix, v0, suffix);
@@ -177,15 +176,15 @@ Given that pipes are re-executed on every change detection cycle, with cached in
 
 One way how to allow executing (async or normal) function calls in the template with improved performance, is to create a `pure pipe` as follows:
 
-```jsx
+```typescript
 @Pipe({
-  name: "pure",
+  name: 'pure',
   standalone: true,
 })
 export class PurePipe implements PipeTransform {
   /**
    * @Inject(ChangeDetectorRef) prevents:
-	 *   NullInjectorError: No provider for EmbeddedViewRef!
+   *   NullInjectorError: No provider for EmbeddedViewRef!
    */
   constructor(
     @Inject(ChangeDetectorRef)
@@ -208,10 +207,9 @@ export class PurePipe implements PipeTransform {
 
 And you can use this `pure` pipe as follows
 
-```jsx
-
+```typescript
 @Component({
-  selector: "app-example-pipe",
+  selector: 'app-example-pipe',
   template: `
     <!-- rest of component -->
 
@@ -219,16 +217,16 @@ And you can use this `pure` pipe as follows
     <div *ngFor="let data of loadedAnime$ | async" class="...">
       <!-- rest of table -->
       <div>
-        {{ equasionAsyncFunction | pure : data | async }}
+        {{ equasionAsyncFunction | pure: data | async }}
       </div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [/* ... */, PurePipe],
+  imports: [, /* ... */ PurePipe],
 })
 export class ExamplePipeComponent {
-	/* ...... */
+  /* ...... */
 
   equasionAsyncFunction(anime: AnimeData): Observable<number> {
     console.log(`%c [Async] Function call ${anime.title}`);
@@ -254,15 +252,15 @@ If you want to be a little bit fancy, instead of the `pure` pipe, you can create
 
 A decorator, simple put, is a function ([closure](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures)) that modifies the behaviour of an another function. While you can create your own memoization decorator, here’s an example of what it might look like:
 
-```jsx
-import { first, tap, of } from "rxjs";
+```typescript
+import { first, tap, of } from 'rxjs';
 
 export function customMemoize() {
   // cache already executed function calls in the template
   const cacheLookup: { [key: string]: any } = {};
 
   return (target: any, key: any, descriptor: any) => {
-   // store the original method behaviour
+    // store the original method behaviour
     const originalMethod = descriptor.value;
 
     // overwrite the original method
@@ -272,7 +270,7 @@ export function customMemoize() {
 
       // already cached data
       if (keyString in cacheLookup) {
-        console.log("reading from cache");
+        console.log('reading from cache');
         return cacheLookup[keyString];
       }
 
@@ -300,24 +298,26 @@ The inner function returns a modified version of the method to which the decorat
 
 Initially, the function runs and computes the result via `originalMethod.apply(this, arguments)`. This result is then stored in the cache. On subsequent executions triggered by change detection (such as user events), the function will first check if a result for the same input is already cached, and if so, it returns the cached value.
 
-```jsx
+```typescript
 @Component({
-  selector: "app-example-pipe",
+  selector: 'app-example-pipe',
   template: `
     <!-- rest of component -->
 
     <!-- table body -->
     <div *ngFor="let data of loadedAnime$ | async" class="...">
-	    <!-- rest of table -->
-        <div>{{ equasionAsyncFunctionMemo(data) | async }}</div>
+      <!-- rest of table -->
+      <div>{{ equasionAsyncFunctionMemo(data) | async }}</div>
     </div>
   `,
   changeDetection: ChangeDetectionStrategy.OnPush,
   standalone: true,
-  imports: [/* ... */],
+  imports: [
+    /* ... */
+  ],
 })
 export class ExamplePipeComponent {
-	/* ...... */
+  /* ...... */
 
   @customMemoize()
   equasionAsyncFunctionMemo(anime: AnimeData): Observable<number> {

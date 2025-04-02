@@ -28,7 +28,7 @@ If you are interested in how to build the server side of this application, check
 
 Generate a new Angular application, and in the new Angular project, install the following:
 
-```TS
+```bash
 ng add apollo-angular
 
 npm install --save-dev @graphql-codegen/cli
@@ -55,13 +55,13 @@ We’ll describe an illustration of this problem below when we talk about creati
 
 First, set up a connection to your GraphQL server from the Angular application. Apollo client needs to know which endpoint (`http://localhost:3001/graphql`) to target once it starts executing operations against the server, what kind of header information you want to attach to all the requests, and how you want to handle errors. Create a module named `graphql.module.ts` in `src/app/graphql`, or move the existing one if the `ng add apollo-angular` has already created one and add the following configuration.
 
-```TS
+```typescript
 // src/app/graphql/graphql.module.ts
 
 import { HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ApolloClientOptions, ApolloLink, InMemoryCache } from '@apollo/client/core'
+import { ApolloClientOptions, ApolloLink, InMemoryCache } from '@apollo/client/core';
 import { setContext } from '@apollo/client/link/context';
 import { onError } from '@apollo/client/link/error';
 import { ApolloModule, APOLLO_NAMED_OPTIONS, APOLLO_OPTIONS } from 'apollo-angular';
@@ -69,65 +69,65 @@ import { HttpLink } from 'apollo-angular/http';
 import { environment } from 'src/environments/environment';
 
 const errorLink = onError(({ graphQLErrors, networkError, response }) => {
-	// React only on graphql errors
-	if (graphQLErrors && graphQLErrors.length > 0) {
-		if (
-			(graphQLErrors[0] as any)?.statusCode >= 400 &&
-			(graphQLErrors[0] as any)?.statusCode < 500
-		) {
-			// handle client side error
-			console.error(`[Client side error]: ${graphQLErrors[0].message}`);
-		} else {
-			// handle server side error
-			console.error(`[Server side error]: ${graphQLErrors[0].message}`);
-		}
-	}
-	if (networkError) {
-        // handle network error
-        console.error(`[Network error]: ${networkError.message}`);
-	}
+  // React only on graphql errors
+  if (graphQLErrors && graphQLErrors.length > 0) {
+    if (
+      (graphQLErrors[0] as any)?.statusCode >= 400 &&
+      (graphQLErrors[0] as any)?.statusCode < 500
+    ) {
+      // handle client side error
+      console.error(`[Client side error]: ${graphQLErrors[0].message}`);
+    } else {
+      // handle server side error
+      console.error(`[Server side error]: ${graphQLErrors[0].message}`);
+    }
+  }
+  if (networkError) {
+    // handle network error
+    console.error(`[Network error]: ${networkError.message}`);
+  }
 });
 
 const basicContext = setContext((_, { headers }) => {
-	return {
-		headers: {
-			...headers,
-			Accept: 'charset=utf-8',
-			authorization: `Bearer random token`,
-			'Content-Type': 'application/json',
-		},
-	};
+  return {
+    headers: {
+      ...headers,
+      Accept: 'charset=utf-8',
+      authorization: `Bearer random token`,
+      'Content-Type': 'application/json',
+    },
+  };
 });
 export function createDefaultApollo(httpLink: HttpLink): ApolloClientOptions<any> {
-	const cache = new InMemoryCache({});
+  const cache = new InMemoryCache({});
 
-	// create http
-	const http = httpLink.create({
-		uri: 'http://localhost:3001/graphql',
-	});
+  // create http
+  const http = httpLink.create({
+    uri: 'http://localhost:3001/graphql',
+  });
 
-	return {
-		connectToDevTools: !environment.production,
-		assumeImmutableResults: true,
-		cache,
-		link: ApolloLink.from([basicContext, errorLink, http]),
-		defaultOptions: {
-			watchQuery: {
-				errorPolicy: 'all',
-			},
-		},
-	};
+  return {
+    connectToDevTools: !environment.production,
+    assumeImmutableResults: true,
+    cache,
+    link: ApolloLink.from([basicContext, errorLink, http]),
+    defaultOptions: {
+      watchQuery: {
+        errorPolicy: 'all',
+      },
+    },
+  };
 }
 
 @NgModule({
-	imports: [BrowserModule, HttpClientModule, ApolloModule],
-	providers: [
-		{
-			provide: APOLLO_OPTIONS,
-			useFactory: createDefaultApollo,
-			deps: [HttpLink],
-		},
-	],
+  imports: [BrowserModule, HttpClientModule, ApolloModule],
+  providers: [
+    {
+      provide: APOLLO_OPTIONS,
+      useFactory: createDefaultApollo,
+      deps: [HttpLink],
+    },
+  ],
 })
 export class GraphQLModule {}
 ```
@@ -144,7 +144,7 @@ After creating apollo.module.ts file, add this module to the imports section of 
 
 > **_NOTE:_** In real life, it may happen that you want to configure the Apollo client to connect to multiple GraphQL API servers. To accomplish that, use another injection token named `APOLLO_NAMED_OPTIONS`, where you define a key-value pair to endpoints you want to interact with, so it may look as follows.
 
-```TS
+```typescript
 // src/app/graphql/graphql.module.ts
 
 export function createNamedApollo(httpLink: HttpLink)
@@ -246,7 +246,7 @@ generates:
 
 To generate the schema, register an NPM command
 
-```TS
+```typescript
 “generate-types”: “graphql-codegen --config codegen.yml”
 ```
 
@@ -256,7 +256,7 @@ into scripts in package.json. After registering the command and executing `npm r
 
 This is where the fun begins. You are going to use the generated GraphQL API calls you defined in `movie.graphql`. Create an Angular service in `core/api/movie-api.service.ts` and inject the generated types and API calls by Apollo-codegen.
 
-```TS
+```typescript
 // src/app/core/api/movie-api.service.ts
 
 import { Injectable } from "@angular/core";
@@ -287,7 +287,7 @@ export class MovieApiService {
 
 Before any operation, you must first fetch movies with the following code.
 
-```TS
+```typescript
 getAllMovies(): Observable<MovieInfoFragment[]> {
 	return this.getAllMoviesGQL.watch().valueChanges.pipe(
 		map((res) => res.data.getAllMovies ?? [])
@@ -303,18 +303,18 @@ Also, be careful from where you import [Observable](url) interface. You may acci
 
 When working with multiple GraphQL endpoints, you can use any other endpoint defined for the `APOLLO_NAMED_OPTIONS` injection token by the following approach.
 
-```TS
+```typescript
 @Injectable({
-	providedIn: 'root',
+  providedIn: 'root',
 })
 export class SpaceXApiService {
-	constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) {}
 
-	getLaunchesPast(): Observable<ApolloQueryResult<unknown>> {
-		return this.apollo.use('spaceX').query({
-			query: LaunchesPastDocument,
-		});
-	}
+  getLaunchesPast(): Observable<ApolloQueryResult<unknown>> {
+    return this.apollo.use('spaceX').query({
+      query: LaunchesPastDocument,
+    });
+  }
 }
 ```
 
@@ -326,7 +326,7 @@ Creating a new movie is a bit more complicated. You do not just have to send the
 
 Send the new movie’s `title` and `description` to the server, wait for the server’s response and save the returned `Movie` object into the `getAllMovies` array. We can better describe everything in the following code
 
-```TS
+```typescript
 createMovie({ title, description }: MovieInputCreate):
     Observable<FetchResult<CreateMovieMutation>> {
 		return this.createMovieGQL.mutate(
@@ -401,7 +401,7 @@ No need to worry about having the same object in the `getAllMovies` array twice�
 
 When working with Apollo client in Angular, you might encounter the error `Cannot find namespace‘JSX’`. This happens when you make a wrong import. Because Apollo client can be also used with React, you have to exactly specify the path from which you want to import interfaces in Angular. This error is present by the following import:
 
-```TS
+```typescript
 // wrong import
 import { DataProxy, FetchResult } from ‘@apollo/client’;.
 // correct import
@@ -412,7 +412,7 @@ import { DataProxy, FetchResult } from ‘@apollo/client/core’;
 
 Fortunately editing a Movie is much easier. Send the `Id, title, and description` attributes of the edited Movie object to the server as it is demonstrated in the following code snippet.
 
-```TS
+```typescript
 editMovie({id, title, description}: MovieInputEdit):
   Observable<FetchResult<EditMovieMutation>> {
 	return this.editMovieGQL.mutate({
@@ -433,7 +433,7 @@ Keeping only the Movie references in `getAllMovies` array solves the issue of wh
 
 You also don’t need to implement the `update` option in `editMovieGQL` because of Apollo’s default behavior in how it handles normalized data. When defining the `EditMovie` mutation back in **Generating schema from the backend**, you included that you expect a `MovieInfo` fragment to be returned.
 
-```TS
+```typescript
 mutation EditMovie($movieInputEdit: MovieInputEdit!) {
 	editMovie(movieInputEdit: $movieInputEdit) {
 		...MovieInfo
@@ -449,7 +449,7 @@ Normalizing data greatly helps us to be consistent. An object can be edited in o
 
 Data normalization is also beneficial when it comes to removing an object from the cache. Apollo provides methods for [Garbage collection and cache eviction](https://www.apollographql.com/docs/react/caching/garbage-collection/#cacheevict) such as `evict` that completely removes an object from the cache. So deleting a movie can be done in the following case.
 
-```TS
+```typescript
 deleteMovie(movieId: number): Observable<FetchResult<DeleteMovieMutation>> {
 	return this.deleteMovieGQL.mutate(
 		{

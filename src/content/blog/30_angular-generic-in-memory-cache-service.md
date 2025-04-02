@@ -7,7 +7,7 @@ tags: angular, rxjs, beginner
 order: 30
 datePublished: 09.09.2024
 readTime: 3
-coverImage: 30_angular-generic-in-memory-cache-service.webp
+coverImage: article-cover/30_angular-generic-in-memory-cache-service.webp
 ---
 
 When [manage application state](https://dev.to/krivanek06/angular-state-management-how-to-keep-your-sanity-1oin) in you Angular projects, you create a service to handle a specific feature state, such as booking state, user state, groups, etc.

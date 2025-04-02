@@ -7,7 +7,7 @@ tags: javascript, angular, rxjs, tutorial
 order: 35
 datePublished: 27.01.2025
 readTime: 11
-coverImage: 35_custom-rxjs-operators.jpg
+coverImage: article-cover/35_custom-rxjs-operators.jpg
 ---
 
 On the recent Angular live interview in January 2025 a question was asked: "[Are we ditching Observables and RxJs?](https://www.youtube.com/live/apyVs0D6rf0?t=3228s)".
@@ -242,7 +242,7 @@ from([
   )
 ```
 
-![Custom Pipe Remember History Log](./images/35_rxjs-pipe-remember-history-log.png)
+![Custom Pipe Remember History Log](./article-images/35_rxjs-pipe-remember-history-log.png)
 
 ### 5.) Object Value Change
 
@@ -437,7 +437,7 @@ export class ExampleFormComponent {
 
 I am passing the `this.myForm.value` initial state to the custom pipe, but this can be any object to which I want to compare the pipe chain data into. For instance, if the `name`, `address.city` and `items[0].name` fields will be changed, the `objectChangedFields()` will return the following:
 
-![Custom Pipe Object Changed Fields Log](./images/35_rxjs-pipe-object-changed-fields-log.png)
+![Custom Pipe Object Changed Fields Log](./article-images/35_rxjs-pipe-object-changed-fields-log.png)
 
 ### 7.) Loading Stats
 
@@ -489,7 +489,7 @@ type RxResourceResult<T> = {
  }
 ```
 
-![Custom Pipe Loading State Log](./images/35_rxjs-pipe-loading-state-log.png)
+![Custom Pipe Loading State Log](./article-images/35_rxjs-pipe-loading-state-log.png)
 
 ## Summary
 

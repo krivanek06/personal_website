@@ -7,7 +7,7 @@ tags: javascript, angular, rxjs, tutorial
 order: 32
 datePublished: 14.11.2024
 readTime: 8
-coverImage: 32_custom-rxresouce-api.png
+coverImage: article-cover/32_custom-rxresouce-api.png
 ---
 
 At the time of writing this article, Angular is approaching the version 19 release and it [brings a new API called resource](https://github.com/angular/angular/pull/58255). A great in-depth article is to read [Enea Jahollari - Everything you need to know about the resource API](https://push-based.io/article/everything-you-need-to-know-about-the-resource-api).
@@ -25,7 +25,7 @@ Below you can see a simple app on which we can demonstrate the main functionalit
 - Create a refresh button that will reload the data
 - Enable editing displayed items - remove them from the UI by clicking
 
-![Resource Final Overview](./images/32_resource-example.gif)
+![Resource Final Overview](./article-images/32_resource-example.gif)
 
 ## Solving It With The rxResource
 
@@ -191,7 +191,7 @@ if you want to investigate what happens by tweaking the types.
 
 Now when you use the `rxResourceCustomBasic` you will see the correct types. For example the `loader` has exactly 3 parameters and each has its own correct type.
 
-![Custom rxResource wrapper with correct types](./images/32_i2.png)
+![Custom rxResource wrapper with correct types](./article-images/32_i2.png)
 
 ## Basic Custom rxResource
 
@@ -259,7 +259,7 @@ export const rxResourceCustomBasic = <T, TLoader extends Observable<unknown>[]>(
 - Using the `catchError` to handle error state and add it to the source that can throw an error. If you are confused why `catchError` is not the last operator, consider checking out [Angular Rxjs - CatchError Position Matter!](https://dev.to/krivanek06/angular-rxjs-catcherror-position-matter-3b00)
 - The `shareReplay()` operator is used to broadcast a newly emitted value to each subscriber, making it a hot observable
 
-![Using the basic custom rxResource](./images/32_i3.png)
+![Using the basic custom rxResource](./article-images/32_i3.png)
 
 ## Advanced Custom rxResouce
 
@@ -482,7 +482,7 @@ export class ResourceCustomExampleComponent {
 
 The final result of the side by side comparison of the Angular’s rxResource on the left, and our custom observable rxResource on the right
 
-![Final Example](./images/32_result-final.gif)
+![Final Example](./article-images/32_result-final.gif)
 
 Hope you liked the article and found it helpful. If you want to play around with it,
 you can check the [Github repo](https://github.com/krivanek06/stackblitz-angular-custom-resource-function).

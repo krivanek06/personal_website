@@ -7,7 +7,7 @@ tags: javascript, nestjs, graphql
 order: 3
 datePublished: 24.10.2022
 readTime: 11
-coverImage: 3_creating-a-graphql-server-with-nestjs.jpg
+coverImage: article-cover/3_creating-a-graphql-server-with-nestjs.jpg
 ---
 
 When considering building a server-side application, you might be overwhelmed by the vast majority of technologies you can choose from.

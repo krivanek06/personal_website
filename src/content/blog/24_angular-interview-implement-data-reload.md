@@ -7,7 +7,7 @@ tags: angular, rxjs, interview, tutorial
 order: 24
 datePublished: 31.01.2024
 readTime: 4
-coverImage: 24_angular-interview-implement-data-reload.webp
+coverImage: article-cover/24_angular-interview-implement-data-reload.webp
 ---
 
 When interviewing into Angular related jobs, one question I used to get asked, is “Demonstrate a simple data reloading when user clicks on a button” (demonstrated on the gif).

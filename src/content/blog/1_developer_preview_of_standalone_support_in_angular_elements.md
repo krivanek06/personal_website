@@ -7,7 +7,7 @@ tags: javascript, angular, rxjs
 order: 1
 datePublished: 06.09.2022
 readTime: 5
-coverImage: 1_developer_preview_of_standalone_support_in_angular_elements.png
+coverImage: article-cover/1_developer_preview_of_standalone_support_in_angular_elements.png
 ---
 
 Have you seen it already? Angular version [14.2 ](https://github.com/angular/angular/releases/tag/14.2.0)is here with new features and improvements! One of the merged PRs includes [creating custom elements without NgModule](https://github.com/angular/angular/pull/46475). In this post, we will take a look at how to create Angular elements in Angular v14.2.

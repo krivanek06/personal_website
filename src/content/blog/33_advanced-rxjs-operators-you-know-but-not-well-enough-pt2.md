@@ -7,7 +7,7 @@ tags: javascript, angular, rxjs, tutorial
 order: 33
 datePublished: 12.01.2024
 readTime: 8
-coverImage: 33_advanced-rxjs-operators-you-know-but-not-well-enough-pt2.jpg
+coverImage: article-cover/33_advanced-rxjs-operators-you-know-but-not-well-enough-pt2.jpg
 ---
 
 In June 2024, I published an article [Advanced RxJs Operators You Know But Not Well Enough](https://dev.to/krivanek06/advanced-rxjs-operators-you-know-but-not-well-enough-1ela), which received significant attention and many of you found it useful. Since RxJS remains essential in Angular and has a vast number of operators, I decided to create a part 2 of this article to highlight some operators, their combinations, and practical use cases where they can be applied.
@@ -99,7 +99,7 @@ fromEvent(window, 'resize')
   });
 ```
 
-![RxJS debounceTime() and auditTime() visual difference](./images/33_auditTime-vs-debounceTime.gif)
+![RxJS debounceTime() and auditTime() visual difference](./article-images/33_auditTime-vs-debounceTime.gif)
 
 > **_NOTE:_** A helpful utility you can create using closures (Injection token) is a function that returns a signal to listen for window resizing events:
 
@@ -197,7 +197,7 @@ export class FormTrackerComponent {
 
 The `race()` operator subscribes to multiple observables and emits values from the observable that emits first (and keep listening on), canceling all other subscriptions.
 
-![RxJS race operator visual description](./images/33_race.png)
+![RxJS race operator visual description](./article-images/33_race.png)
 
 I personally haven’t used the [race()](https://rxjs.dev/api/index/function/race) operator so often, but lately I bumped into a scenario, where it could be considered to be used. Let’s say you are making an API request to an endpoint that is problematic, meaning the request might be stuck in the `pending` state and never resolve (with error or success response). Ideally, you want to wait for a certain period, and if the request is still `pending`, cancel it and show an error message. There are many different solutions for this, but the `race()` operator usage is one that I thought of, here is an example:
 
@@ -394,7 +394,7 @@ displayItemsSignal = toSignal(
 
 What will happen is that whether the checkbox is checked, or not, both methods, the `getUsersPromise()` and the `getGroupPromise()` are executed. Definitely not what we desired.
 
-![RxJS iif() operator with Promises](./images/33_iif-without-defer.gif)
+![RxJS iif() operator with Promises](./article-images/33_iif-without-defer.gif)
 
 You can fix this problem with 2 solutions. First is going back to the ternary operator such as
 
@@ -424,7 +424,7 @@ this fixes the problem when you are working with Promises, however, if you want 
     ), { initialValue: [] });
 ```
 
-![RxJS iif() operator with Promises using defer](./images/33_iif-with-defer.gif)
+![RxJS iif() operator with Promises using defer](./article-images/33_iif-with-defer.gif)
 
 To recap, you can freely use the `iif()` conditional operator when working with Observables. However, when you are working with Promises, either use the [Conditional (ternary) operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Conditional_operator) or combine `iif()` with the `defer()` operator.
 

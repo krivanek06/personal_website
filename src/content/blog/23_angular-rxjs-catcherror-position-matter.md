@@ -7,7 +7,7 @@ tags: angular, rxjs, tutorial
 order: 23
 datePublished: 29.12.2023
 readTime: 3
-coverImage: 23_angular-rxjs-catcherror-position-matter.webp
+coverImage: article-cover/23_angular-rxjs-catcherror-position-matter.webp
 ---
 
 Using rxjs you have many occurrences when you want to catch the errors from your streams, handle them and return an arbitrary value. Examples may be include http calls, logical operations, calculations, etc. However did you know that the position of you `catchError` operator does matter ?

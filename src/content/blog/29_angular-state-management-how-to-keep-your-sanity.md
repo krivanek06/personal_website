@@ -7,7 +7,7 @@ tags: angular, rxjs, tutorial
 order: 29
 datePublished: 01.08.2024
 readTime: 8
-coverImage: 29_angular-state-management-how-to-keep-your-sanity.webp
+coverImage: article-cover/29_angular-state-management-how-to-keep-your-sanity.webp
 ---
 
 Building anything meaningful requires having a state management in your app. The question is, how should you design your state services ? Should you use a custom implementation - subjects or signals ? Or should you check out NgRx or something else? What are even the differences?

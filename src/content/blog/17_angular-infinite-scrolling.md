@@ -7,7 +7,7 @@ tags: javascript, angular, tutorial, beginner
 order: 17
 datePublished: 06.07.2023
 readTime: 5
-coverImage: 17_angular-infinite-scrolling.webp
+coverImage: article-cover/17_angular-infinite-scrolling.webp
 ---
 
 Rendering takes time. That is especially the case if you have to load large amounts of data from your server and display them. Sometimes the server doesn’t handle pagination and returns the whole collection of data at once.

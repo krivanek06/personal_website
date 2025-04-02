@@ -7,7 +7,7 @@ tags: vuejs, tutorial
 order: 13
 datePublished: 01.06.2023
 readTime: 3
-coverImage: 13_vuejs-watcheffect-vs-watch.png
+coverImage: article-cover/13_vuejs-watcheffect-vs-watch.png
 ---
 
 In Vue 3, there are two main ways to observe changes to reactive data: `watch` and `watchEffect`. While both accomplish the same goal of re-running code in response to changes in reactive data, they differ in important ways.

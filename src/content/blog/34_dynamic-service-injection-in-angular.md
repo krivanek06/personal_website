@@ -7,7 +7,7 @@ tags: javascript, angular, rxjs, tutorial
 order: 34
 datePublished: 10.01.2025
 readTime: 5
-coverImage: 34_dynamic-service-injection.jpg
+coverImage: article-cover/34_dynamic-service-injection.jpg
 ---
 
 Recently, I came across the following [dynamic service instantiation in Angular](https://www.linkedin.com/posts/roberto-heckers-2313453b_angular-activity-7274362560110379008-fFuj) from [Roberto Heckers](https://www.linkedin.com/in/roberto-heckers-2313453b/), where he generates a service based on some condition. Occasionally, we bump into a use case where you have multiple services, each of them sharing the same method name with a different implementation, and you want to call only one of these services based on some condition. In the following article, I decided to create a similar example and provide more use cases where dynamic service generation may be useful.
@@ -16,7 +16,7 @@ Recently, I came across the following [dynamic service instantiation in Angular]
 
 Let’s have an example of a money-sending application (Wise, Paysend, etc.). You want to send some amount to your friend. You are required to put the amount, the address, and select what kind of payment option you want to use. Here is the ugly version of the UI and the HTML and TS part of the form.
 
-![Application UI Overview](./images/34_application-overview.png)
+![Application UI Overview](./article-images/34_application-overview.png)
 
 ```html
 <form [formGroup]="form" (ngSubmit)="onSubmit()">

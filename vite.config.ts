@@ -14,7 +14,9 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     analog({
       content: {
-        highlighter: 'shiki',
+        prismOptions: {
+          additionalLangs: ['TS'],
+        },
       },
       prerender: {
         routes: ['/blog'],

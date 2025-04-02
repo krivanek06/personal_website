@@ -7,7 +7,7 @@ tags: javascript, angular, tutorial
 order: 20
 datePublished: 09.08.2023
 readTime: 2
-coverImage: 20_angular-ssr-cannot-read-properties-of-undefined-reading-corechartchartjs.webp
+coverImage: article-cover/20_angular-ssr-cannot-read-properties-of-undefined-reading-corechartchartjs.webp
 ---
 
 Are you still building your web application as an SPA? What is this, 2020? Nowadays, everybody is doing SSR.

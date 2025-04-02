@@ -7,7 +7,7 @@ tags: javascript, angular, rxjs, interview
 order: 18
 datePublished: 09.07.2023
 readTime: 5
-coverImage: 18_angular-interview-what-is-higher-order-observable.webp
+coverImage: article-cover/18_angular-interview-what-is-higher-order-observable.webp
 ---
 
 One of the most common questions in Angular interviews is “_what is a Higher-Order Observable_”?

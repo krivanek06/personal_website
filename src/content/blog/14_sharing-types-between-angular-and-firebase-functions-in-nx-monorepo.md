@@ -7,7 +7,7 @@ tags: nx, angular, firebase, monorepo
 order: 14
 datePublished: 14.06.2023
 readTime: 5
-coverImage: 14_sharing-types-between-angular-and-firebase-functions-in-nx-monorepo.png
+coverImage: article-cover/14_sharing-types-between-angular-and-firebase-functions-in-nx-monorepo.png
 ---
 
 Recently I started to work on a new project and after a considerable amount of time spent choosing the tech stack, I decided to go with Angular, Firebase Cloud Functions, and NX Monorepo.

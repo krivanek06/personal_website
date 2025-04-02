@@ -7,7 +7,7 @@ tags: javascript, angular, beginner, opinion
 order: 16
 datePublished: 22.06.2023
 readTime: 8
-coverImage: 16_why-am-i-switching-to-signals-in-angular.png
+coverImage: article-cover/16_why-am-i-switching-to-signals-in-angular.png
 ---
 
 Angular version 16 released a feature, that, I would say wasn’t really expected to come and shocked most of the developers. Yes, I am talking about [Angular Signals](https://angular.io/guide/signals). There are lots of already made great articles from developers, such as [Angular & Signals. Everything you need to know](https://dev.to/this-is-angular/angular-signals-everything-you-need-to-know-2b7g), from [Robin Goetz](https://dev.to/goetzrobin) (kudos to him), however with this article I want to give my experience working with them.

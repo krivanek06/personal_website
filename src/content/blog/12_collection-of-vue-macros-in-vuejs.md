@@ -7,7 +7,7 @@ tags: vuejs, beginner, opensource
 order: 12
 datePublished: 28.05.2023
 readTime: 5
-coverImage: 12_collection-of-vue-macros-in-vuejs.jpg
+coverImage: article-cover/12_collection-of-vue-macros-in-vuejs.jpg
 ---
 
 Many developers (myself included) were excited when [Vue.js version 3.3](https://blog.vuejs.org/posts/vue-3-3) introduced several functionalities from [Vue Macros](https://vue-macros.sxzz.moe/), the collection of proposed additions to Vue.js that extend its basic functionalities with syntactic sugar.

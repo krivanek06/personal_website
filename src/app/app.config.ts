@@ -1,9 +1,11 @@
 import { provideContent, withMarkdownRenderer } from '@analogjs/content';
-import { withShikiHighlighter } from '@analogjs/content/shiki-highlighter';
+import { withPrismHighlighter } from '@analogjs/content/prism-highlighter';
 import { provideFileRouter, requestContextInterceptor } from '@analogjs/router';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { withInMemoryScrolling, withViewTransitions } from '@angular/router';
+import 'prismjs/components/prism-diff';
+import 'prismjs/plugins/diff-highlight/prism-diff-highlight';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -19,6 +21,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(withFetch(), withInterceptors([requestContextInterceptor])),
     // todo - this was causing error when displaying an image , idk why
     //provideClientHydration(),
-    provideContent(withMarkdownRenderer(), withShikiHighlighter()),
+    provideContent(withMarkdownRenderer(), withPrismHighlighter()),
   ],
 };

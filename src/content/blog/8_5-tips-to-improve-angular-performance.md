@@ -7,7 +7,7 @@ tags: javascript, angular, tutorial, beginner
 order: 8
 datePublished: 25.04.2023
 readTime: 8
-coverImage: 8_5-tips-to-improve-angular-performance.png
+coverImage: article-cover/8_5-tips-to-improve-angular-performance.png
 ---
 
 As an Angular developer, you understand the importance of building high-performing web apps. Slow loading times, sluggish UI, and poor user experience can all harm your website's reputation and deter users from returning.

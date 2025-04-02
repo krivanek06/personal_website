@@ -7,7 +7,7 @@ tags: angular, tutorial, beginner
 order: 19
 datePublished: 23.07.2023
 readTime: 8
-coverImage: 19_angular-matpaginator-custom-styling.jpg
+coverImage: article-cover/19_angular-matpaginator-custom-styling.jpg
 ---
 
 As a frontend developer you most likely had a task to display data in a table and as an Angular frontend developer, you probably picked [Angular Material](https://material.angular.io/) to do so.

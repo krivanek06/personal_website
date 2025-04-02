@@ -7,7 +7,7 @@ tags: firebase, angular, tutorial, beginner
 order: 25
 datePublished: 04.02.2024
 readTime: 8
-coverImage: 25_deploy-frontend-firebase-app-to-google-play.webp
+coverImage: article-cover/25_deploy-frontend-firebase-app-to-google-play.webp
 ---
 
 Recently I have deployed one of my application into Google Play. I had a few problems so I thought I could try to write down a step-by-step guide, especially for my future self. This article will have an example Angular application connected to firebase, which we will deploy to Google Play, however, these steps are framework independent, so I guess it will be very similar for react, svelte, etc.

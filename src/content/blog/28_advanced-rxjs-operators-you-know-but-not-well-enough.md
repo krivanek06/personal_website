@@ -7,7 +7,7 @@ tags: angular, rxjs, beginner, tutorial
 order: 28
 datePublished: 17.06.2024
 readTime: 12
-coverImage: 28_advanced-rxjs-operators-you-know-but-not-well-enough.png
+coverImage: article-cover/28_advanced-rxjs-operators-you-know-but-not-well-enough.png
 ---
 
 I’ve been using Angular for more or less half a decade and recently I reviewed how many rxjs operators I am familiar with. I wanted to create this article to share some of my experience with rxjs, but also talk about some operators, differences between them, combination, and give some examples how I use them (also linking some useful resources).

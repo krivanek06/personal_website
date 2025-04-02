@@ -7,7 +7,7 @@ tags: javascript, angular, rxjs
 order: 5
 datePublished: 17.11.2022
 readTime: 7
-coverImage: 5_angular-v15-directive-composition-api.png
+coverImage: article-cover/5_angular-v15-directive-composition-api.png
 ---
 
 One of the advantages of using the [Angular](https://www.bitovi.com/frontend-javascript-consulting/angular-consulting) ecosystem is that it never forgets about you. If Angular can’t solve your request right away because the current technology doesn’t allow it, they often return to it. An example of this is [issue #8785](https://github.com/angular/angular/issues/8785), which was open for 6 years but was finally solved in 2022.

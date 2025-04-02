@@ -7,7 +7,7 @@ tags: javascript, angular, rxjs, tutorial
 order: 31
 datePublished: 11.10.2024
 readTime: 8
-coverImage: 31_deep_dive_into_angular_pipes_implementation.png
+coverImage: article-cover/31_deep_dive_into_angular_pipes_implementation.png
 ---
 
 One of the first things you learn about Angular is to avoid executing function calls in a template, and instead, use [Angular pipes](https://v17.angular.io/guide/pipes-overview).

@@ -7,7 +7,7 @@ tags: javascript, angular, graphql, apollo-client
 order: 4
 datePublished: 14.11.2022
 readTime: 12
-coverImage: 4_angular-apollo-client-getting-started-with-graphql-in-angular.png
+coverImage: article-cover/4_angular-apollo-client-getting-started-with-graphql-in-angular.png
 ---
 
 GraphQL servers are becoming more and more popular. Backend developers recognize the added value of switching from traditional REST architecture to GraphQL, despite the higher application complexity.

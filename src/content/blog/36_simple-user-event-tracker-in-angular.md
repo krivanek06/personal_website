@@ -7,7 +7,7 @@ tags: javascript, angular, rxjs, tutorial, tracking, event
 order: 36
 datePublished: 17.02.2025
 readTime: 12
-coverImage: 36_simple-user-event-tracker.jpg
+coverImage: article-cover/36_simple-user-event-tracker.jpg
 ---
 
 Recently, in the company I am working for, we had a task to implement an user event logger. The problem was that we weren’t sure how the customer is using our app. We needed to track user behavior to understand why certain HTTP actions were being triggered. The task was a bit abstract, but we had to fulfill the following requirements:
@@ -28,7 +28,7 @@ The logger is quite generic, hence the reason for this article. If you have a si
 
 Before diving deep into the article I want to show a picture about the final result. As users interact with the application, changing form values, opening dialogs, submitting forms, clicking buttons, and more, every action is logged.
 
-![Overview Of The Generated Logs](./images/36_article-logs-1.png)
+![Overview Of The Generated Logs](./article-images/36_article-logs-1.png)
 
 ## Initial Brainstorming
 
@@ -433,7 +433,7 @@ const getFormValidationState = (form: AbstractControl): ValidationState => {
 
 When submitting an invalid form, where required fields are left empty (or they have any validation error), the form’s invalid state will generate a log like the following:
 
-![Form Validity Result](./images/36_article-form-validity-util-result.png)
+![Form Validity Result](./article-images/36_article-form-validity-util-result.png)
 
 ### Directives For Input Changes
 

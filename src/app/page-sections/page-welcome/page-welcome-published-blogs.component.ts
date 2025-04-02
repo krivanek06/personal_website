@@ -25,7 +25,7 @@ import { CardGeneralComponent } from '../../shared/components';
             <a [routerLink]="['/blog', post.slug]" class="group block">
               <div class="relative h-48 overflow-hidden rounded-lg">
                 <img
-                  [src]="'article-cover/' + post.attributes.coverImage"
+                  [src]="post.attributes.coverImage"
                   [alt]="post.attributes.title"
                   class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
                 <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>

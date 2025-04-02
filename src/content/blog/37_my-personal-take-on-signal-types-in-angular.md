@@ -7,7 +7,7 @@ tags: javascript, angular, rxjs, opinion
 order: 37
 datePublished: 18.03.2025
 readTime: 10
-coverImage: 37_signal-types-personal-take.jpg
+coverImage: article-cover/37_signal-types-personal-take.jpg
 ---
 
 On May 3, 2023, signals were introduced in Angular v16 as a reactive variable for managing application state. While it was a new feature at the time, by Angular v19.2, signals have already become a well-established API. Although not all legacy corporate projects have adopted signals, most developers are aware of them (whether in a positive light or not).
@@ -254,7 +254,7 @@ Additionally, `httpResource` gives us the `progress` of the HTTP request, and we
 
 Let’s look at the following example. We have a search bar that loads items based on the prefix and selected genres, and when an item is selected, the search results will be dismissed.
 
-![Overview Of A Simple Search](./images/37_signal-types-personal-take-search-overview.png)
+![Overview Of A Simple Search](./article-images/37_signal-types-personal-take-search-overview.png)
 
 To achieve this behavior with the new signal APIs, we could implement something like the code below. I’d say the code is definitely easy to read and doesn’t require RxJS.
 

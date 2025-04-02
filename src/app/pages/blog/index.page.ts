@@ -23,7 +23,7 @@ import { DateAgoPipe } from '../../shared/utils/date.pipe';
             <a [routerLink]="['/blog', post.slug]" class="block h-full">
               <div class="relative h-48 overflow-hidden rounded-lg">
                 <img
-                  [src]="'article-cover/' + post.attributes.coverImage"
+                  [src]="post.attributes.coverImage"
                   [alt]="post.attributes.title"
                   class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
                 <!-- overlay -->

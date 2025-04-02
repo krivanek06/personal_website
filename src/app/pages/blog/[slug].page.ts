@@ -23,5 +23,8 @@ import PostAttributes from '../../post-attributes';
   `,
 })
 export default class BlogPostComponent {
-  readonly post$ = injectContent<PostAttributes>('slug');
+  readonly post$ = injectContent<PostAttributes>({
+    param: 'slug',
+    subdirectory: 'blog',
+  });
 }

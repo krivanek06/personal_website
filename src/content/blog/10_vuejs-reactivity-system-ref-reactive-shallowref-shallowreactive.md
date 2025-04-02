@@ -7,7 +7,7 @@ tags: vuejs, tutorial
 order: 10
 datePublished: 18.05.2023
 readTime: 6
-coverImage: 10_vuejs-reactivity-system-ref-reactive-shallowref-shallowreactive.jpg
+coverImage: article-cover/10_vuejs-reactivity-system-ref-reactive-shallowref-shallowreactive.jpg
 ---
 
 Vue.js is a popular JavaScript framework that provides developers with various tools to create dynamic and reactive web applications.

@@ -1,7 +1,9 @@
 /* Tailwind directives  */
 @import 'tailwindcss';
 
-@import 'prismjs/themes/prism.css';
+@import 'prismjs/plugins/toolbar/prism-toolbar.css';
+/* check node_modules/prismjs/themes/ for the available themes */
+@import 'prismjs/themes/prism-tomorrow';
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,

@@ -13,13 +13,8 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     analog({
-      content: {
-        prismOptions: {
-          additionalLangs: ['TS'],
-        },
-      },
       prerender: {
-        routes: ['/blog'],
+        routes: ['/blog', '/blog/37_my-personal-take-on-signal-types-in-angular'],
       },
     }),
   ],

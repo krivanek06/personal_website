@@ -4,8 +4,6 @@ import { provideFileRouter, requestContextInterceptor } from '@analogjs/router';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { withInMemoryScrolling, withViewTransitions } from '@angular/router';
-import 'prismjs/components/prism-diff';
-import 'prismjs/plugins/diff-highlight/prism-diff-highlight';
 
 export const appConfig: ApplicationConfig = {
   providers: [

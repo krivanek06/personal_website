@@ -23,7 +23,7 @@ import { CardGeneralComponent } from './../../shared/components';
         <app-card-general additionalClasses="p-4 h-full">
           <div
             #cardElement1
-            class="flex h-full flex-col items-center justify-center p-6 text-center transition-transform duration-300">
+            class="flex h-full flex-col items-center p-6 text-center transition-transform duration-300">
             <div class="mb-4 rounded-full bg-green-500/10 p-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -39,24 +39,58 @@ import { CardGeneralComponent } from './../../shared/components';
               </svg>
             </div>
             <h3 class="mb-2 text-2xl font-bold text-white">Frontend</h3>
-            <p class="mb-4 text-lg text-gray-300">Angular, React, TypeScript</p>
-            <p class="mx-auto w-11/12 text-left text-xl max-sm:hidden xl:text-center">
-              Providing comprehensive web development and consulting services to help
-              clients create high-quality applications that meet their specific needs and
-              goals.
+            <p class="mb-4 text-lg text-gray-300">Angular | RxJS | TypeScript</p>
+            <p class="mx-auto w-11/12 text-left text-lg max-sm:hidden">
+              I specialize in Angular development, CSR and SSR, creating scalable and
+              high-performance web applications. Engaging with product owners for the best
+              result, suggesting technical improvements, unit testing, and ensuring the
+              best quality.
             </p>
 
-            <ul class="mt-4 text-left text-gray-400">
-              <li class="mb-2">
-                • Responsive Design: Crafting interfaces that adapt seamlessly to any
-                device size.
+            <ul
+              class="mt-4 text-left text-gray-400 [&>li]:mb-2 [&>li]:inline-flex [&>li]:gap-2">
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 fill-green-500"
+                  viewBox="0 0 30 30">
+                  <path
+                    d="M 15 3 C 8.373 3 3 8.373 3 15 C 3 21.627 8.373 27 15 27 C 21.627 27 27 21.627 27 15 C 27 12.820623 26.409997 10.783138 25.394531 9.0214844 L 14.146484 20.267578 C 13.959484 20.454578 13.705453 20.560547 13.439453 20.560547 C 13.174453 20.560547 12.919422 20.455578 12.732422 20.267578 L 8.2792969 15.814453 C 7.8882969 15.423453 7.8882969 14.791391 8.2792969 14.400391 C 8.6702969 14.009391 9.3023594 14.009391 9.6933594 14.400391 L 13.439453 18.146484 L 24.240234 7.3457031 C 22.039234 4.6907031 18.718 3 15 3 z M 24.240234 7.3457031 C 24.671884 7.8662808 25.053743 8.4300516 25.394531 9.0195312 L 27.707031 6.7070312 C 28.098031 6.3150312 28.098031 5.6839688 27.707031 5.2929688 C 27.316031 4.9019687 26.683969 4.9019688 26.292969 5.2929688 L 24.240234 7.3457031 z"></path>
+                </svg>
+                <div>
+                  <span class="text-white">Performance Optimization:</span>
+                  lazy routing, tree shaking, defer blocks, change detection optimization
+                </div>
               </li>
-              <li class="mb-2">
-                • Modern UI/UX: Implementing intuitive and engaging user experiences.
+
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 fill-green-500"
+                  viewBox="0 0 30 30">
+                  <path
+                    d="M 15 3 C 8.373 3 3 8.373 3 15 C 3 21.627 8.373 27 15 27 C 21.627 27 27 21.627 27 15 C 27 12.820623 26.409997 10.783138 25.394531 9.0214844 L 14.146484 20.267578 C 13.959484 20.454578 13.705453 20.560547 13.439453 20.560547 C 13.174453 20.560547 12.919422 20.455578 12.732422 20.267578 L 8.2792969 15.814453 C 7.8882969 15.423453 7.8882969 14.791391 8.2792969 14.400391 C 8.6702969 14.009391 9.3023594 14.009391 9.6933594 14.400391 L 13.439453 18.146484 L 24.240234 7.3457031 C 22.039234 4.6907031 18.718 3 15 3 z M 24.240234 7.3457031 C 24.671884 7.8662808 25.053743 8.4300516 25.394531 9.0195312 L 27.707031 6.7070312 C 28.098031 6.3150312 28.098031 5.6839688 27.707031 5.2929688 C 27.316031 4.9019687 26.683969 4.9019688 26.292969 5.2929688 L 24.240234 7.3457031 z"></path>
+                </svg>
+                <div>
+                  <span class="text-white">Project Architecture: </span>
+                  logically splitting application parts into modules/libraries using NX
+                  monorepo, NgRx storage or apollo-client
+                </div>
               </li>
-              <li class="mb-2">
-                • Performance Optimization: Ensuring fast load times and smooth
-                interactions.
+
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 fill-green-500"
+                  viewBox="0 0 30 30">
+                  <path
+                    d="M 15 3 C 8.373 3 3 8.373 3 15 C 3 21.627 8.373 27 15 27 C 21.627 27 27 21.627 27 15 C 27 12.820623 26.409997 10.783138 25.394531 9.0214844 L 14.146484 20.267578 C 13.959484 20.454578 13.705453 20.560547 13.439453 20.560547 C 13.174453 20.560547 12.919422 20.455578 12.732422 20.267578 L 8.2792969 15.814453 C 7.8882969 15.423453 7.8882969 14.791391 8.2792969 14.400391 C 8.6702969 14.009391 9.3023594 14.009391 9.6933594 14.400391 L 13.439453 18.146484 L 24.240234 7.3457031 C 22.039234 4.6907031 18.718 3 15 3 z M 24.240234 7.3457031 C 24.671884 7.8662808 25.053743 8.4300516 25.394531 9.0195312 L 27.707031 6.7070312 C 28.098031 6.3150312 28.098031 5.6839688 27.707031 5.2929688 C 27.316031 4.9019687 26.683969 4.9019688 26.292969 5.2929688 L 24.240234 7.3457031 z"></path>
+                </svg>
+                <div>
+                  <span class="text-white">Responsive Design: </span>
+                  desktop and mobile development, using UI libraries like Angular Material
+                  and Tailwind
+                </div>
               </li>
             </ul>
           </div>
@@ -66,7 +100,7 @@ import { CardGeneralComponent } from './../../shared/components';
         <app-card-general additionalClasses="p-4 h-full">
           <div
             #cardElement2
-            class="flex h-full flex-col items-center justify-center p-6 text-center transition-transform duration-300">
+            class="flex h-full flex-col items-center p-6 text-center transition-transform duration-300">
             <div class="mb-4 rounded-full bg-green-500/10 p-4">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -82,23 +116,59 @@ import { CardGeneralComponent } from './../../shared/components';
               </svg>
             </div>
             <h3 class="mb-2 text-2xl font-bold text-white">Backend</h3>
-            <p class="mb-4 text-lg text-gray-300">Node.js, Express, MongoDB</p>
-            <p class="mx-auto w-11/12 text-left text-xl max-sm:hidden xl:text-center">
-              Whether building custom web applications, creating e-commerce platforms, or
-              revamping existing websites, I have the skills and expertise to bring your
-              vision to life.
+            <p class="mb-4 text-lg text-gray-300">NestJS, Firebase, MongoDB</p>
+            <p class="mx-auto w-11/12 text-left text-lg max-sm:hidden">
+              Skilled in build RESTful or GraphQL API services using NestJS, but
+              personally preferring Firebase for real-time data updates. Using ORMs like
+              Prisma. Cloudflare for CDN and caching, testing using Jest and deploying
+              mainly on Google Cloud Platform.
             </p>
 
-            <ul class="mt-4 text-left text-gray-400">
-              <li class="mb-2">
-                • RESTful APIs: Designing robust and scalable API endpoints.
+            <ul
+              class="mt-4 text-left text-gray-400 [&>li]:mb-2 [&>li]:inline-flex [&>li]:gap-2">
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 fill-green-500"
+                  viewBox="0 0 30 30">
+                  <path
+                    d="M 15 3 C 8.373 3 3 8.373 3 15 C 3 21.627 8.373 27 15 27 C 21.627 27 27 21.627 27 15 C 27 12.820623 26.409997 10.783138 25.394531 9.0214844 L 14.146484 20.267578 C 13.959484 20.454578 13.705453 20.560547 13.439453 20.560547 C 13.174453 20.560547 12.919422 20.455578 12.732422 20.267578 L 8.2792969 15.814453 C 7.8882969 15.423453 7.8882969 14.791391 8.2792969 14.400391 C 8.6702969 14.009391 9.3023594 14.009391 9.6933594 14.400391 L 13.439453 18.146484 L 24.240234 7.3457031 C 22.039234 4.6907031 18.718 3 15 3 z M 24.240234 7.3457031 C 24.671884 7.8662808 25.053743 8.4300516 25.394531 9.0195312 L 27.707031 6.7070312 C 28.098031 6.3150312 28.098031 5.6839688 27.707031 5.2929688 C 27.316031 4.9019687 26.683969 4.9019688 26.292969 5.2929688 L 24.240234 7.3457031 z"></path>
+                </svg>
+                <div>
+                  <span class="text-white">API design: </span>
+                  experience in both working on RESTful and GraphQL APIs, using NestJS or
+                  Firebase
+                </div>
               </li>
-              <li class="mb-2">
-                • Database Design: Structuring data for efficiency and reliability.
+
+              <li>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 fill-green-500"
+                  viewBox="0 0 30 30">
+                  <path
+                    d="M 15 3 C 8.373 3 3 8.373 3 15 C 3 21.627 8.373 27 15 27 C 21.627 27 27 21.627 27 15 C 27 12.820623 26.409997 10.783138 25.394531 9.0214844 L 14.146484 20.267578 C 13.959484 20.454578 13.705453 20.560547 13.439453 20.560547 C 13.174453 20.560547 12.919422 20.455578 12.732422 20.267578 L 8.2792969 15.814453 C 7.8882969 15.423453 7.8882969 14.791391 8.2792969 14.400391 C 8.6702969 14.009391 9.3023594 14.009391 9.6933594 14.400391 L 13.439453 18.146484 L 24.240234 7.3457031 C 22.039234 4.6907031 18.718 3 15 3 z M 24.240234 7.3457031 C 24.671884 7.8662808 25.053743 8.4300516 25.394531 9.0195312 L 27.707031 6.7070312 C 28.098031 6.3150312 28.098031 5.6839688 27.707031 5.2929688 C 27.316031 4.9019687 26.683969 4.9019688 26.292969 5.2929688 L 24.240234 7.3457031 z"></path>
+                </svg>
+                <div>
+                  <span class="text-white">Monitoring: </span>
+                  using Google Cloud Platform, Firebase and Sentry for error tracking,
+                  kibana for logs, and Grafana for performance tracking
+                </div>
               </li>
+
               <li class="mb-2">
-                • Security Implementation: Protecting applications with best security
-                practices.
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6 fill-green-500"
+                  viewBox="0 0 30 30">
+                  <path
+                    d="M 15 3 C 8.373 3 3 8.373 3 15 C 3 21.627 8.373 27 15 27 C 21.627 27 27 21.627 27 15 C 27 12.820623 26.409997 10.783138 25.394531 9.0214844 L 14.146484 20.267578 C 13.959484 20.454578 13.705453 20.560547 13.439453 20.560547 C 13.174453 20.560547 12.919422 20.455578 12.732422 20.267578 L 8.2792969 15.814453 C 7.8882969 15.423453 7.8882969 14.791391 8.2792969 14.400391 C 8.6702969 14.009391 9.3023594 14.009391 9.6933594 14.400391 L 13.439453 18.146484 L 24.240234 7.3457031 C 22.039234 4.6907031 18.718 3 15 3 z M 24.240234 7.3457031 C 24.671884 7.8662808 25.053743 8.4300516 25.394531 9.0195312 L 27.707031 6.7070312 C 28.098031 6.3150312 28.098031 5.6839688 27.707031 5.2929688 C 27.316031 4.9019687 26.683969 4.9019688 26.292969 5.2929688 L 24.240234 7.3457031 z"></path>
+                </svg>
+                <div>
+                  <span class="text-white">Testing: </span>
+                  using Jest for unit testing, and Postman for API testing, then common
+                  tools such as eslint, prettier, husky, lint-staged for code quality
+                </div>
               </li>
             </ul>
           </div>
@@ -127,10 +197,21 @@ export class PageWelcomeFullStackComponent {
       gsap.registerPlugin(ScrollTrigger);
 
       // Create a timeline for the technology grid
-      const tl = gsap.timeline({
+      const tl1 = gsap.timeline({
         scrollTrigger: {
           trigger: this.cardGrid()?.nativeElement,
-          start: 'top 75%',
+          start: 'top 70%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none none',
+          once: true,
+          markers: false,
+        },
+      });
+
+      const tl2 = gsap.timeline({
+        scrollTrigger: {
+          trigger: this.cardGrid()?.nativeElement,
+          start: 'top 70%',
           end: 'bottom 20%',
           toggleActions: 'play none none none',
           once: true,
@@ -141,52 +222,77 @@ export class PageWelcomeFullStackComponent {
       const cardElement1 = this.cardElement1();
       const cardElement2 = this.cardElement2();
 
-      if (cardElement1 && cardElement2) {
-        // Animate both cards simultaneously
-        this.initCardAnimations(tl, cardElement1, cardElement2);
+      if (cardElement1) {
+        this.initCardAnimations(tl1, cardElement1);
+      }
+
+      if (cardElement2) {
+        this.initCardAnimations(tl2, cardElement2);
       }
     });
   }
 
-  private initCardAnimations(tl: gsap.core.Timeline, ...cards: ElementRef[]) {
-    cards.forEach(card => {
-      // Set initial state
-      gsap.set(card.nativeElement, {
-        opacity: 0,
-      });
+  private initCardAnimations(tl: gsap.core.Timeline, card: ElementRef) {
+    // set initial header animation
+    const header = card.nativeElement.querySelector('h3');
+    gsap.set(header, {
+      opacity: 0,
+      y: 20,
+      delay: 0.2,
+    });
+    tl.to(header, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: 'power3.out',
+    });
 
-      // Animate to final state
-      tl.to(
-        card.nativeElement,
+    // set initial paragraph animation
+    const paragraph = card.nativeElement.querySelector('p');
+    gsap.set(paragraph, {
+      opacity: 0,
+      y: 20,
+      delay: 0.4,
+    });
+    tl.to(paragraph, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: 'power3.out',
+    });
+
+    // set second paragraph animation
+    const secondParagraph = card.nativeElement.querySelector('p:nth-of-type(2)');
+    gsap.set(secondParagraph, {
+      opacity: 0,
+      y: 20,
+      delay: 0.6,
+    });
+    tl.to(secondParagraph, {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      ease: 'power3.out',
+    });
+
+    // Animate the bullet points
+    const bulletPoints = card.nativeElement.querySelectorAll('li');
+    bulletPoints.forEach((bullet: Element, bulletIndex: number) => {
+      tl.from(
+        bullet,
         {
-          opacity: 1,
-          duration: 1,
+          opacity: 0,
+          x: -20,
+          delay: 1.2,
         },
-        0
-      ); // Start both animations at the same time
+        0.6 + bulletIndex * 0.65
+      ); // Start bullet animations after card animations
 
-      // Animate the bullet points
-      const bulletPoints = card.nativeElement.querySelectorAll('li');
-      bulletPoints.forEach((bullet: Element, bulletIndex: number) => {
-        tl.from(
-          bullet,
-          {
-            opacity: 0,
-            x: -20,
-          },
-          0.5
-        ); // Start bullet animations after card animations
-
-        tl.to(
-          bullet,
-          {
-            opacity: 1,
-            x: 0,
-            duration: 0.3,
-            delay: bulletIndex * 0.2,
-          },
-          '-=0.1'
-        );
+      tl.to(bullet, {
+        opacity: 1,
+        x: 0,
+        duration: 0.4,
+        delay: bulletIndex * 0.4,
       });
     });
   }

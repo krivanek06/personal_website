@@ -20,7 +20,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
           <div #imageContainer class="relative h-[700px] overflow-hidden rounded-2xl">
             <img
               #profileImage
-              src="me/me-black-white.png"
+              src="me/me-black-white.webp"
               alt="Eduard Krivanek"
               class="h-full w-full object-cover" />
             <div

@@ -1,4 +1,3 @@
-import { NgOptimizedImage } from '@angular/common';
 import {
   afterNextRender,
   ChangeDetectionStrategy,
@@ -11,7 +10,7 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
 
 @Component({
   selector: 'app-page-welcome-hero',
-  imports: [NgOptimizedImage, PageWelcomeHeroSocialsComponent],
+  imports: [PageWelcomeHeroSocialsComponent],
   template: `
     <section class="relative min-h-screen overflow-hidden bg-black">
       <!-- name and title -->
@@ -59,10 +58,7 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
         class="absolute top-[60px] right-[140px] aspect-square w-full max-w-[750px] overflow-hidden rounded-2xl opacity-0">
         <img
           #heroImage
-          priority
-          ngSrc="me/me-hero-2.webp"
-          width="1000"
-          height="1000"
+          src="me/me-hero.webp"
           class="h-full w-full object-cover"
           alt="Eduard Krivanek" />
       </div>

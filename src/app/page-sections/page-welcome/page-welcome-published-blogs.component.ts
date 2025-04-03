@@ -10,12 +10,12 @@ import { RouterLink } from '@angular/router';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PostAttributes from '../../post-attributes';
-import { CardGeneralComponent } from '../../shared/components';
+import { CardBlogComponent } from '../../shared/components';
 
 @Component({
   selector: 'app-page-welcome-published-blogs',
   standalone: true,
-  imports: [RouterLink, CardGeneralComponent],
+  imports: [CardBlogComponent, RouterLink],
   template: `
     <section class="relative z-10 mx-auto w-full p-10 xl:w-[1480px]">
       <div class="mb-20 text-center">
@@ -28,31 +28,7 @@ import { CardGeneralComponent } from '../../shared/components';
 
       <div #blogPostContainer class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
         @for (post of blogPosts; track post.slug) {
-          <app-card-general additionalClasses="h-full">
-            <a [routerLink]="['/blog', post.slug]" class="group block">
-              <div class="relative h-48 overflow-hidden rounded-lg">
-                <img
-                  [src]="post.attributes.coverImage"
-                  [alt]="post.attributes.title"
-                  class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-                <div
-                  class="absolute bottom-4 left-4 flex items-center gap-4 text-sm text-white">
-                  <span>{{ post.attributes.datePublished }}</span>
-                  <span>•</span>
-                  <span>{{ post.attributes.readTime }} min read</span>
-                </div>
-              </div>
-              <div class="p-6">
-                <h3
-                  class="mb-3 text-2xl font-bold text-white transition-colors group-hover:text-green-500">
-                  {{ post.attributes.title }}
-                </h3>
-                <p class="text-gray-400">{{ post.attributes.seoDescription }}</p>
-              </div>
-            </a>
-          </app-card-general>
+          <app-card-blog [blogPost]="post.attributes" class="h-full" />
         }
       </div>
 

@@ -29,7 +29,7 @@ import { generateRandomNumber } from '../../shared/utils/general';
         #techGrid
         class="grid grid-cols-2 gap-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         @for (tech of technologies; track tech.name) {
-          <app-card-general>
+          <app-card-general additionalClasses="p-4">
             <div
               #techItem
               class="group flex flex-col items-center justify-center rounded-xl">

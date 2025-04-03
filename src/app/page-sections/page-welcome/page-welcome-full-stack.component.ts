@@ -31,7 +31,7 @@ import { CardGeneralComponent } from './../../shared/components';
 
       <div #cardGrid class="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2">
         <!-- Frontend Card -->
-        <app-card-general>
+        <app-card-general additionalClasses="p-4">
           <div
             #cardElement1
             class="flex h-full flex-col items-center justify-center p-6 text-center transition-transform duration-300">
@@ -68,7 +68,7 @@ import { CardGeneralComponent } from './../../shared/components';
         </app-card-general>
 
         <!-- Backend Card -->
-        <app-card-general>
+        <app-card-general additionalClasses="p-4">
           <div
             #cardElement2
             class="flex h-full flex-col items-center justify-center p-6 text-center transition-transform duration-300">

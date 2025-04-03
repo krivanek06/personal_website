@@ -101,7 +101,7 @@ import { URL_LINKED_IN } from './model';
           </div>
 
           <!-- Right side - Call to Action -->
-          <app-card-general class="self-center">
+          <app-card-general additionalClasses="p-4" class="self-center">
             <div
               #ctaContainer
               class="flex flex-col items-center justify-center rounded-2xl p-8">

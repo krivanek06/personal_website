@@ -1,4 +1,5 @@
 import { injectContentFiles } from '@analogjs/content';
+import { SlicePipe } from '@angular/common';
 import {
   afterNextRender,
   ChangeDetectionStrategy,
@@ -15,11 +16,11 @@ import { CardBlogComponent } from '../../shared/components';
 @Component({
   selector: 'app-page-welcome-published-blogs',
   standalone: true,
-  imports: [CardBlogComponent, RouterLink],
+  imports: [CardBlogComponent, RouterLink, SlicePipe],
   template: `
     <section class="relative z-10 mx-auto w-full p-10 xl:w-[1480px]">
       <div class="mb-20 text-center">
-        <h2 class="text-primary-green mb-4 text-5xl">Latest Blog Posts</h2>
+        <h2 class="text-primary-green mb-4 text-4xl lg:text-5xl">Latest Blog Posts</h2>
         <p class="mx-auto max-w-2xl text-xl text-gray-400">
           Insights, tutorials, and thoughts about web development, technology, and
           software engineering
@@ -27,8 +28,16 @@ import { CardBlogComponent } from '../../shared/components';
       </div>
 
       <div #blogPostContainer class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        @for (post of blogPosts; track post.slug) {
+        <!-- always show first 3 posts -->
+        @for (post of blogPosts | slice: 0 : 3; track post.slug) {
           <app-card-blog [blogPost]="post.attributes" class="h-full" />
+        }
+
+        <!-- hide on mobile -->
+        @for (post of blogPosts | slice: 3 : 6; track post.slug) {
+          <span class="max-md:hidden">
+            <app-card-blog [blogPost]="post.attributes" class="h-full" />
+          </span>
         }
       </div>
 

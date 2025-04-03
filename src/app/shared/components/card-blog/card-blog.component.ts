@@ -29,8 +29,8 @@ import { CardGeneralComponent } from '../card-general/card-general.component';
 
           <!-- meta info -->
           <div class="flex items-center gap-4 text-sm text-white">
-            <span>{{ blogPost().datePublished }}</span>
-            <span>•</span>
+            <span class="max-sm:hidden">{{ blogPost().datePublished }}</span>
+            <span class="max-sm:hidden">•</span>
             <span>{{ blogPost().datePublished | dateAgo }}</span>
             <span>•</span>
             <span>{{ blogPost().readTime }} min read</span>
@@ -40,7 +40,7 @@ import { CardGeneralComponent } from '../card-general/card-general.component';
           <p class="text-gray-400">{{ blogPost().seoDescription }}</p>
 
           <!-- tags -->
-          <div class="flex flex-wrap items-center gap-2">
+          <div class="flex flex-wrap items-center gap-2 max-sm:hidden">
             @for (item of blogPost().tagsArray | slice: 0 : 4; track item) {
               <div class="rounded-lg border border-green-700 bg-[#00b01a1e] p-2">
                 {{ item }}

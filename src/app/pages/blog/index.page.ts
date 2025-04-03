@@ -13,7 +13,7 @@ import { CardBlogComponent } from './../../shared/components';
     <app-svg-two addClass="fixed right-0 top-0" />
     <app-svg-two addClass="fixed left-0 bottom-0 rotate-180" />
 
-    <section class="relative mx-auto max-w-[1520px] md:px-6">
+    <section class="relative mx-auto max-w-[1520px] px-6">
       <h1 class="text-primary-green mb-8 pt-6 text-4xl font-bold">Blog Archive</h1>
       <div class="my-8 grid grid-cols-1 gap-8 md:grid-cols-2 xl:grid-cols-3">
         @for (post of posts; track post.attributes.slug) {

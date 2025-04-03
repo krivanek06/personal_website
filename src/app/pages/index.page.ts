@@ -33,15 +33,15 @@ import { BlobComponent, SvgOneComponent, SvgTwoComponent } from '../shared/compo
       <section class="relative">
         <!-- SVGs top left -->
         <app-svg-one
-          addClass="absolute top-[50px] left-[200px] z-10 w-[120px] h-[120px] opacity-40" />
+          addClass="absolute top-[50px] left-0 lg:left-[200px] z-10 w-[120px] h-[120px] opacity-40" />
         <app-svg-one
-          addClass="absolute top-[100px] left-[420px] z-10 w-[120px] h-[120px] opacity-40" />
+          addClass="absolute top-[100px] left-[190px] lg:left-[420px] z-10 w-[120px] h-[120px] opacity-40" />
         <app-svg-one
-          addClass="absolute top-[200px] left-[250px] z-10 w-[120px] h-[120px] opacity-30" />
+          addClass="absolute top-[200px] left-[70px] lg:left-[250px] z-10 w-[120px] h-[120px] opacity-30" />
         <app-svg-one
-          addClass="absolute top-[380px] left-[200px] z-10 w-[120px] h-[120px] opacity-20" />
+          addClass="absolute top-[380px] left-[100px] lg:left-[200px] z-10 w-[120px] h-[120px] opacity-20" />
         <app-svg-one
-          addClass="absolute top-[250px] left-[380px] z-10 w-[120px] h-[120px] opacity-30" />
+          addClass="absolute top-[250px] left-[220px] lg:left-[380px] z-10 w-[120px] h-[120px] opacity-30" />
 
         <!-- SVGs bottom right -->
         <app-svg-one

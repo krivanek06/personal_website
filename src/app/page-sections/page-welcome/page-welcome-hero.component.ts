@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import {
   afterNextRender,
   ChangeDetectionStrategy,
@@ -10,43 +11,69 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
 
 @Component({
   selector: 'app-page-welcome-hero',
-  imports: [PageWelcomeHeroSocialsComponent],
+  imports: [PageWelcomeHeroSocialsComponent, NgTemplateOutlet],
   template: `
     <section class="relative min-h-screen overflow-hidden bg-black">
       <!-- name and title -->
       <div
         class="relative z-10 mx-auto flex min-h-screen max-w-[1480px] items-center justify-center px-4">
         <div
-          class="flex flex-col items-center text-center md:items-start md:text-left lg:ml-[-30%]">
-          <div #greeting class="text-xl font-medium text-green-500 opacity-0">
+          class="flex flex-col items-center gap-3 text-center md:items-start md:text-left lg:ml-[-30%]">
+          <div
+            #greeting
+            class="text-xl font-medium text-green-500 opacity-0 max-md:hidden">
             Hello, I'm
           </div>
           <div
-            #name
             class="text-6xl leading-tight font-bold text-white md:text-7xl lg:text-8xl">
-            <span class="inline-block opacity-0">E</span>
-            <span class="inline-block opacity-0">d</span>
-            <span class="inline-block opacity-0">u</span>
-            <span class="inline-block opacity-0">a</span>
-            <span class="inline-block opacity-0">r</span>
-            <span class="inline-block opacity-0">d</span>
-            <span class="ml-4 inline-block opacity-0">K</span>
-            <span class="inline-block opacity-0">r</span>
-            <span class="inline-block opacity-0">i</span>
-            <span class="inline-block opacity-0">v</span>
-            <span class="inline-block opacity-0">a</span>
-            <span class="inline-block opacity-0">n</span>
-            <span class="inline-block opacity-0">e</span>
-            <span class="inline-block opacity-0">k</span>
+            <!-- large screen -->
+            <div #name class="hidden md:block">
+              <ng-container *ngTemplateOutlet="firstNameTemplate" />
+              <ng-container *ngTemplateOutlet="lastNameTemplate" />
+            </div>
+
+            <!-- smaller screen -->
+            <div class="block md:hidden">
+              <div>
+                <ng-container *ngTemplateOutlet="firstNameTemplate" />
+              </div>
+              <div>
+                <ng-container *ngTemplateOutlet="lastNameTemplate" />
+              </div>
+            </div>
+
+            <ng-template #firstNameTemplate>
+              <span class="inline-block max-md:text-green-500 md:opacity-0">E</span>
+              <span class="inline-block md:opacity-0">d</span>
+              <span class="inline-block md:opacity-0">u</span>
+              <span class="inline-block md:opacity-0">a</span>
+              <span class="inline-block md:opacity-0">r</span>
+              <span class="inline-block md:opacity-0">d</span>
+            </ng-template>
+            <ng-template #lastNameTemplate>
+              <span class="ml-4 inline-block max-md:text-green-500 md:opacity-0">
+                K
+              </span>
+              <span class="inline-block md:opacity-0">r</span>
+              <span class="inline-block md:opacity-0">i</span>
+              <span class="inline-block md:opacity-0">v</span>
+              <span class="inline-block md:opacity-0">a</span>
+              <span class="inline-block md:opacity-0">n</span>
+              <span class="inline-block md:opacity-0">e</span>
+              <span class="inline-block md:opacity-0">k</span>
+            </ng-template>
           </div>
+          <!-- title -->
           <div #title class="text-3xl text-gray-400 opacity-0">
             Full Stack Web Developer
           </div>
+          <!-- Description -->
           <div #description class="max-w-xl text-xl text-gray-300 opacity-0">
             Specializing in modern web technologies, high-quality, scalable applications
             and creating elegant solutions to complex problems.
           </div>
-          <div #socials class="mt-8 opacity-0">
+          <!-- Socials -->
+          <div #socials class="opacity-0">
             <app-page-welcome-hero-socials />
           </div>
         </div>
@@ -55,7 +82,7 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
       <!-- Image -->
       <div
         #imageContainer
-        class="absolute top-[60px] right-[140px] aspect-square w-full max-w-[750px] overflow-hidden rounded-2xl opacity-0">
+        class="absolute top-[60px] right-0 aspect-square w-full max-w-[750px] overflow-hidden rounded-2xl opacity-0 max-lg:hidden 2xl:right-[140px]">
         <img
           #heroImage
           src="me/me-hero.webp"

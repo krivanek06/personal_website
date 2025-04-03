@@ -13,11 +13,13 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
   selector: 'app-page-welcome-about-me',
   standalone: true,
   template: `
-    <section class="relative z-10 mx-auto w-full p-10 xl:w-[1480px]">
+    <section class="relative z-10 mx-auto w-full p-6 lg:p-10 xl:w-[1480px]">
       <div class="grid grid-cols-1 gap-10 lg:grid-cols-2">
         <!-- Left side - Image -->
         <div class="relative">
-          <div #imageContainer class="relative h-[700px] overflow-hidden rounded-2xl">
+          <div
+            #imageContainer
+            class="relative h-[500px] overflow-hidden rounded-2xl lg:h-[700px]">
             <img
               #profileImage
               src="me/me-black-white.webp"
@@ -29,9 +31,9 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
         </div>
 
         <!-- Right side - Content -->
-        <div class="flex flex-col justify-center">
+        <div class="flex flex-col justify-center max-lg:p-4">
           <div #titleContainer class="mb-8">
-            <h2 class="text-primary-green mb-4 text-5xl">About Me</h2>
+            <h2 class="text-primary-green mb-4 text-4xl lg:text-5xl">About Me</h2>
             <div class="h-1 w-20 bg-white"></div>
           </div>
 

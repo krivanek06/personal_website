@@ -13,25 +13,14 @@ import { CardGeneralComponent } from './../../shared/components';
   selector: 'app-page-welcome-full-stack',
   imports: [CardGeneralComponent],
   template: `
-    <section class="relative z-10 mx-auto w-full p-10 xl:w-[1480px]">
-      <h2 class="text-primary-green mb-20 text-center text-5xl">Full Stack Developer</h2>
-
-      <div class="grid grid-cols-2 gap-x-10">
-        <p class="mx-auto w-9/12 text-center text-xl">
-          Providing comprehensive web development and consulting services to help clients
-          create high-quality applications that meet their specific needs and goals.
-        </p>
-
-        <p class="mx-auto w-9/12 text-center text-xl">
-          Whether building custom web applications, creating e-commerce platforms, or
-          revamping existing websites, I have the skills and expertise to bring your
-          vision to life.
-        </p>
-      </div>
+    <section class="relative z-10 mx-auto w-full p-6 lg:p-10 xl:w-[1480px]">
+      <h2 class="text-primary-green mb-10 text-center text-4xl lg:mb-20 lg:text-5xl">
+        Full Stack Developer
+      </h2>
 
       <div #cardGrid class="mt-20 grid grid-cols-1 gap-8 md:grid-cols-2">
         <!-- Frontend Card -->
-        <app-card-general additionalClasses="p-4">
+        <app-card-general additionalClasses="p-4 h-full">
           <div
             #cardElement1
             class="flex h-full flex-col items-center justify-center p-6 text-center transition-transform duration-300">
@@ -51,6 +40,12 @@ import { CardGeneralComponent } from './../../shared/components';
             </div>
             <h3 class="mb-2 text-2xl font-bold text-white">Frontend</h3>
             <p class="mb-4 text-lg text-gray-300">Angular, React, TypeScript</p>
+            <p class="mx-auto w-11/12 text-left text-xl max-sm:hidden xl:text-center">
+              Providing comprehensive web development and consulting services to help
+              clients create high-quality applications that meet their specific needs and
+              goals.
+            </p>
+
             <ul class="mt-4 text-left text-gray-400">
               <li class="mb-2">
                 • Responsive Design: Crafting interfaces that adapt seamlessly to any
@@ -68,7 +63,7 @@ import { CardGeneralComponent } from './../../shared/components';
         </app-card-general>
 
         <!-- Backend Card -->
-        <app-card-general additionalClasses="p-4">
+        <app-card-general additionalClasses="p-4 h-full">
           <div
             #cardElement2
             class="flex h-full flex-col items-center justify-center p-6 text-center transition-transform duration-300">
@@ -88,6 +83,12 @@ import { CardGeneralComponent } from './../../shared/components';
             </div>
             <h3 class="mb-2 text-2xl font-bold text-white">Backend</h3>
             <p class="mb-4 text-lg text-gray-300">Node.js, Express, MongoDB</p>
+            <p class="mx-auto w-11/12 text-left text-xl max-sm:hidden xl:text-center">
+              Whether building custom web applications, creating e-commerce platforms, or
+              revamping existing websites, I have the skills and expertise to bring your
+              vision to life.
+            </p>
+
             <ul class="mt-4 text-left text-gray-400">
               <li class="mb-2">
                 • RESTful APIs: Designing robust and scalable API endpoints.

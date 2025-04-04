@@ -99,7 +99,7 @@ export class PageWelcomeTechnologiesComponent {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: this.techGrid()?.nativeElement,
-          start: 'top 80%',
+          start: 'top 85%',
           end: 'bottom 20%',
           toggleActions: 'play none none none',
           once: true,

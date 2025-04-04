@@ -82,7 +82,7 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
       <!-- Image -->
       <div
         #imageContainer
-        class="absolute top-[60px] right-0 aspect-square w-full max-w-[750px] overflow-hidden rounded-2xl opacity-0 max-lg:hidden 2xl:right-[140px]">
+        class="absolute top-[100px] right-0 aspect-square w-full max-w-[800px] overflow-hidden rounded-2xl opacity-0 max-lg:hidden 2xl:right-[60px]">
         <img
           #heroImage
           src="me/me-hero.webp"

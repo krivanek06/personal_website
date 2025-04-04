@@ -30,7 +30,7 @@ import { BlobComponent, SvgOneComponent, SvgTwoComponent } from '../shared/compo
 
       <app-svg-two addClass="absolute top-[750px] right-0 z-10  " />
 
-      <section class="relative">
+      <section class="relative mb-10">
         <!-- SVGs top left -->
         <app-svg-one
           addClass="absolute top-[50px] left-0 lg:left-[200px] z-10 w-[120px] h-[120px] opacity-40" />
@@ -54,7 +54,7 @@ import { BlobComponent, SvgOneComponent, SvgTwoComponent } from '../shared/compo
         <app-page-welcome-hero />
       </section>
 
-      <section class="relative">
+      <section class="relative mb-16">
         <!-- SVGs for hero section -->
         <app-svg-one
           addClass="absolute top-[20px] left-[200px] z-10 w-[120px] h-[120px] opacity-40" />
@@ -66,11 +66,11 @@ import { BlobComponent, SvgOneComponent, SvgTwoComponent } from '../shared/compo
         <app-page-welcome-full-stack />
       </section>
 
-      <section class="relative">
+      <section class="relative mb-16">
         <app-page-welcome-technologies />
       </section>
 
-      <section class="relative">
+      <section class="relative mb-16">
         <app-page-welcome-about-me />
 
         <app-svg-two addClass="absolute top-0 left-0  rotate-180  " />
@@ -80,7 +80,7 @@ import { BlobComponent, SvgOneComponent, SvgTwoComponent } from '../shared/compo
           addClass="absolute top-[750px] right-[380px] z-10 w-[120px] h-[120px] opacity-30" />
       </section>
 
-      <section class="relative">
+      <section class="relative mb-16">
         <app-page-welcome-published-blogs />
       </section>
 

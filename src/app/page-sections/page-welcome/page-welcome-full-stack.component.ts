@@ -200,7 +200,7 @@ export class PageWelcomeFullStackComponent {
       const tl1 = gsap.timeline({
         scrollTrigger: {
           trigger: this.cardGrid()?.nativeElement,
-          start: 'top 70%',
+          start: 'top 65%',
           end: 'bottom 20%',
           toggleActions: 'play none none none',
           once: true,
@@ -211,7 +211,7 @@ export class PageWelcomeFullStackComponent {
       const tl2 = gsap.timeline({
         scrollTrigger: {
           trigger: this.cardGrid()?.nativeElement,
-          start: 'top 70%',
+          start: 'top 65%',
           end: 'bottom 20%',
           toggleActions: 'play none none none',
           once: true,
@@ -285,7 +285,7 @@ export class PageWelcomeFullStackComponent {
           x: -20,
           delay: 1.2,
         },
-        0.6 + bulletIndex * 0.65
+        0.6 + bulletIndex * 0.5
       ); // Start bullet animations after card animations
 
       tl.to(bullet, {

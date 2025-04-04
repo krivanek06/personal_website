@@ -19,12 +19,12 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
         <div class="relative">
           <div
             #imageContainer
-            class="relative h-[500px] overflow-hidden rounded-2xl lg:h-[700px]">
+            class="relative h-[500px] overflow-hidden rounded-2xl lg:h-[740px]">
             <img
               #profileImage
               src="me/me-black-white.webp"
               alt="Eduard Krivanek"
-              class="h-full w-full object-cover" />
+              class="h-full w-full object-cover lg:-mt-10" />
             <div
               class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
           </div>
@@ -40,15 +40,21 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
           <div #contentContainer class="mb-8 space-y-4 text-xl text-gray-300">
             <p>
               I'm Eduard Krivanek, a passionate Full Stack Developer specializing in
-              building web application, with a strong focus on Angular, Firebase, NestJs
+              building web application, with a strong focus on Angular, Rxjsm Firebase and
+              NestJs.
             </p>
 
             <p>
               Over the past few years, I've developed applications ranging from financial
-              dashboards that generate trading statistics to finance tracking tools and
-              ticketing systems for banks. Beyond coding, I share my insights and
-              expertise through technical blogs, where I've been writing for over two
-              years
+              dashboards that generated trading statistics, a generator which was
+              consuming yaml file and render UI, ticket tracker in a bank and other SAAS
+              applications.
+            </p>
+
+            <p>
+              Personally I love to share my knowledge with the community, whether it's
+              through blogging, speaking at conferences, or mentoring aspiring developers.
+              In my free time I am a big enjoyer of cycling and playing chess.
             </p>
           </div>
 
@@ -103,7 +109,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
                 </div>
               </div>
 
-              <div #contentItems class="flex items-start gap-4">
+              <!--<div #contentItems class="flex items-start gap-4">
                 <div class="mt-1 rounded-full bg-green-500/10 p-2">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +130,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
                     Excellent communication and collaboration skills
                   </p>
                 </div>
-              </div>
+              </div>-->
 
               <!-- New Content Item -->
               <div #contentItems class="flex items-start gap-4">
@@ -182,7 +188,7 @@ export class PageWelcomeAboutMeComponent {
       gsap.set(this.imageContainer()?.nativeElement, { opacity: 0, y: 0 });
       gsap.set(this.profileImage()?.nativeElement, { scale: 1 });
       gsap.set(this.titleContainer()?.nativeElement, { opacity: 0, y: 50 });
-      gsap.set(this.contentContainer()?.nativeElement, { opacity: 0, y: 30 });
+
       this.contentItems().forEach(item => {
         gsap.set(item.nativeElement, { opacity: 0, x: 100 });
       });
@@ -191,7 +197,7 @@ export class PageWelcomeAboutMeComponent {
       const imageTl = gsap.timeline({
         scrollTrigger: {
           trigger: this.imageContainer()?.nativeElement,
-          start: 'top 70%',
+          start: 'top 65%',
           end: 'bottom 20%',
           toggleActions: 'play none none none',
           once: true,
@@ -235,18 +241,27 @@ export class PageWelcomeAboutMeComponent {
         ease: 'power3.out',
       });
 
-      // Animate the content items with stagger
-      contentTl.to(
-        this.contentContainer()?.nativeElement,
-        {
-          opacity: 1,
-          y: 0,
-          duration: 0.8,
-          stagger: 0.2,
-          ease: 'power2.out',
-        },
-        '-=0.3'
-      );
+      const contentContainerParagraphs = Array.from(
+        this.contentContainer()?.nativeElement.children
+      ) as HTMLElement[];
+
+      // Animate each paragraph in the content container
+      contentContainerParagraphs.forEach(child => {
+        // Set initial state
+        gsap.set(child, { opacity: 0, y: 50 });
+
+        // Animate each paragraph
+        contentTl.to(
+          child as HTMLElement,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: 'power3.out',
+          },
+          '-=0.2'
+        );
+      });
 
       // animate container items
       this.contentItems().forEach((item, index) => {

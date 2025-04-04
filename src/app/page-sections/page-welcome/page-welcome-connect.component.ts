@@ -70,7 +70,9 @@ import { URL_LINKED_IN } from './model';
                 </div>
                 <div>
                   <h3 class="text-lg font-semibold text-white">Full Stack Expertise</h3>
-                  <p class="text-gray-400">Frontend, Backend & DevOps</p>
+                  <p class="text-gray-400">
+                    Senior Angular Developer with diverse backend experience
+                  </p>
                 </div>
               </div>
 
@@ -94,7 +96,10 @@ import { URL_LINKED_IN } from './model';
                   <h3 class="text-lg font-semibold text-white">
                     Diverse Project Portfolio
                   </h3>
-                  <p class="text-gray-400">From startups to enterprise solutions</p>
+                  <p class="text-gray-400">
+                    From startups to enterprise solutions, from failed projects to
+                    successful ones
+                  </p>
                 </div>
               </div>
             </div>
@@ -109,9 +114,9 @@ import { URL_LINKED_IN } from './model';
                 <h3 class="mb-4 text-2xl font-bold text-white">
                   Ready to Start Your Project?
                 </h3>
-                <p class="text-gray-300">
-                  Let's connect on LinkedIn to discuss your project requirements and how I
-                  can help bring your vision to life.
+                <p class="mx-auto text-gray-300 lg:w-9/11">
+                  Let's connect on LinkedIn to discuss how cam I be an assistance for your
+                  project.
                 </p>
               </div>
 

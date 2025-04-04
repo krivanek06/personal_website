@@ -93,7 +93,7 @@ export const routeMeta: RouteMeta = {
         <app-page-welcome-full-stack />
       </section>
 
-      <section class="relative mb-16">
+      <section class="relative mb-24">
         <app-page-welcome-technologies />
       </section>
 

@@ -1,3 +1,4 @@
+import { RouteMeta } from '@analogjs/router';
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { PageWelcomeHeroComponent } from '../page-sections/page-welcome';
 import { PageWelcomeAboutMeComponent } from '../page-sections/page-welcome/page-welcome-about-me.component';
@@ -7,9 +8,35 @@ import { PageWelcomePublishedBlogsComponent } from '../page-sections/page-welcom
 import { PageWelcomeTechnologiesComponent } from '../page-sections/page-welcome/page-welcome-technologies.component';
 import { BlobComponent, SvgOneComponent, SvgTwoComponent } from '../shared/components';
 
-// export const routeMeta: RouteMeta = {
-//   title: 'Welcome',
-// };
+export const routeMeta: RouteMeta = {
+  title: 'Welcome',
+  meta: [
+    {
+      name: 'description',
+      content:
+        'Hi, I am Eduard Krivanek, welcome to my personal website, where I share my journey as a developer.',
+    },
+    {
+      property: 'og:title',
+      content: 'Eduard Krivanek Personal Website',
+    },
+    {
+      property: 'og:description',
+      content:
+        'Hi, I am Eduard Krivanek, welcome to my personal website, where I share my journey as a developer.',
+    },
+    {
+      property: 'og:image',
+      // linkedin profile image
+      content:
+        'https://media.licdn.com/dms/image/v2/D4D03AQGnGpyIoB1ogg/profile-displayphoto-shrink_800_800/B4DZQwfZsVG0Ac-/0/1735980326182?e=1749081600&v=beta&t=xJIuWYzikAAutEpqZYh1e7OIORTULw9qSzAN7UQOyJQ',
+    },
+    {
+      property: 'og:url',
+      content: 'eduardkrivanek.com',
+    },
+  ],
+};
 
 @Component({
   selector: 'app-page-welcome',

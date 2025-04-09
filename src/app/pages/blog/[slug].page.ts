@@ -41,7 +41,7 @@ import PostAttributes from '../../post-attributes';
 
           <img class="z-10 h-[400px] object-contain" [src]="post.attributes.coverImage" />
 
-          <analog-markdown class="z-10" [content]="post.content" />
+          <analog-markdown class="z-10 text-white" [content]="post.content" />
         </article>
       }
     </section>

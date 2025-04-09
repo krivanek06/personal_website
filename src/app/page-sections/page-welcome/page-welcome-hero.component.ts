@@ -18,28 +18,38 @@ import { PageWelcomeHeroSocialsComponent } from './components/page-welcome-hero-
       <div
         class="relative z-10 mx-auto flex min-h-screen max-w-[1480px] flex-col items-center justify-center gap-y-6 px-4 text-center">
         <!-- my name -->
-        <div #name class="text-6xl font-bold text-white md:text-7xl lg:text-8xl">
-          <span class="inline-block max-md:text-green-500 md:opacity-0">E</span>
-          <span class="inline-block md:opacity-0">d</span>
-          <span class="inline-block md:opacity-0">u</span>
-          <span class="inline-block md:opacity-0">a</span>
-          <span class="inline-block md:opacity-0">r</span>
-          <span class="inline-block md:opacity-0">d</span>
-          <span class="ml-4 inline-block max-md:text-green-500 md:opacity-0"> K </span>
-          <span class="inline-block md:opacity-0">r</span>
-          <span class="inline-block md:opacity-0">i</span>
-          <span class="inline-block md:opacity-0">v</span>
-          <span class="inline-block md:opacity-0">a</span>
-          <span class="inline-block md:opacity-0">n</span>
-          <span class="inline-block md:opacity-0">e</span>
-          <span class="inline-block md:opacity-0">k</span>
+        <div #name class="text-7xl font-bold text-white lg:text-8xl">
+          <!-- first name -->
+          <span class="sm:inline-block md:opacity-0">E</span>
+          <span class="sm:inline-block md:opacity-0">d</span>
+          <span class="sm:inline-block md:opacity-0">u</span>
+          <span class="sm:inline-block md:opacity-0">a</span>
+          <span class="sm:inline-block md:opacity-0">r</span>
+          <span class="sm:inline-block md:opacity-0">d</span>
+
+          <!-- line break -->
+          <div class="max-sm:clear-both sm:hidden"></div>
+
+          <!-- last name -->
+          <span class="sm:ml-4 sm:inline-block md:opacity-0">K</span>
+          <span class="sm:inline-block md:opacity-0">r</span>
+          <span class="sm:inline-block md:opacity-0">i</span>
+          <span class="sm:inline-block md:opacity-0">v</span>
+          <span class="sm:inline-block md:opacity-0">a</span>
+          <span class="sm:inline-block md:opacity-0">n</span>
+          <span class="sm:inline-block md:opacity-0">e</span>
+          <span class="sm:inline-block md:opacity-0">k</span>
         </div>
 
         <!-- title -->
-        <div #title class="text-4xl text-green-600 opacity-0">Full Stack Developer</div>
+        <div
+          #title
+          class="text-2xl text-gray-400 opacity-0 sm:text-green-600 md:text-4xl">
+          Full Stack Developer
+        </div>
 
         <!-- Description -->
-        <div #description class="max-w-xl text-xl text-gray-400 opacity-0">
+        <div #description class="max-w-xl text-xl text-gray-400 opacity-0 max-sm:hidden">
           Specializing in modern web technologies, high-quality, scalable applications and
           creating elegant solutions to complex problems.
         </div>

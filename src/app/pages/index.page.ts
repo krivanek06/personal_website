@@ -55,7 +55,7 @@ export const routeMeta: RouteMeta = {
     <div class="relative mx-auto max-w-[1980px] overflow-x-clip overflow-y-clip bg-black">
       <app-blob />
 
-      <app-svg-two addClass="absolute top-[750px] right-0 z-10  " />
+      <app-svg-two addClass="absolute top-[150px] right-[-100px] z-10  " />
 
       <section class="relative mb-10">
         <!-- SVGs top left -->
@@ -66,17 +66,19 @@ export const routeMeta: RouteMeta = {
         <app-svg-one
           addClass="absolute top-[200px] left-[70px] lg:left-[250px] z-10 w-[120px] h-[120px] opacity-30" />
         <app-svg-one
-          addClass="absolute top-[380px] left-[100px] lg:left-[200px] z-10 w-[120px] h-[120px] opacity-20" />
+          addClass="absolute top-[380px] left-[100px] lg:left-[250px] z-10 w-[120px] h-[120px] opacity-20" />
         <app-svg-one
-          addClass="absolute top-[250px] left-[220px] lg:left-[380px] z-10 w-[120px] h-[120px] opacity-30" />
+          addClass="absolute top-[250px] left-[220px] lg:left-[420px] z-10 w-[120px] h-[120px] opacity-30" />
+        <app-svg-one
+          addClass="absolute top-[450px] left-[220px] lg:left-[80px] z-10 w-[120px] h-[120px] opacity-20" />
 
-        <!-- SVGs bottom right -->
+        <!-- SVGs bottom right
         <app-svg-one
           addClass="absolute bottom-[0px] right-[200px] z-10 w-[120px] h-[120px] opacity-30" />
         <app-svg-one
           addClass="absolute bottom-[100px] right-[420px] z-10 w-[120px] h-[120px] opacity-30" />
         <app-svg-one
-          addClass="absolute bottom-[120px] right-[250px] z-10 w-[120px] h-[120px] opacity-20" />
+          addClass="absolute bottom-[120px] right-[250px] z-10 w-[120px] h-[120px] opacity-20" />-->
 
         <app-page-welcome-hero />
       </section>

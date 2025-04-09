@@ -40,7 +40,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
           <div #contentContainer class="mb-8 space-y-4 text-xl text-gray-300">
             <p>
               I'm Eduard Krivanek, a passionate Full Stack Developer specializing in
-              building web application, with a strong focus on Angular, Rxjsm Firebase and
+              building web application, with a strong focus on Angular, Rxjs, Firebase and
               NestJs.
             </p>
 

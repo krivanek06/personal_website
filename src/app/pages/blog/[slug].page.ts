@@ -18,7 +18,7 @@ import PostAttributes from '../../post-attributes';
     <section class="mx-auto max-w-[1240px] px-4 lg:px-6">
       @if (post$ | async; as post) {
         <article
-          class="prose prose-slate dark:prose-invert mx-auto flex w-full flex-col px-4 py-16 md:max-w-4xl">
+          class="prose prose-invert mx-auto flex w-full flex-col px-4 py-16 md:max-w-4xl">
           <!-- back button -->
           <a
             routerLink="/blog"

@@ -15,7 +15,7 @@ import { URL_LINKED_IN } from './model';
   standalone: true,
   imports: [CardGeneralComponent],
   template: `
-    <section class="relative z-10 mx-auto w-full p-10 xl:w-[1480px]">
+    <section class="relative z-10 mx-auto w-full p-4 md:p-10 xl:w-[1480px]">
       <div
         class="glass-effect relative overflow-hidden rounded-3xl border border-green-700 bg-gradient-to-br from-green-500/10 to-blue-500/10 p-8 md:p-12">
         <div class="relative grid gap-8 md:grid-cols-2">
@@ -109,7 +109,7 @@ import { URL_LINKED_IN } from './model';
           <app-card-general additionalClasses="p-4" class="self-center">
             <div
               #ctaContainer
-              class="flex flex-col items-center justify-center rounded-2xl p-3 md:p-8">
+              class="flex flex-col items-center justify-center rounded-2xl sm:p-3 md:p-8">
               <div class="mb-6 text-center">
                 <h3 class="mb-4 text-2xl font-bold text-white">
                   Ready to Start Your Project?

@@ -2,7 +2,7 @@
 title: 'Build A Full-Stack Application With AnalogJS'
 seoTitle: 'Build A Full-Stack Application With AnalogJS'
 seoDescription: 'Step-by-step guide on how create a simple full stack application in AnalogJS to test out all its features'
-slug: build-a-full-stack-application-with-analog-js
+slug: 38_build-a-full-stack-application-with-analog-js
 tags: angular, analogjs, full-stack, tutorial
 order: 38
 datePublished: 02.05.2025

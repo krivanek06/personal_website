@@ -1,10 +1,55 @@
-import { injectContent, MarkdownComponent } from '@analogjs/content';
+import { injectContent, injectContentFiles, MarkdownComponent } from '@analogjs/content';
 import { AsyncPipe } from '@angular/common';
 import { Component } from '@angular/core';
 import { SvgTwoComponent } from './../../shared/components';
 
+import { RouteMeta } from '@analogjs/router';
 import { RouterLink } from '@angular/router';
 import PostAttributes from '../../post-attributes';
+
+export const routeMeta: RouteMeta = {
+  title: 'Blog Post',
+  meta: route => {
+    const file = injectContentFiles<PostAttributes>().find(
+      contentFile => contentFile.slug === route.params['slug']
+    )!;
+
+    return [
+      {
+        name: 'author',
+        content: 'Eduard Krivanek',
+      },
+      {
+        property: 'og:title',
+        content: file.attributes.title,
+      },
+      {
+        property: 'title',
+        content: file.attributes.title,
+      },
+      {
+        property: 'og:description',
+        content: file.attributes.seoDescription,
+      },
+      {
+        property: 'description',
+        content: file.attributes.seoDescription,
+      },
+      {
+        property: 'og:image',
+        content: file.attributes.coverImage,
+      },
+      {
+        property: 'article:published_time',
+        content: file.attributes.datePublished,
+      },
+      {
+        property: 'og:published',
+        content: file.attributes.datePublished,
+      },
+    ];
+  },
+};
 
 @Component({
   selector: 'app-blog-post',

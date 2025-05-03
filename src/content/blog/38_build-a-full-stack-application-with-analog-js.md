@@ -535,7 +535,7 @@ To handle form submissions, you create a `.server.ts` alongside the `.page.ts` c
 src/
 └── app/
 └── pages/  
- ├── (auth)/
+├── (auth)/
 │ ├── login.page.ts
 │ └── login.server.ts
 │ └── register.page.ts

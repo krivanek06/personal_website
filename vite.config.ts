@@ -15,7 +15,7 @@ export default defineConfig(({ mode }) => ({
     analog({
       content: {
         prismOptions: {
-          additionalLangs: ['yaml', 'sql', 'graphql', 'bash'],
+          additionalLangs: ['yaml', 'sql', 'graphql', 'bash', 'markdown'],
         },
       },
       prerender: {

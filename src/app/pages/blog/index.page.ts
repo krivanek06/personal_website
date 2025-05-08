@@ -36,7 +36,7 @@ import { CardBlogComponent } from './../../shared/components';
               d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
           </svg>
 
-          <span class="hidden sm:block">Back to Blog Posts</span>
+          <span class="hidden sm:block">Back to Home</span>
         </a>
       </div>
 

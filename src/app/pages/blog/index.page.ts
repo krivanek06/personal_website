@@ -14,7 +14,7 @@ import { CardBlogComponent } from './../../shared/components';
     <app-svg-two addClass="fixed right-0 top-0" />
     <app-svg-two addClass="fixed left-0 bottom-0 rotate-180" />
 
-    <section class="relative mx-auto max-w-[1520px] px-6">
+    <section class="relative mx-auto max-w-[1360px] px-6">
       <div class="mb-6 flex items-center justify-between gap-10 pt-6">
         <!-- title -->
         <h1 class="text-primary-green text-2xl font-bold sm:text-4xl">Blog Archive</h1>

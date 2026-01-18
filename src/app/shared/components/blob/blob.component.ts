@@ -4,7 +4,6 @@ import {
   Component,
   ElementRef,
   inject,
-  NgZone,
   Renderer2,
   viewChild,
 } from '@angular/core';
@@ -80,26 +79,23 @@ import {
 })
 export class BlobComponent {
   private readonly renderer = inject(Renderer2);
-  private readonly ngZone = inject(NgZone);
   readonly blobRef = viewChild.required<ElementRef<HTMLDivElement>>('blob');
 
   constructor() {
     // move blob only on client, outside of angular
     afterNextRender(() => {
-      this.ngZone.runOutsideAngular(() => {
-        this.renderer.listen('document', 'mousemove', event => {
-          const { pageX, pageY } = event;
-          const blobRef = this.blobRef();
+      this.renderer.listen('document', 'mousemove', event => {
+        const { pageX, pageY } = event;
+        const blobRef = this.blobRef();
 
-          // move blob
-          blobRef.nativeElement.animate(
-            {
-              left: `${pageX}px`,
-              top: `${pageY}px`,
-            },
-            { duration: 20000, fill: 'forwards' }
-          );
-        });
+        // move blob
+        blobRef.nativeElement.animate(
+          {
+            left: `${pageX}px`,
+            top: `${pageY}px`,
+          },
+          { duration: 20000, fill: 'forwards' }
+        );
       });
     });
   }

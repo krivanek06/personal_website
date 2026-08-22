@@ -1,0 +1,325 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Eduard Krivanek — Blog</title>
+    <link>https://eduardkrivanek.com/blog</link>
+    <description>Tutorials, deep dives and notes on web development — Angular, RxJS, NestJS and Firebase.</description>
+    <language>en</language>
+    <atom:link href="https://eduardkrivanek.com/rss.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Exploiting Unvalidated Redirects for XSS</title>
+      <link>https://eduardkrivanek.com/blog/45_exploiting-unvalidated-redirects-for-xss</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/45_exploiting-unvalidated-redirects-for-xss</guid>
+      <description>Technical blogpost exploring how Exploiting Unvalidated Redirects for XSS works</description>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Web Components in Angular - Why Passing Inputs Breaks on Navigation</title>
+      <link>https://eduardkrivanek.com/blog/44_web-components-in-angular-why-passing-inputs-breaks-on-navigation</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/44_web-components-in-angular-why-passing-inputs-breaks-on-navigation</guid>
+      <description>Technical blogpost exploring how Web Components in Angular - Why Passing Inputs Breaks on Navigation works</description>
+      <pubDate>Sun, 21 Dec 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular - Custom MatPaginator Styling</title>
+      <link>https://eduardkrivanek.com/blog/43_angular-custom-matpaginator-styling</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/43_angular-custom-matpaginator-styling</guid>
+      <description>Technical blogpost exploring how Angular - Custom MatPaginator Styling works</description>
+      <pubDate>Mon, 24 Nov 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular - For Loop Optimizations</title>
+      <link>https://eduardkrivanek.com/blog/42_angular-ngfor-optimizations</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/42_angular-ngfor-optimizations</guid>
+      <description>Technical blogpost exploring how Angular - For Loop Optimizations works</description>
+      <pubDate>Thu, 02 Oct 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>afterRenderEffect, afterNextRender, afterEveryRender &amp; Renderer2</title>
+      <link>https://eduardkrivanek.com/blog/41_afterrendereffect-afternextrender-aftereveryrender-renderer</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/41_afterrendereffect-afternextrender-aftereveryrender-renderer</guid>
+      <description>Technical blogpost exploring how afterRenderEffect, afterNextRender, afterEveryRender &amp; Renderer2 works</description>
+      <pubDate>Tue, 16 Sep 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Senior Angular Interview Questions</title>
+      <link>https://eduardkrivanek.com/blog/40_senior-angular-interview-questions</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/40_senior-angular-interview-questions</guid>
+      <description>Most of us spend our day-to-day work calling APIs, caching data, and displaying it to users. We do this for years, and it leads us to believe we&apos;ve mastered frontend development, especially a framework like Angular.</description>
+      <pubDate>Sat, 19 Jul 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>The Need Of Failing Before Succeeding</title>
+      <link>https://eduardkrivanek.com/blog/39_the-need-of-failing</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/39_the-need-of-failing</guid>
+      <description>I used to think the whole try-and-fail wording was just a catchy phrase people threw around to sound deep. Turns out it has some truth to it and the fail part is very real.</description>
+      <pubDate>Wed, 11 Jun 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Build A Full-Stack Application With AnalogJS</title>
+      <link>https://eduardkrivanek.com/blog/38_build-a-full-stack-application-with-analog-js</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/38_build-a-full-stack-application-with-analog-js</guid>
+      <description>Step-by-step guide on how create a simple full stack application in AnalogJS to test out all its features</description>
+      <pubDate>Fri, 02 May 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>My Personal Take On Signal Types In Angular</title>
+      <link>https://eduardkrivanek.com/blog/37_my-personal-take-on-signal-types-in-angular</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/37_my-personal-take-on-signal-types-in-angular</guid>
+      <description>Personal opinion on signal use-cases, how I use them and what would be the RxJS equivalents</description>
+      <pubDate>Tue, 18 Mar 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Simple User Event Tracker In Angular</title>
+      <link>https://eduardkrivanek.com/blog/36_simple-user-event-tracker-in-angular</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/36_simple-user-event-tracker-in-angular</guid>
+      <description>A practical example of a real life problem how to track user&apos;s interaction in a web app</description>
+      <pubDate>Mon, 17 Feb 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Custom RxJs Operators</title>
+      <link>https://eduardkrivanek.com/blog/35_custom-rxjs-operators</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/35_custom-rxjs-operators</guid>
+      <description>A practical guide of creating custom rxjs operators</description>
+      <pubDate>Mon, 27 Jan 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Dynamic Service Injection In Angular</title>
+      <link>https://eduardkrivanek.com/blog/34_dynamic-service-injection-in-angular</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/34_dynamic-service-injection-in-angular</guid>
+      <description>How to dynamically inject services in Angular</description>
+      <pubDate>Fri, 10 Jan 2025 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Advanced RxJs Operators You Know But Not Well Enough pt2</title>
+      <link>https://eduardkrivanek.com/blog/33_advanced-rxjs-operators-you-know-but-not-well-enough-pt2</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/33_advanced-rxjs-operators-you-know-but-not-well-enough-pt2</guid>
+      <description>Advanced RxJs Operators You Know But Not Well Enough pt2</description>
+      <pubDate>Fri, 12 Jan 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Creating Custom Rxresource API in Angular</title>
+      <link>https://eduardkrivanek.com/blog/32_create-a-custom-rxresouce-function</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/32_create-a-custom-rxresouce-function</guid>
+      <description>Creating Custom Rxresource API in Angular</description>
+      <pubDate>Thu, 14 Nov 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Dive Into Angular Pipes Implementation</title>
+      <link>https://eduardkrivanek.com/blog/31_deep_dive_into_angular_pipes_implementation</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/31_deep_dive_into_angular_pipes_implementation</guid>
+      <description>Dive Into Angular Pipes Implementation</description>
+      <pubDate>Fri, 11 Oct 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular: Generic In-Memory Cache Service&quot;</title>
+      <link>https://eduardkrivanek.com/blog/30_angular-generic-in-memory-cache-service</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/30_angular-generic-in-memory-cache-service</guid>
+      <description>When manage application state in you Angular projects, you create a service to handle a specific...</description>
+      <pubDate>Mon, 09 Sep 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular State Management - Imperative, Declarative, Ngrx and SignalSlice</title>
+      <link>https://eduardkrivanek.com/blog/29_angular-state-management-how-to-keep-your-sanity</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/29_angular-state-management-how-to-keep-your-sanity</guid>
+      <description>Building anything meaningful requires having a state management in your app. The question is, how...</description>
+      <pubDate>Thu, 01 Aug 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Advanced RxJs Operators You Know But Not Well Enough</title>
+      <link>https://eduardkrivanek.com/blog/28_advanced-rxjs-operators-you-know-but-not-well-enough</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/28_advanced-rxjs-operators-you-know-but-not-well-enough</guid>
+      <description>I’ve been using Angular for more or less half a decade and recently I reviewed how many rxjs...</description>
+      <pubDate>Mon, 17 Jun 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>From Chaos to Clarity: Simplify Your Angular Code with Declarative Programming</title>
+      <link>https://eduardkrivanek.com/blog/27_from-chaos-to-clarity-simplify-your-angular-code-with-declarative-programming</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/27_from-chaos-to-clarity-simplify-your-angular-code-with-declarative-programming</guid>
+      <description>Not that long ago I bumped into an interesting problem. I wanted to implement a “search user”...</description>
+      <pubDate>Sun, 02 Jun 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular Clickable Component</title>
+      <link>https://eduardkrivanek.com/blog/26_angular-clickable-component</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/26_angular-clickable-component</guid>
+      <description>Working on one of my side projects I had an interesting problem. I wanted to implement accessibility...</description>
+      <pubDate>Fri, 19 Apr 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Deploy Frontend Firebase App to Google Play</title>
+      <link>https://eduardkrivanek.com/blog/25_deploy-frontend-firebase-app-to-google-play</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/25_deploy-frontend-firebase-app-to-google-play</guid>
+      <description>Recently I have deployed one of my application into Google Play. I had a few problems so I thought...</description>
+      <pubDate>Sun, 04 Feb 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular Interview - Implement Data Reload</title>
+      <link>https://eduardkrivanek.com/blog/24_angular-interview-implement-data-reload</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/24_angular-interview-implement-data-reload</guid>
+      <description>When interviewing into Angular related jobs, one question I used to get asked, is “Demonstrate a...</description>
+      <pubDate>Wed, 31 Jan 2024 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular Rxjs - CatchError Position Matter!</title>
+      <link>https://eduardkrivanek.com/blog/23_angular-rxjs-catcherror-position-matter</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/23_angular-rxjs-catcherror-position-matter</guid>
+      <description>Using rxjs you have many occurrences when you want to catch the errors from your streams, handle them...</description>
+      <pubDate>Fri, 29 Dec 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular: Default Image Placeholder</title>
+      <link>https://eduardkrivanek.com/blog/22_angular-default-image-placeholder</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/22_angular-default-image-placeholder</guid>
+      <description>Working on the frontend, most of the time you want to display images loaded from a CDN. The request...</description>
+      <pubDate>Sun, 12 Nov 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Deploy Angular Universal To Firebase Cloud Functions</title>
+      <link>https://eduardkrivanek.com/blog/21_deploy-angular-universal-to-firebase-cloud-functions</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/21_deploy-angular-universal-to-firebase-cloud-functions</guid>
+      <description>ou’ve finally finished your first, releasable version of your Angular Universal application and you...</description>
+      <pubDate>Tue, 29 Aug 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular SSR Cannot read properties of undefined (reading `Core/Chart/Chart.js`)</title>
+      <link>https://eduardkrivanek.com/blog/20_angular-ssr-cannot-read-properties-of-undefined-reading-corechartchartjs</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/20_angular-ssr-cannot-read-properties-of-undefined-reading-corechartchartjs</guid>
+      <description>Are you still building your web application as an SPA? What is this, 2020? Nowadays, everybody is...</description>
+      <pubDate>Wed, 09 Aug 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular: MatPaginator Custom Styling</title>
+      <link>https://eduardkrivanek.com/blog/19_angular-matpaginator-custom-styling</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/19_angular-matpaginator-custom-styling</guid>
+      <description>As a frontend developer you most likely had a task to display data in a table and as an Angular...</description>
+      <pubDate>Sun, 23 Jul 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular Interview: What is a Higher-Order Observable?</title>
+      <link>https://eduardkrivanek.com/blog/18_angular-interview-what-is-higher-order-observable</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/18_angular-interview-what-is-higher-order-observable</guid>
+      <description>One of the most common questions in Angular interviews is “what is a Higher-Order Observable”?...</description>
+      <pubDate>Sun, 09 Jul 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular: Infinite Scrolling</title>
+      <link>https://eduardkrivanek.com/blog/17_angular-infinite-scrolling</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/17_angular-infinite-scrolling</guid>
+      <description>Rendering takes time. That is especially the case if you have to load large amounts of data from your...</description>
+      <pubDate>Thu, 06 Jul 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Why Am I Switching To Signals In Angular?</title>
+      <link>https://eduardkrivanek.com/blog/16_why-am-i-switching-to-signals-in-angular</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/16_why-am-i-switching-to-signals-in-angular</guid>
+      <description>Angular version 16 released a feature, that, I would say wasn’t really expected to come and shocked...</description>
+      <pubDate>Thu, 22 Jun 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular InjectionToken in NX</title>
+      <link>https://eduardkrivanek.com/blog/15_angular-injectiontoken-in-nx</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/15_angular-injectiontoken-in-nx</guid>
+      <description>Recently I migrated one of my applications from a pure Angular project into NX monorepo and...</description>
+      <pubDate>Mon, 19 Jun 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Setup Angular, Firebase Functions and Shared TS types in NX Monorepo</title>
+      <link>https://eduardkrivanek.com/blog/14_sharing-types-between-angular-and-firebase-functions-in-nx-monorepo</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/14_sharing-types-between-angular-and-firebase-functions-in-nx-monorepo</guid>
+      <description>Recently I started to work on a new project and after a considerable amount of time spent choosing...</description>
+      <pubDate>Wed, 14 Jun 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Vuejs: watchEffect vs watch</title>
+      <link>https://eduardkrivanek.com/blog/13_vuejs-watcheffect-vs-watch</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/13_vuejs-watcheffect-vs-watch</guid>
+      <description>In Vue 3, there are two main ways to observe changes to reactive data: watch and watchEffect...</description>
+      <pubDate>Thu, 01 Jun 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Collection of Vue Macros in Vue.js 3.3</title>
+      <link>https://eduardkrivanek.com/blog/12_collection-of-vue-macros-in-vuejs</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/12_collection-of-vue-macros-in-vuejs</guid>
+      <description>Many developers (myself included) were excited when Vue.js version 3.3 introduced several...</description>
+      <pubDate>Sun, 28 May 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>How shareReplay Saved My Angular Project</title>
+      <link>https://eduardkrivanek.com/blog/11_how_shareReplay_saved_my_angular_project</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/11_how_shareReplay_saved_my_angular_project</guid>
+      <description>When I first started in Angular and saw the RxJS library, I was like: whut is this? After some crying...</description>
+      <pubDate>Fri, 26 May 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Vue.js Reactivity System: Ref, reactive, shallowRef, &amp; shallowReactive</title>
+      <link>https://eduardkrivanek.com/blog/10_vuejs-reactivity-system-ref-reactive-shallowref-shallowreactive</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/10_vuejs-reactivity-system-ref-reactive-shallowref-shallowreactive</guid>
+      <description>Vue.js is a popular JavaScript framework that provides developers with various tools to create...</description>
+      <pubDate>Thu, 18 May 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>New in Vue.js 3.3: Two-Way Binding With defineModel Macro</title>
+      <link>https://eduardkrivanek.com/blog/9_new-in-vuejs-33-two-way-binding-with-definemodel-macro</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/9_new-in-vuejs-33-two-way-binding-with-definemodel-macro</guid>
+      <description>With the upcoming VueJS version 3.3 the community once again doesn’t disappoint and releases many...</description>
+      <pubDate>Sat, 13 May 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>5 Tips To Improve Angular Performance</title>
+      <link>https://eduardkrivanek.com/blog/8_5-tips-to-improve-angular-performance</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/8_5-tips-to-improve-angular-performance</guid>
+      <description>As an Angular developer, you understand the importance of building high-performing web apps...</description>
+      <pubDate>Tue, 25 Apr 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>GraphQL: Everything You Need to Know</title>
+      <link>https://eduardkrivanek.com/blog/7_graphql-everything-you-need-to-know</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/7_graphql-everything-you-need-to-know</guid>
+      <description>Are you thinking about designing a backend API? You probably already know about REST architecture....</description>
+      <pubDate>Mon, 13 Mar 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular &amp; Apollo Client: Apollo Cache Configuration</title>
+      <link>https://eduardkrivanek.com/blog/6_angular-apollo-client-apollo-cache-configuration</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/6_angular-apollo-client-apollo-cache-configuration</guid>
+      <description>Apollo-client might be a go-to library for connecting a frontend application to a GraphQL server;...</description>
+      <pubDate>Mon, 02 Jan 2023 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular v15 Directive Composition API</title>
+      <link>https://eduardkrivanek.com/blog/5_angular-v15-directive-composition-api</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/5_angular-v15-directive-composition-api</guid>
+      <description>One of the advantages of using the Angular ecosystem is that it never forgets about you. If Angular...</description>
+      <pubDate>Thu, 17 Nov 2022 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular &amp; Apollo Client: Getting Started with GraphQL in Angular</title>
+      <link>https://eduardkrivanek.com/blog/4_angular-apollo-client-getting-started-with-graphql-in-angular</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/4_angular-apollo-client-getting-started-with-graphql-in-angular</guid>
+      <description>GraphQL servers are becoming more and more popular. Backend developers recognize the added value of...</description>
+      <pubDate>Mon, 14 Nov 2022 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Creating a GraphQL server with NestJS</title>
+      <link>https://eduardkrivanek.com/blog/3_creating-a-graphql-server-with-nestjs</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/3_creating-a-graphql-server-with-nestjs</guid>
+      <description>When considering building a server-side application, you might be overwhelmed by the vast majority of...</description>
+      <pubDate>Mon, 24 Oct 2022 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>How to Get Started with Pinia in Vue</title>
+      <link>https://eduardkrivanek.com/blog/2_how_to_get_started_with_pinia_in_vue</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/2_how_to_get_started_with_pinia_in_vue</guid>
+      <description>You are starting your VueJs project and you get stuck on a question: how am I going to share data...</description>
+      <pubDate>Mon, 19 Sep 2022 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Developer Preview of Standalone Support in Angular Elements</title>
+      <link>https://eduardkrivanek.com/blog/1_developer_preview_of_standalone_support_in_angular_elements</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/1_developer_preview_of_standalone_support_in_angular_elements</guid>
+      <description>Have you seen it already? Angular version 14.2 is here with new features and improvements! One of the...</description>
+      <pubDate>Tue, 06 Sep 2022 00:00:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

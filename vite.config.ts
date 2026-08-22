@@ -22,6 +22,7 @@ export default defineConfig(({ mode }) => ({
         routes: async () => [
           '/',
           '/blog',
+          '/toolkit',
           {
             contentDir: 'src/content/blog',
             transform: file => {

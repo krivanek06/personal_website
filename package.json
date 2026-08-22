@@ -9,6 +9,8 @@
     "ng": "ng",
     "dev": "nx serve",
     "start": "npm run dev",
+    "feeds": "node scripts/generate-feeds.mjs",
+    "prebuild": "node scripts/generate-feeds.mjs",
     "build": "nx build",
     "watch": "nx build --watch --configuration development",
     "test": "nx test"

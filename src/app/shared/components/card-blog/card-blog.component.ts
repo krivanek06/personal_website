@@ -9,42 +9,36 @@ import { CardGeneralComponent } from '../card-general/card-general.component';
   selector: 'app-card-blog',
   imports: [CardGeneralComponent, RouterLink, DateAgoPipe, SlicePipe],
   template: `
-    <app-card-general additionalClasses="h-full group z-10 " class="h-full">
-      <a [routerLink]="['/blog', blogPost().slug]" class="block h-full px-5 py-3">
-        <div class="relative h-48 overflow-hidden rounded-lg">
+    <app-card-general additionalClasses="h-full" class="h-full">
+      <a [routerLink]="['/blog', blogPost().slug]" class="flex h-full flex-col">
+        <div class="relative h-44 shrink-0 overflow-hidden rounded-t-2xl">
           <img
             [src]="blogPost().coverImage"
             [alt]="blogPost().title"
-            class="h-full w-full object-cover transition-transform duration-300 group-hover:scale-110" />
-          <!-- overlay -->
-          <div
-            class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+            class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
+          <div class="absolute inset-0 bg-gradient-to-t from-moss/90 via-moss/20 to-transparent"></div>
         </div>
-        <div class="grid gap-4 p-6">
-          <!-- title -->
-          <h3
-            class="flex flex-wrap items-center gap-3 text-2xl font-bold text-white transition-colors group-hover:text-green-500">
-            {{ blogPost().order }}.) {{ blogPost().title }}
-          </h3>
 
-          <!-- meta info -->
-          <div class="flex items-center gap-4 text-sm text-white">
-            <span class="max-sm:hidden">{{ blogPost().datePublished }}</span>
-            <span class="max-sm:hidden">•</span>
+        <div class="flex flex-1 flex-col gap-3 p-6">
+          <div class="flex items-center gap-2 font-mono text-[11px] text-sage">
             <span>{{ blogPost().datePublished | dateAgo }}</span>
-            <span>•</span>
+            <span class="text-signal/50">·</span>
             <span>{{ blogPost().readTime }} min read</span>
           </div>
 
-          <!-- description -->
-          <p class="text-gray-400">{{ blogPost().seoDescription }}</p>
+          <h3
+            class="font-display text-xl font-semibold leading-snug text-chalk transition-colors group-hover:text-signal">
+            {{ blogPost().title }}
+          </h3>
 
-          <!-- tags -->
-          <div class="flex flex-wrap items-center gap-2 max-sm:hidden">
-            @for (item of blogPost().tagsArray | slice: 0 : 4; track item) {
-              <div class="rounded-lg border border-green-700 bg-[#00b01a1e] p-2">
+          <p class="text-sm leading-relaxed text-sage">{{ blogPost().seoDescription }}</p>
+
+          <div class="mt-auto flex flex-wrap gap-2 pt-3">
+            @for (item of tags | slice: 0 : 3; track item) {
+              <span
+                class="rounded-full border border-line px-2.5 py-1 font-mono text-[11px] text-sage">
                 {{ item }}
-              </div>
+              </span>
             }
           </div>
         </div>
@@ -63,4 +57,16 @@ import { CardGeneralComponent } from '../card-general/card-general.component';
 })
 export class CardBlogComponent {
   readonly blogPost = input.required<PostAttributes>();
+
+  /** Tags are stored as a comma-separated string in frontmatter. */
+  get tags(): string[] {
+    const post = this.blogPost();
+    if (post.tagsArray?.length) {
+      return post.tagsArray;
+    }
+    return (post.tags ?? '')
+      .split(',')
+      .map(tag => tag.trim())
+      .filter(Boolean);
+  }
 }

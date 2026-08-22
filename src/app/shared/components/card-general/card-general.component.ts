@@ -6,7 +6,7 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
   template: `
     <div
       [class]="
-        'glass-effect rounded-lg border border-green-700 bg-[#00b01a1e] transition-all duration-300 hover:bg-[#00b01a33] ' +
+        'group rounded-2xl border border-line bg-moss transition-colors duration-300 hover:border-signal/40 ' +
         additionalClasses()
       ">
       <ng-content />
@@ -17,10 +17,6 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
     `
       :host {
         display: block;
-      }
-      .glass-effect {
-        backdrop-filter: blur(10px);
-        border-radius: 15px;
       }
     `,
   ],

@@ -21,9 +21,9 @@ import { ChangeDetectionStrategy, Component, input } from '@angular/core';
           x2="188.402"
           y2="0"
           gradientUnits="userSpaceOnUse">
-          <stop stop-color="#10781f" />
-          <stop offset="0.48" stop-color="#05360c" />
-          <stop offset="1" stop-color="#08a11e" />
+          <stop stop-color="#34e39c" />
+          <stop offset="0.48" stop-color="#0e5b37" />
+          <stop offset="1" stop-color="#2bbd82" />
         </linearGradient>
       </defs>
     </svg>

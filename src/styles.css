@@ -9,12 +9,29 @@
 @plugin "@tailwindcss/typography";
 
 /*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
+  "The Signal" design tokens.
+  A developer's personal brand built on reactive streams: a deep green-black
+  field, a phosphor "signal" green, and a type system with a mono utility voice
+  for the data/signal vernacular (eyebrows, coordinates, tech names).
+*/
+@theme {
+  --color-pitch: #0a110d; /* page background — near-black with a green undertone */
+  --color-moss: #101b14; /* surface / cards */
+  --color-fern: #16231b; /* elevated surface / hover */
+  --color-signal: #34e39c; /* primary accent — phosphor green */
+  --color-mint: #9af2c4; /* light tint for highlights / gradients */
+  --color-chalk: #e9f4ec; /* primary text */
+  --color-sage: #8fa896; /* muted secondary text */
+  --color-line: rgb(154 242 196 / 0.14); /* hairline borders */
 
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
+  --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Space Mono', ui-monospace, monospace;
+}
+
+/*
+  Keep default borders consistent with the new palette instead of Tailwind v4's
+  currentColor default.
 */
 @layer base {
   *,
@@ -22,36 +39,80 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
+    border-color: var(--color-line);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    background-color: var(--color-pitch);
+    color: var(--color-chalk);
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  ::selection {
+    background-color: var(--color-signal);
+    color: var(--color-pitch);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-signal);
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
   }
 }
 
-/* You can add global styles to this file, and also import other style files */
-:root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  line-height: 24px;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+/* Subtle measurement grid used behind the hero */
+.hero-grid {
+  background-image:
+    linear-gradient(to right, rgb(52 227 156 / 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgb(52 227 156 / 0.05) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 40%, black 30%, transparent 78%);
 }
 
-body {
-  margin: 0;
-  display: block;
-  min-height: 100vh;
-  font-family: 'Poppins', sans-serif;
-  background: black;
+/* Soft ambient glow behind the portrait */
+.portrait-glow {
+  background: radial-gradient(circle at 50% 40%, rgb(52 227 156 / 0.2), transparent 62%);
+  filter: blur(46px);
 }
 
+/* Thin dotted baseline that underpins the "signal" language */
+.signal-dots {
+  background-image: linear-gradient(to right, var(--color-signal) 2px, transparent 2px);
+  background-size: 14px 1px;
+  background-repeat: repeat-x;
+  background-position: center;
+  opacity: 0.35;
+}
+
+/* Kept for any component that still references the legacy token */
 .text-primary-green {
-  color: #22c55e; /* Tailwind's green-500 */
+  color: var(--color-signal);
 }

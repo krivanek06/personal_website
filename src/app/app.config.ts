@@ -9,9 +9,10 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZonelessChangeDetection(),
     provideFileRouter(
-      // this is in place of scrollPositionRestoration: 'disabled',
+      // scroll to top on navigation and honour in-page `#anchor` links
       withInMemoryScrolling({
         scrollPositionRestoration: 'top',
+        anchorScrolling: 'enabled',
       }),
       // add transition animations
       withViewTransitions()

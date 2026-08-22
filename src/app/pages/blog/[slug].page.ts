@@ -1,52 +1,37 @@
 import { injectContent, injectContentFiles, MarkdownComponent } from '@analogjs/content';
 import { AsyncPipe } from '@angular/common';
-import { Component } from '@angular/core';
-import { SvgTwoComponent } from './../../shared/components';
+import { afterNextRender, Component, ElementRef, viewChild } from '@angular/core';
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { RouteMeta } from '@analogjs/router';
 import { RouterLink } from '@angular/router';
 import PostAttributes from '../../post-attributes';
 
+const SITE_URL = 'https://eduardkrivanek.com';
+
 export const routeMeta: RouteMeta = {
-  title: 'Blog Post',
+  title: route => {
+    const file = injectContentFiles<PostAttributes>().find(
+      contentFile => contentFile.slug === route.params['slug']
+    );
+    return file?.attributes.title ?? 'Blog Post';
+  },
   meta: route => {
     const file = injectContentFiles<PostAttributes>().find(
       contentFile => contentFile.slug === route.params['slug']
     )!;
+    const url = `${SITE_URL}/blog/${file.attributes.slug}`;
 
     return [
-      {
-        name: 'author',
-        content: 'Eduard Krivanek',
-      },
-      {
-        property: 'og:title',
-        content: file.attributes.title,
-      },
-      {
-        property: 'title',
-        content: file.attributes.title,
-      },
-      {
-        property: 'og:description',
-        content: file.attributes.seoDescription,
-      },
-      {
-        property: 'description',
-        content: file.attributes.seoDescription,
-      },
-      {
-        property: 'og:image',
-        content: file.attributes.coverImage,
-      },
-      {
-        property: 'article:published_time',
-        content: file.attributes.datePublished,
-      },
-      {
-        property: 'og:published',
-        content: file.attributes.datePublished,
-      },
+      { name: 'description', content: file.attributes.seoDescription },
+      { name: 'author', content: 'Eduard Krivanek' },
+      { property: 'og:title', content: file.attributes.title },
+      { property: 'og:description', content: file.attributes.seoDescription },
+      { property: 'og:type', content: 'article' },
+      { property: 'og:image', content: file.attributes.coverImage },
+      { property: 'og:url', content: url },
+      { property: 'article:published_time', content: file.attributes.datePublished },
     ];
   },
 };
@@ -54,42 +39,47 @@ export const routeMeta: RouteMeta = {
 @Component({
   selector: 'app-blog-post',
   standalone: true,
-  imports: [AsyncPipe, MarkdownComponent, RouterLink, SvgTwoComponent],
+  imports: [AsyncPipe, MarkdownComponent, RouterLink],
   template: `
-    <!-- svg background -->
-    <app-svg-two addClass="fixed right-0 top-0 opacity-50" />
-    <app-svg-two addClass="fixed left-0 bottom-0 rotate-180 opacity-50" />
+    <div class="relative isolate min-h-screen bg-pitch">
+      <!-- subtle grid backdrop -->
+      <div class="hero-grid fixed inset-0 -z-10 opacity-50" aria-hidden="true"></div>
 
-    <section class="mx-auto max-w-[1240px] px-4 lg:px-6">
-      @if (post$ | async; as post) {
-        <article
-          class="prose prose-invert mx-auto flex w-full flex-col px-4 py-16 md:max-w-4xl">
-          <!-- back button -->
-          <a
-            routerLink="/blog"
-            class="z-10 inline-flex max-w-[300px] items-center gap-2 rounded-full bg-green-500/10 px-6 py-3 text-green-500 transition-colors hover:bg-green-500/20">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              class="h-8 w-8">
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
-            </svg>
+      <!-- reading progress -->
+      <div
+        #progress
+        class="fixed inset-x-0 top-0 z-50 h-[3px] origin-left scale-x-0 bg-signal"
+        aria-hidden="true"></div>
 
-            <span>Back to Blog Posts</span>
-          </a>
+      <section class="mx-auto max-w-[1240px] px-4 pt-28 lg:px-6">
+        @if (post$ | async; as post) {
+          <article
+            class="prose prose-invert mx-auto flex w-full flex-col px-4 py-8 md:max-w-4xl">
+            <a
+              routerLink="/blog"
+              class="mb-10 inline-flex max-w-[300px] items-center gap-2 rounded-full border border-line px-5 py-2.5 font-mono text-sm text-chalk transition-colors hover:border-signal/50 hover:text-signal">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                class="h-4 w-4">
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+              </svg>
+              back to blog
+            </a>
 
-          <img class="z-10 h-[400px] object-contain" [src]="post.attributes.coverImage" />
+            <img class="z-10 max-h-[400px] rounded-2xl object-contain" [src]="post.attributes.coverImage" />
 
-          <analog-markdown class="z-10 text-white" [content]="post.content" />
-        </article>
-      }
-    </section>
+            <analog-markdown class="z-10 text-chalk" [content]="post.content" />
+          </article>
+        }
+      </section>
+    </div>
   `,
   styles: `
     .post__image {
@@ -102,4 +92,31 @@ export default class BlogPostComponent {
     param: 'slug',
     subdirectory: 'blog',
   });
+
+  private readonly progress = viewChild<ElementRef<HTMLElement>>('progress');
+
+  constructor() {
+    afterNextRender(() => {
+      const bar = this.progress()?.nativeElement;
+      if (!bar || window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        return;
+      }
+
+      gsap.registerPlugin(ScrollTrigger);
+      gsap.fromTo(
+        bar,
+        { scaleX: 0 },
+        {
+          scaleX: 1,
+          ease: 'none',
+          scrollTrigger: {
+            trigger: document.body,
+            start: 'top top',
+            end: 'bottom bottom',
+            scrub: 0.3,
+          },
+        }
+      );
+    });
+  }
 }

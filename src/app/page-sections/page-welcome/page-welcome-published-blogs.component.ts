@@ -1,54 +1,36 @@
 import { injectContentFiles } from '@analogjs/content';
 import { SlicePipe } from '@angular/common';
-import {
-  afterNextRender,
-  ChangeDetectionStrategy,
-  Component,
-  ElementRef,
-  viewChild,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PostAttributes from '../../post-attributes';
-import { CardBlogComponent } from '../../shared/components';
+import { CardBlogComponent, RevealDirective } from '../../shared/components';
 
 @Component({
   selector: 'app-page-welcome-published-blogs',
   standalone: true,
-  imports: [CardBlogComponent, RouterLink, SlicePipe],
+  imports: [CardBlogComponent, RouterLink, SlicePipe, RevealDirective],
   template: `
-    <section class="relative z-10 mx-auto w-full p-10 xl:w-[1480px]">
-      <div class="mb-20 text-center">
-        <h2 class="text-primary-green mb-4 text-4xl lg:text-5xl">Latest Blog Posts</h2>
-        <p class="mx-auto max-w-2xl text-xl text-gray-400">
-          Insights, tutorials, and thoughts about web development, technology, and
-          software engineering
-        </p>
-      </div>
+    <section id="blog" class="mx-auto w-full max-w-7xl scroll-mt-24 px-6 py-20 lg:py-28">
+      <div
+        appReveal
+        class="mb-12 flex flex-col items-start justify-between gap-6 sm:mb-16 sm:flex-row sm:items-end">
+        <div class="flex flex-col gap-4">
+          <p class="font-mono text-xs tracking-[0.25em] text-signal">05 · WRITING</p>
+          <h2 class="font-display text-4xl font-bold tracking-tight text-chalk sm:text-5xl">
+            Latest from the blog
+          </h2>
+          <p class="max-w-2xl text-lg text-sage">
+            Tutorials, deep dives and honest notes on web development.
+          </p>
+        </div>
 
-      <div #blogPostContainer class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-        <!-- always show first 3 posts -->
-        @for (post of blogPosts | slice: 0 : 3; track post.slug) {
-          <app-card-blog [blogPost]="post.attributes" class="h-full" />
-        }
-
-        <!-- hide on mobile -->
-        @for (post of blogPosts | slice: 3 : 6; track post.slug) {
-          <span class="max-md:hidden">
-            <app-card-blog [blogPost]="post.attributes" class="h-full" />
-          </span>
-        }
-      </div>
-
-      <div class="mt-12 text-center">
         <a
           routerLink="/blog"
-          class="inline-flex items-center gap-2 rounded-full bg-green-500/10 px-6 py-3 text-green-500 transition-colors hover:bg-green-500/20">
-          View All Posts
+          class="inline-flex shrink-0 items-center gap-2 rounded-full border border-line px-6 py-3 font-mono text-sm text-chalk transition-colors hover:border-signal/50 hover:text-signal">
+          view all posts
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-5 w-5"
+            class="h-4 w-4"
             viewBox="0 0 20 20"
             fill="currentColor">
             <path
@@ -57,6 +39,17 @@ import { CardBlogComponent } from '../../shared/components';
               clip-rule="evenodd" />
           </svg>
         </a>
+      </div>
+
+      <div appReveal class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        @for (post of blogPosts | slice: 0 : 3; track post.slug) {
+          <app-card-blog [blogPost]="post.attributes" class="h-full" />
+        }
+        @for (post of blogPosts | slice: 3 : 6; track post.slug) {
+          <span class="max-md:hidden">
+            <app-card-blog [blogPost]="post.attributes" class="h-full" />
+          </span>
+        }
       </div>
     </section>
   `,
@@ -70,54 +63,9 @@ import { CardBlogComponent } from '../../shared/components';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class PageWelcomePublishedBlogsComponent {
-  private readonly blogPostContainer = viewChild<ElementRef>('blogPostContainer');
-
   readonly blogPosts = injectContentFiles<PostAttributes>(contentFiles =>
     contentFiles.filename.includes('/src/content/blog')
   )
     .sort((a, b) => b.attributes.order - a.attributes.order)
     .slice(0, 6);
-
-  constructor() {
-    afterNextRender(() => {
-      gsap.registerPlugin(ScrollTrigger);
-
-      const blogPostElements = Array.from(
-        this.blogPostContainer()?.nativeElement.children || []
-      ) as HTMLElement[];
-      if (!blogPostElements.length) return;
-
-      // Create a timeline for the technology grid
-      const tl = gsap.timeline({
-        scrollTrigger: {
-          trigger: this.blogPostContainer()?.nativeElement,
-          start: 'top 75%',
-          end: 'bottom 20%',
-          toggleActions: 'play none none none',
-          once: true,
-          markers: false,
-        },
-      });
-
-      blogPostElements.forEach((element, index) => {
-        gsap.set(element, {
-          opacity: 0,
-          y: 50,
-        });
-
-        const overlay = index === 0 ? 0 : -0.1;
-
-        tl.to(
-          element,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.8,
-            delay: index * 0.3,
-          },
-          overlay
-        );
-      });
-    });
-  }
 }

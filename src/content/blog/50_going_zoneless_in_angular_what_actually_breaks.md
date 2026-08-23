@@ -237,7 +237,7 @@ If you use custom elements, events emitted outside Angular template bindings may
 
 Some older libraries import zone.js or rely on its patched globals. Validate them early. If a chart or an SDK stops rendering after the migration, it is usually because it was leaning on the global tick. Wrap its callbacks in signals or markForCheck, or find a zoneless compatible build.
 
-![Change Detection Compare](./article-images/50_dashboard.jpeg)
+![Dashboard App Example](./article-images/50_dashboard.jpeg)
 
 ## How to migrate without breaking everything
 

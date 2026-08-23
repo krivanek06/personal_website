@@ -3,6 +3,7 @@ import { withPrismHighlighter } from '@analogjs/content/prism-highlighter';
 import { provideFileRouter, requestContextInterceptor } from '@analogjs/router';
 import { provideHttpClient, withFetch, withInterceptors } from '@angular/common/http';
 import { ApplicationConfig, provideZonelessChangeDetection } from '@angular/core';
+import { provideClientHydration } from '@angular/platform-browser';
 import { withInMemoryScrolling, withViewTransitions } from '@angular/router';
 
 export const appConfig: ApplicationConfig = {
@@ -18,8 +19,10 @@ export const appConfig: ApplicationConfig = {
       withViewTransitions()
     ),
     provideHttpClient(withFetch(), withInterceptors([requestContextInterceptor])),
-    // todo - this was causing error when displaying an image , idk why
-    //provideClientHydration(),
+    // Reuse the server-rendered HTML on the client instead of re-rendering from
+    // scratch. Without this, the app shell (footer) renders immediately while the
+    // lazy-loaded route content is still loading, causing a "footer-only" flash.
+    provideClientHydration(),
     provideContent(withMarkdownRenderer(), withPrismHighlighter()),
   ],
 };

@@ -7,6 +7,34 @@
     <language>en</language>
     <atom:link href="https://eduardkrivanek.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Learning in the age of AI</title>
+      <link>https://eduardkrivanek.com/blog/49_learning-in-the-age-of-ai</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/49_learning-in-the-age-of-ai</guid>
+      <description>Learning in the age of AI feels like drowning. Here is how I am trying to swim with fewer inputs and more proof.</description>
+      <pubDate>Wed, 12 Aug 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Renderer2 vs render hooks vs direct DOM access in Angular</title>
+      <link>https://eduardkrivanek.com/blog/48_renderer2-vs-render-hooks-vs-direct-dom-access-in-angular</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/48_renderer2-vs-render-hooks-vs-direct-dom-access-in-angular</guid>
+      <description>Renderer2, render hooks, or direct DOM access? A practical guide to choosing the right tool for DOM work in modern Angular.</description>
+      <pubDate>Wed, 17 Jun 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Unhandled CSS Ruining Life</title>
+      <link>https://eduardkrivanek.com/blog/47_unhandled-css-ruining-life</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/47_unhandled-css-ruining-life</guid>
+      <description>There is a moment in the life of almost every mature frontend when CSS stops feeling like a tool and starts feeling like archaeology. Here is how large frontends usually recover.</description>
+      <pubDate>Sat, 18 Apr 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
+      <title>Angular - Power Of Renderer2</title>
+      <link>https://eduardkrivanek.com/blog/46_angular-power-of-renderer2</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/46_angular-power-of-renderer2</guid>
+      <description>When we build apps with Angular, we usually stay inside the world of templates and signals. Here is why Renderer2 is still the safe way to talk to the DOM.</description>
+      <pubDate>Sat, 21 Mar 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Exploiting Unvalidated Redirects for XSS</title>
       <link>https://eduardkrivanek.com/blog/45_exploiting-unvalidated-redirects-for-xss</link>
       <guid isPermaLink="true">https://eduardkrivanek.com/blog/45_exploiting-unvalidated-redirects-for-xss</guid>

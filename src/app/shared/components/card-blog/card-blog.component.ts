@@ -17,6 +17,11 @@ import { CardGeneralComponent } from '../card-general/card-general.component';
             [alt]="blogPost().title"
             class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-105" />
           <div class="absolute inset-0 bg-gradient-to-t from-moss/90 via-moss/20 to-transparent"></div>
+          <div
+            aria-hidden="true"
+            class="absolute right-3 top-3 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-signal font-mono text-sm font-bold text-pitch shadow-lg shadow-signal/30">
+            {{ blogPost().order }}#
+          </div>
         </div>
 
         <div class="flex flex-1 flex-col gap-3 p-6">

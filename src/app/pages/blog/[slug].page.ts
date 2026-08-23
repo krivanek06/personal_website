@@ -53,6 +53,12 @@ export const routeMeta: RouteMeta = {
 
       <section class="mx-auto max-w-[1240px] px-4 pt-28 lg:px-6">
         @if (post$ | async; as post) {
+          <div
+            aria-hidden="true"
+            class="pointer-events-none fixed right-4 top-4 z-50 flex h-12 w-12 items-center justify-center rounded-full bg-signal font-mono text-sm font-bold text-pitch shadow-lg shadow-signal/25 sm:right-6 sm:top-6 sm:h-14 sm:w-14 sm:text-base">
+            {{ post.attributes.order }}#
+          </div>
+
           <article
             class="prose prose-invert mx-auto flex w-full flex-col px-4 py-8 md:max-w-4xl">
             <a

@@ -10,6 +10,22 @@
     <loc>https://eduardkrivanek.com/toolkit</loc>
   </url>
   <url>
+    <loc>https://eduardkrivanek.com/blog/49_learning-in-the-age-of-ai</loc>
+    <lastmod>2026-08-12</lastmod>
+  </url>
+  <url>
+    <loc>https://eduardkrivanek.com/blog/48_renderer2-vs-render-hooks-vs-direct-dom-access-in-angular</loc>
+    <lastmod>2026-06-17</lastmod>
+  </url>
+  <url>
+    <loc>https://eduardkrivanek.com/blog/47_unhandled-css-ruining-life</loc>
+    <lastmod>2026-04-18</lastmod>
+  </url>
+  <url>
+    <loc>https://eduardkrivanek.com/blog/46_angular-power-of-renderer2</loc>
+    <lastmod>2026-03-21</lastmod>
+  </url>
+  <url>
     <loc>https://eduardkrivanek.com/blog/45_exploiting-unvalidated-redirects-for-xss</loc>
     <lastmod>2025-12-21</lastmod>
   </url>

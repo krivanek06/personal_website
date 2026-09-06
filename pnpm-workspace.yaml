@@ -5,5 +5,3 @@ allowBuilds:
   lmdb: true
   msgpackr-extract: true
   nx: true
-patchedDependencies:
-  '@analogjs/router@2.7.1': patches/@analogjs__router@2.7.1.patch

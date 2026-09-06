@@ -25,7 +25,7 @@ export default defineConfig(({ mode }) => ({
           '/blog',
           '/toolkit',
           {
-            contentDir: 'src/content/blog',
+            contentDir: 'src/content/posts',
             transform: file => {
               const slug = file.attributes?.['slug'] || file.name;
               return `/blog/${slug}`;

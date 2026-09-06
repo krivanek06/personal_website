@@ -12,7 +12,7 @@ const fm = require('front-matter');
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const root = join(__dirname, '..');
-const contentDir = join(root, 'src', 'content', 'blog');
+const contentDir = join(root, 'src', 'content', 'posts');
 const publicDir = join(root, 'public');
 
 const SITE = 'https://eduardkrivanek.com';

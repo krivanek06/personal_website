@@ -94,7 +94,7 @@ export const routeMeta: RouteMeta = {
 export default class BlogPostComponent {
   readonly post$ = injectContent<PostAttributes>({
     param: 'slug',
-    subdirectory: 'blog',
+    subdirectory: 'posts',
   });
 
   private readonly progress = viewChild<ElementRef<HTMLElement>>('progress');

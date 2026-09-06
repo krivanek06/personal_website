@@ -7,6 +7,13 @@
     <language>en</language>
     <atom:link href="https://eduardkrivanek.com/rss.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Streaming AI Responses Into Your Angular App</title>
+      <link>https://eduardkrivanek.com/blog/51_streaming-ai-responses-into-your-angular-app</link>
+      <guid isPermaLink="true">https://eduardkrivanek.com/blog/51_streaming-ai-responses-into-your-angular-app</guid>
+      <description>A practical walkthrough of streaming an LLM response into the browser: reading Server-Sent Events and fetch streams, rendering tokens as they arrive, canceling cleanly, and typing the partial response.</description>
+      <pubDate>Sat, 05 Sep 2026 00:00:00 GMT</pubDate>
+    </item>
+    <item>
       <title>Going Zoneless in Angular: What Actually Breaks</title>
       <link>https://eduardkrivanek.com/blog/50_going_zoneless_in_angular_what_actually_breaks</link>
       <guid isPermaLink="true">https://eduardkrivanek.com/blog/50_going_zoneless_in_angular_what_actually_breaks</guid>

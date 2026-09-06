@@ -1,8 +1,6 @@
 import { injectContent, injectContentFiles, MarkdownComponent } from '@analogjs/content';
 import { AsyncPipe } from '@angular/common';
 import { afterNextRender, Component, ElementRef, viewChild } from '@angular/core';
-import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { RouteMeta } from '@analogjs/router';
 import { RouterLink } from '@angular/router';
@@ -108,21 +106,19 @@ export default class BlogPostComponent {
         return;
       }
 
-      gsap.registerPlugin(ScrollTrigger);
-      gsap.fromTo(
-        bar,
-        { scaleX: 0 },
-        {
-          scaleX: 1,
-          ease: 'none',
-          scrollTrigger: {
-            trigger: document.body,
-            start: 'top top',
-            end: 'bottom bottom',
-            scrub: 0.3,
-          },
-        }
-      );
+      const update = () => {
+        // Distance the page can actually scroll = full document height minus viewport.
+        const scrollable = document.documentElement.scrollHeight - window.innerHeight;
+        const top = window.scrollY || document.documentElement.scrollTop;
+        const ratio = scrollable > 0 ? Math.min(1, Math.max(0, top / scrollable)) : 0;
+        // Tailwind v4 compiles `scale-x-0` to the native `scale` property, so
+        // write to `scale` (not `transform`) to actually override it.
+        bar.style.scale = `${ratio} 1`;
+      };
+
+      update();
+      window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
     });
   }
 }

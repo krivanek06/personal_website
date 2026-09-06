@@ -55,7 +55,7 @@ import { CardBlogComponent } from './../../shared/components';
 })
 export default class BlogComponent {
   readonly posts = injectContentFiles<PostAttributes>(contentFiles =>
-    contentFiles.filename.includes('/src/content/blog')
+    contentFiles.filename.includes('src/content/blog')
   )
     .sort((a, b) => b.attributes.order - a.attributes.order)
     .map(post => ({

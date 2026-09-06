@@ -64,7 +64,7 @@ import { CardBlogComponent, RevealDirective } from '../../shared/components';
 })
 export class PageWelcomePublishedBlogsComponent {
   readonly blogPosts = injectContentFiles<PostAttributes>(contentFiles =>
-    contentFiles.filename.includes('/src/content/blog')
+    contentFiles.filename.includes('src/content/blog')
   )
     .sort((a, b) => b.attributes.order - a.attributes.order)
     .slice(0, 6);

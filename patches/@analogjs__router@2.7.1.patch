@@ -1,0 +1,22 @@
+diff --git a/fesm2022/analogjs-router.mjs b/fesm2022/analogjs-router.mjs
+index ec50ec47c94e2d3cd86e8722ea84be397759bcd5..467601e8e67d45f14fed418564f47e19fc821d19 100644
+--- a/fesm2022/analogjs-router.mjs
++++ b/fesm2022/analogjs-router.mjs
+@@ -378,7 +378,7 @@ function deprioritizeSegment(segment) {
+ }
+ const routes = createRoutes({
+     ...ANALOG_ROUTE_FILES,
+-    ...ANALOG_CONTENT_ROUTE_FILES,
++    ...Object.fromEntries(Object.entries(ANALOG_CONTENT_ROUTE_FILES).filter(([key]) => !key.includes('/src/content/'))),
+ });
+ 
+ /**
+@@ -860,7 +860,7 @@ const DEBUG_ROUTES = new InjectionToken('@analogjs/router debug routes', {
+     factory() {
+         const debugRoutes = createRoutes({
+             ...ANALOG_ROUTE_FILES,
+-            ...ANALOG_CONTENT_ROUTE_FILES,
++            ...Object.fromEntries(Object.entries(ANALOG_CONTENT_ROUTE_FILES).filter(([key]) => !key.includes('/src/content/'))),
+         }, true);
+         return debugRoutes;
+     },

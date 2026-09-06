@@ -15,5 +15,6 @@
     "sharedGlobals": [],
     "default": ["{projectRoot}/**/*", "sharedGlobals"],
     "production": ["default"]
-  }
+  },
+  "analytics": false
 }

@@ -14,6 +14,7 @@ export default defineConfig(({ mode }) => ({
   plugins: [
     analog({
       content: {
+        highlighter: 'prism',
         prismOptions: {
           additionalLangs: ['yaml', 'sql', 'graphql', 'bash', 'markdown'],
         },

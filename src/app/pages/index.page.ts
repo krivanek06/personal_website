@@ -63,6 +63,10 @@ export const routeMeta: RouteMeta = {
           addClass="pointer-events-none absolute -right-40 top-24 -z-10 opacity-20" />
         <app-svg-one
           addClass="pointer-events-none absolute left-6 top-20 -z-10 h-[110px] w-[110px] -rotate-12 opacity-20" />
+        <app-svg-one
+          addClass="pointer-events-none absolute right-10 top-40 -z-10 h-[90px] w-[90px] rotate-45 opacity-15" />
+        <app-svg-one
+          addClass="pointer-events-none absolute left-[14%] bottom-8 -z-10 h-[90px] w-[90px] -rotate-45 opacity-15" />
         <app-page-welcome-full-stack />
         <app-page-welcome-technologies />
       </section>
@@ -72,12 +76,18 @@ export const routeMeta: RouteMeta = {
       <section class="relative isolate">
         <app-svg-two
           addClass="pointer-events-none absolute -left-40 top-0 -z-10 rotate-180 opacity-20" />
+        <app-svg-two
+          addClass="pointer-events-none absolute -right-40 top-0 -z-10 opacity-15" />
+        <app-svg-one
+          addClass="pointer-events-none absolute right-[10%] bottom-12 -z-10 h-[100px] w-[100px] -rotate-6 opacity-15" />
         <app-page-welcome-about-me />
       </section>
 
       <section class="relative isolate">
         <app-svg-one
           addClass="pointer-events-none absolute right-[16%] top-16 -z-10 h-[100px] w-[100px] rotate-6 opacity-15" />
+        <app-svg-one
+          addClass="pointer-events-none absolute left-8 bottom-10 -z-10 h-[90px] w-[90px] rotate-12 opacity-15" />
         <app-page-welcome-published-blogs />
       </section>
 

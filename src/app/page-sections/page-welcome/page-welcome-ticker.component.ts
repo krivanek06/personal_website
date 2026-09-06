@@ -56,6 +56,10 @@ export class PageWelcomeTickerComponent {
     'TAILWIND',
     'CLOUDFLARE',
     'JEST',
+    'APOLLO',
+    'ANGULAR MATERIAL',
+    'GOOGLE CLOUD',
+    'GITHUB',
   ];
 
   constructor() {

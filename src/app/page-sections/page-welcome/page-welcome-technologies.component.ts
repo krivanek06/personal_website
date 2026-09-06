@@ -58,5 +58,9 @@ export class PageWelcomeTechnologiesComponent {
     { name: 'Cloudflare', icon: 'tech/cloudflare.png' },
     { name: 'NX', icon: 'tech/nx.png' },
     { name: 'Jest', icon: 'tech/jest.png' },
+    { name: 'Apollo', icon: 'tech/apollo.png' },
+    { name: 'Angular Material', icon: 'tech/material.png' },
+    { name: 'Google Cloud', icon: 'tech/gcp.webp' },
+    { name: 'GitHub', icon: 'tech/github.png' },
   ] as const;
 }
